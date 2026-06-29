@@ -1,10 +1,12 @@
 // #Misfits Change - Wasteland Map server system
+// #Misfits Tweak - Tacmap blips gated behind tactical HUD toggle (off by default).
 using System;
 using System.Collections.Generic;
 using Content.Server.Access.Components;
 using Content.Server.Chat.Managers; // #Misfits Add - faction death alert chat dispatch
 using Content.Server._Misfits.Group; // #Misfits Add - group blip injection
 using Content.Server._Misfits.Overwatch;
+using Content.Server._Misfits.TacticalHUD;
 using Content.Server._Misfits.TribalHunt;
 using Content.Shared.Access.Components;
 using Content.Shared.Humanoid; // #Misfits Add - Followers casualty filter for humanoid player bodies only
@@ -35,6 +37,7 @@ namespace Content.Server._Misfits.WastelandMap;
 /// Sends the WastelandMap state (including world bounds) to the client BUI
 /// when the UI is opened. Box2 is not NetSerializable, so we unpack it into
 /// 4 floats inside the BUI state.
+/// Tacmap blips (faction/group/dead-body) are gated behind the tactical HUD toggle.
 /// </summary>
 public sealed class WastelandMapSystem : EntitySystem
 {
@@ -42,6 +45,7 @@ public sealed class WastelandMapSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly GroupSystem _groupSystem = default!; // #Misfits Add - group member map blips
+    [Dependency] private readonly TacticalHUDSystem _tacticalHUD = default!; // #Misfits Add - gate blips
     // #Misfits Add - Followers dead body tracking & death alerts
     [Dependency] private readonly MobStateSystem _mobState = default!;
     [Dependency] private readonly IChatManager _chatManager = default!;
@@ -395,6 +399,10 @@ public sealed class WastelandMapSystem : EntitySystem
     // #Misfits Add - actor param enables group-member blip injection
     private WastelandMapTrackedBlip[] GetTrackedBlips(WastelandMapTacticalFeedKind feed, MapId mapId, Box2 bounds, EntityUid? actor = null)
     {
+        // #Misfits Tweak - Tacmap blips off by default. Staff opts in via /tacticalhud.
+        if (!_tacticalHUD.IsEnabled)
+            return Array.Empty<WastelandMapTrackedBlip>();
+
         // #Misfits Tweak - Cache the non-actor (faction + tribal) portion per (mapId, feed)
         // for the lifetime of a single Update sweep, so multiple open maps sharing a feed
         // pay for one world-scan instead of N. Outside the sweep this falls back to a

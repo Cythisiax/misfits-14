@@ -1,6 +1,8 @@
 // Misfits Change - Shows a red exclamation mark above players while combat mode (Num1) is active.
 // Misfits Tweak - Removed NPC aggro exclamation mark; icon now only shows for non-NPC entities (players).
+// Misfits Tweak - Gated behind tactical HUD toggle (off by default, staff opt-in).
 using Content.Client.NPC.HTN;
+using Content.Client._Misfits.TacticalHUD;
 // using Content.Shared._Misfits.Sound; // Misfits Tweak - AggroSoundComponent subscription removed; NPCs no longer show aggro icon on aggro
 using Content.Shared.CombatMode;
 using Content.Shared.StatusIcon;
@@ -14,10 +16,12 @@ namespace Content.Client._Misfits.StatusIcon;
 /// with <see cref="CombatModeComponent"/> while combat mode is toggled on via Num1.
 /// Visible to all nearby players — no HUD equipment required.
 /// NPC aggro exclamation mark intentionally removed per Misfits design.
+/// Gated behind the tactical HUD toggle (off by default, staff opt-in via /tacticalhud).
 /// </summary>
 public sealed class ShowAggroIconSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototype = default!;
+    [Dependency] private readonly TacticalHUDClientSystem _tacticalHUD = default!;
 
     public override void Initialize()
     {
@@ -44,6 +48,10 @@ public sealed class ShowAggroIconSystem : EntitySystem
 
         // Misfits Tweak - Only show the combat mode exclamation mark for players, not NPCs
         if (HasComp<HTNComponent>(uid))
+            return;
+
+        // Misfits Tweak - Gated behind staff toggle (off by default)
+        if (!_tacticalHUD.IsEnabled)
             return;
 
         if (_prototype.TryIndex<FactionIconPrototype>("N14AggroIcon", out var icon))

@@ -1,6 +1,8 @@
 // #Misfits Change - Pip-Boy tactical map cartridge system
+// #Misfits Tweak - PipBoy blips gated behind tactical HUD toggle.
 using System.Collections.Generic;
 using Content.Server._Misfits.PipBoy;
+using Content.Server._Misfits.TacticalHUD;
 using Content.Server.CartridgeLoader;
 using Content.Shared._Misfits.PipBoy;
 using Content.Shared.CartridgeLoader;
@@ -20,6 +22,7 @@ public sealed class WastelandMapCartridgeSystem : EntitySystem
     [Dependency] private readonly WastelandMapSystem _wastelandMap = default!;
     [Dependency] private readonly TagSystem _tag = default!;
     [Dependency] private readonly PipBoyNetworkSystem _pipBoy = default!;
+    [Dependency] private readonly TacticalHUDSystem _tacticalHUD = default!;
 
     // Track which (cartridge, loader) pairs have had their UIFragment set up by the client.
     // We must NOT send WastelandMapBoundUserInterfaceState until after CartridgeUiReadyEvent
@@ -153,9 +156,14 @@ public sealed class WastelandMapCartridgeSystem : EntitySystem
     /// #Misfits Add - Appends PipBoy contact and group location blips to the tactical map state.
     /// If the PDA has a NanoChatCard with PipBoyNetworkComponent, tracked contacts and group members
     /// appear as blips on the wasteland map.
+    /// Gated behind the tactical HUD toggle (off by default).
     /// </summary>
     private WastelandMapBoundUserInterfaceState AppendPipBoyBlips(WastelandMapBoundUserInterfaceState state, EntityUid loaderUid)
     {
+        // #Misfits Tweak - Tacmap blips off by default. Staff opts in via /tacticalhud.
+        if (!_tacticalHUD.IsEnabled)
+            return state;
+
         if (!TryComp<PdaComponent>(loaderUid, out var pda) ||
             pda.ContainedId is not { } containedId ||
             !TryComp<PipBoyNetworkComponent>(containedId, out var net) ||

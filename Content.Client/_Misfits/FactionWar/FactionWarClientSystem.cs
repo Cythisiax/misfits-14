@@ -1,8 +1,10 @@
 // #Misfits Refactor - Client-side player war system.
 // Receives player-war state syncs and routes panel requests/results.
+// Misfits Tweak - War overlay gated behind tactical HUD toggle (off by default).
 
 using System.Linq;
 using Content.Client._Misfits.FactionWar.UI;
+using Content.Client._Misfits.TacticalHUD;
 using Content.Shared._Misfits.FactionWar;
 using Content.Shared.Examine;
 using Robust.Client.Console;
@@ -18,6 +20,7 @@ namespace Content.Client._Misfits.FactionWar;
 /// Manages the <see cref="AllyTagOverlay"/> and the <see cref="FactionWarWindow"/>/<see cref="WarJoinWindow"/> GUIs.
 /// The /war client command opens the faction war panel; /warjoin opens the enlistment panel.
 /// All game-logic validation stays server-side.
+/// War overlay tags ([ALLY]/[ENEMY]/[SURRENDERED]) are gated behind the tactical HUD toggle.
 /// </summary>
 public sealed class FactionWarClientSystem : EntitySystem
 {
@@ -30,6 +33,7 @@ public sealed class FactionWarClientSystem : EntitySystem
     [Dependency] private readonly SharedTransformSystem _transform    = default!;
     [Dependency] private readonly IClientConsoleHost  _conHost        = default!;
     [Dependency] private readonly IGameTiming         _timing         = default!;
+    [Dependency] private readonly TacticalHUDClientSystem _tacticalHUD = default!;
 
     public IReadOnlyList<PlayerWarEntry> ActiveWars => _activeWars;
     public byte? LocalWarJoinSide { get; private set; }
@@ -323,7 +327,10 @@ public sealed class FactionWarClientSystem : EntitySystem
 
     private void UpdateOverlayVisibility()
     {
-        if (_activeWars.Count == 0 || _warParticipants.Count == 0)
+        // Misfits Tweak - Gated behind staff toggle (off by default).
+        // War commands (/war, /warjoin, /surrender) still work; only the overhead
+        // [ALLY]/[ENEMY]/[SURRENDERED] tags are suppressed.
+        if (!_tacticalHUD.IsEnabled || _activeWars.Count == 0 || _warParticipants.Count == 0)
         {
             RemoveOverlay();
             return;
