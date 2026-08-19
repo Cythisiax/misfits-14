@@ -5,8 +5,6 @@ using Content.Shared.Gravity;
 using Content.Shared.Input;
 using Content.Shared.Mobs.Systems;
 using Content.Shared.Movement.Systems;
-using Content.Shared.Body.Components;
-using Content.Shared._Shitmed.Body.Organ;
 using Content.Shared.Standing;
 using Content.Shared.Popups;
 using Content.Shared._Misfits.C27;
@@ -162,10 +160,8 @@ public abstract class SharedLayingDownSystem : EntitySystem
             || !Resolve(uid, ref layingDown, false)
             || standingState.CurrentState is not StandingState.Lying
             || !_mobState.IsAlive(uid)
-            || TerminatingOrDeleted(uid)
-            || !TryComp<BodyComponent>(uid, out var body)
-            || body.LegEntities.Count < body.RequiredLegs
-            || HasComp<DebrainedComponent>(uid))
+            || TerminatingOrDeleted(uid))
+            // #Cythisiax Removed - NuBody has no detachable-leg count or Shitmed DebrainedComponent stand-up gates.
             return false;
 
         // Misfits Change: use the crit recovery override if set (hard crit = 8s, soft crit = 2s), otherwise normal 1s
