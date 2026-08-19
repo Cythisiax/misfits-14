@@ -1,6 +1,3 @@
-using Content.Shared.Clothing.Loadouts.Prototypes; // #Misfits Change
-using Content.Shared.Roles; // #Misfits Change
-using Content.Shared.Traits; // #Misfits Change
 using Robust.Shared.Prototypes;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom.Prototype;
 
@@ -189,60 +186,7 @@ public sealed partial class SpeciesPrototype : IPrototype
     [DataField]
     public float AverageWidth = 40f;
 
-    /// <summary>
-    ///     If true, only whitelisted players can select this species.
-    /// </summary>
-    [DataField]
-    public bool WhitelistRequired; // #Misfits Change
-
-    /// <summary>
-    ///     If set, this species can only select jobs in this list.
-    ///     All other jobs will be unavailable.
-    /// </summary>
-    [DataField]
-    public List<ProtoId<JobPrototype>>? RestrictedJobs; // #Misfits Change
-
-    /// <summary>
-    ///     If set, players job-whitelisted for this job will have this species unlocked,
-    ///     even without a general server whitelist.
-    /// </summary>
-    [DataField]
-    public ProtoId<JobPrototype>? JobWhitelistUnlock; // #Misfits Change
-
-    /// <summary>
-    ///     Sort order in the species dropdown. Lower values appear first.
-    /// </summary>
-    [DataField]
-    public int Order; // #Misfits Change
-
-    /// <summary>
-    ///     If true, the Antags, Traits, and Markings tabs are hidden
-    ///     in the character editor for this species.
-    /// </summary>
-    [DataField]
-    public bool RestrictedCustomization; // #Misfits Change
-
-    /// <summary>
-    ///     If set, only loadouts in these categories will be shown.
-    ///     Null means all categories are allowed.
-    /// </summary>
-    [DataField]
-    public List<ProtoId<LoadoutCategoryPrototype>>? AllowedLoadoutCategories; // #Misfits Change
-
-    /// <summary>
-    ///     If set, only traits in these categories will be shown.
-    ///     Null means all categories are allowed.
-    /// </summary>
-    [DataField]
-    public List<ProtoId<TraitCategoryPrototype>>? AllowedTraitCategories; // #Misfits Change
-
-    /// <summary>
-    ///     If set, only these exact trait IDs will be shown, regardless of category.
-    ///     Takes precedence over <see cref="AllowedTraitCategories"/> so a restricted species
-    ///     can allow a single specific perk (e.g. Mr Handy + Italian Accent).
-    /// </summary>
-    [DataField]
-    public List<ProtoId<TraitPrototype>>? AllowedTraits; // #Cythisiax Added - per-trait whitelist
+    // #Cythisiax Removed - Misfits species restrictions live in the downstream partial extension.
 }
 
 public enum SpeciesNaming : byte

@@ -1,0 +1,54 @@
+{
+  "schemaVersion": 1,
+  "upstreamRemote": "wizden",
+  "sourceCommit": "65479ed69cd522834dbcb69da3302cd654036423",
+  "engineCommit": "724345afdffcdedebc43577654385a9ecfe3a092",
+  "selectionCommits": [
+    "d0c2734dad6b2ecfda62738a03539a04904d23d6",
+    "8cf744ec55fa19968ae5a7bc279d5b3862e3f878",
+    "9c23b4a6d8d3188b8027ae5c0042a31455e31e03"
+  ],
+  "ownedTrees": [
+    "Content.Client/Body",
+    "Content.Client/Humanoid",
+    "Content.Server/Body",
+    "Content.Server/Humanoid",
+    "Content.Shared/Body",
+    "Content.Shared/Humanoid",
+    "Resources/Prototypes/Body"
+  ],
+  "ownedFiles": [
+    "Content.Client/HealthAnalyzer/UI/HealthAnalyzerControl.xaml.cs",
+    "Content.Client/Lobby/UI/HumanoidProfileEditor.xaml",
+    "Content.Client/Lobby/UI/HumanoidProfileEditor.xaml.cs",
+    "Content.Server.Database/Migrations/Postgres/20260118084629_OrganMarkings.Designer.cs",
+    "Content.Server.Database/Migrations/Postgres/20260118084629_OrganMarkings.cs",
+    "Content.Server.Database/Migrations/Sqlite/20260118084622_OrganMarkings.Designer.cs",
+    "Content.Server.Database/Migrations/Sqlite/20260118084622_OrganMarkings.cs",
+    "Content.Shared/Preferences/HumanoidCharacterProfile.cs"
+  ],
+  "integrationGlue": [
+    "Content.Server.Database/Migrations/Postgres/PostgresServerDbContextModelSnapshot.cs",
+    "Content.Server.Database/Migrations/Sqlite/SqliteServerDbContextModelSnapshot.cs",
+    "Content.Server.Database/Model.cs",
+    "Content.Server.Database/ModelSqlite.cs",
+    "Content.Server/Database/ServerDbBase.cs",
+    "Content.Server/Preferences/Managers/ServerPreferencesManager.cs",
+    "Resources/Migrations/migration.yml"
+  ],
+  "excludedPrefixes": [
+    "Resources/Maps/",
+    "Resources/Prototypes/_DV/"
+  ],
+  "downstreamExtensionRoots": [
+    "Content.Client/_Misfits/",
+    "Content.Server/_Misfits/",
+    "Content.Shared/_Misfits/",
+    "Resources/Prototypes/_Misfits/",
+    "Resources/Prototypes/_Nuclear14/",
+    "Resources/Prototypes/DeltaV/",
+    "Resources/Prototypes/Corvax/",
+    "Resources/Prototypes/_EE/",
+    "Resources/Prototypes/Nyanotrasen/"
+  ]
+}
