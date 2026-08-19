@@ -2,7 +2,6 @@ using System.Linq;
 using Content.Shared._Misfits.Special;
 using Content.Shared._Misfits.Supporter; // #Cythisiax Add - Patreon supporter loadouts
 using Content.Shared._NC.Sponsor; // Forge-Change
-using Content.Shared.Body.Systems;
 using Content.Shared.CCVar;
 using Content.Shared.Clothing.Components;
 using Content.Shared.Clothing.Loadouts.Prototypes;
@@ -40,8 +39,8 @@ public sealed class SharedLoadoutSystem : EntitySystem
     {
         base.Initialize();
 
-        // Wait until the character has all their organs before we give them their loadout to activate internals
-        SubscribeLocalEvent<LoadoutComponent, MapInitEvent>(OnMapInit, after: [typeof(SharedBodySystem)]);
+        // #Cythisiax Removed - NuBody initializes organs without the legacy SharedBodySystem ordering dependency.
+        SubscribeLocalEvent<LoadoutComponent, MapInitEvent>(OnMapInit);
 
         _sawmill = _log.GetSawmill("loadouts");
     }
