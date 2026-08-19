@@ -8,11 +8,12 @@ API documentation follow-up. It used RobustToolbox `f509405022cf75c3a906b2e1bd0a
 Misfits' newer engine remains pinned independently at `724345afdffcdedebc43577654385a9ecfe3a092`.
 This avoids importing unrelated post-NuBody Content refactors into the initial cutover.
 
-`upstream-manifest.json` owns complete Body and Humanoid trees and derives cross-cutting integration
-paths from the two original NuBody commits plus the upstream public-API documentation follow-up. The
-selection commits must be ancestors of the pin. The manifest explicitly excludes combined
-database/model snapshots, map migrations, and downstream `_DV` prototypes that cannot be imported as
-independent 1:1 files. Those are integration glue and must be reconciled separately.
+`upstream-manifest.json` owns the complete Body and Humanoid implementation trees plus standalone
+assets and migrations introduced by NuBody. Its provenance commits must be ancestors of the pin.
+Files in other subsystems that those commits touched are deliberately integration glue: they must be
+reconciled against the fork instead of replacing whole historical subsystems. This keeps the NuBody
+implementation byte-identical while preventing unrelated Wizden Content history from becoming part
+of the ownership boundary.
 
 Run the parity check from the repository root:
 

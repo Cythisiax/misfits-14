@@ -60,16 +60,13 @@ foreach ($tree in $manifest.ownedTrees) {
     }
 }
 
-foreach ($commit in $manifest.selectionCommits) {
+foreach ($commit in $manifest.provenanceCommits) {
     Invoke-Git -Arguments @("cat-file", "-e", "$commit^{commit}") | Out-Null
     & git merge-base --is-ancestor $commit $source
     if ($LASTEXITCODE -ne 0) {
         throw "Selection commit $commit is not an ancestor of pinned source $source."
     }
 
-    foreach ($path in Invoke-Git -Arguments @("show", "--pretty=format:", "--name-only", $commit)) {
-        Add-Path -Set $candidates -Path $path
-    }
 }
 
 foreach ($path in $manifest.ownedFiles) {
