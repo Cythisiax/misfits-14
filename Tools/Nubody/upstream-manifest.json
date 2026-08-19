@@ -27,6 +27,15 @@
     "Content.Server.Database/Migrations/Sqlite/20260118084622_OrganMarkings.cs",
     "Content.Shared/Preferences/HumanoidCharacterProfile.cs"
   ],
+  "removedRoots": [
+    "Content.Client/_Shitmed",
+    "Content.Server/_Shitmed",
+    "Content.Shared/_Shitmed",
+    "Resources/Prototypes/_Shitmed",
+    "Resources/Locale/en-US/_Shitmed",
+    "Resources/Textures/_Shitmed",
+    "Resources/Audio/_Shitmed"
+  ],
   "integrationGlue": [
     "Content.Server.Database/Migrations/Postgres/PostgresServerDbContextModelSnapshot.cs",
     "Content.Server.Database/Migrations/Sqlite/SqliteServerDbContextModelSnapshot.cs",

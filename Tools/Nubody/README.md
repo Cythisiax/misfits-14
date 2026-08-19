@@ -33,3 +33,13 @@ pwsh -File Tools/Nubody/Get-ShitmedInventory.ps1
 
 Use `-SummaryOnly` when only counts are needed. The inventory excludes serialized maps and the seven
 Shitmed-owned roots themselves when finding external textual references.
+
+Preview the guarded atomic synchronization with:
+
+```powershell
+pwsh -File Tools/Nubody/Sync-Nubody.ps1
+```
+
+The sync refuses to run outside `feature/nubody-migration`, without the archive tag, or with a dirty
+working tree. After reviewing its counts, `-Apply` imports the pinned files and stages removal of
+upstream-replaced legacy paths and the seven Shitmed roots.

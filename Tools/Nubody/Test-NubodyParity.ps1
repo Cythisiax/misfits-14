@@ -2,6 +2,7 @@ param(
     [string] $ManifestPath = (Join-Path $PSScriptRoot "upstream-manifest.json"),
     [switch] $AllowDifferences,
     [switch] $ListPaths,
+    [switch] $PathListOnly,
     [switch] $SummaryOnly
 )
 
@@ -75,6 +76,12 @@ foreach ($path in $manifest.ownedFiles) {
     Add-Path -Set $candidates -Path $path
 }
 
+foreach ($root in $manifest.removedRoots) {
+    foreach ($path in Invoke-Git -Arguments @("ls-files", "--", $root)) {
+        Add-Path -Set $candidates -Path $path
+    }
+}
+
 $integrationGlue = [System.Collections.Generic.HashSet[string]]::new([System.StringComparer]::Ordinal)
 foreach ($path in $manifest.integrationGlue) {
     Add-Path -Set $integrationGlue -Path $path
@@ -94,6 +101,11 @@ $scope = @($candidates | Where-Object {
 
     return $true
 } | Sort-Object)
+
+if ($PathListOnly) {
+    $scope
+    exit 0
+}
 
 if ($ListPaths) {
     $scope
