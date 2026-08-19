@@ -8,13 +8,6 @@
     "8cf744ec55fa19968ae5a7bc279d5b3862e3f878"
   ],
   "ownedTrees": [
-    "Content.Shared/Chemistry/Components/SolutionManager",
-    "Content.Shared/DisplacementMap",
-    "Content.Shared/EntityEffects/Effects/Body",
-    "Content.Shared/Forensics/Components",
-    "Content.Shared/Ghost/Components",
-    "Content.Shared/Metabolism",
-    "Content.Shared/StatusEffectNew",
     "Content.Client/Body",
     "Content.Client/Humanoid",
     "Content.Server/Body",
@@ -24,9 +17,6 @@
     "Resources/Prototypes/Body"
   ],
   "ownedFiles": [
-    "Content.Shared/Atmos/Components/BreathToolComponent.cs",
-    "Content.Shared/Atmos/Components/GasTankComponent.cs",
-    "Content.Shared/Atmos/EntitySystems/SharedGasTankSystem.cs",
     "Content.Server.Database/Migrations/Postgres/20260118084629_OrganMarkings.Designer.cs",
     "Content.Server.Database/Migrations/Postgres/20260118084629_OrganMarkings.cs",
     "Content.Server.Database/Migrations/Sqlite/20260118084622_OrganMarkings.Designer.cs",
