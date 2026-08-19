@@ -3,8 +3,8 @@
 Snapshot date: 2026-08-19
 
 - Misfits baseline: `377b7b81322a7c670954917d4d004fcea7487723`
-- Pinned wizden NuBody source: `8cf744ec55fa19968ae5a7bc279d5b3862e3f878`
-- Source RobustToolbox: `68f8d00931d6b14f3e592d50c47dd44ef09eed1f`
+- Pinned wizden NuBody source: `65479ed69cd522834dbcb69da3302cd654036423`
+- Source RobustToolbox: `724345afdffcdedebc43577654385a9ecfe3a092`
 - Misfits RobustToolbox: `724345afdffcdedebc43577654385a9ecfe3a092`
 - Upstream-owned parity scope: 437 paths
 - Shitmed-owned tracked files: 460

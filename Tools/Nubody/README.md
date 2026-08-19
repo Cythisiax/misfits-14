@@ -2,12 +2,10 @@
 
 This directory defines the immutable upstream boundary for the Shitmed-to-NuBody migration.
 
-The initial source is wizden commit `8cf744ec55fa19968ae5a7bc279d5b3862e3f878`, the completed
-NuBody body and humanoid-appearance merge point. It used RobustToolbox
-`68f8d00931d6b14f3e592d50c47dd44ef09eed1f`;
-Misfits' newer engine remains pinned independently at `724345afdffcdedebc43577654385a9ecfe3a092`.
-Later upstream NuBody updates are applied only after this compiling initial cutover, so unrelated
-post-merge Content refactors cannot silently enter the ownership boundary.
+The initial source is wizden commit `65479ed69cd522834dbcb69da3302cd654036423`, a reviewed
+post-NuBody snapshot on RobustToolbox `724345afdffcdedebc43577654385a9ecfe3a092`. Misfits uses the
+same engine commit. Pinning a coherent source snapshot, rather than the historical NuBody merge
+commit, is required for a replace-and-verify upstream update workflow.
 
 `upstream-manifest.json` owns the complete Body and Humanoid implementation trees plus standalone
 assets and migrations introduced by NuBody. Its provenance commits must be ancestors of the pin.
