@@ -14,6 +14,12 @@ reconciled against the fork instead of replacing whole historical subsystems. Th
 implementation byte-identical while preventing unrelated Wizden Content history from becoming part
 of the ownership boundary.
 
+This is explicitly a NuBody-only migration, not a full Wizden Content rebase. Missing APIs required
+by the byte-identical implementation belong in the manifest's `_Misfits/NubodyCompat` roots as narrow
+adapters over the fork's existing systems. The adapters may change when the NuBody pin advances, but
+the upstream-owned files may not. Do not solve adapter failures by claiming entire transitive Wizden
+subsystems as NuBody-owned.
+
 Run the parity check from the repository root:
 
 ```powershell

@@ -57,5 +57,11 @@
     "Resources/Prototypes/Corvax/",
     "Resources/Prototypes/_EE/",
     "Resources/Prototypes/Nyanotrasen/"
+  ],
+  "compatibilityRoots": [
+    "Content.Client/_Misfits/NubodyCompat/",
+    "Content.Server/_Misfits/NubodyCompat/",
+    "Content.Shared/_Misfits/NubodyCompat/",
+    "Resources/Prototypes/_Misfits/NubodyCompat/"
   ]
 }
