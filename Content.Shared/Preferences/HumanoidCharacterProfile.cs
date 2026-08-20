@@ -105,7 +105,8 @@ public sealed partial class HumanoidCharacterProfile : ICharacterProfile
     public string? CyborgName { get; set; }
 
     /// <see cref="Appearance"/>
-    public ICharacterAppearance CharacterAppearance => Appearance;
+    // #Cythisiax Edited - NuBody's appearance DTO no longer implements the removed legacy interface.
+    public HumanoidCharacterAppearance CharacterAppearance => Appearance;
 
     /// Stores markings, eye colors, etc for the profile
     [DataField]

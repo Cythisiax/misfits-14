@@ -2,6 +2,7 @@
 using System.Numerics;
 using Content.Shared.Gibbing.Components;
 using Content.Shared.Gibbing.Events;
+using Content.Shared.Gibbing; // #Cythisiax Added - bridge the fork gibber to NuBody's organ relay events.
 using Robust.Shared.Audio.Systems;
 using Robust.Shared.Containers;
 using Robust.Shared.Map;
@@ -106,6 +107,16 @@ public sealed class GibbingSystem : EntitySystem
             return false;
         }
 
+        // #Cythisiax Added - let NuBody detach its flat organ set before the fork processes gib contents.
+        var existingDrops = droppedEntities.ToHashSet();
+        var beingGibbed = new BeingGibbedEvent(droppedEntities);
+        RaiseLocalEvent(gibbable, ref beingGibbed);
+        foreach (var organ in droppedEntities.Except(existingDrops).ToArray())
+        {
+            DropEntity(new Entity<GibbableComponent?>(organ, null), Transform(outerEntity), randomSpreadMod,
+                ref droppedEntities, launchGibs, launchDirection, launchImpulse, launchImpulseVariance, launchCone);
+        }
+
         if (gibType == GibType.Skip && gibContentsOption == GibContentsOption.Skip)
             return true;
         if (launchGibs)
@@ -188,7 +199,12 @@ public sealed class GibbingSystem : EntitySystem
         }
 
         if (gibType == GibType.Gib)
+        {
+            // #Cythisiax Added - allow NuBody bloodstream cleanup immediately before entity deletion.
+            var beforeDeletion = new GibbedBeforeDeletionEvent(droppedEntities);
+            RaiseLocalEvent(gibbable, ref beforeDeletion);
             QueueDel(gibbable);
+        }
         return true;
     }
 

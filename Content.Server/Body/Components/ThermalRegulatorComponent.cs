@@ -4,7 +4,7 @@ using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 namespace Content.Server.Body.Components;
 
 [RegisterComponent]
-[Access(typeof(ThermalRegulatorSystem), typeof(Content.Server._Misfits.Genetics.Abilities.ThermalRegulatorMutationSystem))]
+[Access(typeof(ThermalRegulatorSystem))]
 public sealed partial class ThermalRegulatorComponent : Component
 {
     /// <summary>

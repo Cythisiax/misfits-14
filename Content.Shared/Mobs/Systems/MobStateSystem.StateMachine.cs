@@ -1,7 +1,6 @@
 ﻿using Content.Shared.Database;
 using Content.Shared.Mobs.Components;
-using Content.Shared.Body.Organ;
-using Content.Shared._Shitmed.Body.Organ; // Shitmed Change
+// #Cythisiax Removed - NuBody has no detachable legacy brain component gate in the mob-state machine.
 namespace Content.Shared.Mobs.Systems;
 
 public partial class MobStateSystem
@@ -103,9 +102,7 @@ public partial class MobStateSystem
         if (oldState == newState || !component.AllowedStates.Contains(newState))
             return;
 
-        if (oldState == MobState.Dead && HasComp<DebrainedComponent>(target))
-            return;
-
+        // #Cythisiax Removed - NuBody brain organs transfer minds and do not block ordinary state transitions here.
         OnExitState(target, component, oldState);
         component.CurrentState = newState;
         OnEnterState(target, component, newState);

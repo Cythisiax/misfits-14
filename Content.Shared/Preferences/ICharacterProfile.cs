@@ -7,7 +7,8 @@ namespace Content.Shared.Preferences
     {
         string Name { get; }
 
-        ICharacterAppearance CharacterAppearance { get; }
+        // #Cythisiax Edited - NuBody removed ICharacterAppearance; retain the profile contract with its concrete appearance DTO.
+        HumanoidCharacterAppearance CharacterAppearance { get; }
 
         bool MemberwiseEquals(ICharacterProfile other);
 

@@ -1,6 +1,6 @@
 // #Misfits Change
 using Content.Shared.DeltaV.MedicalRecords;
-using Content.Shared._Shitmed.Targeting; // Shitmed Change
+using Content.Shared._Misfits.NubodyCompat; // #Cythisiax Edited - retain the existing analyzer message during NuBody UI conversion.
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.MedicalScanner;

@@ -1,18 +1,16 @@
 using Content.Server.Body.Components;
-using Content.Server.Temperature.Components;
 using Content.Server.Temperature.Systems;
 using Content.Shared.ActionBlocker;
-using Robust.Shared.Random;
+using Content.Shared.Temperature.Components;
 using Robust.Shared.Timing;
 
 namespace Content.Server.Body.Systems;
 
-public sealed class ThermalRegulatorSystem : EntitySystem
+public sealed partial class ThermalRegulatorSystem : EntitySystem
 {
-    [Dependency] private readonly IGameTiming _gameTiming = default!;
-    [Dependency] private readonly IRobustRandom _random = default!;
-    [Dependency] private readonly TemperatureSystem _tempSys = default!;
-    [Dependency] private readonly ActionBlockerSystem _actionBlockerSys = default!;
+    [Dependency] private IGameTiming _gameTiming = default!;
+    [Dependency] private TemperatureSystem _tempSys = default!;
+    [Dependency] private ActionBlockerSystem _actionBlockerSys = default!;
 
     public override void Initialize()
     {
@@ -24,7 +22,7 @@ public sealed class ThermalRegulatorSystem : EntitySystem
 
     private void OnMapInit(Entity<ThermalRegulatorComponent> ent, ref MapInitEvent args)
     {
-        ent.Comp.NextUpdate = _gameTiming.CurTime + ent.Comp.UpdateInterval * (1+_random.NextFloat());
+        ent.Comp.NextUpdate = _gameTiming.CurTime + ent.Comp.UpdateInterval;
     }
 
     private void OnUnpaused(Entity<ThermalRegulatorComponent> ent, ref EntityUnpausedEvent args)
@@ -53,13 +51,14 @@ public sealed class ThermalRegulatorSystem : EntitySystem
         if (!Resolve(ent, ref ent.Comp2, logMissing: false))
             return;
 
+        // TODO: Why do we have two datafields for this if they are only ever used once here?
         var totalMetabolismTempChange = ent.Comp1.MetabolismHeat - ent.Comp1.RadiatedHeat;
 
         // implicit heat regulation
-        var tempDiff = Math.Abs(ent.Comp2.CurrentTemperature - ent.Comp1.NormalBodyTemperature);
-        var heatCapacity = _tempSys.GetHeatCapacity(ent, ent);
+        var tempDiff = Math.Abs(ent.Comp2.Temperature - ent.Comp1.NormalBodyTemperature);
+        var heatCapacity = ent.Comp2.HeatCapacity;
         var targetHeat = tempDiff * heatCapacity;
-        if (ent.Comp2.CurrentTemperature > ent.Comp1.NormalBodyTemperature)
+        if (ent.Comp2.Temperature > ent.Comp1.NormalBodyTemperature)
         {
             totalMetabolismTempChange -= Math.Min(targetHeat, ent.Comp1.ImplicitHeatRegulation);
         }
@@ -68,31 +67,30 @@ public sealed class ThermalRegulatorSystem : EntitySystem
             totalMetabolismTempChange += Math.Min(targetHeat, ent.Comp1.ImplicitHeatRegulation);
         }
 
-        _tempSys.ChangeHeat(ent, totalMetabolismTempChange, ignoreHeatResistance: true, ent);
+        _tempSys.ChangeHeat((ent, ent.Comp2), totalMetabolismTempChange, ignoreHeatResistance: true);
 
         // recalc difference and target heat
-        tempDiff = Math.Abs(ent.Comp2.CurrentTemperature - ent.Comp1.NormalBodyTemperature);
+        tempDiff = Math.Abs(ent.Comp2.Temperature - ent.Comp1.NormalBodyTemperature);
         targetHeat = tempDiff * heatCapacity;
 
-        // #Misfits Fix - Upstream returns early when tempDiff exceeds threshold, preventing
-        // sweating/shivering at extreme temperatures. Since temperature damage is disabled in
-        // this fork (see TemperatureSystem), that early return causes body temp to climb forever
-        // after fire exposure with no way to cool down. Removed so the body always regulates.
-        // Original: if (tempDiff > ent.Comp1.ThermalRegulationTemperatureThreshold) return;
+        // if body temperature is not within comfortable, thermal regulation
+        // processes starts
+        if (tempDiff < ent.Comp1.ThermalRegulationTemperatureThreshold)
+            return;
 
-        if (ent.Comp2.CurrentTemperature > ent.Comp1.NormalBodyTemperature)
+        if (ent.Comp2.Temperature > ent.Comp1.NormalBodyTemperature)
         {
             if (!_actionBlockerSys.CanSweat(ent))
                 return;
 
-            _tempSys.ChangeHeat(ent, -Math.Min(targetHeat, ent.Comp1.SweatHeatRegulation), ignoreHeatResistance: true, ent);
+            _tempSys.ChangeHeat((ent, ent.Comp2), -Math.Min(targetHeat, ent.Comp1.SweatHeatRegulation), ignoreHeatResistance: true);
         }
         else
         {
             if (!_actionBlockerSys.CanShiver(ent))
                 return;
 
-            _tempSys.ChangeHeat(ent, Math.Min(targetHeat, ent.Comp1.ShiveringHeatRegulation), ignoreHeatResistance: true, ent);
+            _tempSys.ChangeHeat((ent, ent.Comp2), Math.Min(targetHeat, ent.Comp1.ShiveringHeatRegulation), ignoreHeatResistance: true);
         }
     }
 }

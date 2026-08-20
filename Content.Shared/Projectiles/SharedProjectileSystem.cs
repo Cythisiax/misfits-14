@@ -14,7 +14,7 @@ using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
 using Content.Shared.Popups;
 using Content.Shared._Misfits.Weapons.Ranged.Prediction;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared._Misfits.NubodyCompat; // #Cythisiax Edited - targeted projectile data is fork compatibility, not NuBody ownership.
 using Content.Shared.Throwing;
 using Content.Shared.Weapons.Ranged.Systems;
 using Robust.Shared.Audio.Systems;

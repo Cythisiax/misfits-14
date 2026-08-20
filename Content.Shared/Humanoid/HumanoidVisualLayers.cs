@@ -1,4 +1,4 @@
-using Content.Shared.Humanoid.Markings;
+﻿using Content.Shared.Humanoid.Markings;
 using Robust.Shared.Serialization;
 
 namespace Content.Shared.Humanoid
@@ -6,14 +6,17 @@ namespace Content.Shared.Humanoid
     [Serializable, NetSerializable]
     public enum HumanoidVisualLayers : byte
     {
-        Face,
+        Special, // for the cat ears
         Tail,
-        Wings,
+        TailOverlay, // markings that go ontop of tails
         Hair,
         FacialHair,
+        UndergarmentTop,
+        UndergarmentBottom,
         Chest,
         Head,
         Snout,
+        SnoutCover, // things layered over snouts (i.e. noses)
         HeadSide, // side parts (i.e., frills)
         HeadTop,  // top parts (i.e., ears)
         Eyes,
@@ -25,15 +28,11 @@ namespace Content.Shared.Humanoid
         LLeg,
         RFoot,
         LFoot,
+        Overlay,
         Handcuffs,
         StencilMask,
         Ensnare,
         Fire,
-        // Misfits Add - RMC14 imported content requires these additional visual layers
-        UndergarmentTop,
-        UndergarmentBottom,
-        Arms,
-        Legs,
-        Special,
+
     }
 }

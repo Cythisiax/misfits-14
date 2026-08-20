@@ -14,7 +14,7 @@ using Robust.Shared.Utility;
 
 // Shitmed Change
 using Content.Shared.Body.Systems;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared._Misfits.NubodyCompat; // #Cythisiax Edited - retain fork hit regions outside removed Shitmed.
 using Robust.Shared.Random;
 
 namespace Content.Shared.Damage

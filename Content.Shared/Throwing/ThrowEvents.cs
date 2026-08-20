@@ -1,4 +1,4 @@
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared._Misfits.NubodyCompat; // #Cythisiax Edited - targeted throw data is fork compatibility, not NuBody ownership.
 
 namespace Content.Shared.Throwing
 {

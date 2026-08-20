@@ -1,4 +1,4 @@
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared._Misfits.NubodyCompat; // #Cythisiax Edited - targeted projectile data is fork compatibility, not NuBody ownership.
 using System.Numerics;
 using Robust.Shared.Audio;
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;

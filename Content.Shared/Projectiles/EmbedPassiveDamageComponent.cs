@@ -2,7 +2,7 @@ using Content.Shared.Damage;
 using Content.Shared.Damage.Components;
 using Content.Shared.FixedPoint;
 using Content.Shared.Mobs.Components;
-using Content.Shared._Shitmed.Targeting;
+using Content.Shared._Misfits.NubodyCompat; // #Cythisiax Edited - targeted projectile data is fork compatibility, not NuBody ownership.
 using Robust.Shared.Serialization.TypeSerializers.Implementations.Custom;
 using Robust.Shared.GameStates;
 
