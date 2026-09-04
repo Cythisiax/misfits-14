@@ -119,6 +119,10 @@
   id: WildCoyote
   oreEntity: N14FloraProduceWildCoyoteTobacco
 
+- type: cannabis
+  id: WildCannabis
+  oreEntity: N14FloraProduceWildCannabis
+
 - type: ore
   id: WildDatura
   oreEntity: N14FloraProduceWildDaturaFlower
