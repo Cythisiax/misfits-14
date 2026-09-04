@@ -13,6 +13,7 @@
     weight: 50
   - id: caravan_contract_N14FloraProduceWildCoyoteTobacco
     weight: 50
+  - id: caravan_contract_N14FloraProduceWildCannabis
   - id: caravan_contract_N14FoodDogfood
     weight: 50
   - id: caravan_contract_N14WeaponSniper556VarmintRifle
@@ -282,6 +283,24 @@
   - type: Currency
     id: Caps
     amount: { min: 50, max: 75 }
+  - type: Pool
+    amount: { min: 1, max: 3 }
+    options:
+    - type: Pool
+      id: caravan_bronze
+
+- type: storeContract
+  id: caravan_contract_N14FloraProduceWildCannabis
+  name: "A High Opportunity"
+  description: "A local shaman is running dangerously low on natural cannabis and claims it is needed to hear the voices of their gods. Help keep their visions alive, and perhaps our new trading relationship will flourish."
+  difficulty: Road Kill
+  targets:
+  - id: N14FloraProduceWildCannabis
+    required: { min: 5, max: 10 }
+  rewards:
+  - type: Currency
+    id: Caps
+    amount: { min: 75, max: 125 }
   - type: Pool
     amount: { min: 1, max: 3 }
     options:
