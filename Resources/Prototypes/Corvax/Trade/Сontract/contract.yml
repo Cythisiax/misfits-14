@@ -14,6 +14,7 @@
   - id: caravan_contract_N14FloraProduceWildCoyoteTobacco
     weight: 50
   - id: caravan_contract_N14FloraProduceWildCannabis
+    weight: 50
   - id: caravan_contract_N14FoodDogfood
     weight: 50
   - id: caravan_contract_N14WeaponSniper556VarmintRifle
