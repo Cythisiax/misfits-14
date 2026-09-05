@@ -25,7 +25,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -146,15 +146,12 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC
+        startingItem: N14PowerCellSmall
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14MicrofusionCell
-  # #Misfits Add - Red beam override; weapon controls its own beam color
-  - type: GunDamageBonus
-    hitscanProtoOverride: N14MFLaserRed
+            - N14PowerCellSmall
   - type: Item
     size: Small
     shape:
@@ -370,7 +367,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -383,9 +380,9 @@
     selectedMode: FullAuto
     availableModes:
     - FullAuto
-  # #Misfits Add - Red beam override; weapon controls its own beam color
+  # Weapon profile controls damage and beam color; MFC supplies charge.
   - type: GunDamageBonus
-    hitscanProtoOverride: N14MFLaserRed
+    hitscanProtoOverride: N14AER9AutoLaser
   - type: FollowDistance
     backStrength: 5
   - type: StaticPrice
@@ -448,7 +445,7 @@
   name: prototype AER-14 laser rifle
   parent: N14BaseWeaponPowerCellMedium
   id: N14WeaponLaserRiflePrototypeAER14
-  description: A cutting-edge pre-war prototype laser rifle with experimental green-spectrum optics. Extremely powerful — the enhanced focusing lenses produce a distinctive green beam with significantly higher damage output.
+  description: A cutting-edge pre-war prototype laser rifle with experimental focusing optics. Its weapon profile produces a distinctive blue beam with high damage output.
   components:
   - type: Wieldable
   - type: GunWieldBonus
@@ -476,7 +473,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -489,9 +486,9 @@
     selectedMode: FullAuto
     availableModes:
     - FullAuto
-  # #Misfits Add - Green beam override ; AER-14 prototype with unique green optics
+  # Weapon profile controls damage and beam color; MFC supplies charge.
   - type: GunDamageBonus
-    hitscanProtoOverride: N14MFLaserGreen
+    hitscanProtoOverride: N14MFLaserBlue
   - type: FollowDistance
     backStrength: 5
   - type: StaticPrice
@@ -502,7 +499,7 @@
   name: AER-12 laser rifle
   parent: N14BaseWeaponPowerCellMedium
   id: N14WeaponLaserRifleAER12
-  description: An advanced pre-war laser rifle featuring upgraded amber-spectrum focusing optics. Higher rate of fire and slightly increased damage over the standard AER-9 — a significant step up in energy weapon technology.
+  description: An advanced pre-war laser rifle featuring upgraded orange-spectrum focusing optics. Higher rate of fire and slightly increased damage over the standard AER-9.
   components:
   - type: Wieldable
   - type: GunWieldBonus
@@ -530,7 +527,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCell
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -545,7 +542,7 @@
     selectedMode: FullAuto
     availableModes:
     - FullAuto
-  # Amber beam override — weapon controls its own beam color
+  # Weapon profile controls damage and beam color; MFC supplies charge.
   - type: GunDamageBonus
     hitscanProtoOverride: N14MFLaserAmber
   - type: FollowDistance
@@ -558,7 +555,7 @@
   name: AER-15 laser rifle
   parent: N14BaseWeaponPowerCellMedium
   id: N14WeaponLaserRifleAER15
-  description: The pinnacle of pre-war laser rifle technology. Experimental blue-spectrum focusing crystals produce the highest damage output of any man-portable laser weapon. Extremely rare — only a handful survived the war, and the manufacturing knowledge is lost.
+  description: The pinnacle of pre-war laser rifle technology. Experimental violet-spectrum focusing crystals produce exceptional damage output with unmatched precision. Extremely rare — only a handful survived the war, and the manufacturing knowledge is lost.
   components:
   - type: Wieldable
   - type: GunWieldBonus
@@ -586,7 +583,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCell
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -599,9 +596,9 @@
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
-  # Blue beam override (40 Heat) — highest damage laser weapon; T5 blueprint item
+  # Weapon profile controls damage and beam color; MFC supplies charge.
   - type: GunDamageBonus
-    hitscanProtoOverride: N14MFLaserBlue
+    hitscanProtoOverride: N14MFLaserViolet
   - type: FollowDistance
     backStrength: 5
   - type: StaticPrice
@@ -641,7 +638,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -654,7 +651,7 @@
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
-  # #Misfits Add - Red beam override; weapon controls its own beam color
+  # Weapon profile controls damage and beam color; MFC supplies charge.
   - type: GunDamageBonus
     hitscanProtoOverride: N14MFLaserRed
   - type: FollowDistance
@@ -690,7 +687,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -738,7 +735,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -751,9 +748,6 @@
     selectedMode: SemiAuto
     availableModes:
     - SemiAuto
-  # #Misfits Add - Red beam override; weapon controls its own beam color
-  - type: GunDamageBonus
-    hitscanProtoOverride: N14MFLaserRed
   - type: FollowDistance
     backStrength: 5
   - type: StaticPrice
@@ -999,7 +993,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -1056,7 +1050,7 @@
     slots:
       gun_magazine:
         name: Magazine
-        startingItem: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC
+        startingItem: N14MicrofusionCellRed
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -1251,7 +1245,7 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14ElectronChargePack # #Misfits Change - They abused my good will and now they lose their giga yummy shit fuck these BOS players man.
+        startingItem: N14ElectronChargePack
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
@@ -1277,9 +1271,9 @@
     - Fullauto
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
-  # #Misfits Add - Red beam override; weapon controls its own beam color
+  # Weapon profile controls damage and beam color; ECP supplies charge.
   - type: GunDamageBonus
-    hitscanProtoOverride: N14PulseRed
+    hitscanProtoOverride: N14RCWLaserGreen
   - type: FollowDistance
     backStrength: 5
   - type: StaticPrice
@@ -1309,12 +1303,12 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14ElectronChargePack # #Misfits Change - consolidated to single generic ECP
+        startingItem: N14PulseEnergyCell
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14ElectronChargePack
+            - N14PulseEnergyCell
   - type: Item
     size: Small
     shape:
@@ -1328,9 +1322,6 @@
     angleDecay: 8
     soundGunshot:
       collection: N14LaserPistolGunshot
-  # #Misfits Add - Red pulse beam override; weapon controls its own beam color
-  - type: GunDamageBonus
-    hitscanProtoOverride: N14PulseRed
   - type: FollowDistance
     backStrength: 5
   - type: StaticPrice
@@ -1364,12 +1355,12 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14ElectronChargePack # #Misfits Change - consolidated to single generic ECP
+        startingItem: N14PulseMicrofusionCell
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14ElectronChargePack
+            - N14PulseMicrofusionCell
   - type: Item
     size: Large
     shape:
@@ -1387,9 +1378,6 @@
     angleDecay: 12
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
-  # #Misfits Add - Red pulse beam override; weapon controls its own beam color
-  - type: GunDamageBonus
-    hitscanProtoOverride: N14PulseRed
   - type: FollowDistance
     backStrength: 5
   - type: StaticPrice
@@ -1423,12 +1411,12 @@
     slots:
       gun_magazine:
         name: Power Cell
-        startingItem: N14ElectronChargePack # #Misfits Change - consolidated to single generic ECP
+        startingItem: N14PulseMicrofusionCell
         insertSound: /Audio/Weapons/Guns/MagIn/batrifle_magin.ogg
         ejectSound: /Audio/Weapons/Guns/MagOut/batrifle_magout.ogg
         whitelist:
           tags:
-            - N14ElectronChargePack
+            - N14PulseMicrofusionCell
   - type: Item
     size: Large
     shape:
@@ -1446,9 +1434,6 @@
     angleDecay: 14
     soundGunshot:
       collection: N14LaserAutoRifleGunshot
-  # #Misfits Add - Red pulse beam override; weapon controls its own beam color
-  - type: GunDamageBonus
-    hitscanProtoOverride: N14PulseRed
   - type: FollowDistance
     backStrength: 5
   - type: StaticPrice

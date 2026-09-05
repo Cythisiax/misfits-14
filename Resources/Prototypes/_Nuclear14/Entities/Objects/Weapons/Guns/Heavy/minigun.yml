@@ -140,8 +140,8 @@
   - type: Item
     sprite: _Nuclear14/Objects/Weapons/Guns/Heavy/avengerminigun.rsi
   - type: Gun
-    minAngle: 4 # #Burger - increased spread range, but  (was 3)
-    maxAngle: 12 # #Burger - increased spread range (was 10)
+    minAngle: 5
+    maxAngle: 14
     angleIncrease: 5 # #Burger - makes the steady spread slightly less predictable (was 3)
     angleDecay: 8
     fireRate: 15 # #Burger - ROF to match buffed base minigun (was 8)

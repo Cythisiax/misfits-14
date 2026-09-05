@@ -42,6 +42,7 @@
 - type: startingGear
   id: EnclaveScientistGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatEnclaveScientist
     back: N14ClothingBackpackSatchelMilitary
     jumpsuit: N14ClothingUniformJumpsuitEnclave

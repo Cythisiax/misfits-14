@@ -265,6 +265,7 @@
     - N14BPNCRAmmoMag556Long
     - N14BPNCRAmmoMag308LMG
     - N14BPNCRAmmoOverMag308
+    - N14BPNCRAmmoBoxOver308
     - N14BPNCRAmmoMagTopSMG12mm
     - N14BPNCRAmmoVertibirdGunBelt # #Misfits Add - vertibird turret belt
 
@@ -482,6 +483,7 @@
     - N14BPLegionAmmoMagazine308RifleLong  # #Misfits Add - .308 Long mag for Bren LMG
     - N14BPLegionAmmoMagazine308M60Box     # #Misfits Add - .308 50-round box mag for M60 LMG
     - N14BPLegionAmmoOverMag308
+    - N14BPLegionAmmoBoxOver308
 
 # =====================================================================
 # BROTHERHOOD OF STEEL BLUEPRINTS
@@ -652,7 +654,8 @@
   components:
   - type: Blueprint
     recipes:
-    # #Misfits Change - MFC/ECP recipes removed; consolidated to single generic cells at T1
+    - N14BPBoSAmmoPowerCellHigh
+    - N14BPBoSAmmoElectronChargePackGreen
     - N14BPBoSAmmoPlasmaCartridge
     # #Misfits Add - kinetic ammo for T2 mediocre guns (7.62 M14 / 5.45 AK-112)
     - N14BPBoSAmmoBox762
@@ -668,7 +671,8 @@
   components:
   - type: Blueprint
     recipes:
-    # #Misfits Change - MFC/ECP recipes removed; consolidated to single generic cells at T1
+    - N14BPBoSAmmoPowerCellAdvanced
+    - N14BPBoSAmmoElectronChargePackBlue
     - N14BPBoSAmmoPlasmaShell
     - N14BPBoSAmmoPlasmaCartridgeMultiplas
 
@@ -684,18 +688,16 @@
     # #Misfits Change - duplicate FC recipe removed; consolidated to single generic fusion core
     - N14BPBoSAmmoVertibirdGunBelt # #Misfits Add - vertibird turret belt
 
-# #Misfits Removed - T5 ammo blueprint entity commented out; all T5 energy cells consolidated to generic types at T1
-# - type: entity
-#   parent: N14BlueprintBase
-#   id: N14BlueprintBoSAmmoT5
-#   name: BoS Experimental Violet-Spectrum Cell Plans
-#   description: No longer relevant — all energy cells consolidated to single generic types.
-#   components:
-#   - type: Blueprint
-#     recipes:
-#     - N14BPBoSAmmoMicrofusionViolet
-#     - N14BPBoSAmmoElectronChargePackViolet
-#     - N14BPBoSAmmoFusionCoreViolet
+- type: entity
+  parent: N14BlueprintBase
+  id: N14BlueprintBoSAmmoT5
+  name: BoS Experimental Violet-Spectrum Cell Plans
+  description: Highly classified experimental schematics for violet-spectrum energy cells. Tier 5 ammo.
+  components:
+  - type: Blueprint
+    recipes:
+    - N14BPBoSAmmoMicrofusionViolet
+    - N14BPBoSAmmoElectronChargePackViolet
 
 # =====================================================================
 # TOWNSFOLK BLUEPRINTS

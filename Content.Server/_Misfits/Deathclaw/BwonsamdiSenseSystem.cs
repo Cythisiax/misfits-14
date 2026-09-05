@@ -14,13 +14,13 @@ namespace Content.Server._Misfits.Deathclaw;
 /// <summary>
 /// Round atmosphere, direct-kill flavor, and private map-wide soul sensing for Bwonsamdi.
 /// </summary>
-public sealed class BwonsamdiSenseSystem : EntitySystem
+public sealed partial class BwonsamdiSenseSystem : EntitySystem
 {
     [Dependency] private readonly IChatManager _chat = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly SharedTransformSystem _transform = default!;
 
-    private readonly Dictionary<(EntityUid Seer, EntityUid Victim), TimeSpan> _nextSense = new();
+    private readonly Dictionary<(EntityUid Seer, EntityUid Victim, MobState State), TimeSpan> _nextSense = new();
     private bool _arrivalAnnounced;
 
     public override void Initialize()
@@ -60,7 +60,6 @@ public sealed class BwonsamdiSenseSystem : EntitySystem
         }
 
         var victimMap = Transform(args.Target).MapID;
-        var victimPosition = _transform.GetMapCoordinates(args.Target).Position;
         var now = _timing.CurTime;
         var query = EntityQueryEnumerator<BwonsamdiComponent, ActorComponent>();
 
@@ -69,24 +68,28 @@ public sealed class BwonsamdiSenseSystem : EntitySystem
             if (seer == args.Target || Transform(seer).MapID != victimMap)
                 continue;
 
-            var key = (seer, args.Target);
+            var key = (seer, args.Target, args.NewMobState);
             if (_nextSense.TryGetValue(key, out var next) && now < next)
                 continue;
 
             _nextSense[key] = now + bwonsamdi.DeathSenseDebounce;
-            var direction = Direction(victimPosition - _transform.GetMapCoordinates(seer).Position);
-            var message = Loc.GetString(
-                args.NewMobState == MobState.Dead ? "bwonsamdi-death-sense-dead" : "bwonsamdi-death-sense-critical",
-                ("direction", Loc.GetString(direction)));
-
-            _chat.ChatMessageToOne(
-                ChatChannel.Emotes,
-                message,
-                message,
-                EntityUid.Invalid,
-                false,
-                actor.PlayerSession.Channel);
+            SendSoulLocation(seer, actor, args.Target, args.NewMobState);
         }
+    }
+
+    private void SendSoulLocation(EntityUid seer, ActorComponent actor, EntityUid victim, MobState state)
+    {
+        var offset = _transform.GetMapCoordinates(victim).Position - _transform.GetMapCoordinates(seer).Position;
+        var victimPosition = _transform.GetMapCoordinates(victim).Position;
+        var message = Loc.GetString(
+            state == MobState.Dead ? "bwonsamdi-death-sense-dead" : "bwonsamdi-death-sense-critical",
+            ("name", Name(victim)),
+            ("x", (int) victimPosition.X),
+            ("y", (int) victimPosition.Y),
+            ("distance", (int) MathF.Round(offset.Length())),
+            ("direction", Loc.GetString(Direction(offset))));
+
+        _chat.ChatMessageToOne(ChatChannel.Emotes, message, message, EntityUid.Invalid, false, actor.PlayerSession.Channel);
     }
 
     private void OnRoundRestart(RoundRestartCleanupEvent args)

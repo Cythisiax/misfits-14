@@ -39,10 +39,8 @@
     proto: N14MFLaserRed
     fireCost: 50
 
-#MARK: Microfusion Cell — single consolidated type
-# #Misfits Change - Consolidated from 4 colored variants into one generic MFC.
-# Weapons now control their own beam color and damage via GunDamageBonusComponent.hitscanProtoOverride.
-# The cell just provides charge. Default fallback hitscan is Red (used if no override on gun).
+#MARK: Microfusion Cell — single player-facing type
+# The cell only provides charge. Weapon profiles determine damage and beam color.
 
 - type: entity
   name: microfusion cell
@@ -60,30 +58,38 @@
         state: o2
         shader: unshaded
   - type: Battery
-    maxCharge: 2300
-    startingCharge: 2300
+    maxCharge: 1200
+    startingCharge: 1200
   - type: HitscanBatteryAmmoProvider
     proto: N14MFLaserRed
     fireCost: 50
 
-# Backward-compatible aliases — colored variants redirect to the single generic MFC.
-# Kept so existing map files, kits, crates, and trade references continue to work.
+# Backward-compatible aliases. Kept so existing map files, kits, crates, and
+# trade references continue to work; all normalize to the single MFC behavior.
 - type: entity
+  name: microfusion cell (red)
+  description: A standard microfusion cell calibrated to emit a red laser beam.
   id: N14MicrofusionCellRed
   parent: N14MicrofusionCell
   suffix: Full
 
 - type: entity
+  name: microfusion cell (green)
+  description: A tuned microfusion cell calibrated to emit a green laser beam.
   id: N14MicrofusionCellGreen
   parent: N14MicrofusionCell
   suffix: Full
 
 - type: entity
+  name: microfusion cell (blue)
+  description: An advanced microfusion cell calibrated to emit a blue laser beam.
   id: N14MicrofusionCellBlue
   parent: N14MicrofusionCell
   suffix: Full
 
 - type: entity
+  name: microfusion cell (violet)
+  description: An experimental microfusion cell calibrated to emit a violet laser beam.
   id: N14MicrofusionCellViolet
   parent: N14MicrofusionCell
   suffix: Full
@@ -142,9 +148,8 @@
   parent: N14FusionCore
   suffix: Full
 
-#MARK: Electron Charge Pack — single consolidated type
-# #Misfits Change - Consolidated from 4 colored variants into one generic ECP.
-# Weapons control their own pulse beam via GunDamageBonusComponent.hitscanProtoOverride.
+#MARK: Electron Charge Pack — single player-facing type
+# The pack only provides charge. Weapon profiles determine damage and beam color.
 # Pulse weapons deal Heat + Shock damage (effective against mechanical targets).
 
 - type: entity
@@ -169,29 +174,37 @@
       - N14ElectronChargePack
       - N14AmmoCell
   - type: Battery
-    maxCharge: 1200
-    startingCharge: 1200
+    maxCharge: 1600
+    startingCharge: 1600
   - type: HitscanBatteryAmmoProvider
-    proto: N14PulseRed
-    fireCost: 37.5
+    proto: N14RCWLaserGreen
+    fireCost: 50
 
-# Backward-compatible aliases for colored ECPs.
+# Backward-compatible aliases. All normalize to the single ECP behavior.
 - type: entity
+  name: electron charge pack (red)
+  description: A standard electron charge pack calibrated for red pulse discharge.
   id: N14ElectronChargePackRed
   parent: N14ElectronChargePack
   suffix: Full
 
 - type: entity
+  name: electron charge pack (green)
+  description: A tuned electron charge pack calibrated for green pulse discharge.
   id: N14ElectronChargePackGreen
   parent: N14ElectronChargePack
   suffix: Full
 
 - type: entity
+  name: electron charge pack (blue)
+  description: An advanced electron charge pack calibrated for blue pulse discharge.
   id: N14ElectronChargePackBlue
   parent: N14ElectronChargePack
   suffix: Full
 
 - type: entity
+  name: electron charge pack (violet)
+  description: An experimental electron charge pack calibrated for violet pulse discharge.
   id: N14ElectronChargePackViolet
   parent: N14ElectronChargePack
   suffix: Full

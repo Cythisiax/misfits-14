@@ -30,6 +30,7 @@
 - type: startingGear
   id: BoSOffDutyGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitBOSBlack
     shoes: N14ClothingBootsLeatherFilled
     head: N14ClothingHeadHatBrotherhoodFieldCap

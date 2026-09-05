@@ -41,6 +41,7 @@
 - type: startingGear
   id: EnclaveVertibirdPilotGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatEnclaveZuluCombatHelmet
     mask: N14ClothingMaskBreather
     back: N14ClothingBackpackMilitary

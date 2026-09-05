@@ -769,6 +769,10 @@
     - N14SheetGlassSand # #Misfits Add: smelt sand into glass as an alternative to quartz
     - N14IngotLead
     - SulfurPowder
+    - N14IngotZinc
+    - N14IngotAluminumBauxite
+    - N14IngotBrassZinc
+    - N14SaltRefine
     # Scrap
     - SheetPlasticScrap
     - N14IngotBrassScrap

@@ -96,7 +96,7 @@ public sealed class NcStoreStructuredBoundUi(EntityUid owner, Enum uiKey) : Boun
     private void ApplyDynamic(StoreDynamicState st)
     {
         // #Misfits Add — push tier state into the menu before populating contracts
-        _menu!.SetTierState(st.PlayerUnlockedTiers, st.Roster);
+        _menu!.SetTierState(st.ContractTierProfile, st.PlayerUnlockedTiers, st.Roster);
 
         _menu!.ApplyDynamicState(
             st.BalanceByCurrency,

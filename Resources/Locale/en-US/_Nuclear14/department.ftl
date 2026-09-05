@@ -26,8 +26,7 @@ department-OSI = NCR Office of Science and Industry
 
 # Descriptions
 department-BrotherhoodOfSteel-description = A unified Brotherhood of Steel chapter.
-# #Cythisiax Renamed (player-facing) - Lancer-Captain -> Knight-Captain.
-department-BrotherhoodOfSteelLancers-description = The chapter's aviation branch. Lancers fly, gun, and maintain the vertibird, and answer to the Knight-Captain.
+department-BrotherhoodOfSteelLancers-description = The chapter's aviation branch. The Knight-Lancer flies, guns, and maintains the vertibird.
 department-BrotherhoodMidwest-description = The Brotherhood of Steel
 # department-BrotherhoodWashington-description = Washington branch of the Brotherhood of Steel #Misfits Change /Comment-out/: Washington BoS removed
 department-CaravanCompany-description = The local Caravan Company responsible for import and export of goods.

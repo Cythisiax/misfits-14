@@ -9,6 +9,9 @@
   id: Bedroll
 
 - type: Tag
+  id: BottleCap
+
+- type: Tag
   id: Bomb
 
 - type: Tag
@@ -461,6 +464,12 @@
 
 - type: Tag
   id: N14ElectronChargePack
+
+- type: Tag
+  id: N14PulseEnergyCell
+
+- type: Tag
+  id: N14PulseMicrofusionCell
 
 #MARK: Ammo tags(explosives)
 

@@ -482,7 +482,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
         // #Misfits Add — notify tier system on vendor open (awards Road Kill badge on first visit)
         // broadcast: true is required so the broadcast-subscribed ContractTierSystem handler fires
         if (comp.ContractPresets.Count > 0)
-            RaiseLocalEvent(user, new MisfitsContractFirstAccessEvent(uid, user), broadcast: true);
+            RaiseLocalEvent(user, new MisfitsContractFirstAccessEvent(uid, user, comp.ContractTierProfile), broadcast: true);
 
         UpdateDynamicState(uid, comp, user);
     }
@@ -623,7 +623,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             // #Misfits Add — notify tier system of completed contract
             // broadcast: true is required so the broadcast-subscribed ContractTierSystem handler fires
             if (contractDifficulty != null)
-                RaiseLocalEvent(user, new MisfitsContractClaimedEvent(uid, user, msg.ContractId, contractDifficulty), broadcast: true);
+                RaiseLocalEvent(user, new MisfitsContractClaimedEvent(uid, user, msg.ContractId, contractDifficulty, comp.ContractTierProfile), broadcast: true);
 
             UpdateDynamicState(uid, comp, user);
             return;
@@ -752,11 +752,13 @@ public sealed partial class StoreStructuredSystem : EntitySystem
         private readonly HashSet<string> _visibleListingIds = new();
         private int _activeIndex;
         private int _catalogRevision;
+        private string _contractTierProfile = string.Empty;
         private bool _hasBuyTab;
         private bool _hasContracts;
         private bool _hasMeta;
         private bool _hasSellTab;
         private bool _hasVisibleIds;
+        private HashSet<string> _unlockedTiers = new();
         private int _visibleSig;
         public TimeSpan NextDynamicAllowed = TimeSpan.Zero;
 
@@ -832,7 +834,9 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             int catalogRevision,
             bool hasBuyTab,
             bool hasSellTab,
-            bool hasContracts
+            bool hasContracts,
+            string contractTierProfile,
+            HashSet<string> unlockedTiers
         )
         {
             if (!_hasMeta)
@@ -841,7 +845,9 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             if (_catalogRevision != catalogRevision ||
                 _hasBuyTab != hasBuyTab ||
                 _hasSellTab != hasSellTab ||
-                _hasContracts != hasContracts)
+                _hasContracts != hasContracts ||
+                _contractTierProfile != contractTierProfile ||
+                !_unlockedTiers.SetEquals(unlockedTiers))
                 return false;
 
             var prev = GetReadBuffer();
@@ -854,7 +860,13 @@ public sealed partial class StoreStructuredSystem : EntitySystem
                 ListEquals(prev.Contracts, next.Contracts);
         }
 
-        public void Commit(int catalogRevision, bool hasBuyTab, bool hasSellTab, bool hasContracts)
+        public void Commit(
+            int catalogRevision,
+            bool hasBuyTab,
+            bool hasSellTab,
+            bool hasContracts,
+            string contractTierProfile,
+            HashSet<string> unlockedTiers)
         {
             _activeIndex = 1 - _activeIndex;
 
@@ -862,6 +874,8 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             _hasBuyTab = hasBuyTab;
             _hasSellTab = hasSellTab;
             _hasContracts = hasContracts;
+            _contractTierProfile = contractTierProfile;
+            _unlockedTiers = new(unlockedTiers);
             _hasMeta = true;
         }
 

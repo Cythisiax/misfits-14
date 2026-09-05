@@ -449,7 +449,6 @@
         - BoSMidPaladinCommander
         - BoSMidPaladin
         - BoSMidKnight
-        - BoSLancerCaptain
         - BoSLancerKnight
         # #Cythisiax Removed - Lancer rank folded into Lancer-Knight
         #- BoSWashingtonCommander #Misfits Change /Comment-out/: Washington BoS removed
@@ -492,7 +491,6 @@
         - BoSMidPaladinCommander
         - BoSMidPaladin
         - BoSMidKnight
-        - BoSLancerCaptain
         - BoSHeadKnight # #Cythisiax Added - Head Knight can take the cheaper Dermal Armor perk
         #- BoSWashingtonCommander #Misfits Change /Comment-out/: Washington BoS removed
         #- BoSWashingtonPaladin
@@ -524,7 +522,6 @@
         - BoSMidPaladinCommander
         - BoSMidPaladin
         - BoSMidKnight
-        - BoSLancerCaptain
         - BoSHeadKnight # #Cythisiax Added - Head Knight can take the Phoenix Armor perk
         - BoSLancerKnight
         # #Cythisiax Removed - Lancer rank folded into Lancer-Knight

@@ -52,24 +52,6 @@
   adminJobs:
   - BoSWestElderCommander  # "Elder Commander" job id
 
-# ── NCR Office of Science and Industry: Research Archive ─────────────────────
-# Kept before the general NCR database because terminal selection uses the first
-# matching access tag. Every OSI job receives the OSI tag; the Chief is the
-# department's sole administrative authority for permanent deletion.
-- type: misfitsTerminalDatabase
-  id: osi-researcharchive
-  displayName: OSI Research Archive
-  accentColor: "#F4F4F4"
-  adminLabel: CHIEF SCIENTIST
-  accessRead:
-  - OSI
-  accessWrite:
-  - OSI
-  leadershipJobs:
-  - OSIChiefScientist
-  adminJobs:
-  - OSIChiefScientist
-
 # ── NCR: Salt Dogs ───────────────────────────────────────────────────────────
 # Leadership = Captain, Lieutenant, First Sergeant.
 # Admin      = Major.

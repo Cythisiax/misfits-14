@@ -60,17 +60,14 @@
 # Rangers/MilitaryPolice pattern of a sub-branch with its own department block.
 # The ID deliberately extends BrotherhoodOfSteel so ordinal sorting parks it directly
 # beneath the Brotherhood in the character selection screen.
-# #Cythisiax Renamed (player-facing) - Lancer-Captain shows as Knight-Captain, Lancer-Knight as
-# Knight-Lancer; the entry "Lancer" rung was removed and its slot folded into Lancer-Knight.
-# Prototype IDs kept stable so Lancers playtime is preserved.
+# #Misfits Change - Knight-Lancer is the sole role in the Brotherhood aviation branch.
 - type: department
   id: BrotherhoodOfSteelLancers
   description: department-BrotherhoodOfSteelLancers-description
   color: "#2F5D8C" # deeper Wendover blue, distinct from the chapter's #3B72BF
   uiCategory: MajorFaction
   roles:
-  - BoSLancerCaptain # Knight-Captain (player-facing) | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_lancer_captain.yml
-  - BoSLancerKnight  # Knight-Lancer  (player-facing) | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_lancer_knight.yml
+  - BoSLancerKnight  # Knight-Lancer (player-facing) | _Misfits/Roles/Jobs/BrotherhoodOfSteel/bos_lancer_knight.yml
 
 #- type: department
 #  id: CaravanCompany
@@ -102,14 +99,15 @@
   - NCREngineer          # NCR Engineer            | _Misfits/Roles/Jobs/NCR/ncr_engineer.yml
   - NCRMedic             # NCR Medic               | _Misfits/Roles/Jobs/NCR/ncr_medic.yml
   - NCRWS                # NCR Weapon Specialist   | _Misfits/Roles/Jobs/NCR/ncr_specialist.yml
+  - NCRHeavyTrooperLead  # NCR Heavy Trooper Lead  | _Misfits/Roles/Jobs/NCR/ncr_heavy_trooper_lead.yml # #Misfits Add
   - NCRHeavyTrooper      # NCR Heavy Trooper       | _Misfits/Roles/Jobs/NCR/ncr_heavy_trooper.yml
   - SuperMutantNCRTrooper # Super Mutant Trooper   | _Misfits/Roles/Jobs/SuperMutant/supermutant.yml # Misfits Add
   # Entry
   - NCRCadet             # NCR Recruit             | _Misfits/Roles/Jobs/NCR/ncr_recruit.yml
   # Special
-  - NCRPrisoner           # NCR Prisoner            | _Misfits/Roles/Jobs/NCR/ncr_prisoner.yml
   - NCRCitizen           # NCR Citizen             | _Misfits/Roles/Jobs/NCR/ncr_citizen.yml # Misfits Add
   - NCRTrader            # NCR Trader              | _Misfits/Roles/Jobs/NCR/ncr_trader.yml # Misfits Add
+  - NCRPrisoner           # NCR Prisoner            | _Misfits/Roles/Jobs/NCR/ncr_prisoner.yml
   # Special roles outside the visible ladder (hidden from character creation):
   #- NCRMPinvestigator    # NCR MP Investigator     | _Misfits/Roles/Jobs/NCR/ncr_mp_investigator.yml
   # Hidden — kept for compatibility, not visible in character creation:

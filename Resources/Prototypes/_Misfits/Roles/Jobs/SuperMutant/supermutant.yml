@@ -38,6 +38,7 @@
 - type: startingGear
   id: SuperMutantRagsGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: ClothingSuperMutantJumpsuit
     id: N14ClothingNeckDogtags # #Misfits Change - wastelander supermutants get dogtag IDs
     ears: MisfitsClothingHeadsetWastelandScrap
@@ -75,6 +76,7 @@
 - type: startingGear
   id: NightkinVaultSuitGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: ClothingSuperMutantVaultSuit
     ears: MisfitsClothingHeadsetWastelandScrap
   # #Misfits Change - removed spawn stealthboy, the implant is innate now
@@ -117,6 +119,7 @@
 - type: startingGear
   id: SuperMutantGladiatorGear
   equipment:
+    wallet: N14Wallet
     ears: N14ClothingHeadsetLegion
     jumpsuit: ClothingSuperMutantGladiatorLoincloth
     outerClothing: ClothingSuperMutantGladiatorArmor
@@ -162,6 +165,7 @@
 - type: startingGear
   id: SuperMutantRangerGear
   equipment:
+    wallet: N14Wallet
     mask: ClothingSuperRangerGasmask
     head: ClothingSuperMutantRangerHelmet
     jumpsuit: ClothingSuperMutantRangerShirt
@@ -206,6 +210,7 @@
 - type: startingGear
   id: SuperMutantTrooperGear
   equipment:
+    wallet: N14Wallet
     head: ClothingSuperMutantTrooperHelmet
     outerClothing: ClothingSuperMutantTrooperArmor
     back: N14ClothingBackpackMilitary
@@ -253,6 +258,7 @@
 - type: startingGear
   id: SuperMutantNCRRangerGear
   equipment:
+    wallet: N14Wallet
     mask: ClothingSuperRangerGasmask
     head: ClothingSuperMutantRangerHelmet
     shoes: ClothingSuperMutantGladiatorBoots # Placeholder untill we get NCR boots
@@ -304,6 +310,7 @@
 - type: startingGear
   id: SuperMutantNCRTrooperGear
   equipment:
+    wallet: N14Wallet
     head: ClothingSuperMutantTrooperHelmet
     shoes: ClothingSuperMutantGladiatorBoots # Placeholder untill we get NCR boots
     jumpsuit: ClothingSuperMutantJumpsuit
@@ -370,6 +377,7 @@
 - type: startingGear
   id: SuperMutantTribalGear
   equipment:
+    wallet: N14Wallet
     hands: ClothingSuperMutantTribalGloves
     head: ClothingSuperMutantSkullHelmetTribal
     jumpsuit: ClothingSuperMutantTribalLoincloth
@@ -435,6 +443,7 @@
 - type: startingGear
   id: SuperMutantFollowerDoctorGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: ClothingSuperMutantLabcoat
     outerClothing: MisfitsFOTASuperMutantArmoredLabcoat
     mask: ClothingSuperMutantSterileMask

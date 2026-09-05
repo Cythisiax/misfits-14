@@ -864,6 +864,13 @@ undecided-loadout-category-misfits-ncr-ht-linebreaker-description =
     2 sticks of dynamite, a stim and super stim, an MRE,
     a RadAway bag, and two rolls of gauze.
 
+undecided-loadout-category-misfits-ncr-ht-minigun-name = Heavy Trooper Minigun Kit
+undecided-loadout-category-misfits-ncr-ht-minigun-description =
+    The issued equipment of an HT who lays down sustained fire.
+    Comes with a standard minigun, 2 minigun boxes, 2 smoke grenades,
+    2 sticks of dynamite, a stim and super stim, an MRE,
+    a RadAway bag, and two rolls of gauze.
+
 undecided-loadout-category-misfits-ncr-ht-defender-name = Heavy Trooper Defender Kit
 undecided-loadout-category-misfits-ncr-ht-defender-description =
     The issued equipment of an HT who holds against all odds.

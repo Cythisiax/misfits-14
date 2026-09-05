@@ -14,8 +14,7 @@
   - type: Clothing
     quickEquip: false
     slots:
-    - belt
-    - idcard
+    - wallet
   - type: Storage
     grid:
     - 0,0,2,1
@@ -24,8 +23,16 @@
     areaInsert: true
     whitelist:
       tags:
+      - BottleCap
       - Currency
       - DoorBumpOpener
+  # Pull loose bottlecaps into the wallet while it is worn, like an OreBag.
+  - type: MagnetPickup
+    slotFlags: WALLET
+    range: 1
+    whitelist:
+      tags:
+      - BottleCap
   - type: Dumpable
   - type: Construction
     graph: N14Wallet
@@ -49,6 +56,7 @@
   - type: Tag
     tags:
       - Currency
+      - BottleCap
   - type: ConsumableCurrency
     currencyType: Bottlecaps
     valuePerUnit: 1

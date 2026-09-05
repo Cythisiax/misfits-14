@@ -33,6 +33,7 @@
 - type: startingGear
   id: WhiteLegsPainMakerGear
   equipment:
+    wallet: N14Wallet
     bandage: NCClothingBandageRaiders
     jumpsuit: M14ClothingUniformWhiteLegsUniform
     outerClothing: MisfitsClothingOuterWhiteLegsArmor

@@ -36,6 +36,7 @@
 - type: startingGear
   id: NCRRangerGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformRangerPatrol
     shoes: N14ClothingBootsCombatFilled
     ears: MisfitsClothingHeadsetNCRRanger

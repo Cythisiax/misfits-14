@@ -17,6 +17,12 @@ public sealed partial class HumanoidAppearanceComponent : Component
 {
     public MarkingSet ClientOldMarkings = new();
 
+    // #Cythisiax Added - Client-side only. Tracks the exact sprite layer keys the marking
+    // system has added so stale layers are always cleared on re-render, even if
+    // ClientOldMarkings drifts out of sync with the applied sprite (barber scissors bug).
+    [ViewVariables]
+    public HashSet<string> ClientMarkingLayerKeys = new();
+
     [DataField, AutoNetworkedField]
     public MarkingSet MarkingSet = new();
 

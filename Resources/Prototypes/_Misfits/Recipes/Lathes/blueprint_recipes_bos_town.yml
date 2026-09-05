@@ -753,7 +753,7 @@
 # --- BoS Tier 1 Ammo ---
 - type: latheRecipe
   id: N14BPBoSAmmoPowerCellSmall
-  result: N14MicrofusionCell # #Misfits Change - consolidated to single generic MFC; weapon controls beam color
+  result: N14MicrofusionCell
   category: N14BlueprintBoSAmmoT1
   completetime: 4
   requiresBlueprint: true
@@ -775,7 +775,7 @@
 
 - type: latheRecipe
   id: N14BPBoSAmmoElectronChargePackRed
-  result: N14ElectronChargePack # #Misfits Change - consolidated to single generic ECP; weapon controls beam color
+  result: N14ElectronChargePack
   category: N14BlueprintBoSAmmoT1
   completetime: 4
   requiresBlueprint: true
@@ -927,16 +927,33 @@
     N14Gunpowder: 60
 
 # --- BoS Tier 2 Ammo ---
-# #Misfits Removed - MFC and ECP recipes commented out; consolidated to single generic cell at T1
-# - type: latheRecipe
-#   id: N14BPBoSAmmoPowerCellHigh
-#   result: N14MicrofusionCell
-#   category: N14BlueprintBoSAmmoT2
+- type: latheRecipe
+  id: N14BPBoSAmmoPowerCellHigh
+  result: N14MicrofusionCell
+  category: N14BlueprintBoSAmmoT2
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 200
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 200
 
-# - type: latheRecipe
-#   id: N14BPBoSAmmoElectronChargePackGreen
-#   result: N14ElectronChargePack
-#   category: N14BlueprintBoSAmmoT2
+- type: latheRecipe
+  id: N14BPBoSAmmoElectronChargePackGreen
+  result: N14ElectronChargePack
+  category: N14BlueprintBoSAmmoT2
+  completetime: 8
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 200
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 200
 
 - type: latheRecipe
   id: N14BPBoSAmmoPlasmaCartridge
@@ -957,16 +974,35 @@
 
 
 # --- BoS Tier 3 Ammo ---
-# #Misfits Removed - MFC and ECP recipes commented out; consolidated to single generic cell at T1
-# - type: latheRecipe
-#   id: N14BPBoSAmmoPowerCellAdvanced
-#   result: N14MicrofusionCell
-#   category: N14BlueprintBoSAmmoT3
+- type: latheRecipe
+  id: N14BPBoSAmmoPowerCellAdvanced
+  result: N14MicrofusionCell
+  category: N14BlueprintBoSAmmoT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 350
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 350
+    N14Silver: 50
 
-# - type: latheRecipe
-#   id: N14BPBoSAmmoElectronChargePackBlue
-#   result: N14ElectronChargePack
-#   category: N14BlueprintBoSAmmoT3
+- type: latheRecipe
+  id: N14BPBoSAmmoElectronChargePackBlue
+  result: N14ElectronChargePack
+  category: N14BlueprintBoSAmmoT3
+  completetime: 12
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 350
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 350
+    N14Silver: 50
 
 - type: latheRecipe
   id: N14BPBoSAmmoPlasmaShell
@@ -1047,21 +1083,35 @@
 
 
 # --- BoS Tier 5 Ammo ---
-# #Misfits Removed - All T5 energy cell recipes commented out; consolidated to single generic cells at T1. No unique ammo at T5.
-# - type: latheRecipe
-#   id: N14BPBoSAmmoMicrofusionViolet
-#   result: N14MicrofusionCell
-#   category: N14BlueprintBoSAmmoT5
+- type: latheRecipe
+  id: N14BPBoSAmmoMicrofusionViolet
+  result: N14MicrofusionCell
+  category: N14BlueprintBoSAmmoT5
+  completetime: 20
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 500
+    Circuitry: 100
+    ScrapElectronic: 100
+    N14Gold: 50
+    Lead: 500
 
-# - type: latheRecipe
-#   id: N14BPBoSAmmoElectronChargePackViolet
-#   result: N14ElectronChargePack
-#   category: N14BlueprintBoSAmmoT5
-
-# - type: latheRecipe
-#   id: N14BPBoSAmmoFusionCoreViolet
-#   result: N14FusionCore
-#   category: N14BlueprintBoSAmmoT5
+- type: latheRecipe
+  id: N14BPBoSAmmoElectronChargePackViolet
+  result: N14ElectronChargePack
+  category: N14BlueprintBoSAmmoT5
+  completetime: 20
+  requiresBlueprint: true
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Glass: 500
+    Circuitry: 100
+    ScrapElectronic: 100
+    N14Gold: 50
+    Lead: 500
 
 
 # =====================================================================

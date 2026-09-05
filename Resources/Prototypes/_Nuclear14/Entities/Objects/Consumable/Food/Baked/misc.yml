@@ -65,7 +65,7 @@
     - savory
     - corn
   - type: Sprite
-    sprite: _Misfits/Objects/Consumable/Food/Baked/misc.rsi/muffin-corn.png
+    sprite: _Misfits/Objects/Consumable/Food/Baked/misc.rsi
     state: muffin-corn
   - type: Tag
     tags:

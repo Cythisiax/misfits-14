@@ -20,6 +20,8 @@
     removes:
     - type: ReplacementAccent
       accent: genericAggressive
+  - type: ReplacementAccent
+    accent: misfitsDeathclaw
   - type: Speech
     speechSounds: MisfitsDeathclaw
     speechVerb: LargeMob
@@ -37,12 +39,6 @@
     tags:
     - Deathclaw
     - FootstepSound
-  - type: FootstepModifier
-    footstepSoundCollection:
-      collection: FootstepThud
-      params:
-        volume: 2
-        maxDistance: 15
   - type: NpcFactionMember
     factions:
     - PlayerSuperMutant
@@ -69,6 +65,114 @@
       params:
         volume: 4
         maxDistance: 20
+
+# Temporary life-stage bodies for the regular Sentient Deathclaw species variants.
+# These inherit only ordinary Deathclaw gameplay; Bwonsamdi remains a separate entity below.
+- type: entity
+  name: adolescent sentient deathclaw
+  id: N14MobDeathclawSentientAdolescent
+  parent: N14MobDeathclawSentient
+  description: An intelligent young deathclaw, not yet fully grown.
+  components:
+  - type: HumanoidAppearance
+    species: DeathclawAdolescent
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: deathclaw
+      sprite: _Misfits/Mobs/Animals/deathclawadolescent.rsi
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: deathclaw
+      Critical:
+        Base: crit
+      Dead:
+        Base: dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.35
+        density: 75
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      320: Critical
+      410: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      80: 1.05
+      120: 1.1
+      160: 1.15
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 11
+        Slash: 18
+        Piercing: 4
+    range: 1.75
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.25
+    baseSprintSpeed: 6.25
+
+- type: entity
+  name: hatchling sentient deathclaw
+  id: N14MobDeathclawSentientHatchling
+  parent: N14MobDeathclawSentient
+  description: An intelligent Deathclaw hatchling, small but still dangerous.
+  components:
+  - type: HumanoidAppearance
+    species: DeathclawHatchling
+  - type: Sprite
+    layers:
+    - map: ["enum.DamageStateVisualLayers.Base"]
+      state: deathclaw
+      sprite: _Misfits/Mobs/Animals/deathclawhatchling.rsi
+  - type: DamageStateVisuals
+    states:
+      Alive:
+        Base: deathclaw
+      Critical:
+        Base: crit
+      Dead:
+        Base: dead
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeCircle
+            radius: 0.3
+        density: 50
+        mask:
+        - MobMask
+        layer:
+        - MobLayer
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      210: Critical
+      280: Dead
+  - type: SlowOnDamage
+    speedModifierThresholds:
+      55: 1.05
+      85: 1.1
+      110: 1.15
+  - type: MeleeWeapon
+    damage:
+      types:
+        Blunt: 7
+        Slash: 11
+        Piercing: 3
+    range: 1.5
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 3.5
+    baseSprintSpeed: 6.5
 
 # #Cythisiax Added - Sentient deathclaw (Bwonsamdi) player body.
 # Whitelist boss creature under FEV Mutants. Spawned via the SentientDeathclaw job's jobEntity.
@@ -146,10 +250,12 @@
     - Tribal
     - N14Dog
     - Cat
-  - type: Accentless # #Cythisiax - strip the inherited genericAggressive accent (from N14MobBaseHostileScaley) so the deathclaw speaks normally
+  - type: Accentless # Strip the inherited genericAggressive accent before applying the shared Deathclaw speech.
     removes:
     - type: ReplacementAccent
       accent: genericAggressive
+  - type: ReplacementAccent
+    accent: misfitsDeathclaw
   - type: Speech # #Misfits Add - replace the inherited squeak with Deathclaw vocals and growling speech verbs
     speechSounds: MisfitsDeathclaw
     speechVerb: LargeMob
@@ -224,10 +330,11 @@
   - type: RobotDownedVisuals # #Cythisiax - show the crit frame while lying down (same mechanism as the player robots)
     standingState: deathclaw
     downedState: crit
-  - type: NpcFactionMember # #Cythisiax - friendly to FEV mutants/wastelanders instead of the hostile Deathclaw faction
+  - type: NpcFactionMember # Bwonsamdi is accepted by the Willowers while retaining his wasteland alliances.
     factions:
     - PlayerSuperMutant
     - Wastelander
+    - Tribal
   - type: MeleeWeapon # #Cythisiax - massive structural damage on top of the inherited claw damage
     altDisarm: false
     hidden: true
@@ -249,6 +356,7 @@
     actions:
     - MisfitsActionMeleeCharge
     - ActionBwonsamdiDreadRoar
+    - ActionBwonsamdiSoulCompass
     - ActionBwonsamdiRitualClaim
     - ActionBwonsamdiMercy
   - type: MeleeChargeAudio # #Misfits Add - recognizable Deathclaw warning vocal followed by a heavy landing
@@ -291,9 +399,16 @@
     interfaces:
       enum.StrippingUiKey.Key:
         type: StrippableBoundUserInterface
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface
   - type: ComplexInteraction # #Cythisiax - full object manipulation (click doors, containers, etc.)
   - type: Puller # #Cythisiax - can drag anything regardless of weight (any unanchored Pullable); no hands needed
     needsHands: false
   - type: StructureBreaker # #Cythisiax - can smash through "indestructible" structures (no Damageable) on melee hit
   - type: SentientDeathclaw # common speech/emote/butchering marker; grants no loa abilities
   - type: Bwonsamdi # #Misfits Add - map-wide death sense and once-per-round atmospheric announcements
+  - type: WastelandMap # Bwonsamdi-only Soul Compass feed, opened by ActionBwonsamdiSoulCompass
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Bwonsamdi's Soul Compass
+    worldBounds: "-517,-308,484,311"
+    tacticalFeed: Bwonsamdi

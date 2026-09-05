@@ -329,6 +329,21 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
 
     private void ClearAllMarkings(HumanoidAppearanceComponent humanoid, SpriteComponent sprite)
     {
+        // #Cythisiax Fixed - reliably remove every marking layer this client has added. This
+        // no longer depends solely on ClientOldMarkings being in sync: if that set drifts (e.g.
+        // barber scissors rapid appearance changes), the tracked layer keys still get cleared,
+        // preventing stale haircuts from being layered under the new one for observers.
+        foreach (var layerId in humanoid.ClientMarkingLayerKeys)
+        {
+            if (!sprite.LayerMapTryGet(layerId, out var index))
+                continue;
+
+            sprite.LayerMapRemove(layerId);
+            sprite.RemoveLayer(index);
+        }
+
+        humanoid.ClientMarkingLayerKeys.Clear();
+
         foreach (var markingList in humanoid.ClientOldMarkings.Markings.Values)
         {
             foreach (var marking in markingList)
@@ -425,6 +440,10 @@ public sealed class HumanoidAppearanceSystem : SharedHumanoidAppearanceSystem
             }
 
             var layerId = $"{markingPrototype.ID}-{rsi.RsiState}";
+
+            // #Cythisiax Added - record every marking layer key this system manages so that
+            // ClearAllMarkings can always remove it, even if ClientOldMarkings is out of sync.
+            humanoid.ClientMarkingLayerKeys.Add(layerId);
 
             if (!sprite.LayerMapTryGet(layerId, out _))
             {

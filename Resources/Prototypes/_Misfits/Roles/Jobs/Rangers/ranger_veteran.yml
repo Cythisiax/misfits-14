@@ -41,6 +41,7 @@
 - type: startingGear
   id: NCRVeteranRangerGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatRangerHelmetDesert
     back: N14ClothingBackpackMilitary # Corvax-Change
     jumpsuit: N14ClothingUniformRangerVeteran

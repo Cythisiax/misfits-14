@@ -3,7 +3,7 @@
   setPreference: true
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
-  weight: 1
+  weight: 0 # #Misfits Tweak - place Prisoner beneath Trader
   showBorder: false
   overrideConsoleVisibility: true
   canBeAntag: false
@@ -37,6 +37,7 @@
 - type: startingGear
   id: NCRPrisonerGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: ClothingUniformJumpsuitPrisoner
     shoes: N14ClothingShoesBlack
     bandage: NCClothingBraceletNCRPrisoner

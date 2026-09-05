@@ -160,12 +160,9 @@ job-description-bos-paladin = Fight as the Brotherhood's frontline heavy infantr
 job-name-bos-knight = Brotherhood Knight
 job-description-bos-knight = Protect the chapter, escort missions, and recover technology in the field.
 # #Misfits Add - Brotherhood Lancers, the chapter's aviation branch.
-# #Cythisiax Renamed (player-facing) - Lancer-Captain -> Knight-Captain, Lancer-Knight -> Knight-Lancer.
-# Locale keys and prototype IDs kept stable so Lancers playtime is preserved.
-job-name-bos-lancer-captain = Brotherhood Knight-Captain
-job-description-bos-lancer-captain = You command the chapter's aviation branch and fly its vertibird. Keep the bird in the air, move the Brotherhood's people and salvage, and remember that the machine is Brotherhood property first and your ride second.
+# Knight-Lancer is the branch's sole role and receives the vertibird pilot perk.
 job-name-bos-lancer-knight = Brotherhood Knight-Lancer
-job-description-bos-lancer-knight = You are crew chief, door gunner, and deck crew. Ride the co-pilot seat, work the turret over whatever the Captain flies you across, keep the gun fed, and when the bird is down put it right with your torch. Nobody flies anywhere without you.
+job-description-bos-lancer-knight = You are the Brotherhood's vertibird pilot, crew chief, door gunner, and deck crew. Keep the bird in the air, work the turret, and put it right with your torch when it is down.
 job-name-bos-scribe = Brotherhood Scribe
 job-description-bos-scribe = Support the chapter with research, medicine, and technical expertise.
 job-name-bos-initiate = Brotherhood Initiate

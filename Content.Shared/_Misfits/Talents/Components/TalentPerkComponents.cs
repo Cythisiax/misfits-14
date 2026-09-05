@@ -14,5 +14,6 @@ namespace Content.Shared._Misfits.Talents.Components;
 [RegisterComponent, NetworkedComponent] public sealed partial class TraitSwiftLearnerComponent : Component { }
 [RegisterComponent, NetworkedComponent] public sealed partial class TraitEducatedComponent : Component { }
 [RegisterComponent, NetworkedComponent] public sealed partial class TraitScroungerComponent : Component { }
+[RegisterComponent, NetworkedComponent] public sealed partial class TraitJunkerFinderComponent : Component { }
 [RegisterComponent, NetworkedComponent] public sealed partial class TraitNerdRageComponent : Component { }
 [RegisterComponent, NetworkedComponent] public sealed partial class TraitFortunesFavorComponent : Component { }

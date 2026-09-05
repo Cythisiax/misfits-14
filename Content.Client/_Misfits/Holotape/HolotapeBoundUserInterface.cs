@@ -73,6 +73,8 @@ public sealed class HolotapeBoundUserInterface : BoundUserInterface
             SendMessage(new CreateDatabaseDocumentMessage(folderId, subfolderId, title, body, markAdmin));
         _window.OnEditDatabaseDocument += (docId, body) =>
             SendMessage(new EditDatabaseDocumentMessage(docId, body));
+        _window.OnRenameDatabaseEntry += (name, folderId, subParent, subId, docId) =>
+            SendMessage(new RenameDatabaseEntryMessage(name, folderId, subParent, subId, docId));
         _window.OnDeleteDatabaseFolder += (folderId, subfolderId) =>
             SendMessage(new DeleteDatabaseFolderMessage(folderId, subfolderId));
         _window.OnDeleteDatabaseDocument += docId =>

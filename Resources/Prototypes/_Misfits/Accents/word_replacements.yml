@@ -348,3 +348,8 @@
     accent-n14-enclave-words-1: accent-n14-enclave-words-replace-1
     accent-n14-enclave-words-2: accent-n14-enclave-words-replace-2
     accent-n14-enclave-words-3: accent-n14-enclave-words-replace-3
+
+# Shared spoken accent for sentient Deathclaws, including Bwonsamdi.
+- type: accent
+  id: misfitsDeathclaw
+  elongateSibilants: true

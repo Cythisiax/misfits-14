@@ -10,10 +10,7 @@
   requirements:
     - !type:CharacterDepartmentTimeRequirement # Legion total timelock
       department: CaesarLegion
-      min: 57600 # 16 hours
-    - !type:CharacterPlaytimeRequirement
-      tracker: CaesarLegionLegionnaireVeteran
-      min: 28800 # 8 hours
+      min: 57600 # 16 hours #whoever had the BRILLIANT IDEA to make frums locked behind a male only role, ill find you, and ill cross you
     - !type:CharacterSpeciesRequirement
       species:
       - Human
@@ -39,6 +36,7 @@
 - type: startingGear
   id: CaesarLegionFrumentariiGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     ears: N14ClothingHeadsetLegion
     mask: N14ClothingMaskBrownMask

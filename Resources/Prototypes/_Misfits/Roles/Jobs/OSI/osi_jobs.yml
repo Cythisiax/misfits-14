@@ -52,6 +52,7 @@
 - type: startingGear
   id: OSIChiefScientistGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatNCRBeretMedic
     jumpsuit: N14ClothingUniformJumpsuitRDFormal
     outerClothing: N14ClothingOuterCoatFollowersArmored
@@ -117,6 +118,7 @@
 - type: startingGear
   id: OSIScientistGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatNCRBeretMedic
     jumpsuit: N14ClothingUniformJumpsuitRDFormal
     outerClothing: N14ClothingOuterCoatLab
@@ -181,6 +183,7 @@
 - type: startingGear
   id: OSIAssistantGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatNCRBeretMedic
     jumpsuit: N14ClothingUniformJumpsuitRDFormal
     outerClothing: N14ClothingOuterCoatLab
@@ -243,6 +246,7 @@
 - type: startingGear
   id: OSIAgentGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformNCRDesert
     outerClothing: N14ClothingOuterNCRPouchedVestDesert
     back: N14ClothingBackpackNCR

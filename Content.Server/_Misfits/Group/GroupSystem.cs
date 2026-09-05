@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Content.Shared._Misfits.Group;
 using Content.Shared.GameTicking;
+using Content.Shared.Verbs;
 using Robust.Server.Player;
 using Robust.Shared.Map;
 using Robust.Shared.Enums;
@@ -82,6 +83,7 @@ public sealed class GroupSystem : EntitySystem
         SubscribeNetworkEvent<GroupToggleOverlayRequestEvent>(OnToggleOverlay);
 
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
+        SubscribeLocalEvent<ActorComponent, GetVerbsEvent<InteractionVerb>>(OnGetInteractionVerbs);
         _playerManager.PlayerStatusChanged += OnPlayerStatusChanged;
     }
 
@@ -258,7 +260,51 @@ public sealed class GroupSystem : EntitySystem
     private void OnInvite(GroupInviteRequestEvent msg, EntitySessionEventArgs args)
     {
         var session = args.SenderSession;
-        var userId  = session.UserId;
+        if (!TryGetSessionByCharacterName(msg.TargetCharacterName, out var targetSession) || targetSession == null)
+        {
+            SendResult(session, false, Loc.GetString("group-player-not-found", ("name", msg.TargetCharacterName)));
+            return;
+        }
+
+        SendInvite(session, targetSession, msg.TargetCharacterName);
+    }
+
+    /// <summary>
+    /// Adds the group invite directly to a nearby player's interaction menu.
+    /// The normal network invite route ultimately calls the same method, so the
+    /// permission, membership, capacity, and invite-expiry rules stay identical.
+    /// </summary>
+    private void OnGetInteractionVerbs(
+        EntityUid target,
+        ActorComponent targetActor,
+        GetVerbsEvent<InteractionVerb> args)
+    {
+        if (!args.CanAccess || !args.CanInteract || args.User == target)
+            return;
+
+        if (!TryComp<ActorComponent>(args.User, out var actor) ||
+            !_playerToGroup.TryGetValue(actor.PlayerSession.UserId, out var groupId) ||
+            !_groups.TryGetValue(groupId, out var group) ||
+            !CanInvite(actor.PlayerSession.UserId, group) ||
+            group.MemberOrder.Count >= MaxGroupSize)
+            return;
+
+        var targetSession = targetActor.PlayerSession;
+        if (_playerToGroup.ContainsKey(targetSession.UserId))
+            return;
+
+        var targetName = Name(target);
+        args.Verbs.Add(new InteractionVerb
+        {
+            Text = Loc.GetString("group-invite-verb"),
+            Category = VerbCategory.Interaction,
+            Act = () => SendInvite(actor.PlayerSession, targetSession, targetName),
+        });
+    }
+
+    private void SendInvite(ICommonSession session, ICommonSession targetSession, string targetName)
+    {
+        var userId = session.UserId;
 
         if (!_playerToGroup.TryGetValue(userId, out var groupId))
         {
@@ -280,18 +326,11 @@ public sealed class GroupSystem : EntitySystem
             return;
         }
 
-        // Resolve target by character name.
-        if (!TryGetSessionByCharacterName(msg.TargetCharacterName, out var targetSession) || targetSession == null)
-        {
-            SendResult(session, false, Loc.GetString("group-player-not-found", ("name", msg.TargetCharacterName)));
-            return;
-        }
-
         var targetUserId = targetSession.UserId;
 
         if (_playerToGroup.ContainsKey(targetUserId))
         {
-            SendResult(session, false, Loc.GetString("group-target-already-in-group", ("name", msg.TargetCharacterName)));
+            SendResult(session, false, Loc.GetString("group-target-already-in-group", ("name", targetName)));
             return;
         }
 
@@ -315,7 +354,7 @@ public sealed class GroupSystem : EntitySystem
         };
         RaiseNetworkEvent(inviteState, targetSession);
 
-        SendResult(session, true, Loc.GetString("group-invite-sent", ("name", msg.TargetCharacterName)));
+        SendResult(session, true, Loc.GetString("group-invite-sent", ("name", targetName)));
     }
 
     private void OnInviteResponse(GroupInviteResponseEvent msg, EntitySessionEventArgs args)

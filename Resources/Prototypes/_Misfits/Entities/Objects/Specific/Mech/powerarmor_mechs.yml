@@ -866,6 +866,88 @@
       mech-battery-slot:
       - PowerCellHigh
 
+# --- NCR Heavy Trooper T-45 Salvaged ---
+- type: entity
+  id: MisfitsMechNCRHeavyTrooperT45
+  parent: N14MechPowerArmorT45NCRSalvaged
+  name: NCR Heavy Trooper T-45 Salvaged Power Armor Suit
+  description: An NCR Heavy Trooper salvaged T-45 power armor mech variant.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    layers:
+    - sprite: _Misfits/Clothing/OuterClothing/PowerArmor/NCR/ncr_heavy_trooper_t45.rsi
+      map: [ "enum.MechVisualLayers.Base" ]
+      state: equipped-OUTERCLOTHING
+    - sprite: _Misfits/Clothing/OuterClothing/PowerArmor/NCR/ncr_heavy_trooper_t45_helmet.rsi
+      state: equipped-HELMET
+
+- type: entity
+  id: MisfitsMechNCRHeavyTrooperT45Battery
+  parent: MisfitsMechNCRHeavyTrooperT45
+  suffix: Battery
+  components:
+  - type: ContainerFill
+    containers:
+      mech-battery-slot:
+      - PowerCellHigh
+
+# --- NCR Heavy Trooper Lead T-51 ---
+- type: entity
+  id: MisfitsMechNCRHeavyTrooperLeadT51
+  parent: N14MechPowerArmorT45
+  name: NCR Heavy Trooper Lead T-51 Power Armor Suit
+  description: An NCR Heavy Trooper Lead T-51 power armor mech variant using the full T-45 armor baseline.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    layers:
+    - sprite: _Misfits/Clothing/OuterClothing/PowerArmor/NCR/ncr_heavy_trooper_lead_t51.rsi
+      map: [ "enum.MechVisualLayers.Base" ]
+      state: equipped-OUTERCLOTHING
+    - sprite: _Misfits/Clothing/OuterClothing/PowerArmor/NCR/ncr_heavy_trooper_lead_t51_helmet.rsi
+      state: equipped-HELMET
+
+- type: entity
+  id: MisfitsMechNCRHeavyTrooperLeadT51Battery
+  parent: MisfitsMechNCRHeavyTrooperLeadT51
+  suffix: Battery
+  components:
+  - type: ContainerFill
+    containers:
+      mech-battery-slot:
+      - PowerCellHigh
+
+# --- NCR X-01 spawnable variant ---
+- type: entity
+  id: MisfitsMechNCRX01
+  parent: N14MechPowerArmorX01
+  categories: [] # Spawn-menu entity only; not assigned to a job or loadout.
+  name: NCR X-01 Power Armor Suit
+  description: An NCR-marked X-01 power armor mech variant.
+  components:
+  - type: Sprite
+    drawdepth: Mobs
+    noRot: true
+    layers:
+    - sprite: _Misfits/Clothing/OuterClothing/PowerArmor/NCR/ncr_x01.rsi
+      map: [ "enum.MechVisualLayers.Base" ]
+      state: equipped-OUTERCLOTHING
+    - sprite: _Misfits/Clothing/OuterClothing/PowerArmor/NCR/ncr_x01_helmet.rsi
+      state: equipped-HELMET
+
+- type: entity
+  id: MisfitsMechNCRX01Battery
+  parent: MisfitsMechNCRX01
+  suffix: Battery
+  components:
+  - type: ContainerFill
+    containers:
+      mech-battery-slot:
+      - PowerCellHigh
+
 # --- T-51 NCR Salvaged (T51 tier) ---
 - type: entity
   id: N14MechPowerArmorT51NCR

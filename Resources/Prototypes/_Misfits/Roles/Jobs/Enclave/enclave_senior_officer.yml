@@ -38,6 +38,7 @@
 - type: startingGear
   id: EnclaveSeniorOfficerGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatEnclaveOfficer
     back: N14ClothingBackpackMilitary
     jumpsuit: N14ClothingUniformJumpsuitEnclave

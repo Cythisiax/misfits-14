@@ -37,6 +37,7 @@
 - type: startingGear
   id: VaultManagementGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitVault14
     back: N14ClothingBackpackVaultBlue
     shoes: N14ClothingBootsBlack

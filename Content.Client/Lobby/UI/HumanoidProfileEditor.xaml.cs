@@ -168,6 +168,13 @@ namespace Content.Client.Lobby.UI
                 ("C27BoS", "humanoid-profile-editor-robot-model-c27-bos"),
                 ("C27ZAX", "humanoid-profile-editor-robot-model-c27-zax"),
             },
+            // Ordinary Deathclaw life stages share the same whitelist/job. Bwonsamdi is intentionally excluded.
+            ["Deathclaw"] = new[]
+            {
+                ("Deathclaw", "humanoid-profile-editor-deathclaw-variant-adult"),
+                ("DeathclawAdolescent", "humanoid-profile-editor-deathclaw-variant-adolescent"),
+                ("DeathclawHatchling", "humanoid-profile-editor-deathclaw-variant-hatchling"),
+            },
         };
 
         private readonly Dictionary<string, BoxContainer> _jobCategories;
@@ -878,7 +885,7 @@ namespace Content.Client.Lobby.UI
 
             for (var i = 0; i < _species.Count; i++)
             {
-                if (IsHiddenProtectronVariantSpecies(_species[i].ID))
+                if (IsHiddenModelVariantSpecies(_species[i].ID))
                     continue;
 
                 var buttonId = _speciesButtonSpeciesIds.Count;
@@ -1924,8 +1931,13 @@ namespace Content.Client.Lobby.UI
             if (Profile == null)
                 return;
 
-            var isDeathclaw = Profile.Species == "Deathclaw" || Profile.Species == "BwonsamdiDeathclaw";
-            var isFixedSize = Profile.Species == "Deathclaw"; // # #Cythisiax - ordinary sentient deathclaw is always standard size
+            var isDeathclaw = Profile.Species == "Deathclaw"
+                || Profile.Species == "DeathclawAdolescent"
+                || Profile.Species == "DeathclawHatchling"
+                || Profile.Species == "BwonsamdiDeathclaw";
+            var isFixedSize = Profile.Species == "Deathclaw"
+                || Profile.Species == "DeathclawAdolescent"
+                || Profile.Species == "DeathclawHatchling"; // # #Cythisiax - ordinary sentient Deathclaws use fixed life-stage sprites
 
             EyesContainer.Visible = !isDeathclaw;
             WeightContainer.Visible = !isDeathclaw;
@@ -1970,8 +1982,8 @@ namespace Content.Client.Lobby.UI
                 || speciesId == "RobotProtectronTribal";
         }
 
-        // #Misfits Add: variant species are hidden from the main Species dropdown and driven by Robot Model selector.
-        private static bool IsHiddenProtectronVariantSpecies(string speciesId)
+        // #Misfits Add: non-base model variants are hidden from the main Species dropdown.
+        private static bool IsHiddenModelVariantSpecies(string speciesId)
         {
             return speciesId == "RobotMrHandyZAX"
                 || speciesId == "RobotProtectronPolice"
@@ -1997,7 +2009,9 @@ namespace Content.Client.Lobby.UI
                 || speciesId == "C27NCR" // #Misfits Add - C-27 NCR variant picked via Robot Model dropdown
                 || speciesId == "C27BoS" // #Misfits Add - C-27 Brotherhood variant picked via Robot Model dropdown
                 || speciesId == "C27ZAX" // #Misfits Add - C-27 Z.A.X variant picked via Robot Model dropdown
-                || speciesId == "RobotProtectronTribal"; // Misfits Add - Protectron Spirit-Tender
+                || speciesId == "RobotProtectronTribal" // Misfits Add - Protectron Spirit-Tender
+                || speciesId == "DeathclawAdolescent"
+                || speciesId == "DeathclawHatchling";
         }
 
         // #Misfits Add: normalize hidden variants to base Protectron in main species selector.
@@ -2006,7 +2020,7 @@ namespace Content.Client.Lobby.UI
             if (speciesId == null)
                 return null;
 
-            if (!IsHiddenProtectronVariantSpecies(speciesId))
+            if (!IsHiddenModelVariantSpecies(speciesId))
                 return speciesId;
 
             // Map hidden variants back to their base species for the main dropdown.

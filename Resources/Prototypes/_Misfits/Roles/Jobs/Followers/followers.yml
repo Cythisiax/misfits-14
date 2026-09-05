@@ -60,6 +60,7 @@
 - type: startingGear
   id: FollowerHeadGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitFollowers
     back: ClothingBackpackDuffelSurgeryFilled
     shoes: N14ClothingBootsLeather
@@ -123,6 +124,7 @@
 - type: startingGear
   id: FollowerDoctorGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitFollowers
     back: ClothingBackpackDuffelSurgeryFilled
     shoes: N14ClothingBootsLeather
@@ -185,6 +187,7 @@
 - type: startingGear
   id: FollowerGuardGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitFollowers
     back: N14ClothingBackpackSatchelMilitary
     shoes: N14ClothingBootsLeatherFilled
@@ -248,6 +251,7 @@
 - type: startingGear
   id: FollowerVolunteerGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitFollowers
     back: ClothingBackpackSatchelMedical
     shoes: N14ClothingBootsLeather

@@ -14,7 +14,7 @@
       min: 43200 # 12 hours
     - !type:CharacterPlaytimeRequirement
       tracker: CaesarLegionLegionnaireVeteran
-      min: 28800 # 8 hours
+      min: 14400 # 4 hours
     - !type:CharacterSpeciesRequirement
       species:
       - Human
@@ -66,6 +66,7 @@
 - type: startingGear
   id: CaesarLegionVexillariusGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     ears: N14ClothingHeadsetLegion
     neck: N14ClothingNeckCloakLegionWhite

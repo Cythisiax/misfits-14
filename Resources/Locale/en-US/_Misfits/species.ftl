@@ -2,6 +2,8 @@
 species-name-supermutant = Supermutant
 species-name-nightkin = Nightkin
 species-name-deathclaw = Deathclaw
+species-name-deathclaw-adolescent = Deathclaw (Adolescent)
+species-name-deathclaw-hatchling = Deathclaw (Hatchling)
 species-name-bwonsamdi-deathclaw = Bwonsamdi
 species-name-c27 = C-27 Humanoid Robot
 species-name-c27-ncr = C-27 Humanoid Robot (NCR)

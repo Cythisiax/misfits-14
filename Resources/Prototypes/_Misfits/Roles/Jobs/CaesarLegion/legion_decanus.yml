@@ -10,10 +10,10 @@
   requirements:
     - !type:CharacterDepartmentTimeRequirement # Legion total timelock
       department: CaesarLegion
-      min: 28800 # 8 hours
+      min: 43200 # 12 hours
     - !type:CharacterPlaytimeRequirement
       tracker: CaesarLegionLegionnaireVeteran
-      min: 57600 # 16 hours
+      min: 14400 # 4 hours
     # TEMP REMOVED - !type:CharacterDepartmentTimeRequirement
     #   department: CaesarLegion
     #   min: 126000 # 35 hours
@@ -68,6 +68,7 @@
 - type: startingGear
   id: CaesarLegionDeanGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     ears: N14ClothingHeadsetLegion
     neck: ClothingNeckRedScarf

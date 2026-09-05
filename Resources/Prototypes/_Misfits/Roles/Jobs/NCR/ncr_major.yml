@@ -50,6 +50,7 @@
 - type: startingGear
   id: NCRMajorGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatNCRBeretOfficer
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingOfficerUniformNCRDesert

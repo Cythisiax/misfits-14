@@ -2,7 +2,7 @@
 
 - type: job
   id: WhiteLegsWarChief
-  setPreference: true
+  setPreference: false # #Misfits Change - White Legs is retained for compatibility, not character setup.
   weight: 60
   name: job-name-whitelegs-war-chief
   description: job-description-whitelegs-war-chief
@@ -33,6 +33,7 @@
 - type: startingGear
   id: WhiteLegsWarChiefGear
   equipment:
+    wallet: N14Wallet
     bandage: NCClothingBandageRaiders
     jumpsuit: M14ClothingUniformWhiteLegsUniform
     outerClothing: MisfitsClothingOuterWhiteLegsArmor

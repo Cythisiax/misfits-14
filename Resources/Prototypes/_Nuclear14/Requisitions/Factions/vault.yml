@@ -61,7 +61,7 @@
         crate: N14CrateRequisitionsVaultPipboy
       - cost: 400
         crate: N14CrateRequisitionsVaultPowerCells
-      - cost: 3000
+      - cost: 800
         crate: MisfitsCrateRequisitionsVaultBinoculars
       - cost: 2000
         stock: 1
@@ -103,6 +103,8 @@
         crate: MisfitsCrateRequisitionsVaultSyringes
       - cost: 100
         crate: MisfitsCrateRequisitionsVaultVials
+      - cost: 1500
+        crate: MisfitsCrateRequisitionsVaultChemVend
     - name: n14-requisitions-category-provisions
       entries:
       - cost: 200
@@ -117,6 +119,10 @@
         crate: MisfitsCrateRequisitionsVaultBirthdayParty
       - cost: 300
         crate: MisfitsCrateRequisitionsVaultExoticSeeds
+      - cost: 250
+        crate: MisfitsCrateRequisitionsVaultInstruments
+      - cost: 200
+        crate: MisfitsCrateRequisitionsVaultPlushies
     - name: n14-requisitions-category-supplies
       entries:
       - cost: 5000
@@ -127,6 +133,8 @@
         crate: MisfitsCrateRequisitionsVaultPlastic
       - cost: 4000
         crate: MisfitsCrateRequisitionsVaultThread
+      - cost: 1000
+        crate: MisfitsCrateRequisitionsVaultPlasma
 
 # Apparel
 - type: entity

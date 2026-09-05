@@ -84,6 +84,11 @@ humanoid-profile-editor-robot-model-c27-ncr = NCR Issue
 humanoid-profile-editor-robot-model-c27-bos = Brotherhood Issue
 humanoid-profile-editor-robot-model-c27-zax = Z.A.X Chassis
 
+# Ordinary sentient Deathclaw life-stage selector.
+humanoid-profile-editor-deathclaw-variant-adult = Adult
+humanoid-profile-editor-deathclaw-variant-adolescent = Adolescent
+humanoid-profile-editor-deathclaw-variant-hatchling = Hatchling
+
 # #Misfits Add - Job selection tab labels (Late Join + Profile Editor).
 job-tab-wasteland = No Faction
 job-tab-no-faction = No Faction

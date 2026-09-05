@@ -13,6 +13,7 @@
 #   NCRMedic                  — NCR Medic
 #   NCRWeaponSpecialist       — NCR Weapon Specialist
 #   NCRHeavyTrooper           — NCR Heavy Trooper
+#   NCRHeavyTrooperLead       - NCR Heavy Trooper Lead
 #   NCRTrooper                — NCR Trooper
 #   C27NCR                    — NCR C27
 #   SuperMutantNCRTrooper     — NCR Super Mutant Trooper
@@ -109,6 +110,25 @@
       entity: ClothingNeckPinNCRMasterSergeant
     - min: 360000  # 100 hours
       entity: ClothingNeckPinNCR1stSergeant
+
+# HT Lead: SSGT (E-6) → SFC (E-7) at 20h → MSGT (E-8) at 40h → 1stSgt (E-8) at 60h → WarOff (W-1) at 80h → CWO (W-2) at 100h
+- type: ncrRankPinProgression
+  id: NCRHeavyTrooperLeadPins
+  jobs:
+    - NCRHeavyTrooperLead
+  tracker: NCRHeavyTrooperLead
+  departmentTracker: false
+  thresholds:
+    - min: 0
+      entity: ClothingNeckPinNCRStaffSergeant
+    - min: 72000   # 20 hours
+      entity: ClothingNeckPinNCRSergeant1st
+    - min: 144000  # 40 hours
+      entity: ClothingNeckPinNCRMasterSergeant
+    - min: 216000  # 60 hours
+      entity: ClothingNeckPinNCRWarrantOfficer
+    - min: 288000  # 80 hours
+      entity: ClothingNeckPinNCRChiefWarrantOfficer2
 
 # Medic: PFC (E-3) → SPC (E-4) at 20h → SGT (E-5) at 40h
 - type: ncrRankPinProgression

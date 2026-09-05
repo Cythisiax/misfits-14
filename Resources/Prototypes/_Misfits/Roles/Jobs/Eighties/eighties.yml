@@ -46,6 +46,7 @@
 - type: startingGear
   id: EightiesTheBlockGear
   equipment:
+    wallet: N14Wallet
     bandage: NCClothingBandageRaiders
     id: MisfitsEightiesIDCardHead
     gloves: N14ClothingHandsGlovesBlackBiker
@@ -110,6 +111,7 @@
 - type: startingGear
   id: EightiesCylindersGear
   equipment:
+    wallet: N14Wallet
     bandage: NCClothingBandageRaiders
     id: MisfitsEightiesIDCardCylinders
     gloves: N14ClothingHandsGlovesBlackBiker
@@ -172,6 +174,7 @@
 - type: startingGear
   id: EightiesPistonsGear
   equipment:
+    wallet: N14Wallet
     bandage: NCClothingBandageRaiders
     id: MisfitsEightiesIDCardPistons
     jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer
@@ -234,6 +237,7 @@
 - type: startingGear
   id: EightiesOilersGear
   equipment:
+    wallet: N14Wallet
     bandage: NCClothingBandageRaiders
     id: MisfitsEightiesIDCardOilers
     jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer
@@ -293,6 +297,7 @@
 - type: startingGear
   id: EightiesRoadRashGear
   equipment:
+    wallet: N14Wallet
     bandage: NCClothingBandageRaiders
     id: MisfitsEightiesIDCard
     jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer

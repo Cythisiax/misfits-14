@@ -55,18 +55,32 @@
   suffix: vendor, normal
   components:
   - type: NcStore
+    contractTierProfile: Legion
     buyPresets:
     - legion_buy2
     sellPresets:
     - legion_sell2
     contractPresets:
-    - PresetBazar
+    - PresetLegion
   # #Misfits Change — restored TownieShopkeeper access restriction (players must be shopkeeper to use terminal)
   # #Misfits Add — track Hall of Fame roster for the tier contract system
   - type: AccessReader
     access:
     - [ "CaesarLegionTrader" ]
   - type: NcContractRoster
+
+- type: storeCategoryStructured
+  id: LegionBuy2_Animals
+  name: "Animals"
+  entries:
+  - proto: N14MobBrahdoLightLegion
+    price: 125
+    count: 2
+  - proto: N14MobBrahmin
+    price: 60
+  - proto: N14MobPetDogLegion
+    price: 75
+
 
 - type: storeCategoryStructured
   id: LegionBuy2_MachineGuns
@@ -411,6 +425,7 @@
   - LegionBuy2_Survival
   - LegionBuy2_Cosmetics
   - LegionBuy2_Currency
+  - LegionBuy2_Animals
 
 - type: storeCategoryStructured
   id: LegionSell2_MachineGuns
@@ -714,3 +729,4 @@
   - LegionSell2_Survival
   - LegionSell2_Cosmetics
   - LegionSell2_Currency
+

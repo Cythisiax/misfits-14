@@ -2,7 +2,7 @@
 
 - type: job
   id: WhiteLegsBoneBreaker
-  setPreference: true
+  setPreference: false # #Misfits Change - White Legs is retained for compatibility, not character setup.
   weight: 40
   showBorder: true
   name: job-name-whitelegs-bone-breaker
@@ -34,6 +34,7 @@
 - type: startingGear
   id: WhiteLegsBoneBreakerGear
   equipment:
+    wallet: N14Wallet
     bandage: NCClothingBandageRaiders
     jumpsuit: M14ClothingUniformWhiteLegsUniform
     outerClothing: MisfitsClothingOuterWhiteLegsArmor

@@ -123,6 +123,12 @@
     heavyDamageBaseModifier: 1
     heavyStaminaCost: 0
     maxTargets: 1
+  # Player supermutants use the vocalizations of the existing NPC variants.
+  - type: Vocal
+    sounds:
+      Male: MisfitsSuperMutantEmotes
+      Female: MisfitsSuperMutantEmotes
+      Unsexed: MisfitsSuperMutantEmotes
   # Misfits Change - 2x multiplier on all outgoing melee damage (unarmed + wielded weapons).
   - type: Oni
     modifiers:

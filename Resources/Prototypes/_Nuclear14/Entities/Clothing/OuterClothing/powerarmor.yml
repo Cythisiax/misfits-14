@@ -585,6 +585,8 @@
 - type: entity
   parent: N14ClothingOuterPowerArmorT45
   id: N14ClothingOuterPowerArmorT45NCR
+  abstract: true # #Misfits Disable - misleading legacy intermediate; use N14ClothingOuterPowerArmorT45NCRSalvaged instead.
+  categories: [ HideSpawnMenu ]
   name: NCR T-45 Salvaged Power Armor
   description: Originally existing as T-45d power armor that was recovered by the NCR and repurposed for use within their armed forces, with its internal servos removed this heavy suit of metal is moved by pure muscle.
   components:

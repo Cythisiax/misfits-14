@@ -346,6 +346,35 @@ public sealed class EditDatabaseDocumentMessage : BoundUserInterfaceMessage
 }
 
 /// <summary>
+/// Leadership-tier structural action: rename a folder, subfolder, or document title.
+/// Exactly one of FolderId / SubfolderParentFolderId+SubfolderId / DocumentId is set.
+/// The server resolves authority and sanitises the submitted name.
+/// </summary>
+[Serializable, NetSerializable]
+public sealed class RenameDatabaseEntryMessage : BoundUserInterfaceMessage
+{
+    public readonly Guid? FolderId;
+    public readonly Guid? SubfolderParentFolderId;
+    public readonly Guid? SubfolderId;
+    public readonly Guid? DocumentId;
+    public readonly string Name;
+
+    public RenameDatabaseEntryMessage(
+        string name,
+        Guid? folderId = null,
+        Guid? subfolderParentFolderId = null,
+        Guid? subfolderId = null,
+        Guid? documentId = null)
+    {
+        Name = name;
+        FolderId = folderId;
+        SubfolderParentFolderId = subfolderParentFolderId;
+        SubfolderId = subfolderId;
+        DocumentId = documentId;
+    }
+}
+
+/// <summary>
 /// Soft-delete a folder (and all its contents) or a subfolder.
 /// Use SubfolderId == null to delete a top-level folder; non-null deletes only that subfolder.
 /// </summary>

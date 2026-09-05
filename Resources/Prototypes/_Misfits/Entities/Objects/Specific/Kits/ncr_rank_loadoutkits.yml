@@ -386,6 +386,34 @@
       path: /Audio/Effects/unwrap.ogg
 
 - type: entity
+  name: Heavy Trooper Minigun Kit
+  parent: KitBase
+  id: KitNCR_HeavyTrooperMinigun
+  description: A crate containing a standard minigun and supplies for sustained fire.
+  components:
+  - type: Sprite
+    state: pointman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+    items:
+      - id: N14WeaponMinigun
+      - id: N14MagazineMinigun5mm
+        amount: 2
+      - id: SmokeGrenade
+        amount: 2
+      - id: N14Dynamite
+        amount: 2
+      - id: N14BoxCardboardMREBoxCFilled
+      - id: N14Stimpak
+      - id: N14SuperStimpak
+      - id: N14RadAwayBloodbag
+      - id: N14CleanGauze10
+        amount: 2
+    sound:
+      path: /Audio/Effects/unwrap.ogg
+
+- type: entity
   name: Heavy Trooper Defender Kit
   parent: KitBase
   id: KitNCR_HeavyTrooperDefender
@@ -431,6 +459,16 @@
   - KitNCR_HeavyTrooperLinebreaker
 
 - type: UndecidedLoadoutBackpackSet
+  id: NCR_HeavyTrooperMinigunSet
+  name: undecided-loadout-category-misfits-ncr-ht-minigun-name
+  description: undecided-loadout-category-misfits-ncr-ht-minigun-description
+  sprite:
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: pointman
+  content:
+  - KitNCR_HeavyTrooperMinigun
+
+- type: UndecidedLoadoutBackpackSet
   id: NCR_HeavyTrooperDefenderSet
   name: undecided-loadout-category-misfits-ncr-ht-defender-name
   description: undecided-loadout-category-misfits-ncr-ht-defender-description
@@ -443,6 +481,20 @@
 - type: entity
   id: NCRHeavyTrooperLoadoutKits
   name: Undecided NCR Heavy Trooper Kit
+  parent: BaseLoadoutKit
+  components:
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Misc/kits.rsi
+    state: rifleman
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - NCR_HeavyTrooperVeteranSet
+    - NCR_HeavyTrooperMinigunSet
+    - NCR_HeavyTrooperDefenderSet
+
+- type: entity
+  id: NCRHeavyTrooperLeadLoadoutKits
+  name: Undecided NCR Heavy Trooper Lead Kit
   parent: BaseLoadoutKit
   components:
   - type: Sprite

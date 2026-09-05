@@ -34,6 +34,7 @@
 - type: startingGear
   id: VaultSalvageSpecialistGear
   equipment:
+    wallet: N14Wallet
     head: ClothingHeadHatHardhatYellow
     jumpsuit: ClothingUniformMNKBlackOveralls
     back: ClothingBackpackSatchelSalvage

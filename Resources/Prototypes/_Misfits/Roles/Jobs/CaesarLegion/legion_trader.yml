@@ -44,7 +44,7 @@
     back: N14ClothingBackpackHiking
     shoes: N14ClothingShoesBlack
     id: N14IDLegionaryBadgeTrader
-    belt: N14WalletCash
+    wallet: N14WalletCash
     pocket1: MisfitsLegionTraderFlatpack
     pocket2: N14Multitool
   innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack

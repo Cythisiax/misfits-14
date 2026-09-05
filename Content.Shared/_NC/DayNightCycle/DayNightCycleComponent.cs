@@ -1,6 +1,6 @@
 // #Misfits Change - Reworked to use IGameTiming-based deterministic cycle (no per-frame dirty spam)
 // #Misfits Change - 4-hour dawn-to-dawn cycle synced to round start: day = first half, night = second
-// half, dawn ramp starts at 3.5h so round end (4h) is dawn. Nights darkened vs. the old curve.
+// half, dawn ramp starts at 3h 46m so round end (4h) is dawn. Nights darkened vs. the old curve.
 using Robust.Shared.GameStates;
 using Robust.Shared.Serialization;
 
@@ -42,14 +42,14 @@ namespace Content.Shared._NC14.DayNightCycle
             new() { Time = 0.50f, ColorHex = "#FAE3B8" },  // Noon (peak)
             new() { Time = 0.56f, ColorHex = "#EFD09A" },  // Early afternoon
             new() { Time = 0.63f, ColorHex = "#D6AC74" },  // Late afternoon
-            new() { Time = 0.68f, ColorHex = "#9E6C45" },  // Sunset
-            new() { Time = 0.72f, ColorHex = "#5C4650" },  // Twilight
-            new() { Time = 0.77f, ColorHex = "#372C40" },  // Night falls
+            new() { Time = 0.66f, ColorHex = "#9E6C45" },  // Sunset (2h 38m)
+            new() { Time = 0.71f, ColorHex = "#5C4650" },  // Twilight
+            new() { Time = 0.75f, ColorHex = "#372C40" },  // Night falls
             new() { Time = 0.82f, ColorHex = "#241C30" },  // Night
-            new() { Time = 0.875f, ColorHex = "#151021" }, // Deep night (3.5h - darkest; dawn ramp begins here)
-            new() { Time = 0.90f, ColorHex = "#2B2234" },  // Pre-dawn first light
-            new() { Time = 0.93f, ColorHex = "#523A3A" },  // Dawn glow
-            new() { Time = 0.965f, ColorHex = "#7E5C3C" }, // Dawn
+            new() { Time = 0.89f, ColorHex = "#151021" }, // Deep night
+            new() { Time = 0.94f, ColorHex = "#2B2234" },  // Pre-dawn first light
+            new() { Time = 0.965f, ColorHex = "#523A3A" }, // Dawn glow
+            new() { Time = 0.985f, ColorHex = "#7E5C3C" }, // Dawn
             new() { Time = 1.00f, ColorHex = "#A87A4E" }   // Full dawn (round end, wraps to start)
         };
     }

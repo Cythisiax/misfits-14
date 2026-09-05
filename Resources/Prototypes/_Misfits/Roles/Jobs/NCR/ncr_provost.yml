@@ -39,6 +39,7 @@
 - type: startingGear
   id: NCRProvostGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatNCRSlouch
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingUniformNCRCFUniform

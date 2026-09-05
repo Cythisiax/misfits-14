@@ -5,7 +5,8 @@
   jobWhitelistBypassesRoleTimers: true
   overrideConsoleVisibility: false
   canBeAntag: false
-  weight: 42
+  weight: 39 # #Misfits Tweak - Medic belongs below Engineer in the support tier
+  showBorder: false
   name: job-name-ncr-medic
   overwatchCategory: OverwatchNcrMedical
   description: job-description-ncr-medic
@@ -40,6 +41,7 @@
 - type: startingGear
   id: NCRMedicGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformNCRMedicVariant # Corvax-Change
     outerClothing: N14ClothingOuterCoatFollowersArmored
     back: N14ClothingBackpackNCR # Corvax-Change

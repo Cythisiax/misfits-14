@@ -11,6 +11,7 @@
         <BoxContainer Orientation="Horizontal" SeparationOverride="8">
             <Button Name="FaxManagerButton" Text="{Loc loremaster-tab-fax-manager}" Access="Public" MinWidth="140"/>
             <Button Name="UploadLocalAudioButton" Text="{Loc loremaster-tab-upload-local-audio}" Access="Public" MinWidth="150"/>
+            <Button Name="UploadMapButton" Text="{Loc loremaster-tab-upload-map}" Access="Public" MinWidth="140"/>
             <Button Name="ForceWarButton" Text="Force War" Access="Public" MinWidth="120"/>
             <Label Text="{Loc loremaster-tab-local-audio-hint}" VerticalAlignment="Center" Modulate="#808080"/>
         </BoxContainer>

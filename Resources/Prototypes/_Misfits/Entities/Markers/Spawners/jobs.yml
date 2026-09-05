@@ -37,21 +37,7 @@
       - state: green
       - state: knight
 
-# #Misfits Add / #Cythisiax Renamed (player-facing) - Brotherhood Knights spawn points
-# (Knight-Captain / Knight-Lancer). Entity IDs and job_ids kept stable so spawns keep working.
-# Lancer spawn point removed with the rank it served.
-- type: entity
-  parent: MisfitsSpawnPointBoSMidPaladinCommander
-  id: MisfitsSpawnPointBoSLancerCaptain
-  name: Brotherhood Knight-Captain
-  components:
-  - type: SpawnPoint
-    job_id: BoSLancerCaptain
-  - type: Sprite
-    layers:
-      - state: green
-      - state: knight
-
+# #Misfits Add - sole Brotherhood lancer spawn point.
 - type: entity
   parent: MisfitsSpawnPointBoSMidPaladinCommander
   id: MisfitsSpawnPointBoSLancerKnight
@@ -448,6 +434,14 @@
     layers:
       - state: green
       - state: cadet
+
+- type: entity
+  parent: MisfitsSpawnPointNCRHeavyTrooper
+  id: MisfitsSpawnPointNCRHeavyTrooperLead
+  name: NCR Heavy Trooper Lead
+  components:
+  - type: SpawnPoint
+    job_id: NCRHeavyTrooperLead
 
 - type: entity
   parent: SpawnPointJobBase

@@ -1052,8 +1052,6 @@
   id: CaravanSell2_MachineGuns
   name: "Machine Guns"
   entries:
-  - proto: N14WeaponLMG
-    price: 660
   - proto: N14WeaponLMGBren
     price: 990
   - proto: N14WeaponRifleAk112pn

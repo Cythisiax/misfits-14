@@ -70,6 +70,7 @@
 - type: startingGear
   id: CaesarLegionVeteranDecanusGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     ears: N14ClothingHeadsetLegion
     neck: ClothingNeckRedScarf

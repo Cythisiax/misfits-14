@@ -55,18 +55,33 @@
   suffix: vendor, normal
   components:
   - type: NcStore
+    contractTierProfile: NCR
     buyPresets:
     - NCR_buy2
     sellPresets:
     - NCR_sell2
     contractPresets:
-    - PresetBazar
+    - PresetNCR
   # #Misfits Change — restored TownieShopkeeper access restriction (players must be shopkeeper to use terminal)
   # #Misfits Add — track Hall of Fame roster for the tier contract system
   - type: AccessReader
     access:
     - [ "NCRTrader" ]
   - type: NcContractRoster
+
+- type: storeCategoryStructured
+  id: NCRBuy2_Animals
+  name: "Animals"
+  entries:
+  - proto: N14MobBrahdoArmorNCR
+    price: 1000
+    count: 2
+  - proto: N14MobBrahmin
+    price: 500
+  - proto: N14MobPetDogNCR
+    price: 600
+  - proto: N14MobPetDogNCRMedicK9
+    price: 850
 
 - type: storeCategoryStructured
   id: NCRBuy2_Materials
@@ -138,6 +153,8 @@
     price: 340
   - proto: N14WeaponSMGPPSh41
     price: 1100
+  - proto: N14WeaponLMG
+    price: 1300
 
 - type: storeCategoryStructured
   id: NCRBuy2_Shotguns
@@ -397,6 +414,7 @@
   - NCRBuy2_Currency
   - NCRBuy2_Melee
   - NCRBuy2_Storage
+  - NCRBuy2_Animals
 
 - type: storeCategoryStructured
   id: NCRSell2_Ammo
@@ -479,7 +497,7 @@
   name: "Rifles"
   entries:
   - proto: N14WeaponLMGAutoRifle
-    price: 300
+    price: 750
   - proto: N14WeaponSniper50NCRRifle
     price: 1250
   - proto: N14WeaponSniperEnfield
@@ -501,7 +519,7 @@
   - proto: N14WeaponRifle556R91
     price: 210
   - proto: N14WeaponRifle556Scout
-    price: 190
+    price: 450
 
 - type: storeCategoryStructured
   id: NCRSell2_Shotguns
@@ -532,6 +550,8 @@
     price: 170
   - proto: N14WeaponSMGPPSh41
     price: 275
+  - proto: N14WeaponLMG
+    price: 660
 
 - type: storeCategoryStructured
   id: NCRSell2_Storage

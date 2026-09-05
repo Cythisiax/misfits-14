@@ -35,10 +35,12 @@
           Wastelander: [ -1, -1 ]
           WasterTrader: [ 1, 1 ]
           SuperMutant: [ 5, 5 ] # #Misfits Change /Fix/: make the FEV Mutant role available for mid-round joins.
+          Nightkin: [ 0, 1 ] # #Misfits Add - Nightkin variant, whitelist gated.
           SuperMutantGladiator: [ 0, 1 ] # #Misfits Add: Gladiator variant.
           SuperMutantNCRRanger: [ 0, 1 ] # #Misfits Add: NCR Ranger variant.
           # SuperMutantNCRTrooper: [ 0, 0 ] # #Misfits Add: NCR Trooper variant.
           SuperMutantTribal: [ 1, 1 ] # #Misfits Add: Tribal variant.
+          SentientDeathclawRegular: [ 0, 0 ] # Two ordinary sentient Deathclaw slots; administrators open them manually when appropriate.
           SentientDeathclaw: [ 0, 0 ] # #Cythisiax Add - sentient deathclaw whitelist boss slot (admin-only; no map spawner placed yet).
           C27: [ 2, 2 ]    # #Misfits Add - C-27 Generic slot (whitelist gates actual access)/// Increased to 2 from 1.
           C27NCR: [ 1, 1 ] # #Misfits Add - C-27 NCR variant.
@@ -78,6 +80,7 @@
           NCRFirstSergeant: [ 1, 1 ]
           #NCRStaffSergeant: [ 1, 1 ] # #Misfits Removed - replaced by NCRHeavyTrooper as T5 specialist slot
           NCRHeavyTrooper: [ 2, 2 ]
+          NCRHeavyTrooperLead: [ 1, 1 ]
           NCRNCO: [ 3, 3 ]
           NCRWS: [ 2, 2 ]
           NCREngineer: [ 2, 2 ]
@@ -103,10 +106,7 @@
           BoSWestScribe: [ 1, 1 ] # Misfits Change
           BoSMidPaladin: [ 1, 1 ]  #Misfits Tweak: 1 slot — Senior Paladin is a rare rank
           BoSMidKnight: [ 3, 3 ]
-          # #Misfits Add - Brotherhood Lancers aviation branch, one slot per rank
-          # #Cythisiax Renamed (player-facing) - Lancer ranks show as Knight-Captain / Knight-Lancer;
-          # the entry Lancer rung was removed and its slot folded into Lancer-Knight.
-          BoSLancerCaptain: [ 1, 1 ]
+          # #Misfits Add - Brotherhood Lancers aviation branch, one Knight-Lancer slot.
           BoSLancerKnight: [ 2, 2 ]
           BoSMidScribe: [ 3, 3 ]
           BoSPaladin: [ 3, 3 ]  #Misfits Tweak: 3 slots — standard Paladin complement

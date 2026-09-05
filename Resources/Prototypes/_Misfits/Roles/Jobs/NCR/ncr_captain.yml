@@ -52,10 +52,11 @@
 - type: startingGear
   id: NCRCommanderGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatNCRBeretOfficer
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingOfficerUniformNCRDesert
-    outerClothing: N14ClothingOuterPowerArmorT51NCR
+    outerClothing: MisfitsNCRCommandArmor
     shoes: N14ClothingBootsCombatFilled
     belt: ClothingBeltNCR
     eyes: ClothingEyesGlassesSunglasses

@@ -20,6 +20,7 @@ group-create-button = Create Group
 group-rename-button = Rename
 group-invite-button = Invite
 group-invite-nearby-button = Invite Nearby
+group-invite-verb = Invite to Group
 group-kick-button = Kick
 group-accept-button = Accept
 group-decline-button = Decline

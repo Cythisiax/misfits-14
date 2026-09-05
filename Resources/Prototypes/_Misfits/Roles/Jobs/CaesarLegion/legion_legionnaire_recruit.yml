@@ -36,6 +36,7 @@
 - type: startingGear
   id: CaesarLegionLegionnaireRecruitGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     ears: N14ClothingHeadsetLegion
     mask: N14ClothingMaskBrownMask

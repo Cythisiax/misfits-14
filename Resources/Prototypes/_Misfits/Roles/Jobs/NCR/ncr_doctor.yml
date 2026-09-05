@@ -3,7 +3,7 @@
   setPreference: true
   hideIfPlaytimeRequirementsNotMet: false # #Misfits Tweak - all jobs visible in selection
   jobWhitelistBypassesRoleTimers: true # #Misfits Change
-  weight: 100
+  weight: 49 # #Misfits Tweak - Medical Officer follows Squad Leader
   showBorder: true
   overrideConsoleVisibility: true
   canBeAntag: false
@@ -41,6 +41,7 @@
 - type: startingGear
   id: NCRDoctorGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformNCRDesert # Corvax-Change
     outerClothing: N14ClothingOuterCoatFollowersArmored
     back: N14ClothingBackpackNCR # Corvax-Change

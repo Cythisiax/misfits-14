@@ -5,7 +5,8 @@
   jobWhitelistBypassesRoleTimers: true
   overrideConsoleVisibility: false
   canBeAntag: false
-  weight: 41
+  weight: 40
+  showBorder: false
   name: job-name-ncr-engineer
   overwatchCategory: OverwatchNcrSupport
   description: job-description-ncr-engineer
@@ -38,6 +39,7 @@
 - type: startingGear
   id: NCREngineerGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatNCRHelmetNoCover # Corvax-Change
     back: N14ClothingBackpackNCR # Corvax-Change
     jumpsuit: N14ClothingUniformNCRDesert # Corvax-Change

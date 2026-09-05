@@ -84,7 +84,7 @@ public sealed partial class AdminLogRow : PanelContainer
     /// <summary>
     /// Populates all row fields from a log entry.
     /// </summary>
-    public void Setup(ref SharedAdminLog log)
+    public void Setup(ref SharedAdminLog log, IReadOnlyDictionary<Guid, string> playerUsernames)
     {
         Log = log;
         Category = LogTypeCategories.GetCategory(log.Type);
@@ -99,7 +99,7 @@ public sealed partial class AdminLogRow : PanelContainer
 
         // Message body — parse and render with color-coded segments
         _parsedSegments = LogMessageParser.Parse(log.Message);
-        BuildCompactMessage(_parsedSegments);
+        BuildCompactMessage(_parsedSegments, GetPlayerUsernamePrefix(playerUsernames));
 
         // Extreme severity highlight
         if (log.Impact == LogImpact.Extreme)
@@ -121,9 +121,17 @@ public sealed partial class AdminLogRow : PanelContainer
     /// <summary>
     /// Builds the compact message view: player names in blue, entity refs hidden, text in white.
     /// </summary>
-    private void BuildCompactMessage(List<MessageSegment> segments)
+    private void BuildCompactMessage(List<MessageSegment> segments, string usernamePrefix)
     {
         var msg = new FormattedMessage();
+
+        if (usernamePrefix.Length > 0)
+        {
+            msg.PushColor(PlayerNameColor);
+            msg.AddText(usernamePrefix);
+            msg.Pop();
+        }
+
         foreach (var seg in segments)
         {
             switch (seg.Kind)
@@ -145,6 +153,23 @@ public sealed partial class AdminLogRow : PanelContainer
         }
 
         MessageLabel.SetMessage(msg);
+    }
+
+    /// <summary>
+    /// Admin log messages identify a body by character name, while the structured
+    /// player IDs identify its account. Show the latter in compact rows so staff
+    /// can immediately distinguish accounts using the same character name.
+    /// </summary>
+    private string GetPlayerUsernamePrefix(IReadOnlyDictionary<Guid, string> playerUsernames)
+    {
+        var usernames = new List<string>();
+        foreach (var playerId in Log.Players)
+        {
+            if (playerUsernames.TryGetValue(playerId, out var username) && !usernames.Contains(username))
+                usernames.Add(username);
+        }
+
+        return usernames.Count == 0 ? string.Empty : $"[{string.Join(", ", usernames)}] ";
     }
 
     /// <summary>

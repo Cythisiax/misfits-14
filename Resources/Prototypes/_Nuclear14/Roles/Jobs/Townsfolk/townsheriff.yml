@@ -38,6 +38,7 @@
 - type: startingGear
   id: TownSheriffGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitTownGuardLight
     ears: MisfitsClothingHeadsetTown
     back: N14ClothingBackpackSatchelMilitary

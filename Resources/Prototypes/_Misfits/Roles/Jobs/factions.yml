@@ -117,12 +117,14 @@
   - EightiesOilers      # specialist tier, 4 slots
   - EightiesRoadRash    # recruit tier, 4 slots
 
-# #Misfits Add - White Legs are now a full department while keeping the base WhiteLegs job ID for compatibility.
+# #Misfits Change - White Legs remains defined for compatibility, but is hidden
+# from character setup until the faction is intentionally brought back.
 - type: department
   id: WhiteLegs
   description: department-WhiteLegs-description
   color: "#d8d0c4"
   weight: -98
+  editorHidden: true
   uiCategory: MinorFaction
   roles:
   - WhiteLegsWarChief

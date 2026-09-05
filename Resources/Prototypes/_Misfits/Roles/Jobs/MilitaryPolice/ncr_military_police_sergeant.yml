@@ -39,6 +39,7 @@
 - type: startingGear
   id: NCRMilitaryPoliceSergeantGear
   equipment:
+    wallet: N14Wallet
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingMPUniformNCRDesert
     outerClothing: MisfitsNCRMPCombatArmor

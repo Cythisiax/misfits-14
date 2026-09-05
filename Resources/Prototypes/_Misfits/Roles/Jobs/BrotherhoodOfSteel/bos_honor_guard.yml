@@ -48,6 +48,7 @@
 - type: startingGear
   id: BoSHonorGuardGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformBosRecon
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsLeatherFilled

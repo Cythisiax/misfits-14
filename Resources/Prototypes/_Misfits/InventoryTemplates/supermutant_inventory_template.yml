@@ -165,3 +165,11 @@
       dependsOnComponents:
       - type: N14BosBackpackSlot
       displayName: Extra Back
+    - name: wallet
+      slotTexture: wallet
+      slotFlags: WALLET
+      stripTime: 6
+      uiWindowPos: 2,0
+      strippingWindowPos: 2,3
+      dependsOn: jumpsuit
+      displayName: Wallet

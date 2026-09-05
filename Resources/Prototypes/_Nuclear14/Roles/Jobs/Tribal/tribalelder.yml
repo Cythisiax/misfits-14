@@ -60,6 +60,7 @@
 - type: startingGear
   id: TribalElderGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitTribal
     suitstorage: N14TribalBigClubDecorated
     outerClothing: N14ClothingOuterTribalCoat

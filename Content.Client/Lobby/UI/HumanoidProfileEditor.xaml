@@ -52,7 +52,7 @@
                                 <OptionButton Name="SpeciesButton" HorizontalAlignment="Right" />
                             </BoxContainer>
                             <BoxContainer Name="RobotModelContainer" HorizontalExpand="True" Visible="False">
-                                <Label Text="Robot Model:" />
+                                <Label Text="Variant:" />
                                 <Control HorizontalExpand="True"/>
                                 <OptionButton Name="RobotModelButton" HorizontalAlignment="Right" />
                             </BoxContainer>

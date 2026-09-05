@@ -57,6 +57,7 @@
 - type: startingGear
   id: SuperElderGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingTribalHeadWraps # weathered headwraps for the sagely old
     jumpsuit: N14ClothingUniformJumpsuitTribal
     outerClothing: N14ClothingOuterTribalCoat

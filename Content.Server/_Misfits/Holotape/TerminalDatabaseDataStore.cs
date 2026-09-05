@@ -293,6 +293,44 @@ public sealed class TerminalDatabaseDataStore
         return true;
     }
 
+    /// <summary>
+    /// Renames a live folder, subfolder, or document. This deliberately changes only its
+    /// display name; IDs, revisions, authorship, timestamps, protection, and contents remain intact.
+    /// </summary>
+    public bool RenameEntry(string databaseId, string name, Guid? folderId, Guid? parentFolderId, Guid? subfolderId, Guid? documentId)
+    {
+        var folders = GetFolders(databaseId);
+        if (folderId.HasValue && !subfolderId.HasValue && !documentId.HasValue)
+        {
+            var folder = folders.Find(f => f.FolderId == folderId.Value && !f.Deleted);
+            if (folder == null)
+                return false;
+            folder.Name = name;
+        }
+        else if (parentFolderId.HasValue && subfolderId.HasValue && !documentId.HasValue)
+        {
+            var parent = folders.Find(f => f.FolderId == parentFolderId.Value && !f.Deleted);
+            var subfolder = parent?.Subfolders.Find(s => s.SubfolderId == subfolderId.Value && !s.Deleted);
+            if (subfolder == null)
+                return false;
+            subfolder.Name = name;
+        }
+        else if (documentId.HasValue && !folderId.HasValue && !subfolderId.HasValue)
+        {
+            var document = FindDocument(databaseId, documentId.Value);
+            if (document == null || document.Deleted)
+                return false;
+            document.Title = name;
+        }
+        else
+        {
+            return false;
+        }
+
+        Save();
+        return true;
+    }
+
     public bool SoftDeleteDocument(string databaseId, Guid documentId)
     {
         var doc = FindDocument(databaseId, documentId);

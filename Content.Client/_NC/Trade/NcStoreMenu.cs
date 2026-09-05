@@ -37,6 +37,7 @@ public sealed partial class NcStoreMenu : FancyWindow
     private bool _hasSellTab;
     // #Misfits Add — tier progression state, updated via SetTierState before PopulateContracts
     private HashSet<string> _playerUnlockedTiers = new() { "Road Kill" };
+    private string _contractTierProfile = NcTierProgressComponent.BaseProfile;
     private List<TierRosterEntry> _roster = new();
     private List<ContractClientData>? _lastContracts;
     private string _search = string.Empty;
@@ -46,10 +47,12 @@ public sealed partial class NcStoreMenu : FancyWindow
     private bool _tabsCaptured;
     private Control? _tabSell;
     // #Misfits Add — update tier unlock state from server and trigger a re-populate if it changed
-    public void SetTierState(HashSet<string> unlockedTiers, List<TierRosterEntry> roster)
+    public void SetTierState(string contractTierProfile, HashSet<string> unlockedTiers, List<TierRosterEntry> roster)
     {
-        var changed = roster.Count != _roster.Count ||
+        var changed = _contractTierProfile != contractTierProfile ||
+                      roster.Count != _roster.Count ||
                       !unlockedTiers.SetEquals(_playerUnlockedTiers);
+        _contractTierProfile = contractTierProfile;
         _playerUnlockedTiers = unlockedTiers;
         _roster = roster;
         if (changed && _lastContracts != null)
@@ -385,8 +388,7 @@ public sealed partial class NcStoreMenu : FancyWindow
 
         tierTabs.RemoveAllChildren();
 
-        // Ordered tier definitions (Road Kill is always granted on first visit)
-        var tierOrder = new[] { "Road Kill", "Lazy Lizard", "Junktown Rat", "Hub Mercenary", "Bunker Buster", "Wasteland Legend" };
+        var tierOrder = NcTierProgressComponent.GetTiers(_contractTierProfile);
 
         // Tier accent colours
         static Color TierColor(string tier) => tier switch
@@ -423,7 +425,17 @@ public sealed partial class NcStoreMenu : FancyWindow
             if (!unlocked)
             {
                 // Find which tier unlocks this one
-                var prevIndex = Array.IndexOf(tierOrder, tier) - 1;
+                var tierIndex = -1;
+                for (var i = 0; i < tierOrder.Count; i++)
+                {
+                    if (tierOrder[i] == tier)
+                    {
+                        tierIndex = i;
+                        break;
+                    }
+                }
+
+                var prevIndex = tierIndex - 1;
                 var prevTier = prevIndex >= 0 ? tierOrder[prevIndex] : "";
                 var lockMsg = string.IsNullOrWhiteSpace(prevTier)
                     ? Loc.GetString("nc-contract-tier-locked-first")
@@ -489,11 +501,9 @@ public sealed partial class NcStoreMenu : FancyWindow
         else
         {
             // Sort by tier rank descending, then by name
-            var tierRank = new Dictionary<string, int>
-            {
-                { "Road Kill", 0 }, { "Lazy Lizard", 1 }, { "Junktown Rat", 2 },
-                { "Hub Mercenary", 3 }, { "Bunker Buster", 4 }, { "Wasteland Legend", 5 }
-            };
+            var tierRank = NcTierProgressComponent.GetTiers(_contractTierProfile)
+                .Select((tier, index) => (tier, index))
+                .ToDictionary(x => x.tier, x => x.index);
 
             foreach (var entry in _roster
                          .OrderByDescending(e => tierRank.GetValueOrDefault(e.HighestTier, -1))

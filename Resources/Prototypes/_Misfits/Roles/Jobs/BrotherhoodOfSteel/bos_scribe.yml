@@ -93,6 +93,7 @@
 - type: startingGear
   id: BoSScribeGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpskirtBOSBlack
     back: N14ClothingBackpackSatchelMilitary
     shoes: N14ClothingBootsLeatherFilled

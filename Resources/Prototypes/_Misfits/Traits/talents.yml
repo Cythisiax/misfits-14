@@ -37,6 +37,19 @@
       components:
         - type: TraitEducated
 - type: trait
+  id: TraitJunkerFinder
+  category: Mental
+  points: -3
+  tier: 3
+  requirements:
+    - !type:CharacterTraitRequirement
+      traits:
+        - TraitScrounger
+  functions:
+    - !type:TraitAddComponent
+      components:
+        - type: TraitJunkerFinder
+- type: trait
   id: TraitNerdRage
   category: Mental
   points: -5

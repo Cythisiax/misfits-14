@@ -18,18 +18,6 @@
         - !type:CharacterPlaytimeRequirement
           tracker: CaesarLegionAuxilia
           min: 14400 # 4 hours
-        - !type:CharacterPlaytimeRequirement
-          tracker: CaesarLegionFrumentarii
-          min: 14400 # 4 hours
-        - !type:CharacterPlaytimeRequirement
-          tracker: CaesarLegionVeteranDecanus
-          min: 14400 # 4 hours
-        - !type:CharacterPlaytimeRequirement
-          tracker: CaesarLegionPrimeDecanus
-          min: 14400 # 4 hours
-        - !type:CharacterPlaytimeRequirement
-          tracker: CaesarLegionDean
-          min: 14400 # 4 hours
     - !type:CharacterSpeciesRequirement
       species:
         - Human
@@ -47,6 +35,7 @@
   special:
     - !type:AddComponentSpecial
       components:
+        - type: BibleUser #Lets them heal with bibles
         - type: NpcFactionMember
           factions:
             - CaesarLegion
@@ -59,6 +48,7 @@
 - type: startingGear
   id: CaesarLegionAcolyteOfMarsGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     ears: N14ClothingHeadsetLegion
     neck: N14ClothingNeckAcolyteCloak
@@ -78,6 +68,7 @@
     - N14HealingPowder
     - N14HealingPoultice
     - N14HealingPoultice
+    - BibleMars
 
 - type: playTimeTracker
   id: CaesarLegionAcolyteOfMars

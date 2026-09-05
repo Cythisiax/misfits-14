@@ -64,6 +64,7 @@ public sealed class TerminalDatabaseSystem : EntitySystem
         SubscribeLocalEvent<TerminalDatabaseAccessComponent, CreateDatabaseFolderMessage>(OnCreateFolder);
         SubscribeLocalEvent<TerminalDatabaseAccessComponent, CreateDatabaseDocumentMessage>(OnCreateDocument);
         SubscribeLocalEvent<TerminalDatabaseAccessComponent, EditDatabaseDocumentMessage>(OnEditDocument);
+        SubscribeLocalEvent<TerminalDatabaseAccessComponent, RenameDatabaseEntryMessage>(OnRenameEntry);
         SubscribeLocalEvent<TerminalDatabaseAccessComponent, DeleteDatabaseFolderMessage>(OnDeleteFolder);
         SubscribeLocalEvent<TerminalDatabaseAccessComponent, DeleteDatabaseDocumentMessage>(OnDeleteDocument);
         SubscribeLocalEvent<TerminalDatabaseAccessComponent, RollbackDatabaseDocumentMessage>(OnRollbackDocument);
@@ -348,6 +349,40 @@ public sealed class TerminalDatabaseSystem : EntitySystem
             return;
 
         if (!_dataStore.AppendRevision(proto.ID, msg.DocumentId, body, GetUserId(msg.Actor), GetCharName(msg.Actor)))
+            return;
+
+        PushFullState(uid, msg.Actor, openDocumentId: msg.DocumentId);
+    }
+
+    // Leaders may organize the shared archive without being granted deletion. Protected
+    // entries remain exclusive to the database's highest configured rank.
+    private void OnRenameEntry(EntityUid uid, TerminalDatabaseAccessComponent comp, RenameDatabaseEntryMessage msg)
+    {
+        var proto = ResolveDatabaseForViewer(msg.Actor);
+        if (proto == null)
+            return;
+        var perms = ResolveAccess(msg.Actor, proto);
+        if (!perms.leadership)
+            return;
+
+        var name = SanitiseTitle(msg.Name);
+        if (string.IsNullOrEmpty(name))
+            return;
+
+        var protectedEntry = false;
+        if (msg.FolderId.HasValue && !msg.SubfolderId.HasValue && !msg.DocumentId.HasValue)
+            protectedEntry = IsFolderAdminProtected(proto.ID, msg.FolderId.Value);
+        else if (msg.SubfolderParentFolderId.HasValue && msg.SubfolderId.HasValue && !msg.DocumentId.HasValue)
+            protectedEntry = IsSubfolderAdminProtected(proto.ID, msg.SubfolderParentFolderId.Value, msg.SubfolderId.Value);
+        else if (msg.DocumentId.HasValue && !msg.FolderId.HasValue && !msg.SubfolderId.HasValue)
+            protectedEntry = IsDocumentInAdminFolder(proto.ID, msg.DocumentId.Value);
+        else
+            return;
+
+        if (protectedEntry && !perms.admin)
+            return;
+
+        if (!_dataStore.RenameEntry(proto.ID, name, msg.FolderId, msg.SubfolderParentFolderId, msg.SubfolderId, msg.DocumentId))
             return;
 
         PushFullState(uid, msg.Actor, openDocumentId: msg.DocumentId);

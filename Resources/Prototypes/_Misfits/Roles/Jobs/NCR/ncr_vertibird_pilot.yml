@@ -6,13 +6,14 @@
   setPreference: true
   hideIfPlaytimeRequirementsNotMet: false
   jobWhitelistBypassesRoleTimers: true
-  weight: 104
+  weight: 104 # #Misfits Tweak - aviation remains above platoon leadership
   overrideConsoleVisibility: false
   canBeAntag: false
   name: job-name-ncr-vertibird-pilot
   overwatchCategory: OverwatchNcrOfficers
   description: job-description-ncr-vertibird-pilot
   playTimeTracker: NCRVertibirdPilot
+  showBorder: true # #Misfits Add - separate aviation from the command ladder
   requirements:
     - !type:CharacterSpeciesRequirement
       species:
@@ -42,6 +43,7 @@
 - type: startingGear
   id: NCRVertibirdPilotGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatNCRBeretOfficer
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingOfficerUniformNCRDesert

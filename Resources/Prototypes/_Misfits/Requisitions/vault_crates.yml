@@ -282,6 +282,21 @@
 
 - type: entity
   parent: N14CrateRequisitions
+  id: MisfitsCrateRequisitionsVaultPlasma
+  name: plasma crate
+  components:
+  - type: Icon
+    sprite: _Nuclear14/Structures/Storage/Crates/vaultcrate.rsi
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Crates/vaultcrate.rsi
+  - type: RequisitionsCrate
+    reward: 50
+  - type: StorageFill
+    contents:
+    - id: SheetPlasma
+
+- type: entity
+  parent: N14CrateRequisitions
   id: MisfitsCrateRequisitionsVaultThread
   name: thread crate
   components:
@@ -295,6 +310,69 @@
     contents:
     - id: N14MaterialThread1
       amount: 30
+
+- type: entity
+  parent: N14CrateRequisitions
+  id: MisfitsCrateRequisitionsVaultInstruments
+  name: instrument crate
+  components:
+  - type: Icon
+    sprite: _Nuclear14/Structures/Storage/Crates/vaultstandard.rsi
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Crates/vaultstandard.rsi
+  - type: RequisitionsCrate
+    reward: 50
+  - type: StorageFill
+    contents:
+    - id: N14InstrumentGuitar
+    - id: N14InstrumentHarmonica
+    - id: N14InstrumentTrumpet
+    - id: N14InstrumentBanjo
+    - id: N14InstrumentViolin
+    - id: N14InstrumentTrombone
+    - id: N14InstrumentSaxaphone
+    - id: N14InstrumentClarinet
+    - id: N14InstrumentFlute
+    - id: N14InstrumentPanflute
+    - id: N14InstrumentElectricGuitar
+    - id: N14InstrumentBassGuitar
+    - id: N14InstrumentRockGuitar
+
+- type: entity
+  parent: N14CrateRequisitions
+  id: MisfitsCrateRequisitionsVaultPlushies
+  name: plushie crate
+  components:
+  - type: Icon
+    sprite: _Nuclear14/Structures/Storage/Crates/vaultstandard.rsi
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Crates/vaultstandard.rsi
+  - type: RequisitionsCrate
+    reward: 50
+  - type: StorageFill
+    contents:
+    - id: PlushieBee
+    - id: PlushieCorgi
+    - id: PlushieCatOrange
+    - id: PlushieHampter
+    - id: PlushieGhost
+    - id: PlushieLizard
+
+- type: entity
+  parent: N14CrateRequisitions
+  id: MisfitsCrateRequisitionsVaultChemVend
+  name: ChemVend restock crate
+  components:
+  - type: Icon
+    sprite: _Nuclear14/Structures/Storage/Crates/medicalcrate.rsi
+  - type: Sprite
+    sprite: _Nuclear14/Structures/Storage/Crates/medicalcrate.rsi
+  - type: RequisitionsCrate
+    reward: 50
+  - type: StorageFill
+    contents:
+    - id: VendingMachineRestockChemVend
+      amount: 2
 
 - type: entity
   parent: VehicleJanicart

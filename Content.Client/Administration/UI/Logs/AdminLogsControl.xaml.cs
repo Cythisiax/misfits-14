@@ -44,6 +44,11 @@ public sealed partial class AdminLogsControl : Control
     // #Misfits Add — advanced filter popup, lazily created on first "Filters" click
     private Popup? _filterPopup;
 
+    // The EUI state provides the account name for every player participating in
+    // the selected round. Log text normally contains a character/entity name,
+    // so retain this lookup to show both identities in each rendered row.
+    private readonly Dictionary<Guid, string> _playerUsernames = new();
+
     public AdminLogsControl()
     {
         RobustXamlLoader.Load(this);
@@ -795,6 +800,16 @@ public sealed partial class AdminLogsControl : Control
 
     public void SetPlayers(Dictionary<Guid, string> players)
     {
+        _playerUsernames.Clear();
+        foreach (var (id, username) in players)
+        {
+            _playerUsernames[id] = username;
+        }
+
+        // This method removes entries as it reconciles the filter controls.
+        // Work on a copy so the EUI state's player lookup remains intact.
+        players = new Dictionary<Guid, string>(players);
+
         var buttons = new SortedSet<AdminLogPlayerButton>(_adminLogPlayerButtonComparer);
         var allSelected = true;
 
@@ -847,7 +862,7 @@ public sealed partial class AdminLogsControl : Control
             ref var log = ref span[i];
             var separator = new HSeparator();
             var row = new AdminLogRow();
-            row.Setup(ref log);
+            row.Setup(ref log, _playerUsernames);
             row.Separator = separator;
             row.Visible = ShouldShowLog(row);
 

@@ -46,10 +46,13 @@
   whitelisted: true
   hideWithoutWhitelist: true
   jobEntity: N14MobDeathclawSentient
+  useProfileSpeciesPrototype: true # Adult, adolescent, and hatchling bodies are selected by the saved Deathclaw variant.
   requirements:
   - !type:CharacterSpeciesRequirement
     species:
     - Deathclaw
+    - DeathclawAdolescent
+    - DeathclawHatchling
   special:
   - !type:AddComponentSpecial
     components:
@@ -64,4 +67,5 @@
 - type: startingGear
   id: BwonsamdiGear
   equipment:
+    wallet: N14Wallet
     back: ClothingBackpackBwonsamdiHarness

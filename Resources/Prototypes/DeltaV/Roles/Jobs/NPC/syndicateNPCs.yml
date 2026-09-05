@@ -1,6 +1,7 @@
 - type: startingGear
   id: RadioGuardGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: ClothingUniformJumpsuitLawyerBlack
     shoes: ClothingShoesBootsLaceup
     id: SyndiListeningPostPDA

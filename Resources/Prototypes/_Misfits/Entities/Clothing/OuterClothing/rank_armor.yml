@@ -128,7 +128,7 @@
   parent: N14ClothingOuterNCRCombatArmor
   id: MisfitsNCRCommandArmor
   name: NCR command mantle
-  description: Command-grade armor reserved for NCR First Sergeants; the pinnacle of standard Republic military equipment.
+  description: Command-grade armor, the pinnacle of standard Republic military equipment.
   components:
   - type: Sprite
     sprite: _Misfits/Clothing/OuterClothing/Armor/ncr_captain_mantle.rsi

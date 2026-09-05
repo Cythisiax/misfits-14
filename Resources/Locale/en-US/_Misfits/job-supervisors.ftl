@@ -41,9 +41,7 @@ job-supervisors-bos-west = the Elder
 job-supervisors-bos-headknight = the Elder
 job-supervisors-bos-paladin = the Head Paladin and Elder
 job-supervisors-bos-knight = the Head Knight, and Elder
-job-supervisors-bos-lancer-captain = the Head Knight and Elder
-# #Cythisiax Renamed (player-facing) - Lancer-Captain -> Knight-Captain.
-job-supervisors-bos-lancer-knight = the Knight-Captain and the Head Knight
+job-supervisors-bos-lancer-knight = the Head Knight and Elder
 job-supervisors-bos-scribe = the Head Scribe and Elder
 job-supervisors-bos-initiate = the Brotherhood chain of command
 

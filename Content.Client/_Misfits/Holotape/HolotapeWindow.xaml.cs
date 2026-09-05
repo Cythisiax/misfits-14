@@ -56,6 +56,7 @@ public sealed partial class HolotapeWindow : DefaultWindow
     public event Action<Guid?, string, bool>? OnCreateDatabaseFolder;    // parentFolderId (null=top), name, markAsAdmin (root only)
     public event Action<Guid, Guid?, string, string, bool>? OnCreateDatabaseDocument; // folderId, subfolderId, title, body, markAdmin
     public event Action<Guid, string>? OnEditDatabaseDocument;           // documentId, body
+    public event Action<string, Guid?, Guid?, Guid?, Guid?>? OnRenameDatabaseEntry;
     public event Action<Guid, Guid?>? OnDeleteDatabaseFolder;            // folderId, subfolderId
     public event Action<Guid>? OnDeleteDatabaseDocument;
     public event Action<Guid, int>? OnRollbackDatabaseDocument;
@@ -1053,6 +1054,25 @@ public sealed partial class HolotapeWindow : DefaultWindow
         return button;
     }
 
+    private Button CreateRenameButton(string currentName, Action<string> renameAction)
+    {
+        var button = CreateArchiveButton("[ RENAME ]", 85, StyleBase.ButtonTerminalFolder);
+        button.ToolTip = "Change this folder or document title. Leadership only.";
+        button.OnPressed += _ =>
+        {
+            const string field = "name";
+            var entry = new QuickDialogEntry(field, QuickDialogEntryType.ShortText, "NEW TITLE", currentName);
+            var dialog = new DialogWindow($"RENAME: {currentName}", new List<QuickDialogEntry> { entry });
+            dialog.SetOkButtonText("[ RENAME ]");
+            dialog.OnConfirmed += values =>
+            {
+                if (values.TryGetValue(field, out var name))
+                    renameAction(name);
+            };
+        };
+        return button;
+    }
+
     private void RenderFolderList()
     {
         if (_databaseState == null) return;
@@ -1089,6 +1109,10 @@ public sealed partial class HolotapeWindow : DefaultWindow
             };
             row.AddChild(btn);
             var actions = CreateRowActions(row);
+
+            if (!deleted && _databaseState!.CanLeadership && (!isAdmin || _databaseState.CanAdmin))
+                actions.AddChild(CreateRenameButton(capName,
+                    name => OnRenameDatabaseEntry?.Invoke(name, capId, null, null, null)));
 
             // #Misfits Change - Delete/restore gated on Leadership (or Admin if marked).
             if (!deleted && canModify)
@@ -1196,6 +1220,10 @@ public sealed partial class HolotapeWindow : DefaultWindow
             };
             row.AddChild(btn);
             var actions = CreateRowActions(row);
+
+            if (!deleted && _databaseState!.CanLeadership && (!folder.IsAdmin || _databaseState.CanAdmin))
+                actions.AddChild(CreateRenameButton(s.Name,
+                    name => OnRenameDatabaseEntry?.Invoke(name, null, folder.FolderId, capSub, null)));
 
             if (!deleted && canModify)
             {
@@ -1316,6 +1344,10 @@ public sealed partial class HolotapeWindow : DefaultWindow
         btn.OnPressed += _ => OnOpenDatabaseDocument?.Invoke(capId);
         row.AddChild(btn);
         var actions = CreateRowActions(row);
+
+        if (!deleted && _databaseState!.CanLeadership && (!d.IsAdmin && !parentIsAdmin || _databaseState.CanAdmin))
+            actions.AddChild(CreateRenameButton(d.Title,
+                name => OnRenameDatabaseEntry?.Invoke(name, null, null, null, capId)));
 
         if (!deleted && canModify)
         {

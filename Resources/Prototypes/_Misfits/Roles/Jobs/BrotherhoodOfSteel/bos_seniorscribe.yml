@@ -44,6 +44,7 @@
 - type: startingGear
   id: BoSMidScribeGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpskirtBOSBlack  #Misfits Change /Tweak/: New consolidated BoS gear
     back: N14ClothingBackpackSatchelMilitary
     shoes: N14ClothingBootsLeatherFilled

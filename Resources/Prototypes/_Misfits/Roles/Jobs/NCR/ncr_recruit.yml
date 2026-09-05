@@ -33,6 +33,7 @@
 - type: startingGear
   id: NCRCadetGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatNCRSidecap
     back: N14ClothingBackpackNCR # Corvax-Change
     jumpsuit: N14ClothingUniformNCRDesert # Corvax-Change

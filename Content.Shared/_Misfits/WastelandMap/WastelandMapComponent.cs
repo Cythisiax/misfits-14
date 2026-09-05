@@ -39,6 +39,10 @@ public enum WastelandMapTrackedBlipKind : byte
     TribalHuntTarget, // Active tribal hunt Deathclaw target
     // #Misfits Add - Followers of the Apocalypse dead body blip
     DeadBody,          // deceased player-controlled entity shown on Followers tac-map
+    CriticalSoul,      // critical player-mind entity shown only on Bwonsamdi's soul compass
+    DeadSoul,          // dead player-mind entity shown only on Bwonsamdi's soul compass
+    TribeCritical,     // Tribe member in critical condition during the Rite of Returning
+    MaterialExtractor, // permanent seismic extractor landmark
 }
 
 [Serializable, NetSerializable]
@@ -61,6 +65,7 @@ public enum WastelandMapTacticalFeedKind : byte
     // #Misfits Add - Followers of the Apocalypse feed: shows all dead player bodies
     Followers,
     Tribe, // #Misfits Add - Willower pendant tactical feed
+    Bwonsamdi, // private map-wide feed of critical and dead player souls
 }
 
 [Serializable, NetSerializable]

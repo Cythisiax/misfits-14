@@ -20,6 +20,7 @@
 
 - type: reaction
   id: AntidoteBottleConversion
+  quantized: true # #Cythisiax Fixed - only fires when full amounts present; prevents partial-mix material loss
   reactants:
     Antidote:
       amount: 100
@@ -42,6 +43,7 @@
 
 - type: reaction
   id: AntidoteConversion
+  quantized: true # #Cythisiax Fixed - only fires when full amounts present; prevents partial-mix material loss
   reactants:
     Antidote:
       amount: 15
@@ -77,6 +79,7 @@
 
 - type: reaction
   id: RadAwayConversion
+  quantized: true # #Cythisiax Fixed - only fires when full amounts present; prevents partial-mix material loss
   reactants:
     RadAway:
       amount: 20
@@ -102,6 +105,7 @@
 
 - type: reaction
   id: StimpakConversion
+  quantized: true # #Cythisiax Fixed - only fires when full amounts present; prevents partial-mix material loss
   reactants:
     HealingMixture:
       amount: 25
@@ -137,6 +141,7 @@
 
 - type: reaction
   id: DirtyStimpakConversion
+  quantized: true # #Cythisiax Fixed - only fires when full amounts present; prevents partial-mix material loss
   reactants:
     DirtyStimpak:
       amount: 25
@@ -163,6 +168,7 @@
 
 - type: reaction
   id: BitterdrinkBottleConversion
+  quantized: true # #Cythisiax Fixed - only fires when full amounts present; prevents partial-mix material loss
   reactants:
     Bitterdrink:
       amount: 50
@@ -174,6 +180,7 @@
 
 - type: reaction
   id: SmellingSaltsConversion
+  quantized: true # #Cythisiax Fixed - only fires when full amounts present; prevents partial-mix material loss
   reactants:
     Sulfur:
       amount: 5
@@ -187,6 +194,7 @@
 
 - type: reaction
   id: N14Ointment1
+  quantized: true # #Cythisiax Fixed - only fires when full amounts present; prevents partial-mix material loss
   reactants:
     ExtractAgaveNectar:
       amount: 5

@@ -22,6 +22,13 @@ namespace Content.Server.Speech.Components
         /// </summary>
         [DataField("wordReplacements")]
         public Dictionary<string, string>? WordReplacements;
+
+        /// <summary>
+        ///     Doubles individual S sounds while preserving existing double-S sequences.
+        ///     Intended for readable reptilian or serpentine accents.
+        /// </summary>
+        [DataField]
+        public bool ElongateSibilants;
     }
 
     /// <summary>

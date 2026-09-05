@@ -19,6 +19,7 @@ public sealed class StoreDynamicState : BoundUserInterfaceState
         bool hasSellTab,
         bool hasContractsTab,
         // #Misfits Add — tier progression data
+        string contractTierProfile,
         HashSet<string> playerUnlockedTiers,
         List<TierRosterEntry> roster)
     {
@@ -33,6 +34,7 @@ public sealed class StoreDynamicState : BoundUserInterfaceState
         HasBuyTab = hasBuyTab;
         HasSellTab = hasSellTab;
         HasContractsTab = hasContractsTab;
+        ContractTierProfile = contractTierProfile;
         PlayerUnlockedTiers = playerUnlockedTiers;
         Roster = roster;
     }
@@ -52,6 +54,8 @@ public sealed class StoreDynamicState : BoundUserInterfaceState
     public bool HasBuyTab { get; }
     public bool HasSellTab { get; }
     public bool HasContractsTab { get; }
+
+    public string ContractTierProfile { get; }
 
     // #Misfits Add — which contract tiers this player has unlocked
     public HashSet<string> PlayerUnlockedTiers { get; }

@@ -33,6 +33,7 @@
 - type: startingGear
   id: NCRPatrolRangerGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatNCRPatrolRangerCampaign # Misfits Tweak - patrol rangers are given a campaign hat.
     back: N14ClothingBackpackMilitary # Corvax-Change
     jumpsuit: N14ClothingUniformNCRPatrolRanger

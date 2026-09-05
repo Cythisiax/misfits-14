@@ -40,6 +40,7 @@
 - type: startingGear
   id: NCRMPinvestigatorGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitNCRMP
     back: N14ClothingBackpackMilitary
     shoes: N14ClothingBootsCombatFilled

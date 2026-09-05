@@ -119,7 +119,7 @@ public sealed partial class StoreStructuredSystem : EntitySystem
         // #Misfits Fix — snapshot the set so the StoreDynamicState doesn't hold a mutable reference
         HashSet<string>? unlockedTiers = null;
         if (hasContractsTab && TryComp(user, out NcTierProgressComponent? tp))
-            unlockedTiers = new HashSet<string>(tp.UnlockedTiers);
+            unlockedTiers = new HashSet<string>(tp.GetUnlockedTiers(comp.ContractTierProfile));
 
         if (hasContractsTab && comp.Contracts.Count > 0)
         {
@@ -133,7 +133,19 @@ public sealed partial class StoreStructuredSystem : EntitySystem
             }
         }
 
-        if (scratch.EqualsLast(buf, comp.CatalogRevision, hasBuyTab, hasSellTab, hasContractsTab))
+        var stateUnlockedTiers = unlockedTiers ?? new HashSet<string>
+        {
+            NcTierProgressComponent.GetEntryTier(comp.ContractTierProfile)
+        };
+
+        if (scratch.EqualsLast(
+                buf,
+                comp.CatalogRevision,
+                hasBuyTab,
+                hasSellTab,
+                hasContractsTab,
+                comp.ContractTierProfile,
+                stateUnlockedTiers))
             return;
 
         comp.UiRevision = unchecked(comp.UiRevision + 1);
@@ -159,12 +171,19 @@ public sealed partial class StoreStructuredSystem : EntitySystem
                 hasSellTab,
                 hasContractsTab,
                 // #Misfits Add — tier progression data for the client
-                unlockedTiers ?? new HashSet<string> { "Road Kill" },
+                comp.ContractTierProfile,
+                stateUnlockedTiers,
                 roster
             )
         );
 
-        scratch.Commit(comp.CatalogRevision, hasBuyTab, hasSellTab, hasContractsTab);
+        scratch.Commit(
+            comp.CatalogRevision,
+            hasBuyTab,
+            hasSellTab,
+            hasContractsTab,
+            comp.ContractTierProfile,
+            stateUnlockedTiers);
     }
 
     private bool TryFindWatchedRoot(EntityUid start, out EntityUid watchedRoot)

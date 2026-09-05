@@ -13,7 +13,7 @@
       min: 72000 # 20 hours
     - !type:CharacterPlaytimeRequirement
       tracker: CaesarLegionDean
-      min: 28800 # 8 hours
+      min: 14400 # 4 hours
     # TEMP REMOVED - !type:CharacterDepartmentTimeRequirement
     #   department: CaesarLegion
     #   min: 162000 # 45 hours
@@ -68,6 +68,7 @@
 - type: startingGear
   id: CaesarLegionPrimeDecanusGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     ears: N14ClothingHeadsetLegion
     neck: ClothingNeckRedScarf

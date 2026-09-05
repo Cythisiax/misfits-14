@@ -21,7 +21,8 @@
     - !type:CharacterPlaytimeRequirement
       tracker: NCRSquadLeader
       min: 28800 # 8 hours as NCO
-  weight: 105
+  weight: 103 # #Misfits Tweak - platoon leader starts below aviation
+  showBorder: true # #Misfits Tweak - starts the platoon/NCO tier
   startingGear: NCRPlatoonLeaderGear
   icon: "JobIconNcrLeader"
   supervisors: job-supervisors-ncr-commander
@@ -43,6 +44,7 @@
 - type: startingGear
   id: NCRPlatoonLeaderGear
   equipment:
+    wallet: N14Wallet
     head: N14ClothingHeadHatNCRBeretOfficer
     back: N14ClothingBackpackNCR
     jumpsuit: N14ClothingOfficerUniformNCRDesert

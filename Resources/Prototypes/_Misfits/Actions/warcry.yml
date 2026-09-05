@@ -54,6 +54,17 @@
     event: !type:DreadRoarActionEvent
 
 - type: entity
+  id: ActionBwonsamdiSoulCompass
+  name: action-name-bwonsamdi-soul-compass
+  description: action-desc-bwonsamdi-soul-compass
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: InstantAction
+    icon: _Misfits/Interface/Actions/warcry.png
+    event: !type:OpenUiActionEvent
+      key: enum.WastelandMapUiKey.Key
+
+- type: entity
   id: ActionBwonsamdiRitualClaim
   name: action-name-bwonsamdi-ritual-claim
   description: action-desc-bwonsamdi-ritual-claim
@@ -72,7 +83,6 @@
   categories: [ HideSpawnMenu ]
   components:
   - type: EntityTargetAction
-    useDelay: 720
     icon: _Misfits/Interface/Actions/warcry.png
     range: 2
     checkCanAccess: false

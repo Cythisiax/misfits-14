@@ -10,7 +10,9 @@
 # Scoped to exactly what blueprint_recipes_enclave_weapons.yml can produce:
 #   N14PlasmaCartridge    -> all five plasma guns
 #   N14MicrofusionCell    -> magneto pistol, wattz 2000/3000, AER-9 auto, AER-12
-#   N14ElectronChargePack -> pulse pistol, pulse carbine, laser RCW
+#   N14PulseEnergyCell    -> pulse pistol
+#   N14PulseMicrofusionCell -> pulse carbine, pulse rifle
+#   N14ElectronChargePack -> laser RCW
 # The plasma cutter is melee and takes no cell.
 #
 # Note these are the GENERIC cell prototypes. The Red/Green/Blue/Violet variants
@@ -57,7 +59,37 @@
     N14Silver: 300
     Lead: 500
 
-# Electron charge pack - feeds the pulse weapons and the laser RCW.
+# Pulse energy cell - feeds the pulse pistol.
+- type: latheRecipe
+  id: N14BPEnclaveAmmoPulseEnergyCell
+  result: N14PulseEnergyCell
+  category: N14BlueprintEnclaveAmmo
+  completetime: 4
+  requiresBlueprint: true
+  availableFaction:
+  - Enclave
+  materials:
+    Glass: 100
+    Circuitry: 100
+    ScrapElectronic: 100
+    Lead: 100
+
+# Pulse microfusion cell - feeds the pulse carbine and pulse rifle.
+- type: latheRecipe
+  id: N14BPEnclaveAmmoPulseMicrofusionCell
+  result: N14PulseMicrofusionCell
+  category: N14BlueprintEnclaveAmmo
+  completetime: 6
+  requiresBlueprint: true
+  availableFaction:
+  - Enclave
+  materials:
+    Glass: 300
+    Circuitry: 100
+    ScrapElectronic: 300
+    Lead: 500
+
+# Electron charge pack - feeds the laser RCW only.
 - type: latheRecipe
   id: N14BPEnclaveAmmoElectronChargePack
   result: N14ElectronChargePack

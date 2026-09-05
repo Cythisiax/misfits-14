@@ -13,12 +13,6 @@
         - !type:CharacterPlaytimeRequirement
           tracker: CaesarLegionLegionnaireRecruit
           min: 14400 # 4 hours
-        - !type:CharacterPlaytimeRequirement
-          tracker: CaesarLegionExplorer
-          min: 14400 # 4 hours
-        - !type:CharacterPlaytimeRequirement
-          tracker: CaesarLegionAuxilia
-          min: 14400 # 4 hours
     - !type:CharacterSpeciesRequirement
       species:
       - Human
@@ -47,6 +41,7 @@
 - type: startingGear
   id: CaesarLegionLegionnaireWarriorGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitLegionnaire
     ears: N14ClothingHeadsetLegion
     neck: ClothingNeckRedScarf

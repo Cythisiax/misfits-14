@@ -34,6 +34,7 @@
 - type: startingGear
   id: VaultCourierGear
   equipment:
+    wallet: N14Wallet
     head: ClothingHeadMailCarrier
     jumpsuit: ClothingUniformMailCarrier
     back: N14ClothingBackpackSatchelTrekker

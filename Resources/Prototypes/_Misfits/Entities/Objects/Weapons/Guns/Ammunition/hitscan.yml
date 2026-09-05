@@ -1,13 +1,14 @@
 # Misfits — Hitscan beam definitions for energy weapons.
 # Each weapon specifies its own beam via GunDamageBonusComponent.hitscanProtoOverride.
 # The cell just provides charge; the weapon controls beam color and base damage.
-# Damage hierarchy: Red (25) < Amber (30) < Yellow (17 base, Wattz +bonus) < Green (35) < Blue (40) < Violet (43)
+# AER damage: AER-9 (24) < AER-9 Auto (20) < AER-12 (26) < AER-14 (28) < AER-15 (30).
 
 #MARK: Microfusion Cell Lasers — per-weapon beam assignment
-# AER-9/Auto/RCW/Gatling/crude/makeshift -> Red
-# AER-12 -> Amber
-# AER-14 -> Green
-# AER-15 -> Blue
+# AER-9 -> Red 24
+# AER-9 Auto -> Red 20
+# AER-12 -> Orange 26
+# AER-14 -> Blue 28
+# AER-15 -> Violet 30
 # Wattz 2K/3K -> Yellow (with GunDamageBonus on top)
 # Violet -> reserved for future / highest-tier weapons
 
@@ -15,7 +16,7 @@
   id: N14MFLaserRed
   damage:
     types:
-      Heat: 20
+      Heat: 24
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_laser
@@ -26,13 +27,13 @@
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: impact_laser
 
-# #Misfits Add - Amber beam for AER-12 rapid-fire laser rifle.
-# Uses red beam sprites tinted amber. Slight damage increase over Red.
+# Orange beam for the AER-12 rapid-fire laser rifle.
+# The explicit weapon profile selects this color and damage.
 - type: hitscan
   id: N14MFLaserAmber
   damage:
     types:
-      Heat: 25
+      Heat: 26
   tintColor: "#FF8C00"
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -48,7 +49,7 @@
   id: N14MFLaserGreen
   damage:
     types:
-      Heat: 35
+      Heat: 24
   muzzleFlash:
     sprite: _Misfits/Objects/Weapons/Guns/Projectiles/green_laser.rsi
     state: muzzle_green_laser
@@ -63,7 +64,7 @@
   id: N14MFLaserBlue
   damage:
     types:
-      Heat: 40
+      Heat: 28
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: muzzle_blue
@@ -80,8 +81,7 @@
   id: N14MFLaserViolet
   damage:
     types:
-      Heat: 40
-      Radiation: 3
+      Heat: 30
   tintColor: "#8B00FF"
   muzzleFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
@@ -92,6 +92,39 @@
   impactFlash:
     sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
     state: impact_u_laser
+
+# Weapon-specific profiles using the shared MFC. The weapon selects the
+# profile; the cell supplies charge only.
+- type: hitscan
+  id: N14AER9AutoLaser
+  damage:
+    types:
+      Heat: 20
+  muzzleFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: muzzle_laser
+  travelFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: beam
+  impactFlash:
+    sprite: Objects/Weapons/Guns/Projectiles/projectiles.rsi
+    state: impact_laser
+
+- type: hitscan
+  id: N14RCWLaserGreen
+  damage:
+    types:
+      Heat: 20
+      Shock: 2
+  muzzleFlash:
+    sprite: _Misfits/Objects/Weapons/Guns/Projectiles/green_laser.rsi
+    state: muzzle_green_laser
+  travelFlash:
+    sprite: _Misfits/Objects/Weapons/Guns/Projectiles/green_laser.rsi
+    state: beam_green
+  impactFlash:
+    sprite: _Misfits/Objects/Weapons/Guns/Projectiles/green_laser.rsi
+    state: impact_green_laser
 
 # #Misfits Add - Yellow beam for Wattz 2000/3000 focused laser rifles.
 # Uses red beam sprites tinted bright yellow. Base damage matches Red;
@@ -115,7 +148,7 @@
     state: impact_laser
 
 #MARK: Electron Charge Pack Pulses — Red < Green < Blue < Violet
-# Used by N14ElectronChargePackRed/Green/Blue/Violet. All pulse weapons accept any of these.
+# Used by the colored ECP variants accepted by the RCW.
 
 - type: hitscan
   id: N14PulseRed

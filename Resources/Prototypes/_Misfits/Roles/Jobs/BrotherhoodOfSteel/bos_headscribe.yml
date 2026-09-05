@@ -43,6 +43,7 @@
 - type: startingGear
   id: BoSWestScribeGear
   equipment:
+    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpskirtBOSBlack  #Misfits Change /Tweak/: New consolidated BoS gear
     # outerClothing: N14ClothingOuterBrotherhoodMidwestFieldScribeCoat # #Misfits Removed - Coat now comes from loadout kit selection
     back: N14ClothingBackpackSatchelMilitary

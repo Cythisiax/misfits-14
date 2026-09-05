@@ -69,6 +69,8 @@ public sealed partial class LoreMasterTab : Control
         UploadLocalAudioButton.OnPressed += _ => UploadLocalAudio();
         UploadLocalAudioButton.Disabled = !IoCManager.Resolve<IClientAdminManager>().CanCommand("uploadfile")
                                          || !IoCManager.Resolve<IClientAdminManager>().CanCommand("playglobalsound");
+        UploadMapButton.OnPressed += _ => UploadMap();
+        UploadMapButton.Disabled = !IoCManager.Resolve<IClientAdminManager>().CanCommand("uploadfile");
         // #Misfits Add - open the admin Force War panel (bypasses cooldowns and rank checks)
         ForceWarButton.OnPressed += _ => IoCManager.Resolve<IConsoleHost>().ExecuteCommand("forcewar");
         // #Misfits Tweak - IssueButton (preset objectives) removed — presets are disabled.
@@ -85,6 +87,15 @@ public sealed partial class LoreMasterTab : Control
     {
         var path = $"/LoreMasterAudio/{Guid.NewGuid():N}.ogg";
         IoCManager.Resolve<IConsoleHost>().ExecuteCommand($"uploadfile {path}");
+    }
+
+    /// <summary>
+    /// Uploads a map as a temporary runtime resource. The engine mounts this at
+    /// /Uploaded/Maps/Misfits/Wendover.yml, which can then be passed to loadmap.
+    /// </summary>
+    private void UploadMap()
+    {
+        IoCManager.Resolve<IConsoleHost>().ExecuteCommand("uploadfile /Maps/Misfits/Wendover.yml");
     }
 
     // ── Control lifecycle ─────────────────────────────────────────────────

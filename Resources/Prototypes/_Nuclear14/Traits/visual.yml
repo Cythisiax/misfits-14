@@ -41,7 +41,6 @@
     #- BoSMidInquisitor # Misfits Fix: job prototype commented out
     - BoSMidScribe
     - BoSMidKnight
-    - BoSLancerCaptain
     - BoSLancerKnight
     # #Cythisiax Removed - Lancer rank folded into Lancer-Knight
     - BoSMidSquire
