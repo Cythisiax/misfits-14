@@ -1,6 +1,8 @@
 using Content.Server.GameTicking;
 using Content.Server.Maps;
 using Content.Shared.GameTicking;
+using Content.Shared._Misfits.CCVar;
+using Robust.Shared.Configuration;
 using Robust.Shared.Enums;
 using Robust.Shared.Map;
 using Robust.Shared.Map.Components;
@@ -37,12 +39,14 @@ public sealed partial class N14ExpeditionEntranceSpawnerSystem : EntitySystem
     ];
 
     [Dependency] private IRobustRandom _random = default!;
+    [Dependency] private IConfigurationManager _config = default!;
     [Dependency] private GameTicker _gameTicker = default!;
     [Dependency] private SharedMapSystem _map = default!;
     [Dependency] private SharedTransformSystem _transform = default!;
 
     private readonly HashSet<MapId> _loadedGameMaps = [];
     private readonly HashSet<MapId> _spawnedMaps = [];
+    private bool _enabled;
     private ISawmill _log = default!;
 
     public override void Initialize()
@@ -50,6 +54,7 @@ public sealed partial class N14ExpeditionEntranceSpawnerSystem : EntitySystem
         SubscribeLocalEvent<PostGameMapLoad>(OnPostGameMapLoad);
         SubscribeLocalEvent<RoundStartedEvent>(OnRoundStarted);
         SubscribeLocalEvent<RoundRestartCleanupEvent>(OnRoundRestart);
+        Subs.CVar(_config, ExpeditionCVars.Enabled, enabled => _enabled = enabled, true);
         _log = Logger.GetSawmill("expedition_entrances");
     }
 
@@ -82,6 +87,9 @@ public sealed partial class N14ExpeditionEntranceSpawnerSystem : EntitySystem
     /// </summary>
     public void EnsureEntrancesForMap(MapId mapId)
     {
+        if (!_enabled)
+            return;
+
         if (_spawnedMaps.Contains(mapId))
             return;
 

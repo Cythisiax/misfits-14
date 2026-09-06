@@ -9,7 +9,9 @@ using Content.Server.Procedural;
 using Content.Server.Warps;
 using Content.Shared.Atmos; // #Misfits Add - GasMixture, Gas enum, Atmospherics constants
 using Content.Shared.Atmos.Components; // #Misfits Add - MapAtmosphereComponent
+using Content.Shared._Misfits.CCVar;
 using Content.Shared._Misfits.Expeditions;
+using Robust.Shared.Configuration;
 using Content.Shared.Interaction;
 using Content.Shared.Mobs.Components;
 using Content.Shared.NPC.Components;
@@ -41,6 +43,7 @@ namespace Content.Server._Misfits.Expeditions;
 public sealed class N14ExpeditionSystem : EntitySystem
 {
     [Dependency] private readonly IChatManager _chatManager = default!;
+    [Dependency] private readonly IConfigurationManager _config = default!;
     [Dependency] private readonly IGameTiming _timing = default!;
     [Dependency] private readonly IPlayerManager _playerManager = default!;
     [Dependency] private readonly QuickDialogSystem _quickDialog = default!;
@@ -61,6 +64,7 @@ public sealed class N14ExpeditionSystem : EntitySystem
     [Dependency] private readonly UndergroundExpeditionMapGenerator _proceduralGen = default!;
 
     private int _expeditionSeedCounter;
+    private bool _enabled;
 
     // #Misfits Tweak - Throttle session-timer scanning. Warnings fire at 10-min, 5-min, 1-min, 30-sec
     // intervals — sub-second resolution is unnecessary. Per-tick scan at 30 Hz is wasteful.
@@ -70,6 +74,7 @@ public sealed class N14ExpeditionSystem : EntitySystem
     public override void Initialize()
     {
         base.Initialize();
+        Subs.CVar(_config, ExpeditionCVars.Enabled, enabled => _enabled = enabled, true);
 
         // BUI events
         SubscribeLocalEvent<N14ExpeditionBoardComponent, AfterActivatableUIOpenEvent>(OnBoardOpened);
@@ -256,6 +261,12 @@ public sealed class N14ExpeditionSystem : EntitySystem
 
     private void OpenDirectLaunchPrompt(EntityUid entranceUid, N14ExpeditionBoardComponent entrance, EntityUid user)
     {
+        if (!_enabled)
+        {
+            _popup.PopupEntity(Loc.GetString("n14-expedition-disabled"), entranceUid, user);
+            return;
+        }
+
         if (!_playerManager.TryGetSessionByEntity(user, out var playerSession))
             return;
 
@@ -287,6 +298,12 @@ public sealed class N14ExpeditionSystem : EntitySystem
 
     private bool TryStartDirectLaunch(EntityUid entranceUid, N14ExpeditionBoardComponent entrance, EntityUid user)
     {
+        if (!_enabled)
+        {
+            _popup.PopupEntity(Loc.GetString("n14-expedition-disabled"), entranceUid, user);
+            return false;
+        }
+
         if (entrance.ActiveExpedition is { } active && Exists(active) && !Deleted(active))
         {
             _popup.PopupEntity(Loc.GetString("n14-expedition-entrance-busy"), entranceUid, user);
@@ -331,6 +348,9 @@ public sealed class N14ExpeditionSystem : EntitySystem
     /// </summary>
     private void StartLaunchCountdown(EntityUid boardUid, N14ExpeditionBoardComponent board, string difficultyId)
     {
+        if (!_enabled)
+            return;
+
         // Block if busy or cooling down
         if (board.ActiveExpedition != null || board.PendingLaunchTime != null)
             return;

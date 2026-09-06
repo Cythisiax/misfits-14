@@ -54,6 +54,7 @@ n14-expedition-entrance-map-label = Auspicious Entry
 n14-expedition-entrance-busy = This entrance is already linked to an active expedition.
 n14-expedition-entrance-cooldown = The passage is unstable. It will be usable again in {$minutes} minutes.
 n14-expedition-entrance-too-far = Stay near the entrance to launch this expedition.
+n14-expedition-disabled = Expeditions are temporarily unavailable.
 
 # Temporarily disabled (RAM/engine constraints — server OOM at 8 GB):
 # n14-expedition-difficulty-surface = Surface
