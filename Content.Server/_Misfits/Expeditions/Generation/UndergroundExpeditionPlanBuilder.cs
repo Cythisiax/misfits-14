@@ -233,6 +233,28 @@ public static class UndergroundExpeditionPlanBuilder
             var role = RoleFor(chosen.RoomType, plan.Theme);
             Add(plan, id, chosen.RoomType, role, Math.Max(0, (int) role - 1), required: false);
 
+            // One-tile sewer doors need a simple, traversable tunnel rather than
+            // a growing collection of dead-end branches.  Insert extra chambers
+            // immediately before the terminal nest: every room stays reachable,
+            // no sewer room gains a third exit, and larger configured ruins can
+            // still meet their requested room budget.
+            if (plan.Theme == UndergroundTheme.Sewer)
+            {
+                var objectiveConnection = plan.Connections.Single(edge =>
+                    edge.From == plan.ObjectiveRoomId || edge.To == plan.ObjectiveRoomId);
+                var predecessorId = objectiveConnection.From == plan.ObjectiveRoomId
+                    ? objectiveConnection.To
+                    : objectiveConnection.From;
+
+                plan.Connections.Remove(objectiveConnection);
+                Connect(plan, predecessorId, id, objectiveConnection.Required);
+                Connect(plan, id, plan.ObjectiveRoomId, objectiveConnection.Required);
+
+                counts[chosen.RoomType] = counts.GetValueOrDefault(chosen.RoomType) + 1;
+                interiorCount++;
+                continue;
+            }
+
             var possibleParents = plan.Rooms
                 .Where(room => room.Id != id && room.Id != plan.ObjectiveRoomId && room.ZoneRole <= role)
                 .Where(room => plan.Theme != UndergroundTheme.Sewer ||
