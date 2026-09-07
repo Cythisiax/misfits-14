@@ -19,12 +19,6 @@
   icon: "JobIconKhan"
   supervisors: job-supervisors-great-khan
   canBeAntag: false
-  special:
-  - !type:AddComponentSpecial
-    components:
-      - type: NpcFactionMember
-        factions:
-          - PlayerRaider
 
 - type: startingGear
   id: GreatKhanGear
