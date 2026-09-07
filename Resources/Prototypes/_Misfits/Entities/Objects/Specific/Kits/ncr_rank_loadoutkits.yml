@@ -489,7 +489,7 @@
   - type: UndecidedLoadoutBackpack
     possibleSets:
     - NCR_HeavyTrooperVeteranSet
-    - NCR_HeavyTrooperMinigunSet
+    - NCR_HeavyTrooperLinebreakerSet
     - NCR_HeavyTrooperDefenderSet
 
 - type: entity
@@ -503,5 +503,5 @@
   - type: UndecidedLoadoutBackpack
     possibleSets:
     - NCR_HeavyTrooperVeteranSet
-    - NCR_HeavyTrooperLinebreakerSet
+    - NCR_HeavyTrooperMinigunSet
     - NCR_HeavyTrooperDefenderSet

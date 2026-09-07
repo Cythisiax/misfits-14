@@ -89,6 +89,9 @@ public sealed class UndergroundExpeditionPlanBuilderTest
     [TestCase(UndergroundTheme.Vault, 14, 20)]
     [TestCase(UndergroundTheme.Sewer, 14, 22)]
     [TestCase(UndergroundTheme.Metro, 15, 24)]
+    [TestCase(UndergroundTheme.Vault, 22, 28)]
+    [TestCase(UndergroundTheme.Sewer, 22, 30)]
+    [TestCase(UndergroundTheme.Metro, 23, 32)]
     public void EnlargedExpeditionPlansCanFillConfiguredRange(
         UndergroundTheme theme,
         int minimumRooms,
@@ -171,6 +174,41 @@ public sealed class UndergroundExpeditionPlanBuilderTest
             Is.EqualTo(Enumerable.Range(0, 8).Select(_ => secondGeometry.Next()).ToArray()));
         Assert.That(ExpeditionSeedStreams.Create(seed, "geometry").Next(),
             Is.Not.EqualTo(ExpeditionSeedStreams.Create(seed, "entities").Next()));
+    }
+
+    [TestCase(UndergroundTheme.Vault)]
+    [TestCase(UndergroundTheme.Sewer)]
+    [TestCase(UndergroundTheme.Metro)]
+    public void MobThemeWeightsAndRequiredFamiliesAreComplete(UndergroundTheme theme)
+    {
+        var mobThemes = UndergroundThemeProfiles.GetProfile(theme).MobThemes;
+        var focused = mobThemes.Where(entry => !entry.IsHodgepodge).ToArray();
+        var hodgepodge = mobThemes.Where(entry => entry.IsHodgepodge).ToArray();
+
+        Assert.Multiple(() =>
+        {
+            Assert.That(focused.Sum(entry => entry.SelectionWeight), Is.EqualTo(100));
+            Assert.That(hodgepodge.Sum(entry => entry.SelectionWeight), Is.EqualTo(100));
+            Assert.That(mobThemes.All(entry => !string.IsNullOrWhiteSpace(entry.Name)), Is.True);
+            Assert.That(mobThemes.All(entry => !string.IsNullOrWhiteSpace(entry.Faction)), Is.True);
+            Assert.That(mobThemes.All(entry => entry.MobPool.Length > 0), Is.True);
+            Assert.That(mobThemes.SelectMany(entry => entry.MobPool).All(entry => entry.Weight > 0), Is.True);
+
+            foreach (var family in new[]
+                     {
+                         ExpeditionMobFamily.Mirelurk,
+                         ExpeditionMobFamily.Nightstalker,
+                         ExpeditionMobFamily.Radscorpion,
+                         ExpeditionMobFamily.Ant,
+                         ExpeditionMobFamily.Deathclaw,
+                         ExpeditionMobFamily.SuperMutant,
+                         ExpeditionMobFamily.Ghoul,
+                     })
+            {
+                Assert.That(focused.Select(entry => entry.Family), Does.Contain(family),
+                    $"{theme} has no focused {family} expedition population.");
+            }
+        });
     }
 
     private static string Signature(ExpeditionGenerationPlan plan)

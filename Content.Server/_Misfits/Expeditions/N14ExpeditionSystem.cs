@@ -395,6 +395,13 @@ public sealed class N14ExpeditionSystem : EntitySystem
         if (diff.Maps.Count == 0)
             return;
 
+        // Lock the expedition roster before generating a procedural map. This is
+        // the authoritative party size for encounter scaling; late arrivals
+        // cannot change a ruin that is already being generated.
+        var nearby = new HashSet<Entity<MobStateComponent>>();
+        _lookup.GetEntitiesInRange(boardXform.Coordinates, board.GatherRadius, nearby);
+        nearby.RemoveWhere(ent => !_playerManager.TryGetSessionByEntity(ent, out _));
+
         // Pick a random map entry from the difficulty pool
         var mapEntry = _random.Pick(diff.Maps);
         // #Misfits Add - procedural entries also need a per-launch seed
@@ -479,6 +486,15 @@ public sealed class N14ExpeditionSystem : EntitySystem
             // #Misfits Add - runtime procedural underground map generation path
             else if (mapEntry.RuntimeProcedural && mapEntry.ProceduralTheme.HasValue)
             {
+                // Larger groups receive a broader ruin as well as denser encounters.
+                // One step per additional entrant grows the map by 16 tiles per side
+                // and adds two rooms, capped at five players / 192x192.
+                var partySize = Math.Max(1, nearby.Count);
+                var partyScaleSteps = Math.Min(partySize - 1, 4);
+                var scaledGridSize = mapEntry.ProceduralGridSize + partyScaleSteps * 16;
+                var scaledMinRooms = mapEntry.ProceduralMinRooms + partyScaleSteps * 2;
+                var scaledMaxRooms = mapEntry.ProceduralMaxRooms + partyScaleSteps * 2;
+
                 // Create a fresh map and grid, then run the procedural generator
                 mapUid = _mapSystem.CreateMap(out var mapId);
                 var gridEnt = _mapManager.CreateGridEntity(mapId);
@@ -497,11 +513,12 @@ public sealed class N14ExpeditionSystem : EntitySystem
                 {
                     Seed               = runtimeSeed,
                     Theme              = mapEntry.ProceduralTheme.Value,
-                    GridWidth          = mapEntry.ProceduralGridSize,
-                    GridHeight         = mapEntry.ProceduralGridSize,
+                    GridWidth          = scaledGridSize,
+                    GridHeight         = scaledGridSize,
                     DifficultyTier     = mapEntry.ProceduralDifficultyTier,
-                    MinRooms           = mapEntry.ProceduralMinRooms,
-                    MaxRooms           = mapEntry.ProceduralMaxRooms,
+                    PartySize          = partySize,
+                    MinRooms           = scaledMinRooms,
+                    MaxRooms           = scaledMaxRooms,
                     HubCount           = mapEntry.ProceduralHubCount,
                     FactionSpawnGroups = mapEntry.FactionSpawns ?? new System.Collections.Generic.List<N14FactionSpawnGroup>(),
                     // #Misfits Add - Forward YAML-pinned environmental states to the generator
@@ -559,13 +576,6 @@ public sealed class N14ExpeditionSystem : EntitySystem
 
             _gravity.EnableGravity(gridUid);
         }
-
-        // Gather player-controlled mobs near the entrance. Normal WarperSystem
-        // handling carries pulled entities and recruited followers with each
-        // participant without making those companions keep the session alive.
-        var nearby = new HashSet<Entity<MobStateComponent>>();
-        _lookup.GetEntitiesInRange(boardXform.Coordinates, board.GatherRadius, nearby);
-        nearby.RemoveWhere(ent => !_playerManager.TryGetSessionByEntity(ent, out _));
 
         // Determine spawn — per-faction hub for procedural maps, majority-faction vote for YAML maps
         // #Misfits Fix - Procedural maps now spawn each faction at their hub instead of grid center

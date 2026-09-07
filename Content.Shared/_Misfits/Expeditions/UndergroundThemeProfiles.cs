@@ -24,6 +24,35 @@ public static class UndergroundThemeProfiles
         _ => BuildVaultProfile(),
     };
 
+    private static MobThemeDefinition FocusedMobTheme(
+        string name,
+        string faction,
+        ExpeditionMobFamily family,
+        int selectionWeight,
+        params (string Prototype, int Weight)[] mobs) => new()
+    {
+        Name = name,
+        Faction = faction,
+        Family = family,
+        SelectionWeight = selectionWeight,
+        MobPool = mobs,
+    };
+
+    private static MobThemeDefinition HodgepodgeMobTheme(
+        string name,
+        string faction,
+        ExpeditionMobFamily family,
+        int selectionWeight,
+        params (string Prototype, int Weight)[] mobs) => new()
+    {
+        Name = name,
+        Faction = faction,
+        Family = family,
+        SelectionWeight = selectionWeight,
+        IsHodgepodge = true,
+        MobPool = mobs,
+    };
+
     // ─────────────────────────────────────────────────────────────────────────
     // Vault Profile
     // ─────────────────────────────────────────────────────────────────────────
@@ -51,7 +80,7 @@ public static class UndergroundThemeProfiles
             // Barracks — common, medium-sized sleeping quarters
             new()
             {
-                RoomType = RoomType.VaultBarracks, Weight = 18, MaxCount = 3,
+                RoomType = RoomType.VaultBarracks, Weight = 18, MaxCount = 5,
                 MinW = 9, MaxW = 15, MinH = 9, MaxH = 15,
                 FurniturePoolKey = "barracks",
                 RequiredFeatures = { "N14BedBunk" },
@@ -60,7 +89,7 @@ public static class UndergroundThemeProfiles
             // Kitchen — mid-weight, near barracks
             new()
             {
-                RoomType = RoomType.VaultKitchen, Weight = 10, MaxCount = 2,
+                RoomType = RoomType.VaultKitchen, Weight = 10, MaxCount = 4,
                 MinW = 9, MaxW = 15, MinH = 9, MaxH = 15,
                 FurniturePoolKey = "kitchen",
                 RequiredFeatures = { "N14CookingStoveWide" },
@@ -69,7 +98,7 @@ public static class UndergroundThemeProfiles
             // Hydroponics — rare, near kitchen
             new()
             {
-                RoomType = RoomType.VaultHydroponics, Weight = 7, MaxCount = 2,
+                RoomType = RoomType.VaultHydroponics, Weight = 7, MaxCount = 4,
                 MinW = 9, MaxW = 15, MinH = 9, MaxH = 15,
                 FurniturePoolKey = "hydroponics",
                 RequiredFeatures = { "N14HydroponicsPlanter" },
@@ -79,7 +108,7 @@ public static class UndergroundThemeProfiles
             // Recreation — rare, leisure area near barracks
             new()
             {
-                RoomType = RoomType.VaultRecreation, Weight = 5, MaxCount = 2,
+                RoomType = RoomType.VaultRecreation, Weight = 5, MaxCount = 3,
                 MinW = 12, MaxW = 18, MinH = 10, MaxH = 16,
                 FurniturePoolKey = "recreation",
                 RequiredFeatures = { "N14TableCasinoPool", "N14JunkJukebox" },
@@ -88,7 +117,7 @@ public static class UndergroundThemeProfiles
             // Lab — common, research/medical
             new()
             {
-                RoomType = RoomType.VaultLab, Weight = 15, MaxCount = 3,
+                RoomType = RoomType.VaultLab, Weight = 15, MaxCount = 5,
                 MinW = 9, MaxW = 15, MinH = 9, MaxH = 15,
                 FurniturePoolKey = "lab",
                 RequiredFeatures = { "N14WorkbenchChemistryset" },
@@ -107,17 +136,16 @@ public static class UndergroundThemeProfiles
             // Maintenance — service plant separating occupied rooms from the reactor
             new()
             {
-                RoomType = RoomType.VaultMaintenance, Weight = 8, MaxCount = 1,
+                RoomType = RoomType.VaultMaintenance, Weight = 8, MaxCount = 2,
                 MinW = 8, MaxW = 13, MinH = 8, MaxH = 13,
                 FurniturePoolKey = "maintenance",
-                RequiredFeatures = { "N14APCBreaker" },
                 AdjacencyPreferences = { RoomType.VaultReactor, RoomType.VaultLab },
                 AdjacencyExclusions = { RoomType.VaultBarracks },
             },
             // Armory — high-value, contested
             new()
             {
-                RoomType = RoomType.VaultArmory, Weight = 13, MaxCount = 2,
+                RoomType = RoomType.VaultArmory, Weight = 13, MaxCount = 3,
                 MinW = 9, MaxW = 15, MinH = 9, MaxH = 15,
                 FurniturePoolKey = "armory",
                 RequiredFeatures = { "N14ClosetGunCabinet" },
@@ -348,7 +376,7 @@ public static class UndergroundThemeProfiles
             // Reactor support plant: tools, distribution, spares, and exposed services.
             ["maintenance"] = new[]
             {
-                "N14WorkbenchMetal", "N14APCBreaker", "N14ShelfMetal",
+                "N14WorkbenchMetal", "N14ShelfMetal",
                 "N14GasPipeStraight", "N14GasPipeBend", "N14Wrench",
                 "N14ComputerTerminalRusted", "N14YellowBarrel", "N14JunkPile7",
             },
@@ -418,7 +446,6 @@ public static class UndergroundThemeProfiles
             ["reactor"] = new[]
             {
                 // Tier 2
-                "N14APCBreaker",                    // control panel the operators faced each shift
                 "N14MachineModularMachineConsoleTall", // secondary control panel bank
                 "N14SubstationBasicRusty",          // power conditioning between reactor and grid
                 "N14GasPipeStraight",               // coolant and exhaust piping
@@ -435,24 +462,36 @@ public static class UndergroundThemeProfiles
             },
         },
 
-        MobGroups = new[]
+        MobThemes = new[]
         {
-            new[]
-            {
-                ("N14MobGhoulFeral", 30), ("N14MobGhoulFeralRotter", 20),
-                ("N14MobGhoulFeralReaver", 10), ("N14MobCentaur", 5),
-            },
-            new[]
-            {
-                ("N14MobRobotProtectronHostile", 24), ("N14MobRobotProtectronPoliceHostile", 16),
-                ("N14MobRobotProtectronFireHostile", 10), ("N14MobRobotAssaultronHostile", 7),
-                ("N14MobRobotSecuritronGrayRustedHostile", 5),
-            },
-            new[]
-            {
-                ("N14MobRadroach", 28), ("N14MobMolerat", 20), ("N14MobBloatfly", 12),
-                ("N14MobDogFeral", 8),
-            },
+            FocusedMobTheme("Feral Ghoul Infestation", "Feral", ExpeditionMobFamily.Ghoul, 22,
+                ("N14MobGhoulFeral", 50), ("N14MobGhoulFeralRotter", 32), ("N14MobGhoulFeralReaver", 18)),
+            FocusedMobTheme("Hostile Vault Security", "HostileRobot", ExpeditionMobFamily.Robot, 20,
+                ("N14MobRobotProtectronHostile", 38), ("N14MobRobotProtectronPoliceHostile", 25),
+                ("N14MobRobotProtectronFireHostile", 17), ("N14MobRobotAssaultronHostile", 11),
+                ("N14MobRobotSecuritronGrayRustedHostile", 9)),
+            FocusedMobTheme("Super Mutant Occupation", "SuperMutant", ExpeditionMobFamily.SuperMutant, 20,
+                ("N14MobSuperMutantNPC", 24), ("N14MobSuperMutantMelee", 22),
+                ("N14MobSuperMutantRanged", 17), ("N14MobSuperMutantArmored", 8),
+                ("N14MobNightkin", 12), ("N14MobNightkinVeteran", 7), ("N14MobCentaur", 10)),
+            FocusedMobTheme("Nightstalker Den", "WastelandAnimal", ExpeditionMobFamily.Nightstalker, 10,
+                ("N14MobNightstalkerCub", 65), ("N14MobNightstalker", 35)),
+            FocusedMobTheme("Radscorpion Nest", "WastelandInsect", ExpeditionMobFamily.Radscorpion, 10,
+                ("N14MobRadscorpion", 70), ("N14MobRadscorpionBark", 30)),
+            FocusedMobTheme("Giant Ant Colony", "WastelandInsect", ExpeditionMobFamily.Ant, 8,
+                ("N14MobGiantAnt", 70), ("N14MobGiantFireAnt", 30)),
+            FocusedMobTheme("Deathclaw Lair", "Deathclaw", ExpeditionMobFamily.Deathclaw, 6,
+                ("N14MobDeathclaw", 55), ("N14MobDeathclawAlbino", 22),
+                ("N14MobDeathclawMetal", 13), ("N14MobDeathclawicy", 10)),
+            FocusedMobTheme("Mirelurk Brood", "WastelandInsect", ExpeditionMobFamily.Mirelurk, 4,
+                ("N14MobMirelurk", 78), ("N14MobRadMirelurk", 22)),
+            HodgepodgeMobTheme("Mixed Wasteland Predators", "WastelandAnimal", ExpeditionMobFamily.Wildlife, 45,
+                ("N14MobNightstalkerCub", 25), ("N14MobNightstalker", 18), ("N14MobYaoguai", 8),
+                ("N14MobMolerat", 28), ("N14MobDogFeral", 21)),
+            HodgepodgeMobTheme("Mixed Irradiated Vermin", "WastelandInsect", ExpeditionMobFamily.Wildlife, 55,
+                ("N14MobRadroach", 23), ("N14MobBloatfly", 16), ("N14MobGiantAnt", 15),
+                ("N14MobGiantFireAnt", 6), ("N14MobRadscorpion", 13), ("N14MobRadscorpionBark", 6),
+                ("N14MobMirelurk", 15), ("N14MobRadMirelurk", 6)),
         },
 
         DecalPool        = new[] { "DirtHeavy", "DirtMedium", "Damaged", "Rust", "burnt1", "burnt2", "Remains" },
@@ -485,7 +524,7 @@ public static class UndergroundThemeProfiles
             // Tunnel — the most common passage type
             new()
             {
-                RoomType = RoomType.SewerTunnel, Weight = 35, MaxCount = 8,
+                RoomType = RoomType.SewerTunnel, Weight = 35, MaxCount = 10,
                 MinW = 5, MaxW = 9, MinH = 12, MaxH = 22,
                 FurniturePoolKey = "tunnel",
                 RequiredFeatures = { "N14GasPipeStraight" },
@@ -493,10 +532,9 @@ public static class UndergroundThemeProfiles
             // Junction — intersection chamber
             new()
             {
-                RoomType = RoomType.SewerJunction, Weight = 15, MaxCount = 5,
+                RoomType = RoomType.SewerJunction, Weight = 15, MaxCount = 6,
                 MinW = 7, MaxW = 13, MinH = 7, MaxH = 13,
                 FurniturePoolKey = "junction",
-                RequiredFeatures = { "N14APCBreaker" },
                 AdjacencyPreferences = { RoomType.SewerTunnel },
             },
             // Grotto — natural cavern
@@ -601,7 +639,6 @@ public static class UndergroundThemeProfiles
                 "N14GasPipeBend",            // pipe turn where the tunnel curves
                 "N14GasPipeFourway",         // branch point on the main run
                 "N14WallmountVent",          // drainage/exhaust vent fixture on wall
-                "N14APCBreaker",             // junction box with sprung panel
                 "N14WallmountVentOpen",      // #Misfits Fix - replaced decal N14GraffitiArrow (not spawnable)
                 "N14JunkTincan",             // discarded, evidence of passage
                 // Tier 3
@@ -640,7 +677,6 @@ public static class UndergroundThemeProfiles
                 // Tier 2
                 "N14GasPipeStraight",        // intake and output lines from the pump
                 "N14GasPipeBend",            // routing the flow away from the unit
-                "N14APCBreaker",             // maintenance panel on the wall
                 "N14ComputerTerminalWall",   // pressure and flow monitoring
                 "N14Wrench",                 // left beside a fitting mid-job
                 "N14JunkLunchbox",           // the maintenance worker's lunch
@@ -707,23 +743,32 @@ public static class UndergroundThemeProfiles
             },
         },
 
-        MobGroups = new[]
+        MobThemes = new[]
         {
-            new[]
-            {
-                ("N14MobRadroach", 30), ("N14MobBloatfly", 18), ("N14MobMolerat", 16),
-                ("N14MobGiantAnt", 10), ("N14MobRadscorpion", 7),
-            },
-            new[]
-            {
-                ("N14MobMirelurk", 30), ("N14MobRadMirelurk", 10),
-                ("N14MobRadhog", 8), ("N14MobNightstalker", 4),
-            },
-            new[]
-            {
-                ("N14MobGhoulFeral", 30), ("N14MobGhoulFeralRotter", 20),
-                ("N14MobGhoulFeralReaver", 8),
-            },
+            FocusedMobTheme("Mirelurk Brood", "WastelandInsect", ExpeditionMobFamily.Mirelurk, 24,
+                ("N14MobMirelurk", 75), ("N14MobRadMirelurk", 25)),
+            FocusedMobTheme("Feral Ghoul Warren", "Feral", ExpeditionMobFamily.Ghoul, 18,
+                ("N14MobGhoulFeral", 52), ("N14MobGhoulFeralRotter", 33), ("N14MobGhoulFeralReaver", 15)),
+            FocusedMobTheme("Nightstalker Den", "WastelandAnimal", ExpeditionMobFamily.Nightstalker, 14,
+                ("N14MobNightstalkerCub", 60), ("N14MobNightstalker", 40)),
+            FocusedMobTheme("Radscorpion Nest", "WastelandInsect", ExpeditionMobFamily.Radscorpion, 14,
+                ("N14MobRadscorpion", 65), ("N14MobRadscorpionBark", 35)),
+            FocusedMobTheme("Super Mutant Camp", "SuperMutant", ExpeditionMobFamily.SuperMutant, 12,
+                ("N14MobSuperMutantNPC", 24), ("N14MobSuperMutantMelee", 22),
+                ("N14MobSuperMutantRanged", 17), ("N14MobSuperMutantArmored", 8),
+                ("N14MobNightkin", 12), ("N14MobNightkinVeteran", 7), ("N14MobCentaur", 10)),
+            FocusedMobTheme("Giant Ant Colony", "WastelandInsect", ExpeditionMobFamily.Ant, 10,
+                ("N14MobGiantAnt", 65), ("N14MobGiantFireAnt", 35)),
+            FocusedMobTheme("Deathclaw Lair", "Deathclaw", ExpeditionMobFamily.Deathclaw, 8,
+                ("N14MobDeathclaw", 55), ("N14MobDeathclawAlbino", 22),
+                ("N14MobDeathclawMetal", 13), ("N14MobDeathclawicy", 10)),
+            HodgepodgeMobTheme("Mixed Wasteland Predators", "WastelandAnimal", ExpeditionMobFamily.Wildlife, 40,
+                ("N14MobNightstalkerCub", 25), ("N14MobNightstalker", 20), ("N14MobYaoguai", 12),
+                ("N14MobMolerat", 25), ("N14MobDogFeral", 18)),
+            HodgepodgeMobTheme("Mixed Irradiated Vermin", "WastelandInsect", ExpeditionMobFamily.Wildlife, 60,
+                ("N14MobRadroach", 18), ("N14MobBloatfly", 12), ("N14MobGiantAnt", 14),
+                ("N14MobGiantFireAnt", 7), ("N14MobRadscorpion", 13), ("N14MobRadscorpionBark", 7),
+                ("N14MobMirelurk", 20), ("N14MobRadMirelurk", 9)),
         },
 
         DecalPool        = new[] { "DirtHeavy", "DirtLight", "DirtMedium", "Dirt", "Damaged", "Rust", "DirtHeavyMonotile" },
@@ -756,7 +801,7 @@ public static class UndergroundThemeProfiles
             // Platform — long station areas, most common
             new()
             {
-                RoomType = RoomType.MetroPlatform, Weight = 30, MaxCount = 7,
+                RoomType = RoomType.MetroPlatform, Weight = 30, MaxCount = 9,
                 MinW = 16, MaxW = 26, MinH = 6, MaxH = 10,
                 FurniturePoolKey = "platform",
                 RequiredFeatures = { "N14JunkBench" },
@@ -765,7 +810,7 @@ public static class UndergroundThemeProfiles
             // Tunnel — transit passages
             new()
             {
-                RoomType = RoomType.MetroTunnel, Weight = 20, MaxCount = 7,
+                RoomType = RoomType.MetroTunnel, Weight = 20, MaxCount = 10,
                 MinW = 6, MaxW = 10, MinH = 16, MaxH = 26,
                 FurniturePoolKey = "tunnel",
                 RequiredFeatures = { "N14Rails" },
@@ -773,7 +818,7 @@ public static class UndergroundThemeProfiles
             // Maintenance — utility back-rooms
             new()
             {
-                RoomType = RoomType.MetroMaintenance, Weight = 20, MaxCount = 5,
+                RoomType = RoomType.MetroMaintenance, Weight = 20, MaxCount = 7,
                 MinW = 10, MaxW = 16, MinH = 10, MaxH = 16,
                 FurniturePoolKey = "maintenance",
                 RequiredFeatures = { "N14WorkbenchMetal", "N14ShelfMetal" },
@@ -782,7 +827,7 @@ public static class UndergroundThemeProfiles
             // Depot — cargo area, moderate
             new()
             {
-                RoomType = RoomType.MetroDepot, Weight = 15, MaxCount = 4,
+                RoomType = RoomType.MetroDepot, Weight = 15, MaxCount = 5,
                 MinW = 10, MaxW = 16, MinH = 10, MaxH = 16,
                 FurniturePoolKey = "depot",
                 RequiredFeatures = { "N14BlackBarrelFull" },
@@ -885,7 +930,6 @@ public static class UndergroundThemeProfiles
                 // Tier 2
                 "N14RailsTurnNE",            // the line bends here
                 "N14GasPipeStraight",        // cable conduit along the wall
-                "N14APCBreaker",             // junction box at a maintenance interval
                 "N14WallmountVentDamaged",   // blown vent; the tunnel had forced-air ventilation
                 "N14LightSmallEmpty",        // dead light overhead; this section went dark
                 "N14DecorFloorBoard5",       // fallen ceiling panel across the track bed
@@ -902,7 +946,6 @@ public static class UndergroundThemeProfiles
             ["maintenance"] = new[]
             {
                 // Tier 2
-                "N14APCBreaker",             // the panel this room exists to service
                 "N14ClosetGrey1",            // locker with a uniform still inside
                 "N14ClosetGrey2",            // second locker, hanging open
                 "N14MopBucket",              // in the corner; the crew cleaned too
@@ -959,24 +1002,36 @@ public static class UndergroundThemeProfiles
             },
         },
 
-        MobGroups = new[]
+        MobThemes = new[]
         {
-            new[]
-            {
-                ("N14MobGhoulFeral", 30), ("N14MobGhoulFeralRotter", 20),
-                ("N14MobGhoulFeralReaver", 10),
-            },
-            new[]
-            {
-                ("N14MobRaiderPsycho", 25), ("N14MobRaiderFernMelee", 18),
-                ("N14MobRaiderEnforcerMelee", 12), ("N14MobRaiderPsychoRanged", 10),
-                ("N14MobRaiderHunter", 6), ("N14MobRaiderSkrimisher", 6),
-            },
-            new[]
-            {
-                ("N14MobRadroach", 28), ("N14MobMolerat", 20), ("N14MobDogFeral", 12),
-                ("N14MobNightstalkerCub", 8), ("N14MobNightstalker", 4),
-            },
+            FocusedMobTheme("Feral Ghoul Infestation", "Feral", ExpeditionMobFamily.Ghoul, 25,
+                ("N14MobGhoulFeral", 50), ("N14MobGhoulFeralRotter", 32), ("N14MobGhoulFeralReaver", 18)),
+            FocusedMobTheme("Super Mutant Occupation", "SuperMutant", ExpeditionMobFamily.SuperMutant, 20,
+                ("N14MobSuperMutantNPC", 24), ("N14MobSuperMutantMelee", 22),
+                ("N14MobSuperMutantRanged", 17), ("N14MobSuperMutantArmored", 8),
+                ("N14MobNightkin", 12), ("N14MobNightkinVeteran", 7), ("N14MobCentaur", 10)),
+            FocusedMobTheme("Raider Holdout", "Raider", ExpeditionMobFamily.Raider, 18,
+                ("N14MobRaiderPsycho", 32), ("N14MobRaiderFernMelee", 23),
+                ("N14MobRaiderEnforcerMelee", 16), ("N14MobRaiderPsychoRanged", 13),
+                ("N14MobRaiderHunter", 8), ("N14MobRaiderSkrimisher", 8)),
+            FocusedMobTheme("Nightstalker Den", "WastelandAnimal", ExpeditionMobFamily.Nightstalker, 12,
+                ("N14MobNightstalkerCub", 60), ("N14MobNightstalker", 40)),
+            FocusedMobTheme("Radscorpion Nest", "WastelandInsect", ExpeditionMobFamily.Radscorpion, 9,
+                ("N14MobRadscorpion", 68), ("N14MobRadscorpionBark", 32)),
+            FocusedMobTheme("Giant Ant Colony", "WastelandInsect", ExpeditionMobFamily.Ant, 7,
+                ("N14MobGiantAnt", 68), ("N14MobGiantFireAnt", 32)),
+            FocusedMobTheme("Deathclaw Lair", "Deathclaw", ExpeditionMobFamily.Deathclaw, 5,
+                ("N14MobDeathclaw", 55), ("N14MobDeathclawAlbino", 22),
+                ("N14MobDeathclawMetal", 13), ("N14MobDeathclawicy", 10)),
+            FocusedMobTheme("Mirelurk Brood", "WastelandInsect", ExpeditionMobFamily.Mirelurk, 4,
+                ("N14MobMirelurk", 78), ("N14MobRadMirelurk", 22)),
+            HodgepodgeMobTheme("Mixed Wasteland Predators", "WastelandAnimal", ExpeditionMobFamily.Wildlife, 50,
+                ("N14MobNightstalkerCub", 25), ("N14MobNightstalker", 20), ("N14MobYaoguai", 10),
+                ("N14MobMolerat", 26), ("N14MobDogFeral", 19)),
+            HodgepodgeMobTheme("Mixed Irradiated Vermin", "WastelandInsect", ExpeditionMobFamily.Wildlife, 50,
+                ("N14MobRadroach", 20), ("N14MobBloatfly", 14), ("N14MobGiantAnt", 15),
+                ("N14MobGiantFireAnt", 6), ("N14MobRadscorpion", 14), ("N14MobRadscorpionBark", 6),
+                ("N14MobMirelurk", 18), ("N14MobRadMirelurk", 7)),
         },
 
         DecalPool        = new[] { "DirtLight", "DirtMedium", "Damaged", "Rust", "burnt3", "burnt4", "Remains" },
