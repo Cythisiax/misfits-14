@@ -29,6 +29,9 @@
             "name": "stage-3"
         },
         {
+            "name": "stage-4"
+        },
+        {
             "name": "produce"
         }
     ]
