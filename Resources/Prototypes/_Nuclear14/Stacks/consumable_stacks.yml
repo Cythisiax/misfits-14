@@ -83,6 +83,34 @@
   maxCount: 5
 
 - type: stack
+  id: N14LeavesTobaccoDried
+  name: dried tobacco leaves
+  icon: { sprite: _Nuclear14/Objects/Consumable/Smokeables/smokeables.rsi, state: tobacco_dried_1 }
+  spawn: N14LeavesTobaccoDried
+  maxCount: 5
+
+- type: stack
+  id: N14LeavesCannabisDried
+  name: dried cannabis leaves
+  icon: { sprite: _Nuclear14/Objects/Consumable/Smokeables/smokeables.rsi, state: cannabis_dried }
+  spawn: N14LeavesCannabisDried
+  maxCount: 5
+
+- type: stack
+  id: N14GroundTobacco
+  name: ground tobacco
+  icon: { sprite: _Nuclear14/Objects/Consumable/Smokeables/smokeables.rsi, state: tobacco_powderpile }
+  spawn: N14GroundTobacco
+  maxCount: 5
+
+- type: stack
+  id: N14GroundCannabis
+  name: ground cannabis
+  icon: { sprite: _Nuclear14/Objects/Consumable/Smokeables/smokeables.rsi, state: cannabis_powderpile }
+  spawn: N14GroundCannabis
+  maxCount: 5
+
+- type: stack
   id: DaturaFlower
   name: datura flower
   icon: { sprite: _Nuclear14/Objects/Consumable/Flora/wastelandflora.rsi, state: Datura }
