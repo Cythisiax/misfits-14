@@ -1791,7 +1791,7 @@
   result: N14LeavesTobaccoDried
   time: 10
   solids:
-    N14WastelandFloraWildCoyote: 1
+    N14FloraProduceWildCoyoteTobacco: 1
 
 - type: microwaveMealRecipe
   id: N14RecipeDriedCannabis
