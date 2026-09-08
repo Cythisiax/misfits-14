@@ -1105,6 +1105,7 @@
   - type: Tag
     tags:
     - Bottle # #Cythisiax Added - lets the medical belt store the ethanol bottle
+    - MisfitsEthanolBottle # for use in crafting recipes
 
 - type: entity
   name: aloe salve

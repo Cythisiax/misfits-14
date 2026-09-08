@@ -2,6 +2,7 @@
   parent: BaseMobSpeciesOrganic
   id: N14BaseMobRaider
   abstract: true
+  name: Raider
   suffix: AI
   components:
     - type: Damageable    # Misfits Add - Override from BaseMobSpeciesOrganic to prevent hunger/thirst damage

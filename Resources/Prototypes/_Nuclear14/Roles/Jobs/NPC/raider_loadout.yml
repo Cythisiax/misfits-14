@@ -1,7 +1,6 @@
 - type: startingGear
   id: RaiderPistolGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingShoesRaider
     mask: N14ClothingMaskBrownMask
@@ -11,7 +10,6 @@
 - type: startingGear
   id: RaiderHunterGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitBrahminFarmer
     shoes: N14ClothingBootsCowboy
     head: N14ClothingHeadHatCowboyBrown
@@ -22,7 +20,6 @@
 - type: startingGear
   id: RaiderSkrimisherGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitRags
     shoes: N14ClothingBootsLeather
     head: ClothingHeadHelmetBone
@@ -32,7 +29,6 @@
 - type: startingGear
   id: RaiderBossGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitWastelandDoc
     shoes: N14ClothingBootsLeather
     head: N14ClothingHeadHatBeanie
@@ -44,7 +40,6 @@
 - type: startingGear
   id: FernMercPrivateGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitCombat
     shoes: N14ClothingBootsLeather
     head: N14ClothingHeadHatArmyCap
@@ -55,7 +50,6 @@
 - type: startingGear
   id: FernMercSergeantGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitCombat
     shoes: N14ClothingBootsBlack
     head: N14ClothingHeadHatCombatHelmet
@@ -68,7 +62,6 @@
 - type: startingGear
   id: FernMercLieutenantGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitCombat
     shoes: N14ClothingBootsCombat
     head: N14ClothingHeadHatArmyBeret
@@ -80,7 +73,6 @@
 - type: startingGear
   id: EnforcerTrooperGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitMerc
     shoes: N14ClothingBootsLeather
     head: N14ClothingHeadHatBaseball
@@ -90,7 +82,6 @@
 - type: startingGear
   id: EnforcerWardenGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitManagerSuit
     shoes: N14ClothingBootsCombat
     mask: N14ClothingMaskGrill
@@ -100,7 +91,6 @@
 - type: startingGear
   id: EnforcerChiefGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitPreWarManager
     shoes: N14ClothingBootsCombatMK2
     head: ClothingHeadHatCowboyBountyHunter
@@ -113,7 +103,6 @@
 - type: startingGear
   id: EnforcerBeatcopGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitManagerSuit
     shoes: N14ClothingBootsFire
     hands: N14ClothingHandsGlovesBlackLeather
@@ -126,7 +115,6 @@
 - type: startingGear
   id: FernConscriptGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitCombat
     mask: ClothingMaskBandRed
     eyes: N14ClothingEyesSunGlasses
@@ -140,7 +128,6 @@
 - type: startingGear
   id: PsychoRaiderGear
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitRags
     eyes: N14ClothingEyesGlassesWelding
     shoes: N14ClothingShoesRaider

@@ -364,6 +364,25 @@
     - !type:TileNotBlocked
 
 - type: construction
+  name: low metal wall
+  id: N14WallMetalHalf
+  graph: N14HalfWall
+  startNode: start
+  targetNode: Metal
+  category: construction-category-structures
+  description: A low metal wall for cover and window placement.
+  icon:
+    sprite: _Nuclear14/Structures/Walls/ms13/half/metal.rsi
+    state: full
+  objectType: Structure
+  placementMode: SnapgridCenter
+  canRotate: false
+  canBuildInImpassable: false
+  hide: false
+  conditions:
+    - !type:TileNotBlocked
+
+- type: construction
   name: window bars
   id: N14WindowBars
   graph: N14WindowBars

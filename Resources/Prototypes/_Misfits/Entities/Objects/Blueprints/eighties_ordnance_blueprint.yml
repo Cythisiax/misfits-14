@@ -1,0 +1,10 @@
+- type: entity
+  parent: N14BlueprintBase
+  id: MisfitsBlueprintEightiesOrdnance
+  name: Eighties ordnance schematic
+  description: A stained collection of demolition sketches for improvised baseball and Nuka-Cola grenades.
+  components:
+  - type: Blueprint
+    recipes:
+    - MisfitsBPEightiesNukaGrenade
+    - MisfitsBPEightiesBaseballGrenade # #Misfits Add - inexpensive gang ordnance

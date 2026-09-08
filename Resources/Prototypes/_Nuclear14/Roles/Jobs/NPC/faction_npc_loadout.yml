@@ -2,7 +2,6 @@
 - type: startingGear
   id: TownMilitiaNPC
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitTownGuard
     outerClothing: N14ClothingOuterTownGuardLight
     mask: N14ClothingMaskBlackBalaclava
@@ -11,7 +10,6 @@
 - type: startingGear
   id: TownMilitiaGuardNPC
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitTownGuardLight
     outerClothing: N14ClothingOuterTownGuardLight
     shoes: N14ClothingBootsCombat
@@ -22,7 +20,6 @@
 - type: startingGear
   id: MBoSSerfNPC
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitSettlerRags
     shoes: N14ClothingShoesTribal
     eyes: ClothingEyesEyepatchColor
@@ -32,7 +29,6 @@
 - type: startingGear
   id: MBoSKnightNPC
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitBOSGreen
     outerClothing: N14ClothingOuterMBoSKnightArmor
     shoes: N14ClothingBootsLeather
@@ -64,7 +60,6 @@
 - type: startingGear
   id: NCRAGuardNPC
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingMPUniformNCRSnow
     shoes: N14ClothingBootsLeather
     gloves: N14ClothingHandsGlovesFur
@@ -74,7 +69,6 @@
 - type: startingGear
   id: NCRATrooperNPC
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformNCRSnow
     outerClothing: N14ClothingOuterNCRVestSnow
     shoes: N14ClothingBootsLeather
@@ -86,7 +80,6 @@
 - type: startingGear
   id: CaravanMercNPC
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitCaravanOveralls
     outerClothing: N14ClothingOuterPoliceVest
     shoes: N14ClothingBootsBlack
@@ -96,7 +89,6 @@
 - type: startingGear
   id: TribalSkirmisherNPC
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuitdrylanderTribal
     outerClothing: N14ClothingOuterTribalArmor
     head: N14ClothingDrylanderGoggles
@@ -107,7 +99,6 @@
 - type: startingGear
   id: TribalWarriorNPC
   equipment:
-    wallet: N14Wallet
     jumpsuit: N14ClothingUniformJumpsuittribalpantsm
     outerClothing: N14ClothingOuterTribalArmorHeavy
     head: N14ClothingTribalMuffaloskull

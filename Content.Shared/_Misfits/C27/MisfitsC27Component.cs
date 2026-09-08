@@ -17,7 +17,9 @@ public sealed partial class MisfitsC27Component : Component
 
     /// <summary>
     ///     Per-1000-J multiplier applied on top of <see cref="EmpShockDamage"/>. A standard
-    ///     1000 J pulse adds the flat damage; a 4000 J grenade adds 4× extra on top.
+    ///     1000 J pulse adds the flat damage; a 4000 J grenade adds 4× extra on top. The server
+    ///     caps this scaling for exceptionally large pulses so they cannot inflict five-digit
+    ///     damage and tear every limb from the C-27.
     /// </summary>
     [DataField]
     public float EmpDamagePerKiloJoule = 5f;

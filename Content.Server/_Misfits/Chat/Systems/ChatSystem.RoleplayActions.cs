@@ -174,13 +174,17 @@ public sealed partial class ChatSystem
             _adminLogger.Add(LogType.Chat, LogImpact.Low, $"Nameless emote from {ToPrettyString(source):user}: {action}");
     }
 
-    private string BuildEmoteWrappedMessage(EntityUid source, string escapedName, string action)
+    private string BuildEmoteWrappedMessage(EntityUid source, string escapedName, string action, int? fontSizeOverride = null)
     {
         var ent = Identity.Entity(source, EntityManager);
+        var message = FormatRoleplayActionMarkup(action);
+        if (fontSizeOverride is { } fontSize)
+            message = $"[font size={fontSize}]{message}[/font]";
+
         return Loc.GetString("chat-manager-entity-me-wrap-message",
             ("entityName", escapedName),
             ("entity", ent),
-            ("message", FormatRoleplayActionMarkup(action)));
+            ("message", message));
     }
 
     private string BuildDoWrappedMessage(string action)

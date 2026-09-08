@@ -13,6 +13,9 @@
     items:
       - id: N14CeremonialSword
       - id: N14LegionnaireShield
+      - id: N14WeaponShotgunAuto
+      - id: N14MagazineShotgun12
+        amount: 2
       - id: ClothingBeltQuiverSpear
       - id: N14PilumSpear
         amount: 3
@@ -39,6 +42,9 @@
     size: Huge
   - type: SpawnItemsOnUse
     items:
+      - id: N14Gladius
+      - id: N14WeaponPistol45Colt # #Misfits Change: .45 pistol Legion sidearm
+      - id: N14MagazinePistol45
       - id: N14SmellingSalts
         amount: 4
       - id: N14HandheldHealthAnalyzer
@@ -80,9 +86,9 @@
       - id: N14FoodTinK
         amount: 2
       - id: N14JunkCeramicFlask
-      - id: N14WeaponRifle308Battle
-      - id: ClipMagazine308Rifle
-        amount: 2
+      - id: N14WeaponRifleSKS #
+      - id: SKSEnbloc308
+        amount: 3
     sound:
       path: /Audio/Effects/unwrap.ogg
 
@@ -114,6 +120,8 @@
       - id: N14FoodTinK
         amount: 2
       - id: N14JunkCeramicFlask
+      - id: N14Machete
+      - id: N14WeaponPistol45Colt
     sound:
       path: /Audio/Effects/unwrap.ogg
 

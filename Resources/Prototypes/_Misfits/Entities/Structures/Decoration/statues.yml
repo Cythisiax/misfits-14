@@ -11,3 +11,38 @@
     state: bino_statue
     drawdepth: Mobs
     offset: "0.0,0.5"
+
+- type: entity
+  id: StatueNCRTotalVictoryMemorialMariaSalzzar
+  parent: BaseStructure
+  name: The NCR Total Victory Statue
+  suffix: Red
+  description: Before you is a stone war memorial depicting the Salt Dogs 1st Battalion's total victory over the sadist biker raider gang, the Eighties. It retells how Executive Officer Maria Salzzar led her men and routed over a quarter of the Eighties' known forces. The surviving Eighties that surrendered numbered in the hundreds needed to be transported back to NCR land to face justice, but the deployment just lacked the logistics to do so. In a display of tactical brilliance, XO Salzzar, ordered her personal C27 unit to remove the left legs of every POW to pre-empt any escape attempts and had her men repurpose the raider's very own bikes as prisoner transport. Each and every POW were given the death penalty. Since then Maria Salzzar has been promoted to 3 Star General. The C27 unit with her was later recycled after sustaining critical damage in a later mission. Its parts were used to help reconstruct Shady Sand's Ranger Statue of Liberty.
+  components:
+  - type: Fixtures
+    fixtures:
+      fix1:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-0.45,-0.45,0.45,0.45"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+      fix2:
+        shape:
+          !type:PhysShapeAabb
+          bounds: "-1,-1,1,-0.5"
+        density: 60
+        mask:
+        - MachineMask
+        layer:
+        - MidImpassable
+        - LowImpassable
+  - type: Sprite
+    noRot: true
+    sprite: _Misfits/Structures/Decoration/ncr_total_victory_statue.rsi
+    state: ncr_total_victory_statue
+    drawdepth: Mobs

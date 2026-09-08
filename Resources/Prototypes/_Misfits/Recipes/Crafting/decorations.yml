@@ -559,6 +559,7 @@
     state: boards_drought_ns-1
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -573,6 +574,7 @@
     state: boards_drought_ns-2
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -587,6 +589,7 @@
     state: boards_drought_ns-3
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -601,6 +604,7 @@
     state: boards_drought_ns-4
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -615,6 +619,7 @@
     state: boards_drought_ns-5
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -629,6 +634,7 @@
     state: boards_drought_ns-6
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -643,6 +649,7 @@
     state: boards_drought_we-1
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -657,6 +664,7 @@
     state: boards_drought_we-2
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -671,6 +679,7 @@
     state: boards_drought_we-3
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -685,6 +694,7 @@
     state: boards_drought_we-4
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -699,6 +709,7 @@
     state: boards_drought_we-5
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -713,6 +724,7 @@
     state: boards_drought_we-6
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -727,6 +739,7 @@
     state: boards_mammoth_ns-1
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -741,6 +754,7 @@
     state: boards_mammoth_ns-2
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -755,6 +769,7 @@
     state: boards_mammoth_ns-3
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -769,6 +784,7 @@
     state: boards_mammoth_ns-4
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -783,6 +799,7 @@
     state: boards_mammoth_ns-5
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -797,6 +814,7 @@
     state: boards_mammoth_ns-6
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -811,6 +829,7 @@
     state: boards_mammoth_we-1
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -825,6 +844,7 @@
     state: boards_mammoth_we-2
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -839,6 +859,7 @@
     state: boards_mammoth_we-3
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -853,6 +874,7 @@
     state: boards_mammoth_we-4
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -867,6 +889,7 @@
     state: boards_mammoth_we-5
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 - type: construction
   name: floor board
@@ -881,6 +904,7 @@
     state: boards_mammoth_we-6
   objectType: Structure
   placementMode: PlaceFree
+  canRotate: true
 
 # #Cythisiax Added - Crafting menu expansion: rebar structure
 - type: construction

@@ -349,3 +349,8 @@
   id: MisfitsBlueprintEightiesMotorbikes
   name: lathe-category-blueprint-eighties-motorbikes
 
+# === EIGHTIES ORDNANCE === # #Misfits Add - faction council grenade production
+- type: latheCategory
+  id: MisfitsBlueprintEightiesOrdnance
+  name: lathe-category-blueprint-eighties-ordnance
+

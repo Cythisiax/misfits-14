@@ -5,7 +5,6 @@
 - type: startingGear
   id: MobSecDogLaikaGear
   equipment:
-    wallet: N14Wallet
     eyes: ClothingEyesGlassesSunglasses
 
 #Oldstation Roles

@@ -31,6 +31,7 @@
   - type: StorageFill
     contents:
     - id: MisfitsBlueprintMotorbikeAssemblyManual
+    - id: MisfitsBlueprintEightiesOrdnance # #Misfits Add - faction council improvised ordnance production
 
 
 - type: entity

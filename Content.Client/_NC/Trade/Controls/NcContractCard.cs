@@ -479,6 +479,27 @@ public sealed class NcContractCard : PanelContainer
             NcUiIconFit.Fit(view, _sprites, protoId, targetPx: TargetIconPx, paddingPx: 4);
             targetRow.AddChild(view);
         }
+        else if (targetProto is { Abstract: true })
+        {
+            // Abstract contract targets (for example the shared raider base)
+            // accept any concrete descendant, but EntityPrototypeView cannot
+            // spawn an abstract entity. Use the prototype icon directly so
+            // these broad targets still have a visual identifier.
+            var iconProto = FindConcreteDescendant(targetProto);
+            var icon = iconProto == null ? null : _sprites.GetPrototypeIcon(iconProto.ID).Default;
+            if (icon != null)
+            {
+                targetRow.AddChild(new TextureRect
+                {
+                    Texture = icon,
+                    MinSize = new(TargetIconPx, TargetIconPx),
+                    MaxSize = new(TargetIconPx, TargetIconPx),
+                    Stretch = TextureRect.StretchMode.KeepAspectCentered,
+                    Margin = new(0, 0, 4, 0),
+                    MouseFilter = MouseFilterMode.Ignore
+                });
+            }
+        }
 
         var targetName = targetProto?.Name ?? protoId ?? Loc.GetString("nc-store-unknown-item");
 
@@ -503,6 +524,35 @@ public sealed class NcContractCard : PanelContainer
             return proto.Name;
 
         return protoId;
+    }
+
+    private EntityPrototype? FindConcreteDescendant(EntityPrototype abstractProto)
+    {
+        foreach (var candidate in _proto.EnumeratePrototypes<EntityPrototype>())
+        {
+            if (candidate.Abstract || candidate.ID == abstractProto.ID)
+                continue;
+
+            var pending = new Stack<string>(candidate.Parents ?? []);
+            var visited = new HashSet<string>(StringComparer.Ordinal);
+            while (pending.Count > 0)
+            {
+                var parentId = pending.Pop();
+                if (!visited.Add(parentId))
+                    continue;
+
+                if (parentId == abstractProto.ID)
+                    return candidate;
+
+                if (_proto.TryIndex<EntityPrototype>(parentId, out var parent))
+                {
+                    foreach (var grandparentId in parent.Parents ?? [])
+                        pending.Push(grandparentId);
+                }
+            }
+        }
+
+        return null;
     }
 
     private static string BuildProtoTooltip(EntityPrototype? proto)

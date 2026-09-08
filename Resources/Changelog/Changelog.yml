@@ -11270,3 +11270,226 @@ Entries:
   id: 6407
   time: '2026-09-05T03:20:16.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1861
+- author: evil-two-info-types
+  changes:
+    - type: Add
+      message: >-
+        After rigorous field testing, Vault-Tec's RND division has finally fixed
+        the many glaringly obvious flaws in the new advanced vault security
+        suit!
+  id: 6408
+  time: '2026-09-05T22:35:32.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1862
+- author: JohnKieser
+  changes:
+    - type: Add
+      message: >-
+        The NCR courtyard has gone through some remodeling to accommodate a new
+        war memorial statue. It has a detailed and very accurate account of how
+        commander Maria Salzzar defeated the 80s in an operation.
+    - type: Add
+      message: Someone forgot their stuff at NCR base
+  id: 6409
+  time: '2026-09-05T22:38:52.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1863
+- author: Vixting
+  changes:
+    - type: Add
+      message: Added humanitarian aid mail to the vault
+    - type: Fix
+      message: Fixed vault janitor closet haveing no power
+    - type: Add
+      message: Delivery of vault mail now rewards budget
+    - type: Add
+      message: Added vault tech stamp & header
+    - type: Fix
+      message: Fixed me accidentally deleting the vault mine expansion
+  id: 6410
+  time: '2026-09-05T22:40:12.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1864
+- author: Tytos
+  changes:
+    - type: Tweak
+      message: adjusted some legion kits and armor values
+    - type: Tweak
+      message: adjusted legion time reqs
+  id: 6411
+  time: '2026-09-05T22:48:40.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1865
+- author: cyhtisiax
+  changes:
+    - type: Fix
+      message: deathclaw .ftl
+    - type: Fix
+      message: enclave recruit function for JCO > CO > Reformer
+    - type: Fix
+      message: cigarettes volume, 10u nic, 10u open for 20u cap
+    - type: Fix
+      message: supermutant SFX
+    - type: Fix
+      message: contract raider bodies
+    - type: Fix
+      message: attempt fix at lumber auto cuts
+    - type: Fix
+      message: remove raider faction NPCs having wallets
+    - type: Fix
+      message: >-
+        Enclave Head Scientist now show on overwatch/tacmap properly, no longer
+        'unknnown',
+  id: 6412
+  time: '2026-09-05T23:39:14.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1869
+- author: Amaster222
+  changes:
+    - type: Add
+      message: dead-rum recipe for you salt enjoyers.
+    - type: Tweak
+      message: brahmin milk can now be used in place of milk in several drink recipes.
+    - type: Tweak
+      message: re-added red bool to soda dispensers.
+    - type: Fix
+      message: >-
+        Bartenders everywhere feel dimensions shift, you need to shake and stir
+        to mix certain drinks once again!
+  id: 6413
+  time: '2026-09-06T03:39:00.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1860
+- author: Enkidienne
+  changes:
+    - type: Add
+      message: Binocular crafting recipe to tinker workbench
+  id: 6414
+  time: '2026-09-06T23:39:18.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1876
+- author: Enkidienne
+  changes:
+    - type: Add
+      message: Throwing Knives to loadouts.
+    - type: Add
+      message: Throwing Knives to weapon workbenches
+    - type: Tweak
+      message: Throwing knives are now able to be dipped.
+    - type: Tweak
+      message: Throwing knives now fit in belts.
+  id: 6415
+  time: '2026-09-07T01:53:49.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1868
+- author: Oli
+  changes:
+    - type: Add
+      message: Khan ID and Big Sunglasses
+    - type: Tweak
+      message: >-
+        Khan loadout stuff to Khans exclusive & timelocked khans to eight hours
+        as wastelander.
+  id: 6416
+  time: '2026-09-07T14:32:53.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1881
+- author: Vixting
+  changes:
+    - type: Fix
+      message: 'fix pacifists being able to ignite dynamite '
+  id: 6417
+  time: '2026-09-07T14:40:48.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1883
+- author: Superspheres
+  changes:
+    - type: Add
+      message: >-
+        Added new grenade, 40mm ammunition, Molotov, road-spike, and demolition
+        options.
+    - type: Tweak
+      message: >-
+        Rebalanced explosive damage, fragmentation, fire, EMP, and faction
+        crafting access.
+    - type: Fix
+      message: >-
+        Fixed impact grenades, Molotov sounds, road-spike collisions, and
+        excessive EMP damage.
+  id: 6418
+  time: '2026-09-07T15:39:19.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1882
+- author: cythisiax
+  changes:
+    - type: Add
+      message: >-
+        Expeditions now have their own guaranteed loot markers. Normal world
+        loot chances are unchanged.
+    - type: Tweak
+      message: >-
+        Junk scatter reduced from 1-3 piles to 0-1. Interior rooms now get 1-2
+        guaranteed Tier 1/2 weapon caches.
+    - type: Tweak
+      message: >-
+        Super mutant and deathclaw expeditions get 2 extra Tier 3 caches in
+        objective rooms.
+    - type: Tweak
+      message: >-
+        You can now use an active expedition ladder to join an expedition
+        already in progress. Late joins enter at the safe spawn.
+    - type: Tweak
+      message: >-
+        Dying in an expedition sends your body back to the ladder you entered
+        from. Going crit does not.
+    - type: Tweak
+      message: Expedition radios can now communicate with the main map.
+    - type: Tweak
+      message: >-
+        Boss rooms drop guaranteed Tier 4 loot. Expeditions with multiple bosses
+        bump those rewards to Tier 5.
+    - type: Tweak
+      message: Connections between rooms can now generate 1, 2, or 3 tiles wide.
+    - type: Fix
+      message: remove overall expedition size to 144x144 at 5 players
+  id: 6419
+  time: '2026-09-07T16:20:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1884
+- author: Bradysgaming
+  changes:
+    - type: Tweak
+      message: Nerfed the CaneBlade
+  id: 6420
+  time: '2026-09-07T21:50:07.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1886
+- author: Bradysgaming
+  changes:
+    - type: Add
+      message: Added "Ambassador" lore role for the Town
+  id: 6421
+  time: '2026-09-08T03:11:03.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1889
+- author: Tytos
+  changes:
+    - type: Tweak
+      message: buffed legion equipment and kits
+    - type: Tweak
+      message: made legion tacmap work properly
+    - type: Tweak
+      message: changed bible of mars to torch of mars
+  id: 6422
+  time: '2026-09-08T03:51:03.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1885
+- author: cythiaiax
+  changes:
+    - type: Fix
+      message: Terminal Database adjustments for MOVE/DEL/PERM DEL buttons
+    - type: Fix
+      message: >-
+        expedition mutant pool spawning Armored variant that had invalid .rsi >>
+        centuar
+    - type: Tweak
+      message: Updated map render
+    - type: Tweak
+      message: expedition cooldown 30 > 10 minutes
+    - type: Add
+      message: Brahdo sprite(s) (one for now) by Wollow@Discord, proper .json attached
+  id: 6423
+  time: '2026-09-08T03:51:43.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1888
+- author: sssaaagggeee
+  changes:
+    - type: Add
+      message: brick
+  id: 6424
+  time: '2026-09-08T13:24:13.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1891

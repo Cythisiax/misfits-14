@@ -57,6 +57,7 @@
           TribalFarmer: [ 4, 4 ]
           TribalShaman: [ 3, 3 ] # #Misfits Change - renamed from TribalHealer
           SyntheticProtectronTribal: [1, 1]
+          Ambassador: [1, 1]
           TownMayor: [ 1, 1 ]
           TownSheriff: [ 1, 1 ]
           TownDeputy: [ 6, 6 ]
@@ -90,7 +91,7 @@
           NCRSoldier: [ 4, 4 ]
           NCRCadet: [ 7, 7 ]
           NCRPrisoner : [ 2, 2 ]
-          NCRCitizen : [ 4, 4 ]
+          NCRCitizen : [ 6, 6 ]
           NCRTrader : [ 1, 1 ]
           NCRMilitaryPoliceSergeant: [ 1, 1 ]
           NCRMilitaryPoliceRecruit: [ 2, 2 ]
@@ -126,35 +127,31 @@
           CaesarLegionLegate: [ 1, 0 ] # Forge-Legion # #Misfits Tweak - 0 active slots (admin-notify role)
           CaesarLegionCenturion: [ 1, 1 ] # Forge-Legion
           CaesarLegionVeteranDecanus: [ 1, 1 ] # Forge-Legion
-          CaesarLegionDean: [ 1, 1 ] # Forge-Legion
+          CaesarLegionDean: [ 1, 2 ] # Forge-Legion
           CaesarLegionForgemaster: [ 1, 1] # Forge-Legion. heh, get it? FORGE legion
-          CaesarLegionLegionnaireVeteran: [ 2, 2 ] # Forge-Legion
-          CaesarLegionLegionnaireWarrior: [ 2, 2 ] # Forge-Legion
+          CaesarLegionLegionnaireVeteran: [ 3, 3 ] # Forge-Legion
+          CaesarLegionLegionnaireWarrior: [ 3, 3 ] # Forge-Legion
           CaesarLegionLegionnaireRecruit: [ 4, 4 ] # Forge-Legion
-          CaesarLegionVexillarius: [ 3, 3 ] # Forge-Legion
+          CaesarLegionVexillarius: [ 2, 2 ] # Forge-Legion
           CaesarLegionFrumentarii: [ 2, 2 ] # Forge-Legion # #Misfits Tweak - raised total and initial slots from 1 to 2
           CaesarLegionPrimeDecanus: [ 1, 1 ] # Misfits-Legion
-          CaesarLegionExplorer: [ 1, 6 ] # Misfits-Legion
+          CaesarLegionExplorer: [ 4, 4 ] # Misfits-Legion
           CaesarLegionOptio: [ 1, 1 ] # Misfits-Legion
           CaesarLegionPriestessOfMars: [ 1, 1 ] # Misfits-Legion — Priestess of Mars late-join slot
           CaesarLegionAcolyteOfMars: [ 3, 3 ] # Misfits-Legion — Acolyte of Mars late-join slot
           CaesarLegionHoundmaster: [ 1, 1 ] # Forge-Legion
           # #Misfits Change: CaesarLegionRecruit slot removed — CaesarLegionLegionnaireRecruit (line 103) already covers entry-level.
           CaesarLegionAuxilia: [ 4, 4 ] # #Misfits Change - activated
-          CaesarLegionCitizen: [ 4, 4 ] #
+          CaesarLegionCitizen: [ 6, 6 ] #
           CaesarLegionTrader: [ 1, 1 ] #
-          CaesarLegionSlave: [ 2, 2 ] # Forge-Legion
-          # #Misfits Change - Khan removed (deactivated); Eighties expanded to 5-rank department.
+          CaesarLegionSlave: [ 3, 3 ] # Forge-Legion
+          # #Misfits Change - Khan restored as the single Great Khan role.
           EightiesTheBlock:  [ 1, 1 ] # leader
           EightiesCylinders: [ 1, 1 ] # officer tier
           EightiesPistons:   [ 4, 4 ] # NCO tier
           EightiesOilers:    [ 4, 4 ] # specialist tier
           EightiesRoadRash:  [ 4, 4 ] # recruit tier
-          WhiteLegs: [ 16, 16 ] # #Misfits Change - keep the compatible White Legs base role live at 16 slots until ranked markers are placed.
-          WhiteLegsWarChief: [ 0, 0 ] # #Misfits Add - prototype-ready rank, no placed map marker yet.
-          WhiteLegsBoneBreaker: [ 0, 0 ] # #Misfits Add - prototype-ready rank, no placed map marker yet.
-          WhiteLegsStormDrummer: [ 0, 0 ] # #Misfits Add - prototype-ready rank, no placed map marker yet.
-          # WhiteLegsPainMaker: [ 0, 0 ] # #Misfits Change - legacy hidden rank removed from join rotation; WhiteLegs now covers the visible tribal entry slot.
+          GreatKhan: [ 5, 5 ] # #Misfits Change - five Great Khan slots.
           FollowerVolunteer: [ 2, 2 ] # #Misfits Change - Followers job replaced by ranked hierarchy
           FollowerGuard: [ 2, 2 ]      # #Misfits Add - FOTA compound guards
           FollowerDoctor: [ 2, 2 ]   # #Misfits Add - Doctor rank slot

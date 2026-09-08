@@ -1039,6 +1039,22 @@
 
     Lead: 400
 
+# #Misfits Add - Issue #968 faction ordnance: Brotherhood plasma grenade.
+- type: latheRecipe
+  id: MisfitsBPBoSGrenadePlasma
+  result: MisfitsGrenadePlasma
+  category: N14BlueprintBoSAmmoT3
+  completetime: 12
+  requiresBlueprint: true
+  applyMaterialDiscount: false
+  availableFaction:
+  - BrotherhoodOfSteel
+  materials:
+    Steel: 1000
+    Glass: 600
+    Circuitry: 300
+    ScrapElectronic: 500
+
 # --- BoS Tier 4 Ammo ---
 - type: latheRecipe
   id: N14BPBoSAmmoFusionCoreRed

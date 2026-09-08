@@ -17,7 +17,7 @@
       requirements:
         - !type:CharacterPlaytimeRequirement
           tracker: CaesarLegionAuxilia
-          min: 14400 # 4 hours
+          min: 21600 # 6 hours # make this higher later but for rn no one is playing this role.
     - !type:CharacterSpeciesRequirement
       species:
         - Human

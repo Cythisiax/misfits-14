@@ -113,15 +113,16 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/deanveteranarmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 0.95 # This should not be straight worse than Prime. Many picked Prime over Veteran because of this. 
-    sprintModifier: 0.95 
+    walkModifier: 0.95 # This should not be straight worse than Prime. Many picked Prime over Veteran because of this.
+    sprintModifier: 0.95
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.65
-        Slash: 0.65
+        Blunt: 0.60
+        Slash: 0.60
         Piercing: 0.55 # Billy again. This shit is for veteran decani. 35% with 10% slow? you fuckin kidding me? buff to 45%.
-        Heat: 0.65 # legion should not have heat protection over Blunt/slash. >:(
+        Heat: 0.60 # legion should not have heat protection over Blunt/slash. >:(
+                   # BUT WHAT IF IT DID ANYWAY? -tytos
   - type: ExplosionResistance
     damageCoefficient: 0.65
 #  - type: ClothingSpecialModifier
@@ -153,7 +154,7 @@
   parent: N14FalloutArmorBase
   id: N14ClothingOuterDeanLegionnaireRecruitArmor
   name: heavy legionary armor
-  description: "The heavy version of legionary armor slows down the wearer, but gives good protection from external threats."
+  description: "Heavier Legion armor for Decanii."
   components:
   - type: Sprite
     sprite: Corvax/Clothing/OuterClothing/Armor/deanrecruitarmor.rsi
@@ -190,10 +191,10 @@
   - type: Armor
     modifiers:
       coefficients:
-        Blunt: 0.75
-        Slash: 0.75
+        Blunt: 0.7
+        Slash: 0.7
         Piercing: 0.7
-        Heat: 0.8 #Legion weak to heat type damage
+        Heat: 0.75 #Legion weak to heat type damage
   - type: ExplosionResistance
     damageCoefficient: 0.8
 
@@ -208,8 +209,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/reconnaissancearmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.05 #same as ranger recon
-    sprintModifier: 1.05
+    walkModifier: 1.10
+    sprintModifier: 1.10
   - type: Armor
     modifiers:
       coefficients:
@@ -231,8 +232,8 @@
   - type: Clothing
     sprite: Corvax/Clothing/OuterClothing/Armor/lightreconnaissancearmor.rsi
   - type: ClothingSpeedModifier
-    walkModifier: 1.10 #A little faster than the previous recon
-    sprintModifier: 1.10
+    walkModifier: 1.15 #A little faster than the previous recon
+    sprintModifier: 1.15
   - type: Armor
     modifiers:
       coefficients:
@@ -330,10 +331,10 @@
       coefficients:
         Blunt: 0.80
         Slash: 0.80
-        Piercing: 0.80
-        Heat: 0.85
+        Piercing: 0.75
+        Heat: 0.70 #made entirely of leather, so it should offer better heat prot. also gives legion an actual option for heat armor
   - type: ExplosionResistance
-    damageCoefficient: 0.90
+    damageCoefficient: 0.80
 
 - type: entity
   parent: N14FalloutArmorBase

@@ -5,7 +5,7 @@
     variation: 0.08
   sounds:
     Scream:
-      collection: N14SupermutantAlert
+      collection: N14SupermutantAttack
     Laugh:
       collection: MaleLaugh
     Sneeze:

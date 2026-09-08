@@ -650,7 +650,8 @@ public sealed partial class ChatSystem : SharedChatSystem
         bool hideLog = false,
         bool checkEmote = true,
         bool ignoreActionBlocker = false,
-        NetUserId? author = null
+        NetUserId? author = null,
+        int? fontSizeOverride = null
         )
     {
         if (!_actionBlocker.CanEmote(source) && !ignoreActionBlocker)
@@ -674,7 +675,7 @@ public sealed partial class ChatSystem : SharedChatSystem
         string name = FormattedMessage.EscapeText(nameOverride ?? Name(ent));
 
         // #Misfits Change
-        var wrappedMessage = BuildEmoteWrappedMessage(source, name, action);
+        var wrappedMessage = BuildEmoteWrappedMessage(source, name, action, fontSizeOverride);
 
         if (checkEmote)
             TryEmoteChatInput(source, action);

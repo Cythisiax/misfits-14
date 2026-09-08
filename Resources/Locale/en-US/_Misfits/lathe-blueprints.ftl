@@ -95,4 +95,5 @@ lathe-category-blueprint-c27-combat = C-27 Combat Armor
 lathe-category-blueprint-zax-equipment = Z.A.X Equipment
 
 lathe-category-blueprint-eighties-motorbikes = Eighties Motorbike Flatpacks
+lathe-category-blueprint-eighties-ordnance = Eighties Ordnance
 

@@ -1,10 +1,9 @@
 // #Misfits Add - Per-round Enclave recruitment system.
-// #Cythisiax Edited - The "Recruit" verb is now restricted to Enclave Junior
-// Officers (previously any Enclave department member could recruit).
+// #Cythisiax Edited - The "Recruit" verb is restricted to Enclave command
+// officers: Junior Officer, Senior Officer, Commander, and Reformer.
 // Recruited players are assigned the EnclaveRecruit job so their time counts
 // toward Enclave department role timers. Resets on death or round restart.
 
-using System.Linq;
 using Content.Server.EUI;
 using Content.Server.Mind;
 using Content.Shared._Misfits.Enclave;
@@ -31,11 +30,6 @@ public sealed class EnclaveRecruitSystem : EntitySystem
     [Dependency] private readonly SharedPopupSystem _popup = default!;
     [Dependency] private readonly EuiManager _eui = default!;
     [Dependency] private readonly EnclaveMicroBombSystem _microBombs = default!;
-
-    /// <summary>#Cythisiax Edited - Only this Enclave job may use the Recruit verb.
-    /// The former EnclaveDepartmentId const was removed since recruitment is no
-    /// longer open to every Enclave department member.</summary>
-    private const string EnclaveRecruiterJobId = "EnclaveJuniorOfficer";
 
     /// <summary>The literal job assigned to accepted recruits.</summary>
     private const string EnclaveRecruitJobId = "EnclaveRecruit";
@@ -242,7 +236,7 @@ public sealed class EnclaveRecruitSystem : EntitySystem
     }
 
     /// <summary>
-    /// Check if a user entity may recruit: must be an Enclave Junior Officer,
+    /// Check if a user entity may recruit: must be an Enclave command officer,
     /// or carry the admin bypass EnclaveRecruiterComponent.
     /// </summary>
     private bool IsEnclaveMember(EntityUid uid)
@@ -261,8 +255,12 @@ public sealed class EnclaveRecruitSystem : EntitySystem
         if (!_jobs.MindTryGetJob(mindId, out _, out var jobProto))
             return false;
 
-        // #Cythisiax Edited - Restricted to the Enclave Junior Officer job only
+        // #Cythisiax Edited - Only these Enclave command officer jobs may
+        // recruit; recruitment is not open to every department member.
         // (was: any job in the Enclave department could recruit).
-        return jobProto.ID == EnclaveRecruiterJobId;
+        return jobProto.ID is "EnclaveJuniorOfficer"
+            or "EnclaveSeniorOfficer"
+            or "EnclaveCommander"
+            or "EnclaveReformer";
     }
 }

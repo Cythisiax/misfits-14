@@ -18,6 +18,14 @@ namespace Content.Server._Misfits.C27;
 // subscribers — if the C-27 ever gets a power cell slot, it will already be handled.
 public sealed class MisfitsC27EmpSystem : EntitySystem
 {
+    // #Misfits Tweak - EMP energy is measured in joules for battery draining. Our pulse grenade
+    // uses millions of joules, so its damage multiplier is capped. Without this cap a single
+    // grenade deals five-digit damage, tears off every limb, and effectively removes the C-27
+    // from the round instead of serving as a severe anti-robot weapon.
+    private const float MaxEmpEnergyMultiplier = 15f;
+
+    private static readonly ProtoId<DamageTypePrototype> ShockDamage = "Shock";
+
     [Dependency] private readonly DamageableSystem _damageable = default!;
     [Dependency] private readonly IPrototypeManager _proto = default!;
     [Dependency] private readonly SharedPopupSystem _popup = default!;
@@ -30,13 +38,13 @@ public sealed class MisfitsC27EmpSystem : EntitySystem
 
     private void OnEmpPulse(Entity<MisfitsC27Component> ent, ref EmpPulseEvent args)
     {
-        // Scale damage by pulse energy: a stronger EMP fries the posibrain harder.
-        var energyMultiplier = args.EnergyConsumption / 1000f;
+        // Scale damage by pulse energy: a stronger EMP fries the posibrain harder. The cap keeps
+        // the pulse grenade at 100 Shock with the defaults while a chemical EMP deals 87.5.
+        var energyMultiplier = MathF.Min(args.EnergyConsumption / 1000f, MaxEmpEnergyMultiplier);
         var totalShock = ent.Comp.EmpShockDamage + ent.Comp.EmpDamagePerKiloJoule * energyMultiplier;
 
-        // Apply the shock as a single damage spec — no need to allocate via prototype lookups
-        // for every pulse, but we do need a DamageSpecifier with the correct type lookup.
-        if (_proto.TryIndex<DamageTypePrototype>("Shock", out var shockProto))
+        // Build one damage packet so the body system can distribute the Shock normally.
+        if (_proto.TryIndex(ShockDamage, out var shockProto))
         {
             var damage = new DamageSpecifier(shockProto, totalShock);
             _damageable.TryChangeDamage(ent, damage, ignoreResistances: true, origin: null);

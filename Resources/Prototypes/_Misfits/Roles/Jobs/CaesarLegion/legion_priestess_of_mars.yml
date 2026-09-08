@@ -19,10 +19,10 @@
     # CaesarLegionSlave is the female-accessible entry rank, so hours gate placed there.
     - !type:CharacterDepartmentTimeRequirement # Legion total timelock (minimum branch total)
       department: CaesarLegion
-      min: 72000 # 20 hours
+      min: 108000 # 30 hours
     - !type:CharacterPlaytimeRequirement
       tracker: CaesarLegionAcolyteOfMars
-      min: 28800 # 8 hours
+      min: 43200 # 12 hours
     - !type:CharacterSpeciesRequirement
       species:
         - Human

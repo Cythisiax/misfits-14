@@ -96,6 +96,7 @@
   - type: PhysicalComposition
     materialComposition:
       Glass: 100
+  - type: MolotovConvertible
 
 - type: entity
   id: DrinkBottleVisualsOpenable

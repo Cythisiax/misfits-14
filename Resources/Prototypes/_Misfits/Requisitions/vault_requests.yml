@@ -243,12 +243,12 @@
       maxAmount: 30
       valuePerUnit: 15
       weight: 1
-    - material: GoldOre
+    - material: N14GoldOre
       minAmount: 10
       maxAmount: 30
       valuePerUnit: 12
       weight: 1.2
-    - material: SilverOre
+    - material: N14SilverOre
       minAmount: 10
       maxAmount: 30
       valuePerUnit: 10
@@ -258,7 +258,7 @@
       maxAmount: 30
       valuePerUnit: 6
       weight: 1.5
-    - material: SteelOre
+    - material: N14IronOre
       minAmount: 15
       maxAmount: 40
       valuePerUnit: 6
