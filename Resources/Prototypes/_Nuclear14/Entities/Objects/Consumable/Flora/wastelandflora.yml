@@ -297,8 +297,7 @@
   description: A cannabis plant growing wild. It's healthy.
   components:
   - type: Sprite
-    sprite: Objects/Specific/Hydroponics/cannabis.rsi
-    state: harvest
+    state: wild_cannabis
   - type: OreVein
     currentOre: WildCannabis
   - type: Gatherable
@@ -308,8 +307,8 @@
       tags:
       - PlantSampleTaker
     loot:
-    All: WildCannabisAll
-    PlantSampleTaker: WildCannabisClippers
+      All: WildCannabisAll
+      PlantSampleTaker: WildCannabisClippers
 
 - type: entity
   parent: N14WastelandFlora
