@@ -114,7 +114,7 @@
 - type: loadout
   id: MisfitsLoadoutShoesPeltBoots
   category: Shoes
-  cost: 0
+  cost: 2
   exclusive: true
   requirements:
     - !type:CharacterItemGroupRequirement

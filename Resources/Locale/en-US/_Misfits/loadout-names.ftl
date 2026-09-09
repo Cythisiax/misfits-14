@@ -730,7 +730,7 @@ loadout-name-MisfitsLoadoutShoesTribal = tribal shoes
 loadout-name-MisfitsLoadoutShoesRaider = raider treads
 loadout-name-MisfitsLoadoutMilitaryCowboyBoots = military cowboy boots
 loadout-name-MisfitsLoadoutMilitarySteelTippedBoots = steel-tipped boots
-loadout-name-MisfitsLoadoutShoesPeltBoots = long pelt boots
+loadout-name-MisfitsLoadoutMilitaryPeltBoots = long pelt boots
 # Neck — faction cloaks
 loadout-name-MisfitsLoadoutNeckCloakNCR = NCR cloak
 loadout-name-MisfitsLoadoutNeckCloakNCRSnow = NCR winter cloak
