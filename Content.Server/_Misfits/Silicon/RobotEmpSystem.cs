@@ -37,8 +37,9 @@ public sealed class RobotEmpSystem : EntitySystem
         if (!_prototypes.TryIndex(ShockDamage, out var shockPrototype))
             return;
 
+        // Chassis-wide EMP trauma is one damage packet, not one packet per body part.
         var damage = new DamageSpecifier(shockPrototype, EmpShockDamage);
-        _damageable.TryChangeDamage(ent, damage, ignoreResistances: true, origin: null);
+        _damageable.TryChangeDamage(ent, damage, ignoreResistances: true, origin: null, doPartDamage: false);
 
         args.Affected = true;
         _popup.PopupEntity(Loc.GetString("robot-emp-hit"), ent, ent, PopupType.LargeCaution);

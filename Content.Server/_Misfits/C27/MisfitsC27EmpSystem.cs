@@ -39,15 +39,17 @@ public sealed class MisfitsC27EmpSystem : EntitySystem
     private void OnEmpPulse(Entity<MisfitsC27Component> ent, ref EmpPulseEvent args)
     {
         // Scale damage by pulse energy: a stronger EMP fries the posibrain harder. The cap keeps
-        // the pulse grenade at 100 Shock with the defaults while a chemical EMP deals 87.5.
+        // unusually energetic EMP sources from producing absurd five-digit damage. C-27
+        // prototypes can override these values when they need a fixed EMP damage packet.
         var energyMultiplier = MathF.Min(args.EnergyConsumption / 1000f, MaxEmpEnergyMultiplier);
         var totalShock = ent.Comp.EmpShockDamage + ent.Comp.EmpDamagePerKiloJoule * energyMultiplier;
 
-        // Build one damage packet so the body system can distribute the Shock normally.
+        // Apply the electrical trauma once to the chassis. Originless damage is otherwise treated
+        // like an explosion by the body system and copied to every limb.
         if (_proto.TryIndex(ShockDamage, out var shockProto))
         {
             var damage = new DamageSpecifier(shockProto, totalShock);
-            _damageable.TryChangeDamage(ent, damage, ignoreResistances: true, origin: null);
+            _damageable.TryChangeDamage(ent, damage, ignoreResistances: true, origin: null, doPartDamage: false);
         }
 
         // Mark Affected so the EMP visual effect spawns over the chassis.

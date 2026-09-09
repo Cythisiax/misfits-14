@@ -13,6 +13,7 @@ namespace Content.Server._Misfits.PowerArmor;
 /// </summary>
 public sealed class PowerArmorEmpSystem : EntitySystem
 {
+    // Power armor still conducts a significant, resistance-bypassing EMP shock into its wearer.
     private const float EmpShockDamage = 50f;
 
     private static readonly ProtoId<DamageTypePrototype> ShockDamage = "Shock";
@@ -38,7 +39,8 @@ public sealed class PowerArmorEmpSystem : EntitySystem
             ent.Owner,
             damage,
             ignoreResistances: true,
-            origin: ent.Comp.Armor);
+            origin: ent.Comp.Armor,
+            doPartDamage: false);
 
         args.Affected = true;
         _popup.PopupEntity(
