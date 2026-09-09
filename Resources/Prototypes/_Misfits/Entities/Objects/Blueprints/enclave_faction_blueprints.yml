@@ -62,7 +62,7 @@
     - MisfitsBPEnclaveGrenadeFragOffensive # #Misfits Add - BoS-equivalent conventional ordnance
     - MisfitsBPEnclaveGrenadeFragDefensive
     - MisfitsBPEnclaveGrenadePlasma # #Misfits Add - BoS-equivalent grenade fabrication
-    # #Misfits Add - craftable conventional and utility 40mm rounds; pulse and plasma remain loot-only.
+    # #Misfits Add - complete 40mm family.
     - MisfitsBPEnclave40mmHE
     - MisfitsBPEnclave40mmBuckshot
     - MisfitsBPEnclave40mmSmoke
@@ -71,6 +71,8 @@
     - MisfitsBPEnclave40mmTearGas
     - MisfitsBPEnclave40mmHEDP
     - MisfitsBPEnclave40mmIncendiary
+    - MisfitsBPEnclave40mmPulse
+    - MisfitsBPEnclave40mmPlasma
     - N14BPEnclaveAmmoPlasmaCartridge
     - N14BPEnclaveAmmoMicrofusionCell
     - N14BPEnclaveAmmoElectronChargePack

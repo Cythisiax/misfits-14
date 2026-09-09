@@ -1,12 +1,29 @@
 namespace Content.Shared._Misfits.C27;
 
 // #Misfits Add - Marker placed on every C-27 humanoid robot mob entity. Carries the per-species
-// stat tunables consumed by MisfitsC27EmpSystem on the server.
+// stat tunables (EMP damage, EMP stun duration) consumed by MisfitsC27EmpSystem on the server.
 // Not networked — purely server-side EMP handling and config; everything visible to the client
 // (movement speed, melee, immunities) is set by sibling components on the same entity.
 [RegisterComponent]
 public sealed partial class MisfitsC27Component : Component
 {
+    /// <summary>
+    ///     Shock damage dealt to the chassis on each EMP pulse. Represents the posibrain /
+    ///     internal-electronics shock the spec asks for. Scales linearly with the pulse's
+    ///     energy consumption so larger EMP charges hurt more.
+    /// </summary>
+    [DataField]
+    public float EmpShockDamage = 25f;
+
+    /// <summary>
+    ///     Per-1000-J multiplier applied on top of <see cref="EmpShockDamage"/>. A standard
+    ///     1000 J pulse adds the flat damage; a 4000 J grenade adds 4× extra on top. The server
+    ///     caps this scaling for exceptionally large pulses so they cannot inflict five-digit
+    ///     damage and tear every limb from the C-27.
+    /// </summary>
+    [DataField]
+    public float EmpDamagePerKiloJoule = 5f;
+
     /// <summary>
     ///     Multiplier applied to external silicon repair do-afters, such as welder repairs
     ///     and cable-coil wire repairs.
