@@ -506,6 +506,18 @@
 
 - type: entity
   parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRLTCol
+  name: NCR Lieutenant Colonel
+  components:
+  - type: SpawnPoint
+    job_id: NCRLTCol
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
   id: MisfitsSpawnPointNCRProvost
   name: Provost Job Spawn
   components:

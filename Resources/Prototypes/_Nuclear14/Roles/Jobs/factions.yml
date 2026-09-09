@@ -87,6 +87,7 @@
   # Command Officers (Captain/Major pins) — repurposed from NCRCaptain
   - NCRCommander         # NCR Commander           | _Misfits/Roles/Jobs/NCR/ncr_captain.yml
   - NCRDoctor            # NCR Medical Doctor      | _Misfits/Roles/Jobs/NCR/ncr_doctor.yml
+  - NCRLTCol             # NCR Lieutenant Colonel  | _Misfits/Roles/Jobs/NCR/ncr_lieutenant_colonel.yml
   # Junior Officers (2LT/1LT pins) — repurposed from NCRLT
   - NCRExecutiveOfficer  # NCR Executive Officer   | _Misfits/Roles/Jobs/NCR/ncr_lieutenant.yml
   - NCRPlatoonLeader     # NCR Platoon Leader      | _Misfits/Roles/Jobs/NCR/ncr_platoon_leader.yml
