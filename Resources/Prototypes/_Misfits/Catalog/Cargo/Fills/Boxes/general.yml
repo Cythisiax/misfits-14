@@ -1,6 +1,6 @@
 #Raider boxes that have dirty bandages and drugs roundstart rather then just clean bandages, radx and flares.
 - type: entity
-  name: Raider box
+  name: raider box
   parent: N14BoxPlastic
   id: N14BoxPlasticFilledRaider
   components:
