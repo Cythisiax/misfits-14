@@ -254,7 +254,7 @@
     - MisfitsBPNCRGrenadeFragDefensive # #Misfits Add - faction council defensive fragmentation ordnance
     - MisfitsBPNCRGrenadeImpact # #Misfits Add - reduced-cost impact ordnance
     - MisfitsBPNCRHawkinsDevice # #Misfits Add - reduced-cost anti-materiel charge
-    # #Misfits Add - complete NCR 40mm family; utility and buckshot rounds use reduced production costs.
+    # #Misfits Add - craftable conventional and utility 40mm rounds; pulse and plasma remain loot-only.
     - MisfitsBPNCR40mmBuckshot
     - MisfitsBPNCR40mmSmoke
     - MisfitsBPNCR40mmWhitePhosphorus
@@ -262,8 +262,6 @@
     - MisfitsBPNCR40mmTearGas
     - MisfitsBPNCR40mmHEDP
     - MisfitsBPNCR40mmIncendiary
-    - MisfitsBPNCR40mmPulse
-    - MisfitsBPNCR40mmPlasma
 
 - type: entity
   parent: N14BlueprintBase
@@ -487,7 +485,7 @@
     - N14BPLegionAmmoSKSEnbloc308
     - MisfitsBPLegionGrenadeTin # #Misfits Add - Issue #968 Legion improvised ordnance
     - MisfitsBPLegionGrenadeFragOffensive # #Misfits Add - faction council fragmentation ordnance
-    # #Misfits Add - HE already uses N14BPLegionAmmo40mmGrenade; add remaining variants.
+    # #Misfits Add - HE already uses N14BPLegionAmmo40mmGrenade; pulse and plasma remain loot-only.
     - MisfitsBPLegion40mmBuckshot
     - MisfitsBPLegion40mmSmoke
     - MisfitsBPLegion40mmWhitePhosphorus
@@ -495,8 +493,6 @@
     - MisfitsBPLegion40mmTearGas
     - MisfitsBPLegion40mmHEDP
     - MisfitsBPLegion40mmIncendiary
-    - MisfitsBPLegion40mmPulse
-    - MisfitsBPLegion40mmPlasma
     - MisfitsBPLegionGrenadeFragDefensive
 
 - type: entity
@@ -708,7 +704,7 @@
     - MisfitsBPBoSGrenadeFragOffensive # #Misfits Add - efficient conventional ordnance
     - MisfitsBPBoSGrenadeFragDefensive
     - MisfitsBPBoSGrenadePlasma # #Misfits Add - Issue #968 Brotherhood plasma ordnance
-    # #Misfits Add - complete 40mm family.
+    # #Misfits Add - craftable conventional and utility 40mm rounds; pulse and plasma remain loot-only.
     - MisfitsBPBoS40mmHE
     - MisfitsBPBoS40mmBuckshot
     - MisfitsBPBoS40mmSmoke
@@ -717,8 +713,6 @@
     - MisfitsBPBoS40mmTearGas
     - MisfitsBPBoS40mmHEDP
     - MisfitsBPBoS40mmIncendiary
-    - MisfitsBPBoS40mmPulse
-    - MisfitsBPBoS40mmPlasma
 
 - type: entity
   parent: N14BlueprintBase
