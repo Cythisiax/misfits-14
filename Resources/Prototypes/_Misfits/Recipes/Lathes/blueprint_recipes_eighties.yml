@@ -277,11 +277,11 @@
   - Eighties
   completetime: 20
   materials:
-    Steel: 6000
+    Steel: 20000
     Plastic: 2000
-    Silver: 500
-    Gold: 300
-    Plasma: 100
+    Silver: 2000
+    Gold: 2000
+
 
 # ammo
 
