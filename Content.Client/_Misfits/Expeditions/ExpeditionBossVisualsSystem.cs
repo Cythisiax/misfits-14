@@ -20,7 +20,7 @@ public sealed class ExpeditionBossVisualsSystem : EntitySystem
     {
         base.Initialize();
         SubscribeLocalEvent<ExpeditionBossVisualsComponent, ComponentStartup>(OnStartup);
-        SubscribeLocalEvent<ExpeditionBossVisualsComponent, ComponentHandleState>(OnHandleState);
+        SubscribeLocalEvent<ExpeditionBossVisualsComponent, AfterAutoHandleStateEvent>(OnAfterHandleState);
         SubscribeLocalEvent<ExpeditionBossVisualsComponent, ComponentShutdown>(OnShutdown);
     }
 
@@ -29,7 +29,7 @@ public sealed class ExpeditionBossVisualsSystem : EntitySystem
         ApplyScale(uid, component);
     }
 
-    private void OnHandleState(EntityUid uid, ExpeditionBossVisualsComponent component, ref ComponentHandleState args)
+    private void OnAfterHandleState(EntityUid uid, ExpeditionBossVisualsComponent component, ref AfterAutoHandleStateEvent args)
     {
         ApplyScale(uid, component);
     }

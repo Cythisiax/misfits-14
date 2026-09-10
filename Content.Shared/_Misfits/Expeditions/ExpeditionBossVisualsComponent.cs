@@ -8,7 +8,7 @@ namespace Content.Shared._Misfits.Expeditions;
 /// The client applies this to the sprite without changing collision, movement,
 /// or the entity's physical footprint.
 /// </summary>
-[RegisterComponent, NetworkedComponent, AutoGenerateComponentState]
+[RegisterComponent, NetworkedComponent, AutoGenerateComponentState(raiseAfterAutoHandleState: true)]
 public sealed partial class ExpeditionBossVisualsComponent : Component
 {
     [DataField, AutoNetworkedField]
