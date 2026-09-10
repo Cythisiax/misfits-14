@@ -61,6 +61,7 @@
     - BlueprintHuntingRevolverEighties
     - BlueprintDouglasSmgEighties
     - BlueprintCanadiaSmgEighties
+    - BlueprintShotgunLeverEighties
 
 # --- Eighties Weapons T5 ---
 - type: entity
@@ -157,6 +158,7 @@
     - BlueprintEightiesAmmoMag9mmSMG
     - BlueprintEightiesAmmoMag10mmSMG
     - BlueprintEightiesAmmoMag556Long
+    - BlueprintEightiesMagazineBox20gauge
 
 - type: entity
   parent: N14BlueprintBase

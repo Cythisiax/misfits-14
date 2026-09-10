@@ -157,6 +157,19 @@
 # t4 weapons
 
 - type: latheRecipe
+  id: BlueprintShotgunLeverEighties
+  result: N14WeaponShotgunLever
+  category: N14BlueprintEightiesWeaponsT3
+  requiresBlueprint: true
+  applyMaterialDiscount: false
+  availableFaction:
+  - Eighties
+  completetime: 6
+  materials:
+    Steel: 4000
+    Plastic: 1000
+    Silver: 300
+- type: latheRecipe
   id: BlueprintDesertEagleEighties
   result: N14WeaponDesertEagle44
   category: N14BlueprintEightiesWeaponsT4
@@ -522,6 +535,19 @@
 - type: latheRecipe
   id: BlueprintEightiesAmmo40mm
   result: N14CartridgeGrenade40mm
+  category: N14BlueprintEightiesAmmoT4
+  requiresBlueprint: true
+  applyMaterialDiscount: false
+  availableFaction:
+  - Eighties
+  completetime: 5
+  materials:
+    Steel: 200
+    N14Gunpowder: 20
+    Plastic: 10
+- type: latheRecipe
+  id: BlueprintEightiesMagazineBox20gauge
+  result: MagazineBox20gauge
   category: N14BlueprintEightiesAmmoT4
   requiresBlueprint: true
   applyMaterialDiscount: false
