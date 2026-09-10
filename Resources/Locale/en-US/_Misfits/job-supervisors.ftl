@@ -1,5 +1,6 @@
 # #Misfits Add - NCR role rehaul supervisor strings.
 job-supervisors-ncr-commander = NCR high command and your mission
+job-supervisors-ncr-ltcol = NCR high command and your mission
 job-supervisors-ncr-nco = the NCR officers and your chain of command
 # #Misfits Add - Vertibird pilot supervisor strings.
 job-supervisors-ncr-vertibird-pilot = the NCR officers and the airframe you are trusted with
