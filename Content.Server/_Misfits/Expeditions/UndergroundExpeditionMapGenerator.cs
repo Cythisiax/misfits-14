@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using Content.Server._Misfits.Expeditions.Generation;
 using Content.Shared._Misfits.Expeditions;
-using Content.Shared.EntityTable;
 using Robust.Shared.GameObjects;
 using Robust.Shared.IoC;
 using Robust.Shared.Map;
@@ -31,7 +30,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
     [Dependency] private readonly ITileDefinitionManager _tileDefManager = default!;
     [Dependency] private readonly SharedMapSystem _mapSystem = default!;
     [Dependency] private readonly DecalSystem _decalSystem = default!;
-    [Dependency] private readonly EntityTableSystem _entityTables = default!;
+    [Dependency] private readonly ExpeditionBossSystem _bosses = default!;
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
 
     // ─────────────────────────────────────────────────────────────────────────
@@ -314,8 +313,6 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         var objectiveRoom = roomsById[plan.ObjectiveRoomId];
         SpawnEntities(cellMap, rooms, doorways, gridUid, grid, profile, envMods, p.DifficultyTier, p.PartySize,
             ExpeditionSeedStreams.Create(p.Seed, "entities"), W, H, objectiveRoom, plan, roomsById);
-        SpawnObjectiveLoot(objectiveRoom, p.DifficultyTier, p.PartySize, gridUid, grid,
-            ExpeditionSeedStreams.Create(p.Seed, "objective-loot"));
 
         Log.Info($"[N14 ProcGen] identity='{plan.Identity.SiteType}', failure='{plan.Identity.FailureCause}', " +
                  $"state='{plan.Identity.CurrentState}', objective={objectiveRoom.RoomType}, seed={p.Seed}");
@@ -2236,7 +2233,19 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         var plannedByRealizedRoom = roomsById.ToDictionary(pair => pair.Value, pair => planRoomsById[pair.Key]);
         var mobTheme = SelectExpeditionMobTheme(profile, rng);
         var population = new ExpeditionPopulationState(mobTheme, partySize);
-        var bossLootSockets = new List<(int x, int y)>();
+        var finalGuardianPrototype = SelectFinalGuardianPrototype(mobTheme.Family, partySize, rng);
+        var optionalGuardianLimit = GetOptionalGuardianLimit(partySize);
+        var optionalGuardiansSpawned = 0;
+
+        // Reserve the final guardian before ambient population rolls. This keeps
+        // family caps truthful while guaranteeing that normal spawns cannot use
+        // the last Deathclaw, Behemoth, or Maypole slot first.
+        if (!population.CanReserve(finalGuardianPrototype))
+        {
+            Log.Error($"[N14 ProcGen] Final guardian '{finalGuardianPrototype}' exceeds the '{mobTheme.Name}' population cap.");
+            return;
+        }
+        population.Reserve(finalGuardianPrototype);
 
         Log.Info($"[N14 ProcGen] enemy-theme='{mobTheme.Name}', faction='{mobTheme.Faction}', " +
                  $"hodgepodge={mobTheme.IsHodgepodge}, party={partySize}, " +
@@ -2255,10 +2264,18 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
             DressRoom(room, gridUid, grid, profile, envMods, rng, cellMap, W, H, depthFactor, reservedTile,
                 plannedRoom?.SecurityLevel ?? 0, plannedRoom?.IsObjective ?? false, difficultyTier);
             SpawnRoomMobs(room, gridUid, grid, mobTheme, population, envMods, difficultyTier, partySize, rng,
-                depthFactor, reservedTile, bossLootSockets);
+                depthFactor, reservedTile);
 
-            // Exploration rooms get real weapon-table markers.  The objective
-            // uses its own guaranteed, difficulty-tiered marker below.
+            // Deep rooms retain a small chance to become optional guardian
+            // encounters. They are capped per launch roster and never occupy
+            // the objective or safe faction hubs, so they add pressure without
+            // replacing the planned finale.
+            if (!ReferenceEquals(room, objectiveRoom) && optionalGuardiansSpawned < optionalGuardianLimit &&
+                TrySpawnOptionalGuardian(room, gridUid, grid, mobTheme, population, partySize, rng, depthFactor))
+                optionalGuardiansSpawned++;
+
+            // Exploration rooms may get ambient weapon-table markers. The
+            // objective's meaningful reward now belongs to its final guardian.
             var weaponLootCount = !ReferenceEquals(room, objectiveRoom)
                 ? GetExplorationWeaponLootCount(room, difficultyTier, partySize, rng)
                 : 0;
@@ -2372,6 +2389,13 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
             }
         }
 
+        // Every expedition receives one tracked final guardian in its planned
+        // objective room. Its reward is stored on the mob and does not exist
+        // until that boss is killed.
+        SpawnFinalGuardian(objectiveRoom, gridUid, grid, mobTheme, finalGuardianPrototype, partySize, rng);
+        Log.Info($"[N14 ProcGen] optional-guardians={optionalGuardiansSpawned}/{optionalGuardianLimit}, " +
+                 $"final-guardian='{finalGuardianPrototype}'");
+
         // #Misfits Removed - Exit points are now placed by N14ExpeditionSystem.SpawnExitPoints()
         // which correctly sets N14ExpeditionExitComponent.ExpeditionMap. The generator-spawned exits
         // were inert because SpawnAt() never set that component field.
@@ -2421,44 +2445,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
             }
         }
 
-        // ── 6. Large-room sentry guardian pass ──────────────────────────────────
-        // Sentries only belong in HostileRobot expeditions; spawning them in a
-        // wildlife/feral/mutant map would immediately start an NPC faction war.
-        if (mobTheme.Family == ExpeditionMobFamily.Robot)
-        {
-            foreach (var room in rooms)
-            {
-                if (room.RoomType == RoomType.FactionHub) continue;
-                if (ReferenceEquals(room, objectiveRoom)) continue;
-                if (room.W * room.H <= 100) continue;
-                if (rng.Next(100) >= 15) continue;
-                var (scx, scy) = room.Center;
-                string sentryProto = rng.Next(2) == 0 ? "N14MobRobotSentryBot" : "N14MobRobotSentryBotBallistic";
-                if (SpawnAt(sentryProto, gridUid, grid, scx, scy).HasValue)
-                    bossLootSockets.Add((scx, scy));
-                if (InBounds(scx + 1, scy, W, H))
-                    SpawnAt("N14LootCrateVaultBigRusted", gridUid, grid, scx + 1, scy);
-            }
-        }
-
-        // All generated bosses and sentries receive a real reward.  The normal
-        // world markers retain their probabilistic tables; only expedition
-        // rewards use the guaranteed variants.  Multiple bosses make the entire
-        // encounter a Tier 5 event, so every participant can see the increased
-        // risk reflected in the reward sockets.
-        var bossRewardSpawner = bossLootSockets.Count > 1
-            ? "N14ExpeditionWeaponLootTier5Guaranteed"
-            : "N14ExpeditionWeaponLootTier4Guaranteed";
-        foreach (var (bossX, bossY) in bossLootSockets)
-            SpawnAt(bossRewardSpawner, gridUid, grid, bossX, bossY);
-
-        // High-risk focused sites get tangible baseline value even when their
-        // boss roll does not occur.  These are deliberately Tier 3 caches,
-        // separate from the guaranteed Tier 4/5 boss sockets above.
-        if (mobTheme.Family is ExpeditionMobFamily.SuperMutant or ExpeditionMobFamily.Deathclaw)
-            SpawnHighRiskFactionRewards(objectiveRoom, gridUid, grid, rng);
-
-        // ── 7. LV wire routing: Vault only ─────────────────────────────────────
+        // ── 6. LV wire routing: Vault only ─────────────────────────────────────
         if (theme == UndergroundTheme.Vault && reactorCenter.HasValue)
         {
             foreach (var floorPos in lightFloorPositions)
@@ -3041,8 +3028,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
     private void SpawnRoomMobs(RoomDef room, EntityUid gridUid, MapGridComponent grid,
                                 MobThemeDefinition mobTheme, ExpeditionPopulationState population,
                                 EnvironmentalStateModifiers envMods, int difficultyTier, int partySize, Random rng,
-                                float depthFactor = 0.5f, (int x, int y)? reservedTile = null,
-                                List<(int x, int y)>? bossLootSockets = null)
+                                float depthFactor = 0.5f, (int x, int y)? reservedTile = null)
     {
         // #Misfits Fix - FactionHub rooms are player spawn points; never populate with hostile NPCs
         if (room.RoomType == RoomType.FactionHub) return;
@@ -3092,8 +3078,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         if (reservedTile.HasValue)
             taken.Add(reservedTile.Value);
 
-        var spawnedMobs = TrySpawnThemedBoss(room, gridUid, grid, population, partySize, rng, depthFactor,
-            innerW, innerH, taken, bossLootSockets) ? 1 : 0;
+        var spawnedMobs = 0;
 
         for (int i = 0; i < mobCount; i++)
         {
@@ -3104,7 +3089,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
                 int mx = room.X + 1 + rng.Next(innerW);
                 int my = room.Y + 1 + rng.Next(innerH);
                 if (taken.Contains((mx, my))) continue;
-                if (!SpawnPopulationMob(mob, population, gridUid, grid, mx, my))
+                if (!SpawnPopulationMob(mob, population, gridUid, grid, mx, my).HasValue)
                     break;
                 taken.Add((mx, my));
                 spawnedMobs++;
@@ -3114,7 +3099,7 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
 
         // A room held by three or more super mutants is an explicit threat
         // encounter, not ambient filler, and therefore always pays Tier 2/3.
-        if (mobTheme.Family == ExpeditionMobFamily.SuperMutant && spawnedMobs >= 3)
+        if (mobTheme.Family == ExpeditionMobFamily.SuperMutant && spawnedMobs >= 3 && !reservedTile.HasValue)
         {
             var (lootX, lootY) = room.Center;
             var lootSpawner = rng.Next(2) == 0
@@ -3124,73 +3109,132 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         }
     }
 
-    private bool TrySpawnThemedBoss(
+    /// <summary>
+    /// Spawns the sole planned final guardian after normal room encounters have
+    /// been placed. The boss always occupies the objective room and carries its
+    /// reward package until death.
+    /// </summary>
+    private void SpawnFinalGuardian(
+        RoomDef objectiveRoom,
+        EntityUid gridUid,
+        MapGridComponent grid,
+        MobThemeDefinition mobTheme,
+        string prototype,
+        int partySize,
+        Random rng)
+    {
+        var (x, y) = objectiveRoom.Center;
+        var boss = SpawnAt(prototype, gridUid, grid, x, y);
+        if (!boss.HasValue)
+        {
+            Log.Error($"[N14 ProcGen] Failed to spawn final guardian '{prototype}' for '{mobTheme.Name}'.");
+            return;
+        }
+
+        _bosses.ConfigureFinalGuardian(boss.Value, mobTheme.Family, prototype, partySize, rng);
+    }
+
+    /// <summary>
+    /// Restores distinct deep-room guardians without returning to the old
+    /// unbounded boss-roll pass. Guardians are faction-safe because they use
+    /// the selected expedition family and their rewards resolve only on death.
+    /// </summary>
+    private bool TrySpawnOptionalGuardian(
         RoomDef room,
         EntityUid gridUid,
         MapGridComponent grid,
+        MobThemeDefinition mobTheme,
         ExpeditionPopulationState population,
         int partySize,
         Random rng,
-        float depthFactor,
-        int innerW,
-        int innerH,
-        HashSet<(int, int)> taken,
-        List<(int x, int y)>? bossLootSockets)
+        float depthFactor)
     {
-        if (depthFactor < 0.7f)
+        if (room.RoomType == RoomType.FactionHub || depthFactor < 0.65f)
             return false;
 
-        var partyStep = Math.Min(Math.Max(partySize, 1) - 1, 4);
-        string? boss = null;
-
-        switch (population.Theme.Family)
+        var guardianChance = partySize switch
         {
-            case ExpeditionMobFamily.Ghoul:
-                if (population.MaypolesSpawned < population.MaypoleLimit &&
-                    rng.Next(100) < 12 + partyStep * 5)
-                    boss = "N14MobGhoulMaypole";
-                break;
-            case ExpeditionMobFamily.SuperMutant:
-                if (rng.Next(100) < 10 + partyStep * 5)
-                {
-                    var behemothChance = partySize >= 5 ? 65 : partySize >= 3 ? 20 : 0;
-                    boss = population.BehemothsSpawned < population.BehemothLimit && rng.Next(100) < behemothChance
-                        ? "N14MobBehemoth"
-                        : rng.Next(2) == 0 ? "N14MobSuperMutantNCO" : "N14MobNightkinElite";
-                }
-                break;
-            case ExpeditionMobFamily.Deathclaw:
-                if (population.DeathclawsSpawned < population.DeathclawLimit &&
-                    rng.Next(100) < 18 + partyStep * 6)
-                    boss = SelectDeathclawApexPrototype(partySize, rng);
-                break;
-            case ExpeditionMobFamily.Wildlife when population.Theme.IsHodgepodge &&
-                                                       population.Theme.Faction == "WastelandAnimal":
-                if (rng.Next(100) < 8 + partyStep * 4)
-                    boss = partySize >= 5 ? "N14MobYaoguaiWaveBoss" : "N14MobYaoguai";
-                break;
-        }
+            >= 5 => 28,
+            >= 3 => 22,
+            _ => 16,
+        };
+        if (rng.Next(100) >= guardianChance)
+            return false;
 
-        if (boss == null)
+        var prototype = SelectOptionalGuardianPrototype(mobTheme.Family, partySize, rng);
+        if (!population.CanReserve(prototype))
+            return false;
+
+        var innerW = room.W - 2;
+        var innerH = room.H - 2;
+        if (innerW < 1 || innerH < 1)
             return false;
 
         for (var attempt = 0; attempt < 8; attempt++)
         {
             var x = room.X + 1 + rng.Next(innerW);
             var y = room.Y + 1 + rng.Next(innerH);
-            if (!taken.Add((x, y)))
+            var guardian = SpawnPopulationMob(prototype, population, gridUid, grid, x, y);
+            if (!guardian.HasValue)
                 continue;
 
-            if (!SpawnPopulationMob(boss, population, gridUid, grid, x, y))
-                return false;
-            bossLootSockets?.Add((x, y));
+            _bosses.ConfigureOptionalGuardian(guardian.Value, mobTheme.Family, prototype, partySize, rng);
             return true;
         }
 
         return false;
     }
 
-    private bool SpawnPopulationMob(
+    private static int GetOptionalGuardianLimit(int partySize) => partySize switch
+    {
+        >= 5 => 3,
+        >= 3 => 2,
+        _ => 1,
+    };
+
+    private static string SelectFinalGuardianPrototype(ExpeditionMobFamily family, int partySize, Random rng)
+    {
+        return family switch
+        {
+            ExpeditionMobFamily.Deathclaw => SelectDeathclawApexPrototype(partySize, rng),
+            ExpeditionMobFamily.Ghoul => "N14MobGhoulMaypole",
+            ExpeditionMobFamily.SuperMutant => partySize >= 5
+                ? "N14MobBehemoth"
+                : rng.Next(2) == 0 ? "N14MobSuperMutantNCO" : "N14MobNightkinElite",
+            ExpeditionMobFamily.Robot => partySize >= 5
+                ? "N14MobRobotSentryBotBallistic"
+                : "N14MobRobotSentryBot",
+            ExpeditionMobFamily.Mirelurk => "N14MobRadMirelurk",
+            ExpeditionMobFamily.Nightstalker => partySize >= 5 ? "N14MobNightstalkerWave" : "N14MobNightstalker",
+            ExpeditionMobFamily.Radscorpion => partySize >= 5 ? "N14MobRadscorpionWave" : "N14MobRadscorpionBark",
+            ExpeditionMobFamily.Ant => partySize >= 5 ? "N14MobGiantFireAntWave" : "N14MobGiantFireAnt",
+            ExpeditionMobFamily.Raider => "N14MobRaiderHunter",
+            _ => partySize >= 5 ? "N14MobYaoguaiWaveBoss" : "N14MobYaoguai",
+        };
+    }
+
+    private static string SelectOptionalGuardianPrototype(ExpeditionMobFamily family, int partySize, Random rng)
+    {
+        return family switch
+        {
+            ExpeditionMobFamily.Deathclaw => SelectDeathclawApexPrototype(Math.Min(partySize, 4), rng),
+            ExpeditionMobFamily.Ghoul => "N14MobGhoulMaypole",
+            ExpeditionMobFamily.SuperMutant => partySize >= 5 && rng.Next(100) < 30
+                ? "N14MobBehemoth"
+                : rng.Next(2) == 0 ? "N14MobSuperMutantNCO" : "N14MobNightkinElite",
+            ExpeditionMobFamily.Robot => rng.Next(2) == 0
+                ? "N14MobRobotSentryBot"
+                : "N14MobRobotSentryBotBallistic",
+            ExpeditionMobFamily.Mirelurk => "N14MobRadMirelurk",
+            ExpeditionMobFamily.Nightstalker => "N14MobNightstalker",
+            ExpeditionMobFamily.Radscorpion => "N14MobRadscorpionBark",
+            ExpeditionMobFamily.Ant => "N14MobGiantFireAnt",
+            ExpeditionMobFamily.Raider => "N14MobRaiderHunter",
+            _ => "N14MobYaoguai",
+        };
+    }
+
+    private EntityUid? SpawnPopulationMob(
         string prototype,
         ExpeditionPopulationState population,
         EntityUid gridUid,
@@ -3199,12 +3243,14 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         int y)
     {
         if (!population.CanReserve(prototype))
-            return false;
+            return null;
 
-        if (!SpawnAt(prototype, gridUid, grid, x, y).HasValue)
-            return false;
+        var spawned = SpawnAt(prototype, gridUid, grid, x, y);
+        if (!spawned.HasValue)
+            return null;
+
         population.Reserve(prototype);
-        return true;
+        return spawned;
     }
 
     private static MobThemeDefinition SelectExpeditionMobTheme(ThemeProfile profile, Random rng)
@@ -3252,27 +3298,6 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
         }
 
         return pool[^1].Prototype;
-    }
-
-    private void SpawnHighRiskFactionRewards(RoomDef objectiveRoom, EntityUid gridUid, MapGridComponent grid, Random rng)
-    {
-        var used = new HashSet<(int x, int y)>();
-        for (var reward = 0; reward < 2; reward++)
-        {
-            var position = objectiveRoom.Center;
-            for (var attempt = 0; attempt < 8; attempt++)
-            {
-                var candidate = (
-                    objectiveRoom.X + 1 + rng.Next(Math.Max(1, objectiveRoom.W - 2)),
-                    objectiveRoom.Y + 1 + rng.Next(Math.Max(1, objectiveRoom.H - 2)));
-                if (used.Add(candidate))
-                {
-                    position = candidate;
-                    break;
-                }
-            }
-            SpawnAt("N14ExpeditionWeaponLootTier3Guaranteed", gridUid, grid, position.cx, position.cy);
-        }
     }
 
     /// <summary>
@@ -3338,54 +3363,6 @@ public sealed class UndergroundExpeditionMapGenerator : EntitySystem
 
         var coords = _mapSystem.GridTileToLocal(gridUid, grid, new Vector2i(x, y));
         return Spawn(proto, coords);
-    }
-
-    /// <summary>
-    /// Pays off the plan's deepest room with one guaranteed weapon from the
-    /// difficulty-appropriate tier. Tier 5 is deliberately excluded because
-    /// that broad migration table also contains mounted weapons and call-ins.
-    /// </summary>
-    private void SpawnObjectiveLoot(
-        RoomDef objectiveRoom,
-        int difficultyTier,
-        int partySize,
-        EntityUid gridUid,
-        MapGridComponent grid,
-        Random rng)
-    {
-        var spawnerId = difficultyTier switch
-        {
-            <= 0 => "N14ExpeditionWeaponLootTier2Guaranteed",
-            1 => "N14ExpeditionWeaponLootTier3Guaranteed",
-            _ => "N14ExpeditionWeaponLootTier4Guaranteed",
-        };
-
-        if (!_prototypeManager.HasIndex<EntityPrototype>(spawnerId))
-        {
-            Log.Error($"[N14 ProcGen] Missing objective weapon-loot spawner '{spawnerId}'.");
-            return;
-        }
-
-        var center = objectiveRoom.Center;
-        var positions = new HashSet<(int x, int y)> { center };
-        var rewardCount = 1 + (partySize >= 3 ? 1 : 0) + (partySize >= 5 ? 1 : 0);
-        for (var rewardIndex = 0; rewardIndex < rewardCount; rewardIndex++)
-        {
-            if (rewardIndex > 0)
-            {
-                for (var attempt = 0; attempt < 8; attempt++)
-                {
-                    var candidatePosition = (
-                        objectiveRoom.X + 1 + rng.Next(Math.Max(1, objectiveRoom.W - 2)),
-                        objectiveRoom.Y + 1 + rng.Next(Math.Max(1, objectiveRoom.H - 2)));
-                    if (positions.Add(candidatePosition))
-                        break;
-                }
-            }
-
-            var spawnPosition = positions.Last();
-            SpawnAt(spawnerId, gridUid, grid, spawnPosition.x, spawnPosition.y);
-        }
     }
 
     private static bool ShouldSpawnWeaponLoot(RoomDef room, int difficultyTier, Random random)
