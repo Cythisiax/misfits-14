@@ -24,10 +24,10 @@
       id: N14ClothingOuterCombatArmor
       weight: 8
     - !type:EntSelector
-      id: N14ClothingOuterJacketBomberVault
+      id: N14ClothingOuterJacketBomber
       weight: 10
     - !type:EntSelector
-      id: N14ClothingOuterPoliceVestVault
+      id: N14ClothingOuterPoliceVest
       weight: 10
 
 - type: entityTable
