@@ -491,6 +491,7 @@
           factions:
             - PlayerSuperMutant
             - Enclave
+            - Wastelander
         - type: ReplacementAccent
           accent: n14Enclave
         - type: PowerArmorProficiency

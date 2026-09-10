@@ -11507,3 +11507,56 @@ Entries:
   id: 6426
   time: '2026-09-08T20:26:23.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1890
+- author: alekszejg
+  changes:
+    - type: Add
+      message: Added cannabis seeds and ability to plant cannabis
+    - type: Add
+      message: Added wild cannabis plant
+    - type: Add
+      message: Added ability to dry regular cannabis and tobacco with microwave
+    - type: Add
+      message: Added craftable cannabis and tobacco powder
+    - type: Add
+      message: Added ability to craft joints and blunts
+    - type: Add
+      message: Added a cannabis harvesting contract for shopkeepers
+    - type: Add
+      message: Cannabis seeds now spawn in lockers/storages
+    - type: Tweak
+      message: Tweaked handmade cigaratte recipe to include dried tobacco leave
+  id: 6427
+  time: '2026-09-10T00:14:45.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1894
+- author: aftemath434
+  changes:
+    - type: Add
+      message: Enclave bounty board change
+  id: 6428
+  time: '2026-09-10T00:15:01.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1896
+- author: Vixting
+  changes:
+    - type: Fix
+      message: >-
+        fix produce with no reagents getting instant deleted, towercaps, steel
+        caps
+  id: 6429
+  time: '2026-09-10T00:17:30.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1898
+- author: Oli
+  changes:
+    - type: Add
+      message: Raider Survival Box
+    - type: Tweak
+      message: Eighties + Khans Survival Box + Khan now wears armor helmet again.
+  id: 6430
+  time: '2026-09-10T00:22:54.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1900
+- author: Bradysgaming
+  changes:
+    - type: Fix
+      message: Fixed Enclave SM aggro
+  id: 6431
+  time: '2026-09-10T00:23:15.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1902
