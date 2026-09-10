@@ -326,9 +326,8 @@
     baseWalkSpeed: 5.0
     baseSprintSpeed: 5.0
   - type: MisfitsC27
-    # C-27s take the same fixed EMP trauma as other playable robots.
-    empShockDamage: 75
-    empDamagePerKiloJoule: 0
+    # ZAX-derived C-27s use a 75-damage full-pulse ceiling; weaker EMPs scale below it.
+    maxEmpShockDamage: 75
     siliconRepairDelayMultiplier: 2
   - type: ActionGrant
     actions:

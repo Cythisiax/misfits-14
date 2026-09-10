@@ -1,4 +1,5 @@
 using Content.Server.Emp;
+using Content.Shared._Misfits.Emp;
 using Content.Shared._Misfits.PowerArmor;
 using Content.Shared.Damage;
 using Content.Shared.Damage.Prototypes;
@@ -34,7 +35,9 @@ public sealed class PowerArmorEmpSystem : EntitySystem
             return;
 
         // The armor is the immediate source because it conducts the EMP into its wearer.
-        var damage = new DamageSpecifier(shockPrototype, EmpShockDamage);
+        var damage = new DamageSpecifier(
+            shockPrototype,
+            EmpShockDamage * MisfitsEmpScaling.GetStrength(args.EnergyConsumption));
         _damageable.TryChangeDamage(
             ent.Owner,
             damage,
