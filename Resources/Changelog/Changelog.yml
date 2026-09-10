@@ -11507,3 +11507,24 @@ Entries:
   id: 6426
   time: '2026-09-08T20:26:23.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1890
+- author: alekszejg
+  changes:
+    - type: Add
+      message: Added cannabis seeds and ability to plant cannabis
+    - type: Add
+      message: Added wild cannabis plant
+    - type: Add
+      message: Added ability to dry regular cannabis and tobacco with microwave
+    - type: Add
+      message: Added craftable cannabis and tobacco powder
+    - type: Add
+      message: Added ability to craft joints and blunts
+    - type: Add
+      message: Added a cannabis harvesting contract for shopkeepers
+    - type: Add
+      message: Cannabis seeds now spawn in lockers/storages
+    - type: Tweak
+      message: Tweaked handmade cigaratte recipe to include dried tobacco leave
+  id: 6427
+  time: '2026-09-10T00:14:45.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1894
