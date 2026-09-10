@@ -11553,3 +11553,10 @@ Entries:
   id: 6430
   time: '2026-09-10T00:22:54.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1900
+- author: Bradysgaming
+  changes:
+    - type: Fix
+      message: Fixed Enclave SM aggro
+  id: 6431
+  time: '2026-09-10T00:23:15.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1902
