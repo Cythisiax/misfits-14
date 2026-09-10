@@ -11535,3 +11535,12 @@ Entries:
   id: 6428
   time: '2026-09-10T00:15:01.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1896
+- author: Vixting
+  changes:
+    - type: Fix
+      message: >-
+        fix produce with no reagents getting instant deleted, towercaps, steel
+        caps
+  id: 6429
+  time: '2026-09-10T00:17:30.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1898
