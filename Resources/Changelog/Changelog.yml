@@ -11544,3 +11544,12 @@ Entries:
   id: 6429
   time: '2026-09-10T00:17:30.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1898
+- author: Oli
+  changes:
+    - type: Add
+      message: Raider Survival Box
+    - type: Tweak
+      message: Eighties + Khans Survival Box + Khan now wears armor helmet again.
+  id: 6430
+  time: '2026-09-10T00:22:54.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1900
