@@ -725,6 +725,9 @@
     tags:
     - DoorBumpOpener
     - VulpEmotes
+  - type: NpcFactionMember
+    factions:
+      - Wastelander
 
 # #Misfits Add - Enclave Eyebot companion, issued to Enclave scientist roles.
 # Inherits the full pet eyebot package (rechargeable laser, radio, languages, robot body)
