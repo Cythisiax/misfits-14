@@ -262,8 +262,6 @@
     - MisfitsBPNCR40mmTearGas
     - MisfitsBPNCR40mmHEDP
     - MisfitsBPNCR40mmIncendiary
-    - MisfitsBPNCR40mmPulse
-    - MisfitsBPNCR40mmPlasma
 
 - type: entity
   parent: N14BlueprintBase
@@ -495,8 +493,6 @@
     - MisfitsBPLegion40mmTearGas
     - MisfitsBPLegion40mmHEDP
     - MisfitsBPLegion40mmIncendiary
-    - MisfitsBPLegion40mmPulse
-    - MisfitsBPLegion40mmPlasma
     - MisfitsBPLegionGrenadeFragDefensive
 
 - type: entity
@@ -707,7 +703,6 @@
     - N14BPBoSAmmoPlasmaCartridgeMultiplas
     - MisfitsBPBoSGrenadeFragOffensive # #Misfits Add - efficient conventional ordnance
     - MisfitsBPBoSGrenadeFragDefensive
-    - MisfitsBPBoSGrenadePlasma # #Misfits Add - Issue #968 Brotherhood plasma ordnance
     # #Misfits Add - complete 40mm family.
     - MisfitsBPBoS40mmHE
     - MisfitsBPBoS40mmBuckshot
@@ -717,8 +712,6 @@
     - MisfitsBPBoS40mmTearGas
     - MisfitsBPBoS40mmHEDP
     - MisfitsBPBoS40mmIncendiary
-    - MisfitsBPBoS40mmPulse
-    - MisfitsBPBoS40mmPlasma
 
 - type: entity
   parent: N14BlueprintBase

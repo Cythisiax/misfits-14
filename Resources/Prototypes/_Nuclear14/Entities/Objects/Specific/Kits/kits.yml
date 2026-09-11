@@ -1292,6 +1292,7 @@
       - id: N14PowerCellSmall
         amount: 2
       - id: EmpGrenade # #Misfits Add - faction council Engineering Scribe ordnance
+      - id: MisfitsMilitaryDetonator # #Misfits Add - long-range initiator for Scribe demolition work
 
 # MBoS Paladin Kits
 #Misfits Change /Tweak/: Replaced auto laser rifle with auto shotgun + laser pistol sidearm.
