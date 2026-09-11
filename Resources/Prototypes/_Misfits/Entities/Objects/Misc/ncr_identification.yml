@@ -130,6 +130,16 @@
   - type: PresetIdCard
     job: NCRRO
 
+- type: entity
+  parent: N14IDNCRDogtagOfficer
+  id: N14IDNCRDogtagltcol
+  name: Lieutenant Colonel's dogtags
+  description: An ID dogtag worn by NCR Lieutenant Colonels.
+  suffix: Lieutenant Colonel
+  components:
+  - type: PresetIdCard
+    job: NCRLTCol
+
 #Misfits Add - Prisoner ID dogtag: NCR prisoners had no ID slot item, so they never got a
 #station general record and were missing from the crew manifest. This fixes that.
 - type: entity

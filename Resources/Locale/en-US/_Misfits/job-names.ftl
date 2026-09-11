@@ -9,6 +9,9 @@ job-description-ncr-commander = You command the NCR detachment. Set operational 
 job-name-ncr-executive-officer = NCR Executive Officer
 job-description-ncr-executive-officer = You are the Commander's second, managing the detachment's day-to-day operations and keeping the NCOs in line. Lead by example and bridge command and the ranks below.
 
+job-name-lieutenant-colonel = NCR Lieutenant Colonel
+job-description-ltcol = You command the NCR detachment at the highest field level, coordinating officers, squads, and strategy while answering only to senior command. Legends tell you jumped all the way from staff sergeant.
+
 job-name-ncr-platoon-leader = NCR Platoon Leader
 job-description-ncr-platoon-leader = You lead a platoon in the field, directing NCOs and executing the Commander's orders. Your commision begins at 2LT — earn your 1LT through service.
 
