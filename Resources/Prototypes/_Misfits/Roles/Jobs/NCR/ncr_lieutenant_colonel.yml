@@ -3,10 +3,11 @@
 - type: job
   id: NCRLTCol
   setPreference: true
+  whitelisted: true
   hideWithoutJobWhitelist: true
   jobWhitelistBypassesRoleTimers: true # bypass faction timelocks — admin-only
   alwaysUseSpawner: True
-  weight: 15
+  weight: 135
   showBorder: true
   canBeAntag: false
   name: job-name-lieutenant-colonel
