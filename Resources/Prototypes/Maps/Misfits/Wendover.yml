@@ -156,6 +156,7 @@
           FollowerGuard: [ 2, 2 ]      # #Misfits Add - FOTA compound guards
           FollowerDoctor: [ 2, 2 ]   # #Misfits Add - Doctor rank slot
           FollowerHead: [ 1, 1 ]     # #Misfits Fix - allow Head to round-start as well as latejoin
+          FollowerDirector: [ 1, 1 ] # #Misfits Add - Director rank slot
           SyntheticMrHandy: [ 1, 3 ]
           SyntheticProtectron: [ 1, 3 ]
           SyntheticMrGutsy: [ 1, 3 ]
