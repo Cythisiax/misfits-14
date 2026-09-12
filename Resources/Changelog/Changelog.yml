@@ -11560,3 +11560,34 @@ Entries:
   id: 6431
   time: '2026-09-10T00:23:15.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1902
+- author: cythisiax
+  changes:
+    - type: Tweak
+      message: >-
+        Expedition Adjustmments, WoW M+/AAPRG esque with end boss, armor, tuning
+        adjustments
+    - type: Tweak
+      message: Enclave Timelock Adjustments, 40H peak
+    - type: Tweak
+      message: Enclave jobslot roles with PA adjustments, 6 total. Enlisted/NCO
+    - type: Tweak
+      message: Wasteland Radio Adjustments, admin command to turn on/off
+  id: 6432
+  time: '2026-09-10T01:40:01.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1903
+- author: aftemath434
+  changes:
+    - type: Add
+      message: fireman carry for SM & NK
+    - type: Tweak
+      message: 'NK health Regen + heart and stomach '
+  id: 6433
+  time: '2026-09-11T00:56:25.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1904
+- author: Enkidienne
+  changes:
+    - type: Add
+      message: Follower Director
+  id: 6434
+  time: '2026-09-12T00:09:14.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1906

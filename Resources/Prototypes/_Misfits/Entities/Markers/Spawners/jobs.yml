@@ -506,6 +506,18 @@
 
 - type: entity
   parent: MisfitsSpawnPointNCRCadet
+  id: MisfitsSpawnPointNCRLTCol
+  name: NCR Lieutenant Colonel
+  components:
+  - type: SpawnPoint
+    job_id: NCRLTCol
+  - type: Sprite
+    layers:
+      - state: green
+      - state: lt
+
+- type: entity
+  parent: MisfitsSpawnPointNCRCadet
   id: MisfitsSpawnPointNCRProvost
   name: Provost Job Spawn
   components:
@@ -966,6 +978,15 @@
   components:
   - type: SpawnPoint
     job_id: SuperMutantFollowerDoctor
+
+- type: entity
+  parent: N14SpawnPointFollowers
+  id: MisfitsSpawnPointFollowerDirector
+  name: follower director
+  components:
+  - type: SpawnPoint
+    job_id: FollowerDirector
+
 
 # Bwonsamdi spawn point (original prototype ID retained; not placed on Wendover).
 - type: entity
