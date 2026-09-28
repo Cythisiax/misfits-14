@@ -87,7 +87,7 @@ public sealed partial class ExplosionPrototype : IPrototype
     // #Misfits diminishing returns when stacking explosives
     /// strongest 1st, & the n-th one adds intensity * CombineFalloff^n
     [DataField]
-    public float CombineFalloff = 0.75f;
+    public float CombineFalloff = 0.55f;
 
     [DataField("sound")]
     public SoundSpecifier Sound = new SoundCollectionSpecifier("Explosion");
