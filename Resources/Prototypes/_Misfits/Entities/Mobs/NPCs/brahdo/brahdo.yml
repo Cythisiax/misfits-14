@@ -3,6 +3,9 @@
   id: MisfitsMobBrahdo_Base
   abstract: true
   components:
+  - type: NpcFactionMember
+    factions:
+    - SimpleNeutral
   - type: OpenSlot
     openSlots:
       - outerClothing
