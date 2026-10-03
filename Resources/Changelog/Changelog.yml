@@ -12169,3 +12169,14 @@ Entries:
   id: 6494
   time: '2026-10-03T13:25:53.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2016
+- author: JohnKieser
+  changes:
+    - type: Fix
+      message: >-
+        brahdos should listen most of the time now during rides. They should
+        also listen to follow commands normally.
+    - type: Fix
+      message: brahmin can be ridden and recruited normally again.
+  id: 6495
+  time: '2026-10-03T13:26:24.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2036
