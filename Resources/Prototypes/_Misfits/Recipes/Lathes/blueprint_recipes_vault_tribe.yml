@@ -1283,7 +1283,7 @@
   - Tribe
   materials:
     Leather: 200
-    N14Iron: 1200
+    N14Iron: 1500
     Cloth: 200
     Thread: 150
 
@@ -1311,7 +1311,7 @@
   - Tribe
   materials:
     Steel: 6000
-    cloth: 500
+    Cloth: 500
     Leather: 250
     Plastic: 250
 
@@ -1774,10 +1774,10 @@
   availableFaction:
   - Tribe
   materials:
-    Steel: 800
+    Steel: 1500
     Cloth: 8
     Leather: 100
-    Platstic: 600
+    Plastic: 600
 
 - type: latheRecipe
   id: N14BPTribeArmorHelmetTribalShemagh
@@ -1880,7 +1880,7 @@
   availableFaction:
   - Tribe
   materials:
-    Steel: 900
+    Steel: 50000
     Cloth: 100
     Leather: 100
     Circuitry : 100

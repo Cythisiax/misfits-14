@@ -1309,8 +1309,8 @@
     - N14BPTribeAmmoBox127
     - N14BPTribeAmmoBox308
     - N14BPTribeAmmoSpeedLoader45-70
-    - MisfitsBPTribeGrenadeTin # #Misfits Add - Willower faction-council improvised explosives
-    - MisfitsBPTribeDynamite
+    # - MisfitsBPTribeGrenadeTin # #Misfits Add - Willower faction-council improvised explosives
+    # - MisfitsBPTribeDynamite
 - type: entity
   parent: N14BlueprintBase
   id: N14BlueprintTribeAmmoT4
