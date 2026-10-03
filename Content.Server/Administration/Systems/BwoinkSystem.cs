@@ -781,6 +781,70 @@ namespace Content.Server.Administration.Systems
             if (!(_adminManager.GetAdminData(args.SenderSession)?.HasFlag(AdminFlags.Adminhelp) ?? false))
                 return;
 
+            // Admin actions live in the persistent admin log store and require Logs access.
+            var actionLogs = new List<Content.Shared.Administration.Logs.SharedAdminLog>();
+            var playerLogs = new List<Content.Shared.Administration.Logs.SharedAdminLog>();
+            var hasMoreActions = false;
+            var hasMorePlayerLogs = false;
+            var canViewActions = _adminManager.HasAdminFlag(args.SenderSession, AdminFlags.Logs);
+            Guid? actionPlayerId = msg.FilterPlayerId;
+            var actionPlayerName = msg.FilterPlayerName;
+            if (canViewActions)
+            {
+                if (actionPlayerId == null && !string.IsNullOrWhiteSpace(actionPlayerName))
+                {
+                    var exactPlayer = await _playerLocator.LookupIdByNameAsync(actionPlayerName);
+                    if (exactPlayer != null)
+                    {
+                        actionPlayerId = exactPlayer.UserId.UserId;
+                        actionPlayerName = null;
+                    }
+                }
+
+                var actionFilter = new LogFilter
+                {
+                    Round = null,
+                    Types = new HashSet<LogType>
+                    {
+                        LogType.Action, LogType.Verb, LogType.AdminMessage,
+                        LogType.EntitySpawn, LogType.EntityDelete, LogType.Teleport,
+                        LogType.Mind, LogType.EventAnnounced, LogType.EventStarted,
+                        LogType.EventRan, LogType.EventStopped,
+                    },
+                    After = msg.FilterStartDate?.ToUniversalTime().AddTicks(-1),
+                    Before = msg.FilterEndDate?.ToUniversalTime().AddTicks(1),
+                    AnyPlayers = actionPlayerId is { } playerId ? new[] { playerId } : null,
+                    PlayerName = actionPlayerName,
+                    AdminName = msg.FilterAdminName,
+                    Offset = Math.Max(0, msg.AdminLogOffset),
+                    Limit = 101,
+                };
+                actionLogs = await _adminLog.All(actionFilter);
+                hasMoreActions = actionLogs.Count > 100;
+                if (hasMoreActions)
+                    actionLogs.RemoveAt(100);
+
+                if (actionPlayerId is { } selectedPlayer)
+                {
+                    playerLogs = await _adminLog.All(new LogFilter
+                    {
+                        Round = null,
+                        AnyPlayers = new[] { selectedPlayer },
+                        AdminName = msg.FilterAdminName,
+                        After = msg.FilterStartDate?.ToUniversalTime().AddTicks(-1),
+                        Before = msg.FilterEndDate?.ToUniversalTime().AddTicks(1),
+                        Offset = Math.Max(0, msg.PlayerLogOffset),
+                        Limit = 101,
+                    });
+                    hasMorePlayerLogs = playerLogs.Count > 100;
+                    if (hasMorePlayerLogs)
+                        playerLogs.RemoveAt(100);
+                }
+            }
+
+            _adminLog.Add(LogType.Action, LogImpact.Low,
+                $"{args.SenderSession:actor} viewed help ticket audit and admin actions (player {msg.FilterPlayerId}, admin {msg.FilterAdminName}, offset {msg.AdminLogOffset})");
+
             // #Misfits Change - pass all filter parameters to DB query
             var (events, total) = await _dbManager.GetHelpTicketEventsAsync(
                 msg.FilterPlayerId,
@@ -822,6 +886,14 @@ namespace Content.Server.Administration.Systems
                 new HelpTicketAuditResponseMessage
                 {
                     Entries = entries,
+                    AdminActionLogs = actionLogs,
+                    AdminLogOffset = Math.Max(0, msg.AdminLogOffset),
+                    HasMoreAdminActionLogs = hasMoreActions,
+                    CanViewAdminActionLogs = canViewActions,
+                    PlayerLogs = playerLogs,
+                    PlayerLogOffset = Math.Max(0, msg.PlayerLogOffset),
+                    HasMorePlayerLogs = hasMorePlayerLogs,
+                    HasPlayerLogFilter = actionPlayerId != null,
                     TotalCount = total,
                     Offset = msg.Offset,
                     AdminStats = adminStats,
