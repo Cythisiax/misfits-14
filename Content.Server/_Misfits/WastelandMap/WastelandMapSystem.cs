@@ -19,6 +19,7 @@ using Content.Shared.Tag;
 using Content.Shared._Misfits.WastelandMap;
 using Content.Shared._Misfits.MaterialExtractor;
 using Content.Shared._Misfits.Expeditions;
+using Content.Shared._Misfits.Radio;
 using Content.Shared._Misfits.TreeOfLife;
 using Content.Shared._Misfits.Deathclaw;
 using Content.Shared._Misfits.TribalHunt;
@@ -761,6 +762,7 @@ public sealed class WastelandMapSystem : EntitySystem
             AppendFactionBlips(_blipScratch, feed, mapId, bounds);
             AppendMaterialExtractorBlips(_blipScratch, mapId, bounds);
             AppendExpeditionEntranceBlips(_blipScratch, mapId, bounds);
+            AppendRadioTowerBlips(_blipScratch, mapId, bounds);
             if (AllowsSharedOverlays(feed)) // #Misfits Change - Tribe maps are tagged-ID-only.
                 AppendTribalHuntTargetBlips(_blipScratch, mapId, bounds);
             nonActorBlips = _blipScratch.ToArray();
@@ -937,6 +939,27 @@ public sealed class WastelandMapSystem : EntitySystem
                 coordinates.Position.Y,
                 Loc.GetString("n14-expedition-entrance-map-label"),
                 WastelandMapTrackedBlipKind.ExpeditionEntrance));
+        }
+    }
+
+    private void AppendRadioTowerBlips(List<WastelandMapTrackedBlip> buffer, MapId mapId, Box2 bounds)
+    {
+        var query = EntityQueryEnumerator<RadioTowerComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out var tower, out var xform))
+        {
+            var coordinates = _transform.GetMapCoordinates(uid, xform);
+            if (coordinates.MapId != mapId || !bounds.Contains(coordinates.Position))
+                continue;
+
+            buffer.Add(new WastelandMapTrackedBlip(
+                coordinates.Position.X,
+                coordinates.Position.Y,
+                Loc.GetString(tower.Activated
+                    ? "n14-radio-tower-map-label-online"
+                    : "n14-radio-tower-map-label-offline"),
+                tower.Activated
+                    ? WastelandMapTrackedBlipKind.RadioTowerOnline
+                    : WastelandMapTrackedBlipKind.RadioTowerOffline));
         }
     }
 
