@@ -51,6 +51,8 @@ public sealed class PlayerPanelEui : BaseEui
     {
         base.Opened();
         _admins.OnPermsChanged += OnPermsChanged;
+        _adminLog.Add(LogType.Action, LogImpact.Medium,
+            $"{Player:actor} viewed player panel for {_targetPlayer.Username} ({_targetPlayer.UserId.UserId:targetPlayerId})");
     }
 
     public override void Closed()
