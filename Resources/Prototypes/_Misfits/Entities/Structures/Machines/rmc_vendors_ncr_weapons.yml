@@ -26,6 +26,7 @@
     - NCRSoldier
     - NCRPrivateFirstClass
     - NCRMedic
+    - NCRDoctor
     - NCREngineer
     - NCRWS
     - NCRHeavyTrooper
@@ -53,6 +54,7 @@
       NCRSoldier: 1
       NCRPrivateFirstClass: 1
       NCRMedic: 1
+      NCRDoctor: 3
       NCREngineer: 1
       NCRWS: 1
       NCRHeavyTrooper: 2
@@ -134,7 +136,7 @@
       - { id: N14Dynamite, category: Explosives, tier: 1 }
       - { id: N14TinNade, category: Explosives, tier: 1 }
     - name: Tier 1 - Medic allocation
-      jobs: [ NCRMedic ]
+      jobs: [ NCRMedic, NCRDoctor ]
       entries:
       - { id: N14WeaponPistol45Colt, category: Ballistic, tier: 1 }
       - { id: N14WeaponSMG9mm, category: Ballistic, tier: 1 }
