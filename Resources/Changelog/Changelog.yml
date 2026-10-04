@@ -12187,3 +12187,12 @@ Entries:
   id: 6496
   time: '2026-10-03T22:35:49.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2037
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: NCR Venndnor & Medical Officer + Combat armor addition
+    - type: Fix
+      message: Admin things
+  id: 6497
+  time: '2026-10-04T11:53:06.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2039
