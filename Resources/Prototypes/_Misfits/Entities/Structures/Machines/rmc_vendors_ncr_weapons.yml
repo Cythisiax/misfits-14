@@ -31,6 +31,7 @@
     - NCRWS
     - NCRHeavyTrooper
     - NCRHeavyTrooperLead
+    - SuperMutantNCRTrooper
     - NCRNCO
     - NCRStaffSergeant
     - NCRFirstSergeant
@@ -58,6 +59,7 @@
       NCREngineer: 1
       NCRWS: 1
       NCRHeavyTrooper: 2
+      SuperMutantNCRTrooper: 1
       NCRNCO: 3
       NCRVertibirdPilot: 3
       NCRHeavyTrooperLead: 3
@@ -111,7 +113,7 @@
       - { id: LMGMagazine556Rifle, category: Magazines, tier: 2, amount: 3, maxAmount: 3, jobs: [ NCRHeavyTrooper, NCRHeavyTrooperLead, NCRNCO, NCRStaffSergeant, NCRFirstSergeant ], requiredJob: Heavy Trooper or Squad Leader }
       - { id: N14MagazineMinigun5mm, category: Magazines, tier: 3, amount: 2, maxAmount: 2, jobs: [ NCRHeavyTrooperLead ], requiredJob: Heavy Trooper Lead }
     - name: Tier 1 - Standard Trooper allocation
-      jobs: [ NCRCadet, NCRSoldier, NCRPrivateFirstClass ]
+      jobs: [ NCRCadet, NCRSoldier, NCRPrivateFirstClass, SuperMutantNCRTrooper ]
       entries:
       - { id: N14WeaponPistol9mm, category: Ballistic, tier: 1 }
       - { id: N14WeaponPistol45Colt, category: Ballistic, tier: 1 }
