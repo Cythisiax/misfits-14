@@ -68,7 +68,7 @@ job-description-chief-ranger = You are the Rangers' supreme field commander. Coo
 
 # #Misfits Add - DAGGER: Ranger liaison attached to NCR High Command.
 job-name-ncr-dagger = DAGGER
-job-description-ncr-dagger = You are DAGGER, a Misfits NCR Ranger entrusted to establish the canon of the Ranger presence and coordinate its operations with NCR High Command.
+job-description-ncr-dagger = You are DAGGER. The Wendover frontier settler(s) of NCRR and NCRA expansionism. You are their High Command of the entire theater.
 
 # #Misfits Add - NCR Ranger Recruit: brand-new entry-level Rangers role.
 job-name-ncr-ranger-recruit = Ranger Recruit
