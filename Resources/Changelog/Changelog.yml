@@ -12196,3 +12196,10 @@ Entries:
   id: 6497
   time: '2026-10-04T11:53:06.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2039
+- author: aftermath434
+  changes:
+    - type: Add
+      message: 'Off duty, director of science, and ESI agent to enclave   '
+  id: 6498
+  time: '2026-10-04T12:08:16.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2026
