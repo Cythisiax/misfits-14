@@ -12203,3 +12203,16 @@ Entries:
   id: 6498
   time: '2026-10-04T12:08:16.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2026
+- author: cythisiax
+  changes:
+    - type: Add
+      message: Updates to extractor waves, increased spawn pool choices.
+    - type: Add
+      message: Radio Tower, must be activated during round to enable :w/Wasteland
+    - type: Add
+      message: N14JunkAbraxoCleaner combination to create it
+    - type: Fix
+      message: Issues with NCR Vendor
+  id: 6499
+  time: '2026-10-04T23:55:03.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2042
