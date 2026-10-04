@@ -6,7 +6,7 @@
 #Sausage: Cut Sausage Link, gives 4 Sausages
 #Toffee Bar: Cut Toffee, gives 6 bars
 #Candy Pouch: 1 leather, 1 thread
-
+#_Misfits/Objects/Consumable/Food/FoodStuffs.rsi
 #- Rice Cake: 1 cooked rice, 5u salt -> 5 sec
 - type: microwaveMealRecipe
   id: MisfitsRecipeRiceCake
@@ -20,13 +20,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-riceCake
   name: Rice Cake
   id: MisfitsFoodRiceCake
   components:
+  - type: Food
+    eatMessage: food-desc-riceCake-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: riceCake
   - type: SolutionContainerManager
     solutions:
       food:
@@ -41,13 +43,15 @@
 #- Coxinha: 5u ground animal protein, 1 dough slice, 5u salt -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-coxinha
   name: Coxinha
   id: MisfitsFoodCoxinha
   components:
+  - type: Food
+    eatMessage: food-desc-coxinha-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: bazaarHip
   - type: SolutionContainerManager
     solutions:
       food:
@@ -74,13 +78,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-meatDumpling
   name: meat Dumpling
   id: MisfitsFoodMeatDumpling
   components:
+  - type: Food
+    eatMessage: food-desc-meatDumpling-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: meatDumpling
   - type: SolutionContainerManager
     solutions:
       food:
@@ -102,13 +108,15 @@
 #- Khan Meat Dumpling: 1 dumpling, 5u jet, 1 leather, 1 wood -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-meatDumplingKhan
   name: Khan Meat Dumping
   id: MisfitsFoodMeatDumpling_Jet
   components:
+  - type: Food
+    eatMessage: food-desc-meatDumplingKhan-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: khanMeatDumpling
   - type: SolutionContainerManager
     solutions:
       food:
@@ -124,7 +132,7 @@
 
 - type: microwaveMealRecipe
   id: MisfitsRecipeMeatDumpling_Jet
-  name: fried Simple Sushi
+  name: Khan Meat Dumping
   result: MisfitsFoodMeatDumpling_Jet
   time: 5
   reagents:
@@ -137,13 +145,15 @@
 #- Carrot Vitamin Gummy: 5u carrot juice, 5u sugar -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-carrotGummy
   name: Carrot Vitamin Gummy
   id: MisfitsFoodCarrotGummy
   components:
+  - type: Food
+    eatMessage: food-desc-carrotGummy-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: carrotCandy2
   - type: SolutionContainerManager
     solutions:
       food:
@@ -167,13 +177,24 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-chocoBar
   name: Milk Chocolate Bar
   id: MisfitsFoodChocolateBar
   components:
+  - type: Food
+    eatMessage: food-desc-chocoBar-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    layers:
+    - state: chocoBar
+      sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+      map: ["icon"]
+  - type: GenericVisualizer
+    visuals:
+      enum.OpenableVisuals.Opened:
+        icon:
+          True: {state: "chocoBarOpen"}
+          False: {state: "chocoBar"}
+  - type: Openable
   - type: SolutionContainerManager
     solutions:
       food:
@@ -195,13 +216,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-vaultLolli
   name: VaultTech Lollipop
   id: MisfitsFoodLollipop_VaultTech
   components:
+  - type: Food
+    eatMessage: food-desc-vaultLolli-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: vaultLollipop
   - type: SolutionContainerManager
     solutions:
       food:
@@ -223,13 +246,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
-  name: Spicy n' Sweet Skewer
+  description: food-desc-spicySweetSkewer
+  name: Spicy n Sweet Skewer
   id: MisfitsFoodSkewerSpicySweet
   components:
+  - type: Food
+    eatMessage: food-desc-spicySweetSkewer-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: sweetSpicySkewer
   - type: SolutionContainerManager
     solutions:
       food:
@@ -254,13 +279,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-kebabPilar
   name: Kebab Pilar
   id: MisfitsFoodKebabPilar
   components:
+  - type: Food
+    eatMessage: food-desc-kebabPilar-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: kebabPilar
   - type: SliceableFood
     slice: N14FoodMeatBrahminCutletCooked
     count: 15
@@ -286,13 +313,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-kebabWrap
   name: Kebab Wrap
   id: MisfitsFoodKebabWrap
   components:
+  - type: Food
+    eatMessage: food-desc-kebabWrap-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: durumKebab
   - type: SolutionContainerManager
     solutions:
       food:
@@ -317,17 +346,19 @@
     N14FloraProduceWildOnion: 1
     N14FoodDoughSlice: 1
 
-#- Permisson: 1 radstag cutlet, 2 pinion nuts, 2 blackberies -> 10 sec
+#- Pemmison: 1 radstag cutlet, 2 pinion nuts, 2 blackberies -> 10 sec
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
-  name: Permisson
-  id: MisfitsFoodPermisson
+  description: food-desc-pemmison
+  name: Pemmison
+  id: MisfitsFoodPemmison
   components:
+  - type: Food
+    eatMessage: food-desc-pemmison-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: pemmison
   - type: SolutionContainerManager
     solutions:
       food:
@@ -342,27 +373,63 @@
           Quantity: 2
 
 - type: microwaveMealRecipe
-  id: MisfitsRecipePermisson
-  name: Permisson
-  result: MisfitsFoodPermisson
+  id: MisfitsRecipePemmison
+  name: Pemmison
+  result: MisfitsFoodPemmison
   time: 10
   solids:
     N14FoodMeatRadstagCutlet: 1
     N14FloraProduceWildPinyonNuts: 2
     N14FloraProduceWildBlackberries: 2
 
+
+#Toffee Sheet: 2 pinion nut, 40u sugar -> 30 sec
+
+
+- type: entity
+  parent: MisfitsFoodBase
+  description: food-desc-toffee
+  name: Toffee Sheet
+  id: MisfitsFoodToffeeSheet
+  components:
+  - type: Food
+    eatMessage: food-desc-toffee-eat
+  - type: Sprite
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: toffeeSheet
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 25
+        - ReagentId: Sugar
+          Quantity: 50
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeToffeeSheet
+  name: Toffee Sheet
+  result: MisfitsFoodToffeeSheet
+  time: 30
+  reagents:
+    Sugar: 40
+  solids:
+    N14FloraProduceWildPinyonNuts: 2
+
 #- Toffee -> 1 Pinion nut, 15u sugar -> 15 sec
 
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
-  name: Toffee
+  description: food-desc-toffeeBar
+  name: Toffee Chunk
   id: MisfitsFoodToffee
   components:
+  - type: Food
+    eatMessage: food-desc-toffeeBar-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: toffeeChunk
   - type: SolutionContainerManager
     solutions:
       food:
@@ -374,7 +441,7 @@
 
 - type: microwaveMealRecipe
   id: MisfitsRecipeToffee
-  name: Toffee
+  name: Toffee Chunk
   result: MisfitsFoodToffee
   time: 15
   reagents:
@@ -385,13 +452,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-meatJerk
   name: Meat Jerky
   id: MisfitsFoodMeatJerky
   components:
+  - type: Food
+    eatMessage: food-desc-meatJerk-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: meatJerky
   - type: SolutionContainerManager
     solutions:
       food:
@@ -405,7 +474,7 @@
 
 - type: microwaveMealRecipe
   id: MisfitsRecipeMeatJerky
-  name: simple Sushi
+  name: Meat Jerky
   result: MisfitsFoodMeatJerky
   time: 15
   reagents:
@@ -415,13 +484,15 @@
 #- Cabbage n Meat Bread: 1 cabbage, 5u ground animal protein, 1 dough -> 10 sec
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-cabbageMeatBread
   name: Cabbage n' Meat Bread
   id: MisfitsFoodCabbageMeatBread
   components:
+  - type: Food
+    eatMessage: food-desc-cabbageMeatBread-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: runza
   - type: SolutionContainerManager
     solutions:
       food:
@@ -434,7 +505,7 @@
           Quantity: 5
         - ReagentId: Salt
           Quantity: 4
-
+#slices
 
 - type: microwaveMealRecipe
   id: MisfitsRecipeCabbageMeatBread
@@ -450,21 +521,21 @@
 #- Thick Pancake: 10u flour, 5u milk, 5u egg, 5u Raiser -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-thickPancake
   name: Thick Pancake
   id: MisfitsFoodThickPancake
   components:
+  - type: Food
+    eatMessage: food-desc-thickPancake-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: thickPancake
   - type: SolutionContainerManager
     solutions:
       food:
         reagents:
         - ReagentId: Nutriment
           Quantity: 15
-
-
 
 - type: microwaveMealRecipe
   id: MisfitsRecipeThickPancake
@@ -480,13 +551,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-shortCake
   name: Shortcake Cookie
   id: MisfitsFoodShortcakeCookie
   components:
+  - type: Food
+    eatMessage: food-desc-shortCake-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: shortCake
   - type: SolutionContainerManager
     solutions:
       food:
@@ -508,20 +581,22 @@
 #Milk Bread: 1 butter slice, 10u milk, 10u flour, 5u raiser -> 10 sec
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-milkBread
   name: Milk Bread
   id: MisfitsFoodMilkBread
   components:
+  - type: Food
+    eatMessage: food-desc-milkBread-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: milkBread
   - type: SolutionContainerManager
     solutions:
       food:
         reagents:
         - ReagentId: Nutriment
           Quantity: 15
-
+#slices
 - type: microwaveMealRecipe
   id: MisfitsRecipeMilkBread
   name: Milk Bread
@@ -537,13 +612,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-lasagna
   name: Lasagna
   id: MisfitsFoodLasagna
   components:
+  - type: Food
+    eatMessage: food-desc-lasagna-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: lasagna
   - type: SolutionContainerManager
     solutions:
       food:
@@ -554,6 +631,8 @@
           Quantity: 10
         - ReagentId: Fat
           Quantity: 6
+        - ReagentId: UnstableMutagen
+          Quantity: 20
 
 
 - type: microwaveMealRecipe
@@ -571,13 +650,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-sausageChain
   name: Sausage Chain
   id: MisfitsFoodSausageChain
   components:
+  - type: Food
+    eatMessage: food-desc-sausageChain-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: sausageChain
   - type: SliceableFood
     slice: MisfitsFoodSausage
     count: 4
@@ -590,25 +671,40 @@
         - ReagentId: Fat
           Quantity: 8
 
-# sausage
+# sausage/cooked
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-sausage
   name: Sausage
-  id: MisfitsFoodSausage
+  id: !type:CreateVariants
+    values: [ MisfitsFoodSausage, MisfitsFoodSausageCooked]
   components:
+  - type: Food
+    eatMessage: food-desc-sausageCooked-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: !type:CreateVariants
+    values: [ sausage, sausageFried]
   - type: SolutionContainerManager
     solutions:
       food:
         reagents:
-        - ReagentId: N14UncookedAnimalProteinsRad
+        - ReagentId: !type:CreateVariants
+            values: [ N14UncookedAnimalProteinsRad, Protein ]
           Quantity: 4
-        - ReagentId: Fat
+        - ReagentId: !type:CreateVariants
+            values: [ Fat, Nutriment ]
           Quantity: 2
-
+  - type: GeneralConstructs
+    generalEnts:
+      Cooked: !type:CreateVariants
+        values: [ MisfitsFoodSausageCooked, MisfitsFoodSausageCooked]
+  - type: Construction
+    graph: GraphCookAny
+    node: !type:CreateVariants
+      values: [ start, CookNode]
+    defaultTarget: !type:CreateVariants
+      values: [ CookNode, start]
 
 - type: microwaveMealRecipe
   id: MisfitsRecipeSausageChain
@@ -625,13 +721,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-sausageRoll
   name: Sausage Roll
   id: MisfitsFoodSausageRoll
   components:
+  - type: Food
+    eatMessage: food-desc-sausageRoll-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: sausageRoll
   - type: SolutionContainerManager
     solutions:
       food:
@@ -652,50 +750,22 @@
     N14FoodDoughSlice: 1
     MisfitsFoodSausage: 1
 
-#Toffee: 2 pinion nut, 40u sugar -> 30 sec
 
-
-- type: entity
-  parent: MisfitsFoodBase
-  description:
-  name: Toffee Large
-  id: MisfitsFoodToffeeLarge
-  components:
-  - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 25
-        - ReagentId: Sugar
-          Quantity: 50
-
-- type: microwaveMealRecipe
-  id: MisfitsRecipeToffeeLarge
-  name: Toffee Large
-  result: MisfitsFoodToffeeLarge
-  time: 30
-  reagents:
-    Sugar: 40
-  solids:
-    N14FloraProduceWildPinyonNuts: 2
 
 #Mug cake: 1 Mug, 1 dough slice, 5u sugar ??
 
 
 - type: entity
   parent: N14CookedFoodBowlBase
-  description:
+  description: food-desc-mugCake
   name: Mug Cake
   id: MisfitsFoodMugCake
   components:
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: mugCake
   - type: Food
+    eatMessage: food-desc-mugCake-eat
     trash:
     - DrinkMug
   - type: SolutionContainerManager
@@ -722,16 +792,20 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: !type:CreateVariants
+    values: [food-desc-carrotCandy, food-desc-buffaloGourdCandy, food-desc-blackberryCandy, food-desc-butterscotchCandy, food-desc-jawbreakerJetCandy]
   name: !type:CreateVariants
     values: [ Carrot Candy, Buffalo Gourd Candy, Blackberry Candy, Butterscotch Candy, Jet Jawbreaker ]
   id: !type:CreateVariants
     values: [ MisfitsFoodCarrotCandy, MisfitsFoodBuffaloGourdCandy, MisfitsFoodBlackberryCandy, MisfitsFoodButterscotchCandy, MisfitsFoodJetCandy ]
   components:
-  - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
   - type: Food
+    eatMessage: !type:CreateVariants
+      values: [food-desc-carrotCandy-eat, food-desc-buffaloGourdCandy-eat, food-desc-blackberryCandy-eat, food-desc-butterscotchCandy-eat, food-desc-jawbreakerJetCandy-eat]
+  - type: Sprite
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: !type:CreateVariants
+      values: [ "carrotCandy", "buffaloGourdCandy", "berryCandy", "butterscotchCandy", "jetJawbreaker" ]
   - type: Tag
     tags:
     - Candy
@@ -819,15 +893,20 @@
 # diced stuff
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: !type:CreateVariants
+    values: [ food-desc-dicedMeat, food-desc-dicedTato, food-desc-dicedGarlic, food-desc-dicedOnion ]
   name: !type:CreateVariants
     values: [ Diced Meat, Diced Tato, Diced Garlic, Diced Onion]
   id: !type:CreateVariants
     values: [ MisfitsFoodDicedMeat, MisfitsFoodDicedTato, MisfitsFoodDicedGarlic, MisfitsFoodDicedOnion ]
   components:
+  - type: Food
+    eatMessage: !type:CreateVariants
+      values: [ food-desc-dicedMeat-eat, food-desc-dicedTato-eat, food-desc-dicedGarlic-eat, food-desc-dicedOnion-eat ]
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: !type:CreateVariants
+      values: [ "dicedMeat", "dicedTato", "dicedGarlic", "dicedOnion" ]
   - type: SolutionSpiker
     sourceSolution: food
     ignoreEmpty: true
@@ -835,7 +914,6 @@
     solution: food
   - type: Extractable
     grindableSolutionName: food
-  - type: Food
   - type: SolutionContainerManager
     solutions:
       food:
@@ -847,13 +925,13 @@
 #Diced Meat: Obtained via Cutting a Cutlet. Can be added to a container as a chem as 10u of it.
 - type: reagent
   id: DicedMeat
-  name: reagent-name-juice-carrot
+  name: reagent-name-dicedMeat
   parent: BaseJuice
-  desc: reagent-desc-juice-carrot
-  physicalDesc: reagent-physical-desc-crisp
+  desc: reagent-desc-food-dicedMeat
+  physicalDesc: reagent-physical-desc-dicedMeat
   group: Foods
-  flavor: carrot
-  color: "#FF8820"
+  flavor: bitter
+  color: "#fc6e5b"
   metabolisms:
     Drink:
       effects:
@@ -865,13 +943,13 @@
 #Diced Tato: Obtained via Cutting a Tato. Can be added to a container as a chem as 10u of it.
 - type: reagent
   id: DicedTato
-  name: reagent-name-juice-carrot
+  name: reagent-name-dicedTato
   parent: BaseJuice
-  desc: reagent-desc-juice-carrot
-  physicalDesc: reagent-physical-desc-crisp
+  desc: reagent-desc-food-dicedTato
+  physicalDesc: reagent-physical-desc-starchy
   group: Foods
-  flavor: carrot
-  color: "#FF8820"
+  flavor: potatoes
+  color: "#302000"
   metabolisms:
     Drink:
       effects:
@@ -881,13 +959,13 @@
 #Diced Garlic: Obtained via Cutting a Garlic. Can be added to a container as 10u chem of it.
 - type: reagent
   id: DicedGarlic
-  name: reagent-name-juice-carrot
+  name: reagent-name-dicedGarlic
   parent: BaseJuice
-  desc: reagent-desc-juice-carrot
-  physicalDesc: reagent-physical-desc-crisp
+  desc: reagent-desc-food-dicedGarlic
+  physicalDesc: reagent-physical-desc-diced
   group: Foods
-  flavor: carrot
-  color: "#FF8820"
+  flavor: bitter
+  color: "#bdb4b3"
   metabolisms:
     Drink:
       effects:
@@ -903,13 +981,13 @@
 #Diced Onion: Same as above.
 - type: reagent
   id: DicedOnion
-  name: reagent-name-juice-carrot
+  name: reagent-name-dicedOnion
   parent: BaseJuice
-  desc: reagent-desc-juice-carrot
-  physicalDesc: reagent-physical-desc-crisp
+  desc: reagent-desc-food-dicedOnion
+  physicalDesc: reagent-physical-desc-diced
   group: Foods
-  flavor: carrot
-  color: "#FF8820"
+  flavor: bitter
+  color: "#bdb4b3"
   metabolisms:
     Drink:
       effects:
@@ -945,14 +1023,15 @@
 
 - type: reagent
   id: TatoSoup
-  name: reagent-name-chlorine
+  name: reagent-name-tatoSoup
   group: Foods
-  desc: reagent-desc-chlorine
-  physicalDesc: reagent-physical-desc-gaseous
-  flavor: bitter
-  color: "#a2ff00"
-  meltingPoint: -101.5
-  boilingPoint: -34.04
+  desc: food-desc-tatoSoup
+  physicalDesc: reagent-physical-desc-robust
+  flavor: tatoSoup
+  color: "#755e13"
+  recognizable: true
+  boilingPoint: 100.0
+  meltingPoint: 0.0
   plantMetabolism:
   - !type:PlantAdjustWater
     amount: 2
@@ -961,7 +1040,7 @@
   - !type:PlantAdjustHealth
     amount: 2
   metabolisms:
-    Poison:
+    Food:
       effects:
       - !type:AdjustReagent
         reagent: Nutriment
@@ -979,10 +1058,11 @@
   parent: [ReagentPacketBase, ItemHeftyBase]
   id: MisfitsItemRaiserCan
   name: Raiser Can
-  description: e
+  description: food-desc-raiserCan
   components:
   - type: Sprite
-    state: flour-big
+    state: raiserCan
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
   - type: SolutionContainerManager
     solutions:
       food:
@@ -993,22 +1073,16 @@
 
 - type: reagent
   id: Raiser
-  name: reagent-name-juice-carrot
-  parent: BaseJuice
-  desc: reagent-desc-juice-carrot
-  physicalDesc: reagent-physical-desc-crisp
+  name: reagent-name-raiser
+  desc: reagent-desc-food-raiser
+  physicalDesc: reagent-physical-desc-powdery
   group: Foods
-  flavor: sweet
-  color: "#FF8820"
+  flavor: powder
+  color: "#94979c"
   metabolisms:
     Drink:
       effects:
       - !type:AdjustReagent
         reagent: Nutriment
-        amount: 1
-      - !type:AdjustReagent
-        reagent: Vitamin
-        amount: .4
-      - !type:AdjustReagent
-        reagent: Allicin
-        amount: .4
+        amount: .01
+

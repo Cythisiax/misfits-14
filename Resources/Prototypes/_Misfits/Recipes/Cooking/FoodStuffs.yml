@@ -9,19 +9,21 @@
 
 
 # red fish cutlet
-
+# _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
 - type: entity
   parent: FoodMeatBase
   name: !type:CreateVariants
-    values: [red fish cutlet, fried red fish cutlet ]
+    values: [Red Fish Cutlet, Fried Red Fish Cutlet ]
   id: !type:CreateVariants
     values: [ N14RedfishCutletRaw,N14RedfishCutletCooked]
-  description: !type:CreateVariants
-    values: [red fish cutlet, fried red fish cutlet ]
+  description: food-desc-redFishCutlet
   components:
+  - type: Food
+    eatMessage: food-desc-redFishCutlet-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: !type:CreateVariants
+      values: ["redFishCutlet", "redFishCutletCooked"]
   - type: SolutionContainerManager
     solutions:
       food:

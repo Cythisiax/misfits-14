@@ -2,7 +2,7 @@
 # sushi raw/cooked
 - type: microwaveMealRecipe
   id: MisfitsRecipeSushiRaw
-  name: simple Sushi
+  name: Simple Sushi
   result: MisfitsFoodSushiMeatRaw
   time: 10
   reagents:
@@ -12,7 +12,7 @@
 
 - type: microwaveMealRecipe
   id: MisfitsRecipeSushiCooked
-  name: fried Simple Sushi
+  name: Fried Simple Sushi
   result: MisfitsFoodSushiMeatCooked
   time: 10
   reagents:
@@ -23,7 +23,7 @@
 # carrot/fish sushi
 - type: microwaveMealRecipe
   id: MisfitsRecipeFishCarrotCooked
-  name: fried Simple Sushi
+  name: Fried Carrot Fish Sushi
   result: MisfitsFoodSushiFishCarrotCooked
   time: 10
   reagents:
@@ -36,7 +36,7 @@
 # fish sushi
 - type: microwaveMealRecipe
   id: MisfitsRecipeSushiFishCooked
-  name: fried Simple Sushi
+  name: Fried Fish Sushi
   result: MisfitsFoodSushiFishCooked
   time: 10
   reagents:
@@ -47,7 +47,7 @@
 # large
 - type: microwaveMealRecipe
   id: MisfitsRecipeSushiMeatLargeCooked
-  name: fried Simple Sushi
+  name: Fried Large Sushi
   result: MisfitsFoodSushiMeatLargeCooked
   time: 10
   reagents:
@@ -59,7 +59,7 @@
 # NCR rolls
 - type: microwaveMealRecipe
   id: MisfitsRecipeSushiNCRCooked
-  name: fried Simple Sushi
+  name: Fried New California Roll
   result: MisfitsFoodSushiNCRCooked
   time: 10
   reagents:
@@ -70,7 +70,7 @@
 
 - type: microwaveMealRecipe
   id: MisfitsRecipeSushiNCRSuperCooked
-  name: fried Simple Sushi
+  name: NCR Patriotic Roll
   result: MisfitsFoodSushiNCRSuperCooked
   time: 10
   reagents:
@@ -83,7 +83,7 @@
 # Spicy and Legion rolls
 - type: microwaveMealRecipe
   id: MisfitsRecipeSushiSpicyCooked
-  name: fried Simple Sushi
+  name: Fried Spicy Sushi
   result: MisfitsFoodSushiSpicyCooked
   time: 10
   reagents:
@@ -95,7 +95,7 @@
 
 - type: microwaveMealRecipe
   id: MisfitsRecipeLegionSuperRaw
-  name: fried Simple Sushi
+  name: Fried Legion Patriotic Roll
   result: MisfitsFoodSushiLegionSuperRaw
   time: 10
   reagents:
@@ -109,7 +109,7 @@
 
 - type: microwaveMealRecipe
   id: MisfitsRecipeSushiCheeseCooked
-  name: fried Simple Sushi
+  name: Fried Cream Cheese Sushi
   result: MisfitsFoodSushiCheeseCooked
   time: 10
   reagents:

@@ -10,7 +10,7 @@
       - allTags:
         - Meat
         - Cooked
-        name: Any meat
+        name: Any Cooked Meat
         icon:
           sprite: Objects/Consumable/Food/meat.rsi
           state: plain-cooked
@@ -23,7 +23,7 @@
   graph: WasterBurritoGraph
   startNode: start
   targetNode: WasterBurrito
-  icon: {sprite: _Nuclear14/Structures/Power/breakerbox.rsi, state: base}
+  icon: {sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi, state: wasterBurrito}
   category: construction-category-food
   objectType: Item
   canBuildInImpassable: true
@@ -31,13 +31,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-wasterBurrito
   name: Waster Burrito
   id: MisfitsFoodWasterBurrito
   components:
+  - type: Food
+    eatMessage: food-desc-wasterBurrito-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: wasterBurrito
   - type: SolutionContainerManager
     solutions:
       food:
@@ -62,7 +64,7 @@
       - allTags:
         - Meat
         - Cooked
-        name: Any meat
+        name: Any Cooked Meat
         icon:
           sprite: Objects/Consumable/Food/meat.rsi
           state: plain-cooked
@@ -78,7 +80,7 @@
   graph: WasterBurritoGraph_super
   startNode: start
   targetNode: WasterBurrito_super
-  icon: {sprite: _Nuclear14/Structures/Power/breakerbox.rsi, state: base}
+  icon: {sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi, state: wasterBurritoSuper}
   category: construction-category-food
   objectType: Item
   canBuildInImpassable: true
@@ -86,13 +88,15 @@
 
 - type: entity
   parent: MisfitsFoodBase
-  description:
+  description: food-desc-wasterBurritoSuper
   name: Waster Burrito Supreme
   id: MisfitsFoodWasterBurrito_super
   components:
+  - type: Food
+    eatMessage: food-desc-wasterBurritoSuper-eat
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: wasterBurritoSuper
   - type: SolutionContainerManager
     solutions:
       food:
@@ -110,17 +114,21 @@
 
 - type: entity
   parent: N14ClothingBeltStorageBase
-  description:
+  description: food-desc-candyPouch
   name: Candy Pouch
   id: MisfitsClothingPouchCandy
   components:
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: candyPouch
   - type: Construction
     graph: CandyPouchGraph
     node: CandyPouch
+  - type: Item
+    size: Tiny
   - type: Storage
+    grid:
+    - 0,0,4,4
     whitelist:
       tags:
       - Candy
@@ -145,7 +153,7 @@
   graph: CandyPouchGraph
   startNode: start
   targetNode: CandyPouch
-  icon: {sprite: _Nuclear14/Structures/Power/breakerbox.rsi, state: base}
+  icon: {sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi, state: candyPouch}
   category: construction-category-food
   objectType: Item
   canBuildInImpassable: true
@@ -155,23 +163,25 @@
 
 - type: entity
   parent: BoxBase
-  description:
+  description: food-desc-foodBox
   name: Food Box
   id: MisfitsStorageFoodBox
   components:
   - type: Sprite
-    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
-    state: fish-slice
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: foodBox0
   - type: Construction
     graph: FoodBoxGraph
     node: FoodBox
   - type: Storage
     grid:
-    - 0,0,4,4
+    - 0,0,5,5
     whitelist:
       components:
       - Food
-
+  - type: StorageFillVisualizer
+    maxFillLevels: 1
+    fillBaseName: foodBox
 
 - type: constructionGraph
   id: FoodBoxGraph
@@ -191,7 +201,7 @@
   graph: FoodBoxGraph
   startNode: start
   targetNode: FoodBox
-  icon: {sprite: _Nuclear14/Structures/Power/breakerbox.rsi, state: base}
+  icon: {sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi, state: foodBox0}
   category: construction-category-food
   objectType: Item
   canBuildInImpassable: true

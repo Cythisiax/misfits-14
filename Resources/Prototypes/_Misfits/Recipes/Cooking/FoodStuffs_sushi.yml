@@ -47,10 +47,17 @@
     values: [Simple Sushi, Fish Sushi, Carrot and Fish Sushi, New California Roll, Spicy Roll]
   id: !type:CreateVariants
     values: [ MisfitsFoodSushiMeatRaw, MisfitsFoodSushiFishRaw, MisfitsFoodSushiFishCarrotRaw ,MisfitsFoodSushiNCRRaw, MisfitsFoodSushiSpicyRaw]
+  description: !type:CreateVariants
+    values: [ food-desc-sushi, food-desc-sushiFish, food-desc-sushiFishCarrot ,food-desc-sushiNCR, food-desc-sushiSpicy]
   components:
   - type: Food
     transferAmount: 10
+    eatMessage: !type:CreateVariants
+      values: [ food-desc-sushi-eat, food-desc-sushiFish-eat, food-desc-sushiFishCarrot-eat ,food-desc-sushiNCR-eat, food-desc-sushiSpicy-eat ]
   - type: Sprite
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: !type:CreateVariants
+      values: [ "sushiRoll", "redFishSushi", "redFishSushi" ,"NCRRoll", "spicyRoll"]
   - type: SolutionContainerManager
     solutions:
       food:
@@ -84,12 +91,17 @@
   parent: MisfitsFoodBase
   name: !type:CreateVariants
     values: [Cream Cheese Sushi, Fried Cream Cheese Sushi ]
+  description: food-desc-sushiCream
   id: !type:CreateVariants
     values: [ MisfitsFoodSushiCheeseRaw,MisfitsFoodSushiCheeseCooked]
   components:
   - type: Food
+    eatMessage: food-desc-sushiCream-eat
     transferAmount: 10
   - type: Sprite
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: !type:CreateVariants
+      values: [ "sushiCream", "sushiCream"]
   - type: SolutionContainerManager
     solutions:
       food:
@@ -131,10 +143,17 @@
     values: [Simple Fried Sushi, Fried Fish Sushi, Fried Carrot and Fish Sushi, Fried New California Roll, Fried Spicy Roll ]
   id: !type:CreateVariants
     values: [ MisfitsFoodSushiMeatCooked, MisfitsFoodSushiFishCooked, MisfitsFoodSushiFishCarrotCooked, MisfitsFoodSushiNCRCooked, MisfitsFoodSushiSpicyCooked]
+    description: !type:CreateVariants
+      values: [ food-desc-sushi, food-desc-sushiFish, food-desc-sushiFishCarrot ,food-desc-sushiNCR, food-desc-sushiSpicy ]
   components:
   - type: Food
     transferAmount: 10
+    eatMessage: !type:CreateVariants
+      values: [ food-desc-sushi-eat, food-desc-sushiFish-eat, food-desc-sushiFishCarrot-eat ,food-desc-sushiNCR-eat, food-desc-sushiSpicy-eat ]
   - type: Sprite
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: !type:CreateVariants
+      values: [ "sushiRoll", "redFishSushi", "redFishSushi" ,"NCRRoll", "spicyRoll"]
   - type: SolutionContainerManager
     solutions:
       food:
@@ -170,10 +189,15 @@
     values: [Large Sushi, Large Fried Sushi ]
   id: !type:CreateVariants
     values: [ MisfitsFoodSushiMeatLargeRaw, MisfitsFoodSushiMeatLargeCooked ]
+    description: food-desc-sushiBig
   components:
   - type: Food
     transferAmount: 10
+    eatMessage: food-desc-sushiBig-eat
   - type: Sprite
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: !type:CreateVariants
+      values: [ "sushiRollBig", "sushiRollBig"]
   - type: SolutionContainerManager
     solutions:
       food:
@@ -205,10 +229,17 @@
     values: [NCR Patriotic Roll, Fried NCR Patriotic Roll, Legion Patriotic Roll, Fried Legion Patriotic Roll]
   id: !type:CreateVariants
     values: [ MisfitsFoodSushiNCRSuperRaw, MisfitsFoodSushiNCRSuperCooked, MisfitsFoodSushiLegionSuperRaw ,MisfitsFoodSushiLegionSuperCooked]
+  description: !type:CreateVariants
+    values: [food-desc-sushiNCRLarge,food-desc-sushiNCRLarge,food-desc-sushiNCRLarge,food-desc-sushiNCRLarge]
   components:
   - type: Food
     transferAmount: 10
+    eatMessage: !type:CreateVariants
+      values: [food-desc-sushiNCRLarge-eat,food-desc-sushiNCRLarge-eat,food-desc-sushiLegionLarge-eat,food-desc-sushiLegionLarge-eat]
   - type: Sprite
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: !type:CreateVariants
+      values: [ "NCRRollSuper", "NCRRollSuper","legionRollSuper","legionRollSuper"]
   - type: SolutionContainerManager
     solutions:
       food:
