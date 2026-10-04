@@ -143,6 +143,7 @@
       - { id: N14ClothingHeadHatNCRBeretMedic, category: Helmet, tier: 1 }
       - { id: N14ClothingUniformNCRMedicVariant, category: Uniform, tier: 1 }
       - { id: N14ClothingOuterNCRPouchedVestDesert, category: Armor, tier: 1 }
+      - { id: MisfitsClothingOuterNCRMedicCombatArmor, category: Armor, tier: 1 }
       - { id: MisfitsClothingOuterNCRMedicLabCoat, category: Armor, tier: 1 }
       - { id: ClothingBeltMedical, category: Belt, tier: 1 }
       - { id: N14ClothingHandsGlovesNitrile, category: Gloves, tier: 1 }

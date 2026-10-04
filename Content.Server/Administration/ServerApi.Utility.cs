@@ -31,8 +31,12 @@ public sealed partial class ServerApi
                 return;
 
             if (exactPath.StartsWith("/admin/actions/", StringComparison.Ordinal))
-                await RunOnMainThread(() => _adminLog.Add(LogType.Action, LogImpact.Medium,
+            {
+                var hasAdminPermissions = await _db.GetAdminDataForAsync(new Robust.Shared.Network.NetUserId(actor.Guid)) != null;
+                var type = hasAdminPermissions ? LogType.AdminAudit : LogType.Action;
+                await RunOnMainThread(() => _adminLog.Add(type, LogImpact.Medium,
                     $"Admin API action requested: {method} {exactPath} by {actor.Name} ({actor.Guid})"));
+            }
 
             await handler(context, actor);
         });
