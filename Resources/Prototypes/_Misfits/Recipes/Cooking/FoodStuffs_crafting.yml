@@ -1,0 +1,198 @@
+#- Waster Burrito (Crafting Menu): 1 Cooked Meat (any), 1 dough slice
+- type: constructionGraph
+  id: WasterBurritoGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: WasterBurrito
+      steps:
+      - allTags:
+        - Meat
+        - Cooked
+        name: Any meat
+        icon:
+          sprite: Objects/Consumable/Food/meat.rsi
+          state: plain-cooked
+      - entity: N14FoodDoughSlice
+  - node: WasterBurrito
+    entity: MisfitsFoodWasterBurrito
+
+- type: construction
+  id: CraftWasterBurrito
+  graph: WasterBurritoGraph
+  startNode: start
+  targetNode: WasterBurrito
+  icon: {sprite: _Nuclear14/Structures/Power/breakerbox.rsi, state: base}
+  category: construction-category-food
+  objectType: Item
+  canBuildInImpassable: true
+  hide: false
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Waster Burrito
+  id: MisfitsFoodWasterBurrito
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 15
+        - ReagentId: Protein
+          Quantity: 5
+  - type: Construction
+    graph: WasterBurritoGraph
+    node: WasterBurrito
+
+#- Waster Burrito Supreme (Crafting Menu): 1 Cooked Meat (any), 1 Cabbage, 1 Cheese Wedge, 1 Tato
+- type: constructionGraph
+  id: WasterBurritoGraph_super
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: WasterBurrito_super
+      steps:
+      - allTags:
+        - Meat
+        - Cooked
+        name: Any meat
+        icon:
+          sprite: Objects/Consumable/Food/meat.rsi
+          state: plain-cooked
+      - entity: N14FoodDoughSlice
+      - entity: N14FloraProduceWildCabbage
+      - entity: N14FoodCheeseSlice
+      - entity: N14FloraProduceWildTato
+  - node: WasterBurrito_super
+    entity: MisfitsFoodWasterBurrito_super
+
+- type: construction
+  id: CraftWasterBurrito_super
+  graph: WasterBurritoGraph_super
+  startNode: start
+  targetNode: WasterBurrito_super
+  icon: {sprite: _Nuclear14/Structures/Power/breakerbox.rsi, state: base}
+  category: construction-category-food
+  objectType: Item
+  canBuildInImpassable: true
+  hide: false
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Waster Burrito Supreme
+  id: MisfitsFoodWasterBurrito_super
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 25
+        - ReagentId: Vitamin
+          Quantity: 10
+        - ReagentId: Protein
+          Quantity: 5
+  - type: Construction
+    graph: WasterBurritoGraph_super
+    node: WasterBurrito_super
+#Candy Pouch: 1 leather, 1 thread
+
+- type: entity
+  parent: N14ClothingBeltStorageBase
+  description:
+  name: Candy Pouch
+  id: MisfitsClothingPouchCandy
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: Construction
+    graph: CandyPouchGraph
+    node: CandyPouch
+  - type: Storage
+    whitelist:
+      tags:
+      - Candy
+
+- type: constructionGraph
+  id: CandyPouchGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: CandyPouch
+      steps:
+      - material: Thread
+        amount: 1
+      - material: Leather
+        amount: 1
+  - node: CandyPouch
+    entity: MisfitsCandyPouch
+
+- type: construction
+  id: CandyPouchGraphCraft
+  graph: CandyPouchGraph
+  startNode: start
+  targetNode: CandyPouch
+  icon: {sprite: _Nuclear14/Structures/Power/breakerbox.rsi, state: base}
+  category: construction-category-food
+  objectType: Item
+  canBuildInImpassable: true
+  hide: false
+
+#- Food Box: 5 planks
+
+- type: entity
+  parent: BoxBase
+  description:
+  name: Food Box
+  id: MisfitsStorageFoodBox
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: Construction
+    graph: FoodBoxGraph
+    node: FoodBox
+  - type: Storage
+    grid:
+    - 0,0,4,4
+    whitelist:
+      components:
+      - Food
+
+
+- type: constructionGraph
+  id: FoodBoxGraph
+  start: start
+  graph:
+  - node: start
+    edges:
+    - to: FoodBox
+      steps:
+      - material: WoodPlank
+        amount: 5
+  - node: FoodBox
+    entity: MisfitsStorageFoodBox
+
+- type: construction
+  id: FoodBoxGraphCraft
+  graph: FoodBoxGraph
+  startNode: start
+  targetNode: FoodBox
+  icon: {sprite: _Nuclear14/Structures/Power/breakerbox.rsi, state: base}
+  category: construction-category-food
+  objectType: Item
+  canBuildInImpassable: true
+  hide: false

@@ -1,0 +1,140 @@
+
+# sushi raw/cooked
+- type: microwaveMealRecipe
+  id: MisfitsRecipeSushiRaw
+  name: simple Sushi
+  result: MisfitsFoodSushiMeatRaw
+  time: 10
+  reagents:
+    Rice: 10
+  solids:
+    FoodMeatCutlet: 1
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeSushiCooked
+  name: fried Simple Sushi
+  result: MisfitsFoodSushiMeatCooked
+  time: 10
+  reagents:
+    Rice: 10
+  solids:
+    FoodMeatCutletCooked: 1
+
+# carrot/fish sushi
+- type: microwaveMealRecipe
+  id: MisfitsRecipeFishCarrotCooked
+  name: fried Simple Sushi
+  result: MisfitsFoodSushiFishCarrotCooked
+  time: 10
+  reagents:
+    Rice: 10
+  solids:
+    N14FoodCarrot: 1
+    N14RedfishCutletRaw: 1
+
+
+# fish sushi
+- type: microwaveMealRecipe
+  id: MisfitsRecipeSushiFishCooked
+  name: fried Simple Sushi
+  result: MisfitsFoodSushiFishCooked
+  time: 10
+  reagents:
+    Rice: 10
+  solids:
+    N14RedfishCutletRaw: 1
+
+# large
+- type: microwaveMealRecipe
+  id: MisfitsRecipeSushiMeatLargeCooked
+  name: fried Simple Sushi
+  result: MisfitsFoodSushiMeatLargeCooked
+  time: 10
+  reagents:
+    Rice: 20
+  solids:
+    N14FoodCarrot: 2
+    FoodMeatCutlet: 2
+
+# NCR rolls
+- type: microwaveMealRecipe
+  id: MisfitsRecipeSushiNCRCooked
+  name: fried Simple Sushi
+  result: MisfitsFoodSushiNCRCooked
+  time: 10
+  reagents:
+    Rice: 10
+  solids:
+    N14FoodCarrot: 2
+    FoodMeatCutlet: 1
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeSushiNCRSuperCooked
+  name: fried Simple Sushi
+  result: MisfitsFoodSushiNCRSuperCooked
+  time: 10
+  reagents:
+    Rice: 10
+  solids:
+    MaterialCloth: 1
+    MaterialWoodPlank: 1
+    MisfitsSushiNCRRaw: 1
+
+# Spicy and Legion rolls
+- type: microwaveMealRecipe
+  id: MisfitsRecipeSushiSpicyCooked
+  name: fried Simple Sushi
+  result: MisfitsFoodSushiSpicyCooked
+  time: 10
+  reagents:
+    Rice: 10
+    Hotsauce: 2
+  solids:
+    FoodMeatCutlet: 1
+    N14FoodMeatBighornerCutlet: 2
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeLegionSuperRaw
+  name: fried Simple Sushi
+  result: MisfitsFoodSushiLegionSuperRaw
+  time: 10
+  reagents:
+    Rice: 10
+  solids:
+    MaterialCloth: 1
+    MaterialWoodPlank: 1
+    MisfitsSushiSpicyRaw: 1
+
+# cream cheese sushi
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeSushiCheeseCooked
+  name: fried Simple Sushi
+  result: MisfitsFoodSushiCheeseCooked
+  time: 10
+  reagents:
+    Rice: 10
+    Milk: 5
+  solids:
+    N14FoodCheeseSlice: 1
+    FoodMeatCutlet: 1
+
+
+#  __RECIPIES__
+#
+#- Simple Sushi: 10u rice, 1 Cut Cutlet
+#- Simple Fried Sushi: 10u rice, 1 Cooked Cut Cutlet -> 5 sec
+#- Carrot and Fish Sushi Roll: 1 carrot, 10u rice, 1 cut cutlet -> 5 sec
+#- Fish Sushi Roll: 1 cut cutlet, 10u rice -> 5 sec
+#- Large Sushi Roll: 2 cut cutlets, 2 carrots, 20u rice -> 10 sec
+
+#- New California Roll: 1 cut cutlet, 2 carrots, 10u rice -> 5 sec
+#- Spicy Roll: 2u hot sauce, 2 bighorn cutlets, 10u rice, 1 cut cutlet -> 5 sec
+
+
+#- NCR Patriotic Roll: 1 New California Roll, 1 cloth, 1 wood -> 5 sec
+#- Legion Patriotic Roll: 1 Spicy Roll, 1 cloth, 1 wood -> 5 sec
+
+#- Sushi with Cream Cheese: 5u Milk, 1 Cheese Wedge, 1 Cut Cutlet, 10u rice -> 5 sec
+#- Cut Cutlet: Use knife on Red Fish Cut, gives 3 Cutlets
+

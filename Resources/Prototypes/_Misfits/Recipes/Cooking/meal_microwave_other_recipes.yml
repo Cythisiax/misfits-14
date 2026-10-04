@@ -1,0 +1,1014 @@
+#- Waster Burrito (Crafting Menu): 1 Cooked Meat (any), 1 dough slice
+#- Waster Burrito Supreme (Crafting Menu): 1 Cooked Meat (any), 1 Cabbage, 1 Cheese Wedge, 1 Tato
+# add sausage proto
+#- Kebab Slice: Use knife on Kebab, gives 15 slices
+#- Food Box: 5 planks
+#Sausage: Cut Sausage Link, gives 4 Sausages
+#Toffee Bar: Cut Toffee, gives 6 bars
+#Candy Pouch: 1 leather, 1 thread
+
+#- Rice Cake: 1 cooked rice, 5u salt -> 5 sec
+- type: microwaveMealRecipe
+  id: MisfitsRecipeRiceCake
+  name: Rice Cake
+  result: MisfitsFoodRiceCake
+  time: 5
+  reagents:
+    Salt: 5
+  solids:
+    N14CookedFoodRiceBoiled: 1
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Rice Cake
+  id: MisfitsFoodRiceCake
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Vitamin
+          Quantity: 4
+        - ReagentId: Salt
+          Quantity: 5
+
+#- Coxinha: 5u ground animal protein, 1 dough slice, 5u salt -> 5 sec
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Coxinha
+  id: MisfitsFoodCoxinha
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 15
+        - ReagentId: Protein
+          Quantity: 5
+        - ReagentId: Salt
+          Quantity: 5
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeCoxinha
+  name: Coxinha
+  result: MisfitsFoodCoxinha
+  time: 5
+  reagents:
+    N14UncookedAnimalProteinsRad: 5
+    Salt: 5
+  solids:
+    N14FoodDoughSlice: 1
+
+#- Meat Dumpling: 1 dough slice, 5u ground animal protein -> 5 sec
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: meat Dumpling
+  id: MisfitsFoodMeatDumpling
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 15
+        - ReagentId: Protein
+          Quantity: 5
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeMeatDumpling
+  name: meat Dumpling
+  result: MisfitsFoodMeatDumpling
+  time: 5
+  reagents:
+    N14UncookedAnimalProteinsRad: 5
+  solids:
+    N14FoodDoughSlice: 1
+#- Khan Meat Dumpling: 1 dumpling, 5u jet, 1 leather, 1 wood -> 5 sec
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Khan Meat Dumping
+  id: MisfitsFoodMeatDumpling_Jet
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Jet
+          Quantity: 5
+        - ReagentId: Protein
+          Quantity: 5
+        - ReagentId: Fiber
+          Quantity: 10
+        - ReagentId: Cellulose
+          Quantity: 10
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeMeatDumpling_Jet
+  name: fried Simple Sushi
+  result: MisfitsFoodMeatDumpling_Jet
+  time: 5
+  reagents:
+    Jet: 5
+  solids:
+    MisfitsFoodMeatDumpling: 1
+    MaterialWoodPlank: 1
+    N14MaterialLeather: 1
+
+#- Carrot Vitamin Gummy: 5u carrot juice, 5u sugar -> 5 sec
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Carrot Vitamin Gummy
+  id: MisfitsFoodCarrotGummy
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: JuiceCarrot
+          Quantity: 5
+        - ReagentId: Sugar
+          Quantity: 5
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeCarrotGummy
+  name: Carrot Vitamin Gummy
+  result: MisfitsFoodCarrotGummy
+  time: 5
+  reagents:
+    JuiceCarrot: 5
+    Sugar: 5
+
+#- Milk Chocolate Bar: 2u cocoa powder, 5u milk, 5u sugar (must be in separate containers else create regular choc) -> 5 sec
+
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Milk Chocolate Bar
+  id: MisfitsFoodChocolateBar
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: MilkChoco
+          Quantity: 10
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeChocolateBar
+  name: Milk Chocolate Bar
+  result: MisfitsFoodChocolateBar
+  time: 5
+  reagents:
+    Milk: 5
+    Sugar: 5
+    CocoaPowder: 2
+
+#- VaultTech Lolipop: 10u sugar, 1 paper -> 5 sec
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: VaultTech Lollipop
+  id: MisfitsFoodLollipop_VaultTech
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Sugar
+          Quantity: 10
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeLollipop_VaultTech
+  name: VaultTech Lollipop
+  result: MisfitsFoodLollipop_VaultTech
+  time: 5
+  reagents:
+    Sugar: 5
+  solids:
+    SheetPaper: 1
+
+#- Spicy n Sweet Skewer: 2 jalapeno, 2 black berry, 1 skewer -> 5 sec
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Spicy n' Sweet Skewer
+  id: MisfitsFoodSkewerSpicySweet
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: BlackberryJam
+          Quantity: 10
+        - ReagentId: PickledJalapenos
+          Quantity: 10
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeSushiCheeseRaw
+  name: fried Simple Sushi
+  result: MisfitsFoodSushiCheeseRaw
+  time: 5
+  reagents:
+    PickledJalapenos: 20
+  solids:
+    N14FloraProduceWildBlackberries: 2
+    FoodKebabSkewer: 1
+
+#- Kebab Pilar: 5 raw brahmin steaks, 1 wood -> 30 sec
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Kebab Pilar
+  id: MisfitsFoodKebabPilar
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SliceableFood
+    slice: N14FoodMeatBrahminCutletCooked
+    count: 15
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 50
+        - ReagentId: Protein
+          Quantity: 25
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeKebabPilar
+  name: Kebab Pilar
+  result: MisfitsFoodKebabPilar
+  time: 30
+  solids:
+    MaterialWoodPlank: 1
+    N14FoodMeatBrahmin: 5
+
+#- Kebab Wrap: 3 Kebab Slices, 1 onion, 1 cabbage, 1 dough slice -> 5 sec
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Kebab Wrap
+  id: MisfitsFoodKebabWrap
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 36
+        - ReagentId: Protein
+          Quantity: 6
+        - ReagentId: Vitamin
+          Quantity: 8
+        - ReagentId: Allicin
+          Quantity: 4
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeKebabWrap
+  name: Kebab Wrap
+  result: MisfitsFoodKebabWrap
+  time: 5
+  solids:
+    N14FoodMeatBrahminCutletCooked: 3
+    N14FoodCabbage: 1
+    N14FloraProduceWildOnion: 1
+    N14FoodDoughSlice: 1
+
+#- Permisson: 1 radstag cutlet, 2 pinion nuts, 2 blackberies -> 10 sec
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Permisson
+  id: MisfitsFoodPermisson
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 20
+        - ReagentId: Vitamin
+          Quantity: 5
+        - ReagentId: BlackberryJam
+          Quantity: 15
+        - ReagentId: Protein
+          Quantity: 2
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipePermisson
+  name: Permisson
+  result: MisfitsFoodPermisson
+  time: 10
+  solids:
+    N14FoodMeatRadstagCutlet: 1
+    N14FloraProduceWildPinyonNuts: 2
+    N14FloraProduceWildBlackberries: 2
+
+#- Toffee -> 1 Pinion nut, 15u sugar -> 15 sec
+
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Toffee
+  id: MisfitsFoodToffee
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+        - ReagentId: Sugar
+          Quantity: 15
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeToffee
+  name: Toffee
+  result: MisfitsFoodToffee
+  time: 15
+  reagents:
+    Sugar: 15
+  solids:
+    N14FloraProduceWildPinyonNuts: 1
+#- Meat Jerky: 1 meat cutlet, 5u salt -> 15 sec
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Meat Jerky
+  id: MisfitsFoodMeatJerky
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 2
+        - ReagentId: Protein
+          Quantity: 2
+        - ReagentId: Salt
+          Quantity: 4
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeMeatJerky
+  name: simple Sushi
+  result: MisfitsFoodMeatJerky
+  time: 15
+  reagents:
+    Salt: 5
+  solids:
+    FoodMeatCutlet: 1
+#- Cabbage n Meat Bread: 1 cabbage, 5u ground animal protein, 1 dough -> 10 sec
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Cabbage n' Meat Bread
+  id: MisfitsFoodCabbageMeatBread
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 20
+        - ReagentId: Vitamin
+          Quantity: 5
+        - ReagentId: Protein
+          Quantity: 5
+        - ReagentId: Salt
+          Quantity: 4
+
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeCabbageMeatBread
+  name: Cabbage n' Meat Bread
+  result: MisfitsFoodCabbageMeatBread
+  time: 10
+  reagents:
+    N14UncookedAnimalProteinsRad: 5
+  solids:
+    FoodDough: 1
+    N14FoodCabbage: 1
+
+#- Thick Pancake: 10u flour, 5u milk, 5u egg, 5u Raiser -> 5 sec
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Thick Pancake
+  id: MisfitsFoodThickPancake
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 15
+
+
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeThickPancake
+  name: Thick Pancake
+  result: MisfitsFoodThickPancake
+  time: 10
+  reagents:
+    ExtractRazorgrainFlour: 10
+    Milk: 5
+    Egg: 5
+    Raiser: 5
+#Shortcake Cookie: 1 butter slice, 5u ExtractRazorgrainFlour, 5u milk -> 5 sec
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Shortcake Cookie
+  id: MisfitsFoodShortcakeCookie
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 10
+
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeShortcakeCookie
+  name: Shortcake Cookie
+  result: MisfitsFoodShortcakeCookie
+  time: 5
+  reagents:
+    ExtractRazorgrainFlour: 5
+    Milk: 5
+  solids:
+    FoodButterSlice: 1
+#Milk Bread: 1 butter slice, 10u milk, 10u flour, 5u raiser -> 10 sec
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Milk Bread
+  id: MisfitsFoodMilkBread
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 15
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeMilkBread
+  name: Milk Bread
+  result: MisfitsFoodMilkBread
+  time: 10
+  reagents:
+    ExtractRazorgrainFlour: 10
+    Milk: 10
+    Raiser: 5
+  solids:
+    FoodButterSlice: 1
+#Lasagna: 1 Tato, 1 Dough Slice, 1 Irradiated Meat, 1 Cheese Wedge -> 15 sec
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Lasagna
+  id: MisfitsFoodLasagna
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 25
+        - ReagentId: N14UncookedAnimalProteinsRad
+          Quantity: 10
+        - ReagentId: Fat
+          Quantity: 6
+
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeLasagna
+  name: Lasagna
+  result: MisfitsFoodLasagna
+  time: 15
+  solids:
+    N14FoodMeatRadRaw: 1
+    N14FoodCheeseSlice: 1
+    N14FoodDoughSlice: 1
+    N14FloraProduceWildTato: 1
+
+#Sausage Chain: 20u Ground Animal Protein, Ruminant/Animal Stomach -> 5 sec
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Sausage Chain
+  id: MisfitsFoodSausageChain
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SliceableFood
+    slice: MisfitsFoodSausage
+    count: 4
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: N14UncookedAnimalProteinsRad
+          Quantity: 20
+        - ReagentId: Fat
+          Quantity: 8
+
+# sausage
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Sausage
+  id: MisfitsFoodSausage
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: N14UncookedAnimalProteinsRad
+          Quantity: 4
+        - ReagentId: Fat
+          Quantity: 2
+
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeSausageChain
+  name: Sausage Chain
+  result: MisfitsFoodSausageChain
+  time: 5
+  reagents:
+    N14UncookedAnimalProteinsRad: 20
+  solids:
+    OrganAnimalRuminantStomach: 1
+
+
+#Sausage Roll: 5u Raw Egg, 1 sausage, 1 dough slice -> 10 sec
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Sausage Roll
+  id: MisfitsFoodSausageRoll
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Protein
+          Quantity: 15
+        - ReagentId: BubGames
+          Quantity: 1
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeSausageRoll
+  name: Sausage Roll
+  result: MisfitsFoodSausageRoll
+  time: 10
+  reagents:
+    Egg: 5
+  solids:
+    N14FoodDoughSlice: 1
+    MisfitsFoodSausage: 1
+
+#Toffee: 2 pinion nut, 40u sugar -> 30 sec
+
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: Toffee Large
+  id: MisfitsFoodToffeeLarge
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 25
+        - ReagentId: Sugar
+          Quantity: 50
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeToffeeLarge
+  name: Toffee Large
+  result: MisfitsFoodToffeeLarge
+  time: 30
+  reagents:
+    Sugar: 40
+  solids:
+    N14FloraProduceWildPinyonNuts: 2
+
+#Mug cake: 1 Mug, 1 dough slice, 5u sugar ??
+
+
+- type: entity
+  parent: N14CookedFoodBowlBase
+  description:
+  name: Mug Cake
+  id: MisfitsFoodMugCake
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: Food
+    trash:
+    - DrinkMug
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Nutriment
+          Quantity: 15
+        - ReagentId: Sugar
+          Quantity: 5
+
+- type: microwaveMealRecipe
+  id: MisfitsRecipeMugCake
+  name: Mug Cake
+  result: MisfitsFoodMugCake
+  time: 5
+  reagents:
+    Sugar: 5
+  solids:
+    DrinkMug: 1
+    N14FoodDoughSlice: 1
+## CANDIES!!!
+#Carrot Candy: 5u Sugar, 5u Carrot Juice, must be heated
+
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: !type:CreateVariants
+    values: [ Carrot Candy, Buffalo Gourd Candy, Blackberry Candy, Butterscotch Candy, Jet Jawbreaker ]
+  id: !type:CreateVariants
+    values: [ MisfitsFoodCarrotCandy, MisfitsFoodBuffaloGourdCandy, MisfitsFoodBlackberryCandy, MisfitsFoodButterscotchCandy, MisfitsFoodJetCandy ]
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: Food
+  - type: Tag
+    tags:
+    - Candy
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: !type:CreateVariants
+            values: [ PickledCarrots, BuffaloGourdJam, BlackberryJam, Butterscotch, Jet ]
+          Quantity: 5
+        - ReagentId: Sugar
+          Quantity: !type:CreateVariants
+            values: [ 5, 5, 5, 5, 10 ]
+
+- type: reaction
+  id: CarrotCandy
+  impact: Low
+  quantized: true
+  minTemp: 400
+  reactants:
+    JuiceCarrot:
+      amount: 5
+    Sugar:
+      amount: 5
+  effects:
+  - !type:CreateEntityReactionEffect
+    entity: MisfitsFoodCarrotCandy
+#Buffalo Gourd: 5u sugar, 5u Buffalo Gourd Juice, must be heated
+- type: reaction
+  id: BuffaloGourdCandy
+  impact: Low
+  quantized: true
+  minTemp: 400
+  reactants:
+    ExtractBuffaloGourd:
+      amount: 5
+    Sugar:
+      amount: 5
+  effects:
+  - !type:CreateEntityReactionEffect
+    entity: MisfitsFoodBuffaloGourdCandy
+#Blackberry: 5u sugar, 5u Blackberry juice, must be heated
+- type: reaction
+  id: BlackberryCandy
+  impact: Low
+  quantized: true
+  minTemp: 400
+  reactants:
+    ExtractBlackberries:
+      amount: 5
+    Sugar:
+      amount: 5
+  effects:
+  - !type:CreateEntityReactionEffect
+    entity: MisfitsFoodBlackberryCandy
+#Butterscotch: 5u sugar, 5u butter, must be heated
+- type: reaction
+  id: ButterscotchCandy
+  impact: Low
+  quantized: true
+  minTemp: 400
+  reactants:
+    Butter:
+      amount: 5
+    Sugar:
+      amount: 5
+  effects:
+  - !type:CreateEntityReactionEffect
+    entity: MisfitsFoodButterscotchCandy
+#Jet Jawbreaker: 10u sugar, 5u jet, must be heated
+- type: reaction
+  id: JetCandy
+  impact: Low
+  quantized: true
+  minTemp: 400
+  reactants:
+    Jet:
+      amount: 5
+    Sugar:
+      amount: 10
+  effects:
+  - !type:CreateEntityReactionEffect
+    entity: MisfitsFoodJetCandy
+
+# diced stuff
+- type: entity
+  parent: MisfitsFoodBase
+  description:
+  name: !type:CreateVariants
+    values: [ Diced Meat, Diced Tato, Diced Garlic, Diced Onion]
+  id: !type:CreateVariants
+    values: [ MisfitsFoodDicedMeat, MisfitsFoodDicedTato, MisfitsFoodDicedGarlic, MisfitsFoodDicedOnion ]
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Consumable/Food/fish_pie.rsi
+    state: fish-slice
+  - type: SolutionSpiker
+    sourceSolution: food
+    ignoreEmpty: true
+  - type: ScoopableSolution
+    solution: food
+  - type: Extractable
+    grindableSolutionName: food
+  - type: Food
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: !type:CreateVariants
+            values: [ DicedMeat, DicedTato, DicedGarlic, DicedOnion ]
+          Quantity: 10
+
+#Diced Meat: Obtained via Cutting a Cutlet. Can be added to a container as a chem as 10u of it.
+- type: reagent
+  id: DicedMeat
+  name: reagent-name-juice-carrot
+  parent: BaseJuice
+  desc: reagent-desc-juice-carrot
+  physicalDesc: reagent-physical-desc-crisp
+  group: Foods
+  flavor: carrot
+  color: "#FF8820"
+  metabolisms:
+    Drink:
+      effects:
+      - !type:AdjustReagent
+        reagent: N14UncookedAnimalProteinsRad
+        amount: 1
+
+
+#Diced Tato: Obtained via Cutting a Tato. Can be added to a container as a chem as 10u of it.
+- type: reagent
+  id: DicedTato
+  name: reagent-name-juice-carrot
+  parent: BaseJuice
+  desc: reagent-desc-juice-carrot
+  physicalDesc: reagent-physical-desc-crisp
+  group: Foods
+  flavor: carrot
+  color: "#FF8820"
+  metabolisms:
+    Drink:
+      effects:
+      - !type:AdjustReagent
+        reagent: ExtractTato
+        amount: 1
+#Diced Garlic: Obtained via Cutting a Garlic. Can be added to a container as 10u chem of it.
+- type: reagent
+  id: DicedGarlic
+  name: reagent-name-juice-carrot
+  parent: BaseJuice
+  desc: reagent-desc-juice-carrot
+  physicalDesc: reagent-physical-desc-crisp
+  group: Foods
+  flavor: carrot
+  color: "#FF8820"
+  metabolisms:
+    Drink:
+      effects:
+      - !type:AdjustReagent
+        reagent: Nutriment
+        amount: 1
+      - !type:AdjustReagent
+        reagent: Vitamin
+        amount: .4
+      - !type:AdjustReagent
+        reagent: Allicin
+        amount: .4
+#Diced Onion: Same as above.
+- type: reagent
+  id: DicedOnion
+  name: reagent-name-juice-carrot
+  parent: BaseJuice
+  desc: reagent-desc-juice-carrot
+  physicalDesc: reagent-physical-desc-crisp
+  group: Foods
+  flavor: carrot
+  color: "#FF8820"
+  metabolisms:
+    Drink:
+      effects:
+      - !type:AdjustReagent
+        reagent: Nutriment
+        amount: 1
+      - !type:AdjustReagent
+        reagent: Vitamin
+        amount: .4
+      - !type:AdjustReagent
+        reagent: Allicin
+        amount: .4
+#Tato Soup: 1/1/1/1/1 mix of water, diced meat, tato, garlic and onion, must be heated.
+
+- type: reaction
+  id: TatoSoupReaction
+  impact: Low
+  quantized: true
+  minTemp: 305
+  reactants:
+    DicedMeat:
+      amount: 1
+    DicedGarlic:
+      amount: 1
+    DicedTato:
+      amount: 1
+    DicedOnion:
+      amount: 1
+    Water:
+      amount: 1
+  products:
+    TatoSoup: 5
+
+- type: reagent
+  id: TatoSoup
+  name: reagent-name-chlorine
+  group: Foods
+  desc: reagent-desc-chlorine
+  physicalDesc: reagent-physical-desc-gaseous
+  flavor: bitter
+  color: "#a2ff00"
+  meltingPoint: -101.5
+  boilingPoint: -34.04
+  plantMetabolism:
+  - !type:PlantAdjustWater
+    amount: 2
+  - !type:PlantAdjustToxins
+    amount: -1
+  - !type:PlantAdjustHealth
+    amount: 2
+  metabolisms:
+    Poison:
+      effects:
+      - !type:AdjustReagent
+        reagent: Nutriment
+        amount: 3.5
+      - !type:AdjustReagent
+        reagent: Water
+        amount: 2
+      - !type:AdjustReagent
+        reagent: Protein
+        amount: 2.5
+
+# raiser reagent/ent
+
+- type: entity
+  parent: [ReagentPacketBase, ItemHeftyBase]
+  id: MisfitsItemRaiserCan
+  name: Raiser Can
+  description: e
+  components:
+  - type: Sprite
+    state: flour-big
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        maxVol: 20
+        reagents:
+        - ReagentId: Raiser
+          Quantity: 20
+
+- type: reagent
+  id: Raiser
+  name: reagent-name-juice-carrot
+  parent: BaseJuice
+  desc: reagent-desc-juice-carrot
+  physicalDesc: reagent-physical-desc-crisp
+  group: Foods
+  flavor: sweet
+  color: "#FF8820"
+  metabolisms:
+    Drink:
+      effects:
+      - !type:AdjustReagent
+        reagent: Nutriment
+        amount: 1
+      - !type:AdjustReagent
+        reagent: Vitamin
+        amount: .4
+      - !type:AdjustReagent
+        reagent: Allicin
+        amount: .4
