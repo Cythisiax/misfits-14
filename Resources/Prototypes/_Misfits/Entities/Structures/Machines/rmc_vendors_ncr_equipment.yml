@@ -23,6 +23,7 @@
     - NCRWS
     - NCRHeavyTrooper
     - NCRHeavyTrooperLead
+    - SuperMutantNCRTrooper
     - NCRNCO
     - NCRStaffSergeant
     - NCRFirstSergeant
@@ -49,6 +50,7 @@
       NCREngineer: 1
       NCRWS: 1
       NCRHeavyTrooper: 2
+      SuperMutantNCRTrooper: 1
       NCRNCO: 3
       NCRDoctor: 3
       NCRVertibirdPilot: 3
@@ -181,6 +183,7 @@
       - { id: N14ClothingEyesNCRNVGs, category: Eyes, tier: 1 }
       - { id: ClothingNeckPinNCRSpecialist, category: Neck, tier: 1 }
     - name: Tier 2 - Heavy Trooper allocation
+      jobs: [ NCRHeavyTrooper, NCRHeavyTrooperLead ]
       entries:
       - { id: N14Stimpak, category: Medical, tier: 2 }
       - { id: N14SuperStimpak, category: Medical, tier: 2 }
