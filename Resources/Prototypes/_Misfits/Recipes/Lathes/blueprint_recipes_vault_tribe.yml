@@ -1713,6 +1713,20 @@
     Leather: 500
     Circuitry: 400
 
+- type: latheRecipe
+  id: M14BPVaultNVG
+  result: MisfitsClothingEyesVaultNVGs
+  category: N14BlueprintVaultArmorT4
+  completetime: 10
+  requiresBlueprint: true
+  availableFaction:
+  - Vault
+  materials:
+    Steel: 1000
+    Cloth: 100
+    Circuitry: 200
+    ScrapElectronic: 200
+
 # --- Tribe Tier 1 Helmets (head wraps / drylander) ---
 - type: latheRecipe
   id: N14BPTribeArmorHelmetRadstagSkull
