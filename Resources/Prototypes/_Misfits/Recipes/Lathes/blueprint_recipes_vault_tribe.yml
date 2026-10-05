@@ -1867,7 +1867,7 @@
   availableFaction:
   - Tribe
   materials:
-    Leather: 32
+    Leather: 34
     Steel: 1500
     Thread: 10
 
@@ -1880,7 +1880,7 @@
   availableFaction:
   - Tribe
   materials:
-    Steel: 50000
+    Steel: 5000
     Cloth: 100
     Leather: 100
     Circuitry : 100
