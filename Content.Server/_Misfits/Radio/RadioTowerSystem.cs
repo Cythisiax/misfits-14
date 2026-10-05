@@ -5,7 +5,7 @@ using Robust.Shared.GameObjects;
 namespace Content.Server._Misfits.Radio;
 
 /// <summary>
-/// Lets players bring map-placed radio towers online for the current round.
+/// Lets players bring map-placed radio towers online or take them offline for the current round.
 /// </summary>
 public sealed class RadioTowerSystem : EntitySystem
 {
@@ -16,22 +16,24 @@ public sealed class RadioTowerSystem : EntitySystem
 
     private void OnGetVerbs(Entity<RadioTowerComponent> tower, ref GetVerbsEvent<AlternativeVerb> args)
     {
-        if (tower.Comp.Activated || !args.CanAccess || !args.CanInteract)
+        if (!args.CanAccess || !args.CanInteract)
             return;
 
         args.Verbs.Add(new AlternativeVerb
         {
-            Text = Loc.GetString("n14-radio-tower-activate-verb"),
-            Act = () => Activate(tower),
+            Text = Loc.GetString(tower.Comp.Activated
+                ? "n14-radio-tower-deactivate-verb"
+                : "n14-radio-tower-activate-verb"),
+            Act = () => SetActivated(tower, !tower.Comp.Activated),
         });
     }
 
-    private void Activate(Entity<RadioTowerComponent> tower)
+    private void SetActivated(Entity<RadioTowerComponent> tower, bool activated)
     {
-        if (tower.Comp.Activated || Deleted(tower))
+        if (tower.Comp.Activated == activated || Deleted(tower))
             return;
 
-        tower.Comp.Activated = true;
+        tower.Comp.Activated = activated;
         Dirty(tower);
     }
 }
