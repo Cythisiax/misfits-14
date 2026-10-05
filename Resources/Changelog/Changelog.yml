@@ -12187,3 +12187,48 @@ Entries:
   id: 6496
   time: '2026-10-03T22:35:49.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2037
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: NCR Venndnor & Medical Officer + Combat armor addition
+    - type: Fix
+      message: Admin things
+  id: 6497
+  time: '2026-10-04T11:53:06.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2039
+- author: aftermath434
+  changes:
+    - type: Add
+      message: 'Off duty, director of science, and ESI agent to enclave   '
+  id: 6498
+  time: '2026-10-04T12:08:16.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2026
+- author: cythisiax
+  changes:
+    - type: Add
+      message: Updates to extractor waves, increased spawn pool choices.
+    - type: Add
+      message: Radio Tower, must be activated during round to enable :w/Wasteland
+    - type: Add
+      message: N14JunkAbraxoCleaner combination to create it
+    - type: Fix
+      message: Issues with NCR Vendor
+  id: 6499
+  time: '2026-10-04T23:55:03.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2042
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        I accidentally attached a tag to ALL N14RadioTower and spammed map. It
+        is now on a specific N14RadioTower now.
+  id: 6500
+  time: '2026-10-05T02:16:39.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2043
+- author: consumption45
+  changes:
+    - type: Add
+      message: another houndmaster slot
+  id: 6501
+  time: '2026-10-05T02:23:32.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/1962

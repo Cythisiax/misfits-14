@@ -633,8 +633,9 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
         var sections = new List<CMVendorSectionState>();
         if (HasTierAuthorization(vendor, user))
         {
-            foreach (var section in pool.Comp.Sections)
+            for (var sectionIndex = 0; sectionIndex < pool.Comp.Sections.Count; sectionIndex++)
             {
+                var section = pool.Comp.Sections[sectionIndex];
                 if (!HasSectionAuthorization(vendor, section, user))
                     continue;
 
@@ -642,6 +643,7 @@ public sealed partial class CMAutomatedVendorSystem : SharedCMAutomatedVendorSys
                     ? userComp.SectionPurchases.GetValueOrDefault(choices.Id)
                     : 0;
                 sections.Add(new CMVendorSectionState(
+                    sectionIndex,
                     section.Name,
                     section.Choices?.Amount,
                     purchases,
