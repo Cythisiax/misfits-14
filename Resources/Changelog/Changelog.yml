@@ -12216,3 +12216,12 @@ Entries:
   id: 6499
   time: '2026-10-04T23:55:03.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2042
+- author: cythisiax
+  changes:
+    - type: Fix
+      message: >-
+        I accidentally attached a tag to ALL N14RadioTower and spammed map. It
+        is now on a specific N14RadioTower now.
+  id: 6500
+  time: '2026-10-05T02:16:39.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2043
