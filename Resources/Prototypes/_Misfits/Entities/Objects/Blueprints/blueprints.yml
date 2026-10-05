@@ -1077,6 +1077,7 @@
     - N14BPVaultArmorHelmetMarine
     - M14BPVaultPaintCombatHelmet
     - N14BPVaultArmorScoutSuit
+    - M14BPVaultNVG
 
 # --- Vault Ammo ---
 - type: entity
