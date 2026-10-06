@@ -29,19 +29,19 @@
     entity: !type:GeneralNodeEntity
       protoKey: Cooked
 
-- type: constructionGraph
-  id: GraphSushi
-  start: start
-  graph:
-  - node: start
-    edges:
-    - to: SushiFried
-      completed:
-      - !type:PlaySound
-        sound: /Audio/Effects/sizzle.ogg
-      steps:
-      - minTemperature: 305
-  - node: SushiFried
-    entity: !type:GeneralNodeEntity
-      protoKey: SushiFried
+#- type: constructionGraph
+#  id: GraphSushi
+#  start: start
+#  graph:
+#  - node: start
+#    edges:
+#    - to: SushiFried
+#      completed:
+#      - !type:PlaySound
+#        sound: /Audio/Effects/sizzle.ogg
+#      steps:
+#      - minTemperature: 305
+#  - node: SushiFried
+#    entity: !type:GeneralNodeEntity
+#      protoKey: SushiFried
 

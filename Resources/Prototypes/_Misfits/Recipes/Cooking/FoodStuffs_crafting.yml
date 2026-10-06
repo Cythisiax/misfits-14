@@ -1,3 +1,5 @@
+
+
 #- Waster Burrito (Crafting Menu): 1 Cooked Meat (any), 1 dough slice
 - type: constructionGraph
   id: WasterBurritoGraph
@@ -15,10 +17,13 @@
           sprite: Objects/Consumable/Food/meat.rsi
           state: plain-cooked
       - entity: N14FoodDoughSlice
+        name: Dough Slice
+        icon: {sprite: Objects/Consumable/Food/ingredients.rsi, state: dough-slice}
   - node: WasterBurrito
     entity: MisfitsFoodWasterBurrito
 
 - type: construction
+  name: Waster Burrito
   id: CraftWasterBurrito
   graph: WasterBurritoGraph
   startNode: start
@@ -28,29 +33,6 @@
   objectType: Item
   canBuildInImpassable: true
   hide: false
-
-- type: entity
-  parent: MisfitsFoodBase
-  description: food-desc-wasterBurrito
-  name: Waster Burrito
-  id: MisfitsFoodWasterBurrito
-  components:
-  - type: Food
-    eatMessage: food-desc-wasterBurrito-eat
-  - type: Sprite
-    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
-    state: wasterBurrito
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 15
-        - ReagentId: Protein
-          Quantity: 5
-  - type: Construction
-    graph: WasterBurritoGraph
-    node: WasterBurrito
 
 #- Waster Burrito Supreme (Crafting Menu): 1 Cooked Meat (any), 1 Cabbage, 1 Cheese Wedge, 1 Tato
 - type: constructionGraph
@@ -69,13 +51,23 @@
           sprite: Objects/Consumable/Food/meat.rsi
           state: plain-cooked
       - entity: N14FoodDoughSlice
+        name: Dough Slice
+        icon: { sprite: Objects/Consumable/Food/ingredients.rsi, state: dough-slice }
       - entity: N14FloraProduceWildCabbage
+        name: Cabbage
+        icon: { sprite: _Nuclear14/Objects/Specific/Hydroponics/cabbage.rsi, state: produce }
       - entity: N14FoodCheeseSlice
+        name: Cheese Wedge
+        icon: { sprite: Objects/Consumable/Food/ingredients.rsi, state: cheesewedge }
       - entity: N14FloraProduceWildTato
+        name: Tato
+        icon: { sprite: _Nuclear14/Objects/Consumable/Flora/wastelandflora.rsi, state: Tato }
   - node: WasterBurrito_super
     entity: MisfitsFoodWasterBurrito_super
 
+
 - type: construction
+  name: Waster Burrito Supreme
   id: CraftWasterBurrito_super
   graph: WasterBurritoGraph_super
   startNode: start
@@ -86,52 +78,8 @@
   canBuildInImpassable: true
   hide: false
 
-- type: entity
-  parent: MisfitsFoodBase
-  description: food-desc-wasterBurritoSuper
-  name: Waster Burrito Supreme
-  id: MisfitsFoodWasterBurrito_super
-  components:
-  - type: Food
-    eatMessage: food-desc-wasterBurritoSuper-eat
-  - type: Sprite
-    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
-    state: wasterBurritoSuper
-  - type: SolutionContainerManager
-    solutions:
-      food:
-        reagents:
-        - ReagentId: Nutriment
-          Quantity: 25
-        - ReagentId: Vitamin
-          Quantity: 10
-        - ReagentId: Protein
-          Quantity: 5
-  - type: Construction
-    graph: WasterBurritoGraph_super
-    node: WasterBurrito_super
-#Candy Pouch: 1 leather, 1 thread
 
-- type: entity
-  parent: N14ClothingBeltStorageBase
-  description: food-desc-candyPouch
-  name: Candy Pouch
-  id: MisfitsClothingPouchCandy
-  components:
-  - type: Sprite
-    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
-    state: candyPouch
-  - type: Construction
-    graph: CandyPouchGraph
-    node: CandyPouch
-  - type: Item
-    size: Tiny
-  - type: Storage
-    grid:
-    - 0,0,4,4
-    whitelist:
-      tags:
-      - Candy
+#Candy Pouch: 1 leather, 1 thread
 
 - type: constructionGraph
   id: CandyPouchGraph
@@ -149,6 +97,7 @@
     entity: MisfitsCandyPouch
 
 - type: construction
+  name: Candy Pouch
   id: CandyPouchGraphCraft
   graph: CandyPouchGraph
   startNode: start
@@ -160,28 +109,6 @@
   hide: false
 
 #- Food Box: 5 planks
-
-- type: entity
-  parent: BoxBase
-  description: food-desc-foodBox
-  name: Food Box
-  id: MisfitsStorageFoodBox
-  components:
-  - type: Sprite
-    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
-    state: foodBox0
-  - type: Construction
-    graph: FoodBoxGraph
-    node: FoodBox
-  - type: Storage
-    grid:
-    - 0,0,5,5
-    whitelist:
-      components:
-      - Food
-  - type: StorageFillVisualizer
-    maxFillLevels: 1
-    fillBaseName: foodBox
 
 - type: constructionGraph
   id: FoodBoxGraph
@@ -197,11 +124,12 @@
     entity: MisfitsStorageFoodBox
 
 - type: construction
+  name: Food Box
   id: FoodBoxGraphCraft
   graph: FoodBoxGraph
   startNode: start
   targetNode: FoodBox
-  icon: {sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi, state: foodBox0}
+  icon: {sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi, state: foodBox}
   category: construction-category-food
   objectType: Item
   canBuildInImpassable: true

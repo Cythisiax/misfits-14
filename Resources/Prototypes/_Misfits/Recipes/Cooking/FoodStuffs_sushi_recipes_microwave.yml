@@ -1,5 +1,5 @@
 
-# sushi raw/cooked
+# sushi raw/Raw
 - type: microwaveMealRecipe
   id: MisfitsRecipeSushiRaw
   name: Simple Sushi
@@ -22,33 +22,33 @@
 
 # carrot/fish sushi
 - type: microwaveMealRecipe
-  id: MisfitsRecipeFishCarrotCooked
+  id: MisfitsRecipeFishCarrotRaw
   name: Fried Carrot Fish Sushi
-  result: MisfitsFoodSushiFishCarrotCooked
+  result: MisfitsFoodSushiFishCarrotRaw
   time: 10
   reagents:
     Rice: 10
   solids:
     N14FoodCarrot: 1
-    N14RedfishCutletRaw: 1
+    N14RedfishCutletCooked: 1
 
 
 # fish sushi
 - type: microwaveMealRecipe
-  id: MisfitsRecipeSushiFishCooked
+  id: MisfitsRecipeSushiFishRaw
   name: Fried Fish Sushi
-  result: MisfitsFoodSushiFishCooked
+  result: MisfitsFoodSushiFishRaw
   time: 10
   reagents:
     Rice: 10
   solids:
-    N14RedfishCutletRaw: 1
+    N14RedfishCutletCooked: 1
 
 # large
 - type: microwaveMealRecipe
-  id: MisfitsRecipeSushiMeatLargeCooked
+  id: MisfitsRecipeSushiMeatLargeRaw
   name: Fried Large Sushi
-  result: MisfitsFoodSushiMeatLargeCooked
+  result: MisfitsFoodSushiMeatLargeRaw
   time: 10
   reagents:
     Rice: 20
@@ -58,9 +58,9 @@
 
 # NCR rolls
 - type: microwaveMealRecipe
-  id: MisfitsRecipeSushiNCRCooked
+  id: MisfitsRecipeSushiNCRRaw
   name: Fried New California Roll
-  result: MisfitsFoodSushiNCRCooked
+  result: MisfitsFoodSushiNCRRaw
   time: 10
   reagents:
     Rice: 10
@@ -69,9 +69,9 @@
     FoodMeatCutlet: 1
 
 - type: microwaveMealRecipe
-  id: MisfitsRecipeSushiNCRSuperCooked
+  id: MisfitsRecipeSushiNCRSuperRaw
   name: NCR Patriotic Roll
-  result: MisfitsFoodSushiNCRSuperCooked
+  result: MisfitsFoodSushiNCRSuperRaw
   time: 10
   reagents:
     Rice: 10
@@ -82,9 +82,9 @@
 
 # Spicy and Legion rolls
 - type: microwaveMealRecipe
-  id: MisfitsRecipeSushiSpicyCooked
+  id: MisfitsRecipeSushiSpicyRaw
   name: Fried Spicy Sushi
-  result: MisfitsFoodSushiSpicyCooked
+  result: MisfitsFoodSushiSpicyRaw
   time: 10
   reagents:
     Rice: 10
@@ -108,9 +108,9 @@
 # cream cheese sushi
 
 - type: microwaveMealRecipe
-  id: MisfitsRecipeSushiCheeseCooked
+  id: MisfitsRecipeSushiCheeseRaw
   name: Fried Cream Cheese Sushi
-  result: MisfitsFoodSushiCheeseCooked
+  result: MisfitsFoodSushiCheeseRaw
   time: 10
   reagents:
     Rice: 10
