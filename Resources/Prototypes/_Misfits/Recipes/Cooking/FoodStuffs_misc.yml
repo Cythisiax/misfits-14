@@ -46,7 +46,7 @@
   components:
   - type: Sprite
     sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
-    state: Raiser
+    state: raiserCan
   - type: SolutionContainerManager
     solutions:
       food:
