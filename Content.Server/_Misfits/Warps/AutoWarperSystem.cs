@@ -42,10 +42,22 @@ public sealed class AutoWarperSystem : EntitySystem
             if (Deleted(traveller))
                 continue;
 
+            var sourceMap = Transform(traveller).MapID;
             if (Deleted(pending.Destination) || !_warper.WarpEntityTo(traveller, pending.Destination))
+            {
                 RemComp<AutoWarperCooldownComponent>(traveller);
-            else if (TryComp<AutoWarperCooldownComponent>(traveller, out var arrivalGuard))
+                continue;
+            }
+
+            if (TryComp<AutoWarperCooldownComponent>(traveller, out var arrivalGuard))
                 arrivalGuard.HasArrived = true;
+
+            if (sourceMap != Transform(pending.Destination).MapID &&
+                TryComp<ActorComponent>(traveller, out var actor) &&
+                GetDestinationName(pending.Destination) is { } placeName)
+            {
+                RaiseNetworkEvent(new AutoWarperArrivalEvent(placeName), actor.PlayerSession.Channel);
+            }
         }
 
         var guardQuery = EntityQueryEnumerator<AutoWarperCooldownComponent>();
@@ -163,6 +175,29 @@ public sealed class AutoWarperSystem : EntitySystem
         return !_maps.IsPaused(mapId);
     }
 
+    /// <summary>Prefer the destination grid's mapper-provided name, then its map name.</summary>
+    private string? GetDestinationName(EntityUid destination)
+    {
+        var xform = Transform(destination);
+        if (xform.MapUid is { } destinationMap && HasComp<AutoWarperSuppressWelcomeComponent>(destinationMap))
+            return null;
+
+        if (xform.GridUid is { } grid && TryComp<MetaDataComponent>(grid, out var gridMeta) &&
+            IsPlaceName(gridMeta.EntityName))
+            return gridMeta.EntityName;
+
+        if (xform.MapUid is { } map && TryComp<MetaDataComponent>(map, out var mapMeta) &&
+            IsPlaceName(mapMeta.EntityName))
+            return mapMeta.EntityName;
+
+        return null;
+    }
+
+    private static bool IsPlaceName(string name) =>
+        !string.IsNullOrWhiteSpace(name) &&
+        !name.Equals("grid", StringComparison.OrdinalIgnoreCase) &&
+        !name.Equals("Map Entity", StringComparison.OrdinalIgnoreCase);
+
     /// <summary>
     /// A row of arrival markers is one exit area. Leaving one marker while still touching another
     /// must not arm an immediate return trip.
@@ -199,3 +234,7 @@ public sealed partial class AutoWarperCooldownComponent : Component
     public bool HasArrived;
     public bool HasLeftDestination;
 }
+
+/// <summary>Suppresses the auto-warper arrival greeting for a specific map.</summary>
+[RegisterComponent]
+public sealed partial class AutoWarperSuppressWelcomeComponent : Component;

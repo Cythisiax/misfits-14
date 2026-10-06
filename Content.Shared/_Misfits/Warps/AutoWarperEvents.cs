@@ -7,3 +7,9 @@ public sealed class AutoWarperTravelEvent(float durationSeconds) : EntityEventAr
 {
     public readonly float DurationSeconds = durationSeconds;
 }
+
+[Serializable, NetSerializable]
+public sealed class AutoWarperArrivalEvent(string placeName) : EntityEventArgs
+{
+    public readonly string PlaceName = placeName;
+}
