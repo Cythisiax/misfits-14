@@ -241,9 +241,6 @@
       - cost: 3200
         stock: 3
         crate: N14CrateRequisitionsEnclaveRCW
-      - cost: 3450
-        stock: 3
-        crate: N14CrateRequisitionsEnclaveGauss
       - cost: 3500
         stock: 2
         crate: N14CrateRequisitionsEnclavePulseCarbine
