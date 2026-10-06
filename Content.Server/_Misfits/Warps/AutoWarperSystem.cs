@@ -14,7 +14,7 @@ namespace Content.Server._Misfits.Warps;
 /// </summary>
 public sealed class AutoWarperSystem : EntitySystem
 {
-    private static readonly TimeSpan ArrivalCooldown = TimeSpan.FromSeconds(0.75);
+    private static readonly TimeSpan ReturnDelay = TimeSpan.FromSeconds(2);
     private static readonly TimeSpan TravelDuration = TimeSpan.FromSeconds(2.5);
     private static readonly TimeSpan FadeOutDuration = TimeSpan.FromSeconds(0.25);
 
@@ -26,7 +26,8 @@ public sealed class AutoWarperSystem : EntitySystem
     public override void Initialize()
     {
         SubscribeLocalEvent<AutoWarperComponent, StepTriggerAttemptEvent>(OnStepTriggerAttempt);
-        SubscribeLocalEvent<AutoWarperComponent, StepTriggeredOffEvent>(OnSteppedOnto);
+        SubscribeLocalEvent<AutoWarperComponent, StepTriggeredOnEvent>(OnSteppedOnto);
+        SubscribeLocalEvent<AutoWarperComponent, StepTriggeredOffEvent>(OnSteppedOff);
     }
 
     public override void Update(float frameTime)
@@ -38,16 +39,17 @@ public sealed class AutoWarperSystem : EntitySystem
                 continue;
 
             _pendingWarps.Remove(traveller);
-            if (!Deleted(traveller))
-                _warper.WarpEntityTo(traveller, pending.Destination);
+            if (Deleted(traveller))
+                continue;
+
+            if (Deleted(pending.Destination) || !_warper.WarpEntityTo(traveller, pending.Destination))
+                RemComp<AutoWarperCooldownComponent>(traveller);
         }
     }
 
     private void OnStepTriggerAttempt(Entity<AutoWarperComponent> ent, ref StepTriggerAttemptEvent args)
     {
-        if (!HasComp<ActorComponent>(args.Tripper) ||
-            (TryComp<AutoWarperCooldownComponent>(args.Tripper, out var cooldown) &&
-             cooldown.ExpiresAt > _timing.CurTime))
+        if (!HasComp<ActorComponent>(args.Tripper))
         {
             args.Cancelled = true;
             return;
@@ -56,12 +58,12 @@ public sealed class AutoWarperSystem : EntitySystem
         args.Continue = true;
     }
 
-    private void OnSteppedOnto(Entity<AutoWarperComponent> ent, ref StepTriggeredOffEvent args)
+    private void OnSteppedOnto(Entity<AutoWarperComponent> ent, ref StepTriggeredOnEvent args)
     {
         // These endpoints are for player traversal, not loose items or NPCs.
         if (!TryComp<ActorComponent>(args.Tripper, out var actor) ||
             (TryComp<AutoWarperCooldownComponent>(args.Tripper, out var cooldown) &&
-             cooldown.ExpiresAt > _timing.CurTime) ||
+             (cooldown.ExpiresAt > _timing.CurTime || !cooldown.HasLeftDestination)) ||
             string.IsNullOrWhiteSpace(ent.Comp.DestinationId))
         {
             return;
@@ -72,11 +74,22 @@ public sealed class AutoWarperSystem : EntitySystem
             return;
 
         var arrivalGuard = EnsureComp<AutoWarperCooldownComponent>(args.Tripper);
-        arrivalGuard.ExpiresAt = _timing.CurTime + TravelDuration + ArrivalCooldown;
+        arrivalGuard.ExpiresAt = _timing.CurTime + TravelDuration + ReturnDelay;
+        arrivalGuard.Destination = destination.Value;
+        arrivalGuard.HasLeftDestination = false;
         _pendingWarps[args.Tripper] = (destination.Value, _timing.CurTime + TravelDuration);
         // The final quarter second occurs after the server moves the traveller, so the player
         // fades back in only once they have reached the other endpoint.
         RaiseNetworkEvent(new AutoWarperTravelEvent((float) (TravelDuration + FadeOutDuration).TotalSeconds), actor.PlayerSession.Channel);
+    }
+
+    private void OnSteppedOff(Entity<AutoWarperComponent> ent, ref StepTriggeredOffEvent args)
+    {
+        if (TryComp<AutoWarperCooldownComponent>(args.Tripper, out var cooldown) &&
+            cooldown.Destination == ent.Owner)
+        {
+            cooldown.HasLeftDestination = true;
+        }
     }
 }
 
@@ -88,9 +101,11 @@ public sealed partial class AutoWarperComponent : Component
     public string DestinationId = string.Empty;
 }
 
-/// <summary>Prevents a traveller from immediately warping back on arrival.</summary>
+/// <summary>Prevents a return warp until the delay passes and the traveller leaves the arrival point.</summary>
 [RegisterComponent]
 public sealed partial class AutoWarperCooldownComponent : Component
 {
     public TimeSpan ExpiresAt;
+    public EntityUid Destination;
+    public bool HasLeftDestination;
 }

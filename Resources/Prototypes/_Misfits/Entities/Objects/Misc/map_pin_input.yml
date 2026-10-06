@@ -1,15 +1,4 @@
 - type: entity
-  id: MisfitsMapPinInput
-  name: map pin input
-  categories: [ HideSpawnMenu ]
-  components:
-  - type: MapPinInput
-  - type: UserInterface
-    interfaces:
-      enum.MapPinUiKey.Key:
-        type: MapPinBoundUserInterface
-
-- type: entity
   id: MisfitsMapPinManager
   name: map pin manager
   categories: [ HideSpawnMenu ]

@@ -2,12 +2,6 @@ using Robust.Shared.Serialization;
 
 namespace Content.Shared._Misfits.WastelandMap;
 
-[Serializable, NetSerializable]
-public enum MapPinUiKey : byte
-{
-    Key,
-}
-
 /// <summary>Sent when an administrator names a new global tactical-map pin.</summary>
 [Serializable, NetSerializable]
 public sealed class MapPinNameMessage : BoundUserInterfaceMessage

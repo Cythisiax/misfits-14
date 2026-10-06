@@ -71,6 +71,7 @@
         layer:
         - Impassable
   - type: StepTrigger
+    stepOn: true
     requiredTriggeredSpeed: 0
     intersectRatio: 0.2
 

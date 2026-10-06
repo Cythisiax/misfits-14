@@ -12,7 +12,39 @@ namespace Content.Client._Misfits.WastelandMap;
 public sealed partial class MapPinManageWindow : DefaultWindow
 {
     public event Action<NetEntity>? OnRemove;
-    public MapPinManageWindow() => RobustXamlLoader.Load(this);
+    public event Action<string>? OnCreate;
+
+    public MapPinManageWindow()
+    {
+        RobustXamlLoader.Load(this);
+        CreateButton.OnPressed += _ => ShowCreate();
+        CancelButton.OnPressed += _ => ShowList();
+        SubmitButton.OnPressed += _ => Submit();
+        NameInput.OnTextEntered += _ => Submit();
+    }
+
+    private void ShowCreate()
+    {
+        NameInput.Text = string.Empty;
+        ManagePanel.Visible = false;
+        CreatePanel.Visible = true;
+    }
+
+    private void ShowList()
+    {
+        CreatePanel.Visible = false;
+        ManagePanel.Visible = true;
+    }
+
+    private void Submit()
+    {
+        var name = NameInput.Text.Trim();
+        if (name.Length == 0)
+            return;
+
+        OnCreate?.Invoke(name);
+        ShowList();
+    }
 
     public void SetPins(GlobalMapPinEntry[] pins)
     {
@@ -47,6 +79,7 @@ public sealed class MapPinManageBoundUserInterface : BoundUserInterface
         base.Open();
         _window = this.CreateWindow<MapPinManageWindow>();
         _window.OnRemove += pin => SendMessage(new MapPinRemoveMessage(pin));
+        _window.OnCreate += name => SendMessage(new MapPinNameMessage(name));
     }
 
     protected override void UpdateState(BoundUserInterfaceState state)
