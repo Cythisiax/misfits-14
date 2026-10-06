@@ -1,0 +1,8 @@
+<DefaultWindow xmlns="https://spacestation14.io" Title="{Loc mappin-manage-title}" MinWidth="440" MinHeight="240" SetSize="440 360">
+    <BoxContainer Orientation="Vertical" Margin="8">
+        <Label Text="{Loc mappin-manage-prompt}" Margin="0 0 0 6" />
+        <ScrollContainer VerticalExpand="True">
+            <BoxContainer Name="PinList" Orientation="Vertical" />
+        </ScrollContainer>
+    </BoxContainer>
+</DefaultWindow>

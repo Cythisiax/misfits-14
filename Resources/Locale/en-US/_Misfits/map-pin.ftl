@@ -1,0 +1,9 @@
+mappin-window-title = Global Map Pin
+mappin-window-prompt = Name the global GPS pin at your current position.
+mappin-window-placeholder = Pin name
+mappin-window-cancel = Cancel
+mappin-window-submit = Place Pin
+mappin-manage-title = Global Map Pins
+mappin-manage-prompt = Select a global GPS pin to remove it.
+mappin-manage-empty = No global map pins are active.
+mappin-manage-remove = Remove
