@@ -94,7 +94,7 @@
       - material: Leather
         amount: 1
   - node: CandyPouch
-    entity: MisfitsCandyPouch
+    entity: MisfitsClothingPouchCandy
 
 - type: construction
   name: Candy Pouch

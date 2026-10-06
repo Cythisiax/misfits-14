@@ -58,7 +58,7 @@
         reagents:
         - ReagentId: Rice
           Quantity: 10
-        - ReagentId: Protien
+        - ReagentId: Protein
           Quantity: 3
         - ReagentId: Nutriment
           Quantity: 3
@@ -87,7 +87,7 @@
         reagents:
         - ReagentId: Rice
           Quantity: 10
-        - ReagentId: Protien
+        - ReagentId: Protein
           Quantity: 4
         - ReagentId: Nutriment
           Quantity: 4
@@ -117,7 +117,7 @@
         reagents:
         - ReagentId: Rice
           Quantity: 10
-        - ReagentId: Protien
+        - ReagentId: Protein
           Quantity: 3
         - ReagentId: Vitamin
           Quantity: 5
@@ -142,7 +142,7 @@
         reagents:
         - ReagentId: Rice
           Quantity: 10
-        - ReagentId: Protien
+        - ReagentId: Protein
           Quantity: 3
         - ReagentId: Vitamin
           Quantity: 5
@@ -191,7 +191,7 @@
         reagents:
         - ReagentId: Rice
           Quantity: 10
-        - ReagentId: Protien
+        - ReagentId: Protein
           Quantity: 9
         - ReagentId: Nutriment
           Quantity: 6
@@ -221,7 +221,7 @@
           Quantity: 10
         - ReagentId: Protein
           Quantity: 3
-        - ReagentId: Nutriment]
+        - ReagentId: Nutriment
           Quantity: 7
         - ReagentId: Milk
           Quantity: 5

@@ -209,3 +209,7 @@ ent-MisfitsStorageFoodBox = Food Box
 
 ent-MisfitsItemRaiserCan = Raiser Can
     .desc = A can of raiser. Used in bread cooking to erm raise bread.
+
+reagent-name-butterscotch = Butterscotch
+reagent-desc-butterscotch = The thing from undertale that kiled that kid. Chara Dreemure from undertale who is the soul of determination. Spooilers for deltarune
+reagent-physical-butterscotch = looks thick and sweet.

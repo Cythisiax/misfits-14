@@ -274,7 +274,7 @@
           Quantity: 5
         - ReagentId: Protein
           Quantity: 5
-        - ReagentId: Salt
+        - ReagentId: TableSalt
           Quantity: 4
 
 #- Meat Jerky: 1 meat cutlet, 5u salt -> 15 sec
@@ -296,7 +296,7 @@
           Quantity: 2
         - ReagentId: Protein
           Quantity: 2
-        - ReagentId: Salt
+        - ReagentId: TableSalt
           Quantity: 4
 
 
@@ -513,7 +513,7 @@
     solutions:
       food:
         reagents:
-        - ReagentId: Jet
+        - ReagentId: MovespeedMixture
           Quantity: 5
         - ReagentId: Protein
           Quantity: 5
@@ -559,7 +559,7 @@
           Quantity: 15
         - ReagentId: Protein
           Quantity: 5
-        - ReagentId: Salt
+        - ReagentId: TableSalt
           Quantity: 5
 #- Rice Cake: 1 cooked rice, 5u salt -> 5 sec
 - type: entity
@@ -580,7 +580,7 @@
           Quantity: 2
         - ReagentId: Vitamin
           Quantity: 4
-        - ReagentId: Salt
+        - ReagentId: TableSalt
           Quantity: 5
 
 # waster super burrito
@@ -739,7 +739,7 @@
     solutions:
       food:
         reagents:
-        - ReagentId: Jet
+        - ReagentId: MovespeedMixture
           Quantity: 5
         - ReagentId: Sugar
           Quantity: 10

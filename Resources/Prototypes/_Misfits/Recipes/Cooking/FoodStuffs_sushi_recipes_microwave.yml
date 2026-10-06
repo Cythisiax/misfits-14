@@ -78,7 +78,7 @@
   solids:
     MaterialCloth: 1
     MaterialWoodPlank: 1
-    MisfitsSushiNCRRaw: 1
+    MisfitsFoodSushiNCRRaw: 1
 
 # Spicy and Legion rolls
 - type: microwaveMealRecipe
@@ -103,7 +103,7 @@
   solids:
     MaterialCloth: 1
     MaterialWoodPlank: 1
-    MisfitsSushiSpicyRaw: 1
+    MisfitsFoodSushiSpicyRaw: 1
 
 # cream cheese sushi
 

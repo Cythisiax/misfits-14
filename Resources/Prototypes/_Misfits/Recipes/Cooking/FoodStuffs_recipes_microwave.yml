@@ -40,7 +40,7 @@
   result: MisfitsFoodRiceCake
   time: 5
   reagents:
-    Salt: 5
+    TableSalt: 5
   solids:
     N14CookedFoodRiceBoiled: 1
 
@@ -52,7 +52,7 @@
   time: 5
   reagents:
     N14UncookedAnimalProteinsRad: 5
-    Salt: 5
+    TableSalt: 5
   solids:
     N14FoodDoughSlice: 1
 
@@ -74,7 +74,7 @@
   result: MisfitsFoodMeatDumpling_Jet
   time: 5
   reagents:
-    Jet: 5
+    MovespeedMixture: 5
   solids:
     MisfitsFoodMeatDumpling: 1
     MaterialWoodPlank: 1
@@ -187,7 +187,7 @@
   result: MisfitsFoodMeatJerky
   time: 15
   reagents:
-    Salt: 5
+    TableSalt: 5
   solids:
     FoodMeatCutlet: 1
 
@@ -350,7 +350,7 @@
   quantized: true
   minTemp: 400
   reactants:
-    Jet:
+    MovespeedMixture:
       amount: 5
     Sugar:
       amount: 10
