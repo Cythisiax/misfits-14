@@ -137,7 +137,9 @@ public sealed class AutoWarperSystem : EntitySystem
     private EntityUid? FindOppositeEndpoint(EntityUid source, string destinationPrototypeId)
     {
         EntityUid? loadedEndpoint = null;
-        var query = EntityQueryEnumerator<AutoWarperComponent, MetaDataComponent, TransformComponent>();
+        // loadmap pauses every endpoint until its map is initialized. The regular entity query
+        // excludes paused entities, so it would never find a marker on the loaded map.
+        var query = AllEntityQuery<AutoWarperComponent, MetaDataComponent, TransformComponent>();
         while (query.MoveNext(out var uid, out _, out var meta, out var xform))
         {
             if (uid == source || Deleted(uid) || meta.EntityPrototype?.ID != destinationPrototypeId ||
