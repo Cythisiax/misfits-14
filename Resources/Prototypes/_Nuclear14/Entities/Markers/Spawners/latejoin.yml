@@ -43,8 +43,9 @@
     job_id: BoSMidPaladinCommander
     spawn_type: LateJoin
 
-# Mapper-only paired warpers. Place each named endpoint once: A always targets B and B always
-# targets A (and likewise for C/D, F/G, and J/H). These are not latejoin or cryostorage points.
+# Mapper-only paired warpers. A row can contain multiple copies of the same endpoint: every
+# AtoB targets a BtoA, never another AtoB (and likewise for C/D, F/G, and J/H). If multiple
+# opposite endpoints exist, travel selects one of them. These are not latejoin or cryo points.
 - type: entity
   id: MisfitsWarperPointBase
   abstract: true
@@ -82,7 +83,6 @@
   suffix: walk-over warp to B
   components:
   - type: AutoWarper
-    destinationId: MisfitsWarperPointBtoA
   - type: WarpPoint
     id: MisfitsWarperPointAtoB
     location: Misfits Warper Point A to B
@@ -94,7 +94,6 @@
   suffix: walk-over warp to A
   components:
   - type: AutoWarper
-    destinationId: MisfitsWarperPointAtoB
   - type: WarpPoint
     id: MisfitsWarperPointBtoA
     location: Misfits Warper Point B to A
@@ -106,7 +105,6 @@
   suffix: walk-over warp to D
   components:
   - type: AutoWarper
-    destinationId: MisfitsWarperPointDtoC
   - type: WarpPoint
     id: MisfitsWarperPointCtoD
     location: Misfits Warper Point C to D
@@ -118,7 +116,6 @@
   suffix: walk-over warp to C
   components:
   - type: AutoWarper
-    destinationId: MisfitsWarperPointCtoD
   - type: WarpPoint
     id: MisfitsWarperPointDtoC
     location: Misfits Warper Point D to C
@@ -130,7 +127,6 @@
   suffix: walk-over warp to G
   components:
   - type: AutoWarper
-    destinationId: MisfitsWarperPointGtoF
   - type: WarpPoint
     id: MisfitsWarperPointFtoG
     location: Misfits Warper Point F to G
@@ -142,7 +138,6 @@
   suffix: walk-over warp to F
   components:
   - type: AutoWarper
-    destinationId: MisfitsWarperPointFtoG
   - type: WarpPoint
     id: MisfitsWarperPointGtoF
     location: Misfits Warper Point G to F
@@ -154,7 +149,6 @@
   suffix: walk-over warp to H
   components:
   - type: AutoWarper
-    destinationId: MisfitsWarperPointHtoJ
   - type: WarpPoint
     id: MisfitsWarperPointJtoH
     location: Misfits Warper Point J to H
@@ -166,7 +160,6 @@
   suffix: walk-over warp to J
   components:
   - type: AutoWarper
-    destinationId: MisfitsWarperPointJtoH
   - type: WarpPoint
     id: MisfitsWarperPointHtoJ
     location: Misfits Warper Point H to J
