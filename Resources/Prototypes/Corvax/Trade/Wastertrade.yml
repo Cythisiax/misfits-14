@@ -111,6 +111,20 @@
     price: 10
   - proto: N14FoodSalisburysteak
     price: 10
+  - proto: N14ReagentContainerRice
+    price: 10
+  - proto: N14ReagentContainerFlour
+    price: 10
+  - proto: N14ReagentContainerSugar
+    price: 10
+  - proto: MisfitsItemRaiserCan
+    price: 10
+  - proto: CocoaSeeds
+    price: 10
+  - proto: RiceSeeds
+    price: 10
+  - proto: SugarcaneSeeds
+    price: 10
 
 - type: storeCategoryStructured
   id: WasterBuy2_SurvivalGear
