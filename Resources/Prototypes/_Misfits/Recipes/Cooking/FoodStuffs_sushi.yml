@@ -9,6 +9,7 @@
   id: MisfitsFoodBase
   abstract: true
   components:
+  - type: Temperature
   - type: FlavorProfile
     flavors:
     - food
@@ -18,27 +19,6 @@
     price: 0
 
 
-# plain sushi unused
-#- type: entity
-#  parent: MisfitsFoodBase
-#
-#  id: MisfitsFoodSushiPlain
-#  components:
-#  - type: Food
-#    transferAmount: 10
-#  - type: Sprite
-#  - type: SolutionContainerManager
-#    solutions:
-#      food:
-#        maxVol: 13
-#        reagents:
-#        - ReagentId: Rice
-#          Quantity: 10
-#  - type: Construction
-#    graph: CraftSushiBasicGraph
-#    node: start
-#    defaultTarget: SushiBasic
-# sushi simple base
 
 # Raw sushi
 - type: entity
@@ -125,7 +105,6 @@
 ## carrot fish sushi
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodSushiFishCarrotRaw
   description: food-desc-sushiFishCarrot
   components:
@@ -175,7 +154,6 @@
 ## spicy sushi
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodSushiSpicyRaw
   components:
   - type: Food
@@ -230,7 +208,7 @@
 - type: entity
   parent: MisfitsFoodBase
 
-  id:  MisfitsFoodSushiMeatLargeRaw
+  id: MisfitsFoodSushiMeatLargeRaw
   components:
   - type: Food
     transferAmount: 10

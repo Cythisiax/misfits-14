@@ -24,11 +24,29 @@
     node: start
     defaultTarget: CookNode
 
+# red fish cutlet RARE
+- type: entity
+  parent: FoodMeatBase
+  id: MisfitsRedfishRareRaw
+  components:
+  - type: Food
+    eatMessage: food-desc-redFishRare-eat
+  - type: Sprite
+    sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
+    state: redFishCut
+  - type: SolutionContainerManager
+    solutions:
+      food:
+        reagents:
+        - ReagentId: Vitamin
+          Quantity: 10 # Red fish has vitamins even when raw
+  - type: SliceableFood
+    count: 5
+    slice: N14RedfishCutletRaw
 
 #Sausage Roll: 5u Raw Egg, 1 sausage, 1 dough slice -> 10 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodSausageRoll
   components:
   - type: Food
@@ -48,7 +66,6 @@
 #  cooked red fish cutlet
 - type: entity
   parent: FoodMeatBase
-
   id: N14RedfishCutletCooked
   components:
   - type: Food
@@ -151,7 +168,6 @@
 #Sausage Chain: 20u Ground Animal Protein, Ruminant/Animal Stomach -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodSausageChain
   components:
   - type: Food
@@ -174,7 +190,6 @@
 #Lasagna: 1 Tato, 1 Dough Slice, 1 Irradiated Meat, 1 Cheese Wedge -> 15 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodLasagna
   components:
   - type: Food
@@ -303,7 +318,6 @@
 #- Toffee -> 1 Pinion nut, 15u sugar -> 15 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodToffee
   components:
   - type: Food
@@ -316,14 +330,12 @@
       food:
         reagents:
         - ReagentId: Nutriment
-          Quantity: 10
+          Quantity: 5
         - ReagentId: Sugar
-          Quantity: 15
-
+          Quantity: 10
 #Toffee Sheet: 2 pinion nut, 40u sugar -> 30 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodToffeeSheet
   components:
   - type: Food
@@ -336,14 +348,15 @@
       food:
         reagents:
         - ReagentId: Nutriment
-          Quantity: 25
+          Quantity: 30
         - ReagentId: Sugar
-          Quantity: 50
-
+          Quantity: 60
+  - type: SliceableFood
+    slice: MisfitsFoodToffee
+    count: 6
 #- Pemmison: 1 radstag cutlet, 2 pinion nuts, 2 blackberies -> 10 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodPemmison
   components:
   - type: Food
@@ -368,7 +381,6 @@
 #- Kebab Wrap: 3 Kebab Slices, 1 onion, 1 cabbage, 1 dough slice -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodKebabWrap
   components:
   - type: Food
@@ -454,20 +466,20 @@
 #- Milk Chocolate Bar: 2u cocoa powder, 5u milk, 5u sugar (must be in separate containers else create regular choc) -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodChocolateBar
   components:
+  - type: Appearance
   - type: Food
     eatMessage: food-desc-chocoBar-eat
   - type: Sprite
     layers:
     - state: chocoBar
       sprite: _Misfits/Objects/Consumable/Food/FoodStuffs.rsi
-      map: ["icon"]
+      map: ["enum.OpenableVisuals.Layer"]
   - type: GenericVisualizer
     visuals:
       enum.OpenableVisuals.Opened:
-        icon:
+        enum.OpenableVisuals.Layer:
           True: {state: "chocoBarOpen"}
           False: {state: "chocoBar"}
   - type: Openable
@@ -481,7 +493,6 @@
 #- Carrot Vitamin Gummy: 5u carrot juice, 5u sugar -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodCarrotGummy
   components:
   - type: Food
@@ -497,11 +508,13 @@
           Quantity: 5
         - ReagentId: Sugar
           Quantity: 5
+  - type: Tag
+    tags:
+    - Candy
 
 #- Khan Meat Dumpling: 1 dumpling, 5u jet, 1 leather, 1 wood -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodMeatDumpling_Jet
   components:
   - type: Food
@@ -724,7 +737,6 @@
 
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodJetCandy
   components:
   - type: Food

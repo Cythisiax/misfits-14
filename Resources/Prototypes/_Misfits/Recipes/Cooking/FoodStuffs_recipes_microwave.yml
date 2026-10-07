@@ -131,7 +131,7 @@
   result: MisfitsFoodKebabPilar
   time: 30
   solids:
-    MaterialWoodPlank: 1
+    MaterialWoodPlank1: 1
     N14FoodMeatBrahmin: 5
 
 #- Kebab Wrap: 3 Kebab Slices, 1 onion, 1 cabbage, 1 dough slice -> 5 sec
@@ -322,7 +322,7 @@
   quantized: true
   minTemp: 400
   reactants:
-    ExtractBlackberries:
+    BlackberryJam:
       amount: 5
     Sugar:
       amount: 5
@@ -336,13 +336,25 @@
   quantized: true
   minTemp: 400
   reactants:
-    Butter:
+    Butterscotch:
       amount: 5
     Sugar:
       amount: 5
   effects:
   - !type:CreateEntityReactionEffect
     entity: MisfitsFoodButterscotchCandy
+- type: reaction
+  id: ButterscotchReaction
+  impact: Low
+  quantized: true
+  minTemp: 354
+  reactants:
+    Butter:
+      amount: 1
+    Sugar:
+      amount: 1
+  products:
+    Butterscotch: 2
 #Jet Jawbreaker: 10u sugar, 5u jet, must be heated
 - type: reaction
   id: JetCandy
