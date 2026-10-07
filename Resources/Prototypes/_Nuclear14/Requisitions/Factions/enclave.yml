@@ -280,7 +280,7 @@
       - cost: 1200
         crate: N14CrateRequisitionsEnclaveZuluMK2
       - cost: 5000
-        stock: 2
+        stock: 1
         crate: N14CrateRequisitionsEnclavePowerArmorX01
     - name: n14-requisitions-category-ammunition
       entries:
@@ -306,7 +306,8 @@
         crate: N14CrateRequisitionsEnclaveSignals
       - cost: 1200
         crate: N14CrateRequisitionsEnclaveMachineBoards
-      - cost: 2000
+      - cost: 7500
+        stock: 1
         crate: N14CrateRequisitionsEnclavePATraining
       - cost: 2500
         stock: 1
@@ -930,7 +931,7 @@
 - type: entity
   parent: N14CrateRequisitions
   id: N14CrateRequisitionsEnclavePowerArmorX01
-  name: X-01 power armor crate
+  name: APA Mk I crate
   description: Advanced Powered Combat Infantry Armor. Requisition strictly logged.
   components:
   - type: Icon
@@ -1130,7 +1131,7 @@
   - type: StorageFill
     contents:
     - id: TrainingManualEnclavePowerArmorOperation
-      amount: 2
+      amount: 1
 
 - type: entity
   parent: N14CrateRequisitions
