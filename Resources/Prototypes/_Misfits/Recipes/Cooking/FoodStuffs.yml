@@ -91,8 +91,7 @@
 
 # sausage
 - type: entity
-  parent: MisfitsFoodBase
-
+  parent: MisfitsFoodSmallBase
   id: MisfitsFoodSausage
   components:
   - type: Food
@@ -118,8 +117,7 @@
 
 # sausage cooked
 - type: entity
-  parent: MisfitsFoodBase
-
+  parent: MisfitsFoodSmallBase
   id: MisfitsFoodSausageCooked
   components:
   - type: Food
@@ -401,13 +399,13 @@
         - ReagentId: Allicin
           Quantity: 4
 
-
 #- Kebab Pilar: 5 raw brahmin steaks, 1 wood -> 30 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodKebabPilar
   components:
+  - type: Item
+    size: Huge
   - type: Food
     eatMessage: food-desc-kebabPilar-eat
   - type: Sprite
@@ -421,14 +419,13 @@
       food:
         reagents:
         - ReagentId: Nutriment
-          Quantity: 50
+          Quantity: 90
         - ReagentId: Protein
-          Quantity: 25
+          Quantity: 45
 
 #- Spicy n Sweet Skewer: 2 jalapeno, 2 black berry, 1 skewer -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodSkewerSpicySweet
   components:
   - type: Food
@@ -514,7 +511,7 @@
 
 #- Khan Meat Dumpling: 1 dumpling, 5u jet, 1 leather, 1 wood -> 5 sec
 - type: entity
-  parent: MisfitsFoodBase
+  parent: MisfitsFoodSmallBase
   id: MisfitsFoodMeatDumpling_Jet
   components:
   - type: Food
@@ -536,7 +533,7 @@
           Quantity: 10
 #- Meat Dumpling: 1 dough slice, 5u ground animal protein -> 5 sec
 - type: entity
-  parent: MisfitsFoodBase
+  parent: MisfitsFoodSmallBase
   id: MisfitsFoodMeatDumpling
   components:
   - type: Food
@@ -556,7 +553,6 @@
 #- Coxinha: 5u ground animal protein, 1 dough slice, 5u salt -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodCoxinha
   components:
   - type: Food
@@ -577,7 +573,6 @@
 #- Rice Cake: 1 cooked rice, 5u salt -> 5 sec
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodRiceCake
   components:
   - type: Food
@@ -599,9 +594,10 @@
 # waster super burrito
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodWasterBurrito_super
   components:
+  - type: Item
+    size: Large
   - type: Food
     eatMessage: food-desc-wasterBurritoSuper-eat
   - type: Sprite
@@ -624,7 +620,6 @@
 # waster burrito
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodWasterBurrito
   components:
   - type: Food
@@ -648,7 +643,6 @@
 ## CANDIES!!!
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodCarrotCandy
   components:
   - type: Food
@@ -670,7 +664,6 @@
 
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodBuffaloGourdCandy
   components:
   - type: Food
@@ -693,7 +686,6 @@
 
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodBlackberryCandy
   components:
   - type: Food
@@ -715,7 +707,6 @@
 
 - type: entity
   parent: MisfitsFoodBase
-
   id: MisfitsFoodButterscotchCandy
   components:
   - type: Food
