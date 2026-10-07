@@ -8,6 +8,7 @@ food-desc-sushiCooked-eat= Tastes like fried fish, refreshing and like rice.
 
 ent-MisfitsRedfishRareRaw = Red Fish Cut
     .desc =  A rare cut of fish. Good for making into cutlets.
+food-desc-redFishRare-eat = Tastes like raw fish.
 
 ent-N14RedfishCutletRaw = Redfish Cut Cutlet
     .desc = A slice of a fine red fish cut. Looks refreshing!
