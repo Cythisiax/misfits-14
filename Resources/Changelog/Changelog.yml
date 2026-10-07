@@ -12265,3 +12265,20 @@ Entries:
   id: 6505
   time: '2026-10-07T21:39:05.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2059
+- author: cythisiax
+  changes:
+    - type: Add
+      message: 'AutoWarpers between map grids. A FTB screen and lower right welcome. '
+    - type: Add
+      message: >-
+        Pinmap command to allow admins to make global map pins for
+        WendoverMap/Tacmaps
+    - type: Remove
+      message: >-
+        Gauss Rifle has been commented out codewise, but remains admin
+        spawnable.
+    - type: Tweak
+      message: Adjustment to MechPA
+  id: 6506
+  time: '2026-10-07T21:39:39.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2054
