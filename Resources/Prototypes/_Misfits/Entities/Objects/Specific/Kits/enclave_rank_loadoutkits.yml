@@ -147,7 +147,11 @@
       - id: N14ClothingOuterEnclaverOfficerCoat
       - id: ClothingBeltMilitary
       - id: N14WeaponLaserRifleWattz3000
+      - id: N14MicrofusionCellRed
+        amount: 2
       - id: N14WeaponLaserPistol
+      - id: N14PowerCellSmall
+        amount: 2
       - id: RadioHandheld
       - id: SmokeGrenade
         amount: 2
