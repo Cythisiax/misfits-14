@@ -241,9 +241,6 @@
       - cost: 3200
         stock: 3
         crate: N14CrateRequisitionsEnclaveRCW
-      - cost: 3450
-        stock: 3
-        crate: N14CrateRequisitionsEnclaveGauss
       - cost: 3500
         stock: 2
         crate: N14CrateRequisitionsEnclavePulseCarbine
@@ -624,23 +621,23 @@
     - id: N14PlasmaCartridge
       amount: 6
 
-- type: entity
-  parent: N14CrateRequisitions
-  id: N14CrateRequisitionsEnclaveGauss
-  name: M72 gauss rifle crate
-  components:
-  - type: Icon
-    sprite: _Nuclear14/Structures/Storage/Crates/crateenclave.rsi
-  - type: Sprite
-    sprite: _Nuclear14/Structures/Storage/Crates/crateenclave.rsi
-  - type: RequisitionsCrate
-    reward: 50
-  - type: StorageFill
-    contents:
-    - id: N14WeaponGaussRifle
-      amount: 1
-    - id: N14Magazine2mmECRifle
-      amount: 3
+# - type: entity
+#   parent: N14CrateRequisitions
+#   id: N14CrateRequisitionsEnclaveGauss
+#   name: M72 gauss rifle crate
+#   components:
+#   - type: Icon
+#     sprite: _Nuclear14/Structures/Storage/Crates/crateenclave.rsi
+#   - type: Sprite
+#     sprite: _Nuclear14/Structures/Storage/Crates/crateenclave.rsi
+#   - type: RequisitionsCrate
+#     reward: 50
+#   - type: StorageFill
+#     contents:
+#     - id: N14WeaponGaussRifle
+#       amount: 1
+#     - id: N14Magazine2mmECRifle
+#       amount: 3
 
 
 - type: entity
