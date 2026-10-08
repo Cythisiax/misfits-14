@@ -12289,3 +12289,25 @@ Entries:
   id: 6507
   time: '2026-10-08T19:56:03.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2063
+- author: RedBookcase
+  changes:
+    - type: Remove
+      message: Removed craftable explosive barrels
+    - type: Tweak
+      message: >-
+        Crafting radioactive barrels now costs uranium. They also no longer have
+        1000 HP.
+    - type: Tweak
+      message: >-
+        Enclave Vertibird Pilot is no longer a Commissioned Officer but instead
+        NCO-tier.
+    - type: Tweak
+      message: >-
+        Fixed some Enclave loadout options not being available to Reformers.
+        Added Hellfire PA as a cosmetic alternative to replace the regular
+        Reformer PA.
+    - type: Remove
+      message: Removed General pin for Enclave Commanders (Reformer only rank).
+  id: 6508
+  time: '2026-10-08T21:39:04.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2065
