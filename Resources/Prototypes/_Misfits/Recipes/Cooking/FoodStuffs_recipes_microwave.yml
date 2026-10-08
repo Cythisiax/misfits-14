@@ -118,11 +118,11 @@
   name: Spicy n' Sweet Skewer
   result: MisfitsFoodSkewerSpicySweet
   time: 5
-  reagents:
-    PickledJalapenos: 20
   solids:
     N14FloraProduceWildBlackberries: 2
     FoodKebabSkewer: 1
+    N14FloraProduceWildGlowpepper: 1
+
 
 #- Kebab Pilar: 5 raw brahmin steaks, 1 wood -> 30 sec
 - type: microwaveMealRecipe
@@ -169,16 +169,16 @@
   solids:
     N14FloraProduceWildPinyonNuts: 2
 
-#- Toffee -> 1 Pinion nut, 15u sugar -> 15 sec
-- type: microwaveMealRecipe
-  id: MisfitsRecipeToffee
-  name: Toffee Chunk
-  result: MisfitsFoodToffee
-  time: 15
-  reagents:
-    Sugar: 15
-  solids:
-    N14FloraProduceWildPinyonNuts: 1
+##- Toffee -> 1 Pinion nut, 15u sugar -> 15 sec
+#- type: microwaveMealRecipe
+#  id: MisfitsRecipeToffee
+#  name: Toffee Chunk
+#  result: MisfitsFoodToffee
+#  time: 15
+#  reagents:
+#    Sugar: 15
+#  solids:
+#    N14FloraProduceWildPinyonNuts: 1
 
 #- Meat Jerky: 1 meat cutlet, 5u salt -> 15 sec
 - type: microwaveMealRecipe

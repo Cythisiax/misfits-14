@@ -126,9 +126,13 @@ ent-MisfitsFoodMilkBread = Milk Bread
     .desc = A very fluffy bread with butter glazing on top. Can be cut into slices.
 food-desc-milkBread-eat= Tastes soft, sweet and like bread.
 
-ent-MisfitsFoodLasagna = Lasagna?
+ent-MisfitsFoodLasagna = Lasagna
     .desc = There, happy now, you fat cat?
-food-desc-lasagna-eat= Tastes meaty and like melted cheese with a hint of cancer.
+food-desc-lasagna-eat= Tastes meaty and like melted cheese.
+
+ent-MisfitsFoodLasagnaGood = True Lasagna
+    .desc = It is perfect.
+food-desc-lasagna-eat2= Perfection. You need more.
 
 ent-MisfitsFoodSausageChain = Sausage Chain
     .desc = You are pretty sure you could use it as a whip, which you shouldn’t. Can be cut into sausages.
