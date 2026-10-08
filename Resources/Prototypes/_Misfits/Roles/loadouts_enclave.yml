@@ -205,21 +205,6 @@
   items:
     - ClothingNeckPinEnclaveColonel
 
-- type: loadout
-  id: LoadoutEnclavePinGeneral
-  category: Roles
-  cost: 1
-  exclusive: true
-  requirements:
-    - !type:CharacterJobRequirement
-      jobs:
-        - EnclaveCommander
-    - !type:CharacterPlaytimeRequirement
-      tracker: EnclaveCommander
-      min: 144000 # 40 hours
-  items:
-    - ClothingNeckPinEnclaveGeneral
-
 # === Science Ranks ===
 
 - type: loadout

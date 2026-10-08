@@ -72,7 +72,7 @@
     - min: 72000   # 20 hours
       entity: ClothingNeckPinEnclaveMajor
 
-# Commander: LTC (O-5) → Colonel (O-6) at 20h → General (O-7) at 40h
+# Commander: LTC (O-5) → Colonel (O-6) at 20h
 - type: ncrRankPinProgression
   id: EnclaveCommanderPins
   jobs:
@@ -84,8 +84,6 @@
       entity: ClothingNeckPinEnclaveLtColonel
     - min: 72000   # 20 hours
       entity: ClothingNeckPinEnclaveColonel
-    - min: 144000  # 40 hours
-      entity: ClothingNeckPinEnclaveGeneral
 
 # Reformer: General (O-7), no ladder above it.
 # Listed here because the Reformer shares EnclaveCommanderGear, which no longer carries a pin.

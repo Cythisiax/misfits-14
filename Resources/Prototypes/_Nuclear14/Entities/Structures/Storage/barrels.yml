@@ -277,7 +277,7 @@
     thresholds:
     - trigger:
         !type:DamageTrigger
-        damage: 1000
+        damage: 50
       behaviors:
       - !type:SpillBehavior
         solution: barrel
