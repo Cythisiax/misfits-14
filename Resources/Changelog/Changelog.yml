@@ -12311,3 +12311,18 @@ Entries:
   id: 6508
   time: '2026-10-08T21:39:04.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2065
+- author: JohnKieser
+  changes:
+    - type: Tweak
+      message: Nerfed lasagna
+    - type: Fix
+      message: 'Food recipe fixes for hopefully the last time. '
+    - type: Fix
+      message: >-
+        Sweet n' Spicy Kebab recipe changed to accept glowpepper instead of
+        pickled jalepenos 
+    - type: Add
+      message: Added Perfect Lasagna
+  id: 6509
+  time: '2026-10-08T21:40:25.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2062
