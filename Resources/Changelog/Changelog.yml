@@ -12282,3 +12282,10 @@ Entries:
   id: 6506
   time: '2026-10-07T21:39:39.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2054
+- author: Bradysgaming
+  changes:
+    - type: Fix
+      message: Fixed Enclave commander timelock (120 -> 40 hours)
+  id: 6507
+  time: '2026-10-08T19:56:03.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2063
