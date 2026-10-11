@@ -293,7 +293,7 @@
     size: Huge
     sprite: _Nuclear14/Objects/Weapons/Guns/LMGs/bren.rsi
   - type: Wieldable
-    wieldedSpeedModifier: 0.8 
+    wieldedSpeedModifier: 0.8
   - type: ClothingSpeedModifier # Corvax-Add
     walkModifier: 0.85
     sprintModifier: 0.85
@@ -343,16 +343,6 @@
   - type: StaticPrice
     price: 600
 
-- type: entity
-- name: Protectron Town Bren
-- parent: N14WeaponLMGBren
-- id: M14PBren
-- description: A high-caliber, high-damage, heavy machine gun mass-produced by the Canadians pre-war, chambered in the powerful .308 ammunition.
-- type: batterySelfRecharger
-    autorecharge: true
-    autoRechargeRate: 1000
-
-    
 - type: entity
   name: M60 GPMG
   parent: BaseWeaponRifle
