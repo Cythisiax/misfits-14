@@ -505,6 +505,27 @@
       key_slots:
         - EncryptionKeyWastelandGlobal
         - EncryptionKeyVault
+        
+- type: entity
+  parent: N14PlayerSyntheticProtectronBuilder
+  id: M14TownProtectron
+  name: Town Protectron
+  - type: ContainerFill # #Misfits Add: builder loadout for structure and maintenance gameplay.
+    containers:
+      borg_brain:
+        - PositronicBrain
+      borg_module:
+        - BorgModuleAdvancedTool
+        - BorgModuleConstruction
+        - MisfitsBorgModuleBuilderRCD
+        - MisfitsBorgModuleTribalHarvest
+      id:
+        - MisfitsRobotNavCardRobCo
+      key_slots:
+        - EncryptionKeyWastelandGlobal
+        - EncryptionKeyVault
+        - EncryptionKeyBazaar
+
 
 - type: entity
   parent: N14PlayerSyntheticProtectron
