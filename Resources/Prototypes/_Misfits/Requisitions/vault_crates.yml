@@ -105,8 +105,8 @@
 - type: entity
   parent: N14BaseSyringe
   id: MisfitsEmptyStimpakSyringe
-  name: stimpak
-  description: A syringe filled with a wondrous mixture of medical reagents. Essential for those with little to no medical knowledge.
+  name: empty stimpak
+  description: An empty stimpak.
   components:
   - type: Sprite
     scale: 0.75, 0.75
