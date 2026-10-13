@@ -574,8 +574,8 @@
 
 - type: seed
   id: N14WildCaveFungus
-  name: Cave Fungus Spores
-  noun: spores-noun-spores
+  name: Cave Fungus
+  noun: Spores
   displayName: Cave Fungi
   plantRsi: _Nuclear14/Objects/Specific/Hydroponics/cavefungus.rsi
   packetPrototype: N14FloraWildCaveFungusClippingSeed
@@ -598,8 +598,8 @@
 
 - type: seed
   id: N14WildCaveFungusRad
-  name: Irradiated Cave Fungus Spores
-  noun: spores-noun-spores
+  name: Irradiated Cave Fungus
+  noun: Spores
   displayName: Irradiated Cave Fungi
   plantRsi: _Nuclear14/Objects/Specific/Hydroponics/cavefungusrad.rsi
   packetPrototype: N14FloraWildCaveFungusRadClippingSeed
