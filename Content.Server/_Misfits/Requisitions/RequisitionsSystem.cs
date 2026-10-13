@@ -1667,8 +1667,8 @@ public sealed partial class RequisitionsSystem : SharedRequisitionsSystem
             elevator.ToggledAt = null;
             elevator.Busy = false;
             Dirty(ent);
-            SendUIStateAll();
-            return false;
+            // #Cythisiax Fixed - let Update coalesce this state change with other UI refreshes this tick.
+            return true;
         }
 
         if (elevator.ToggledAt == null)
