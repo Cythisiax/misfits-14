@@ -574,9 +574,9 @@
 
 - type: seed
   id: N14WildCaveFungus
-  name: clipping-wild-cave-fungus-name
-  noun: clipping-wild-cave-fungus-noun
-  displayName: clipping-wild-cave-fungus-display-name
+  name: Cave Fungus Spores
+  noun: spores-noun-spores
+  displayName: Cave Fungi
   plantRsi: _Nuclear14/Objects/Specific/Hydroponics/cavefungus.rsi
   packetPrototype: N14FloraWildCaveFungusClippingSeed
   productPrototypes:
@@ -598,9 +598,9 @@
 
 - type: seed
   id: N14WildCaveFungusRad
-  name: clipping-wild-cave-fungus-rad-name
-  noun: clipping-wild-cave-fungus-rad-noun
-  displayName: clipping-wild-cave-fungus-rad-display-name
+  name: Irradiated Cave Fungus Spores
+  noun: spores-noun-spores
+  displayName: Irradiated Cave Fungi
   plantRsi: _Nuclear14/Objects/Specific/Hydroponics/cavefungusrad.rsi
   packetPrototype: N14FloraWildCaveFungusRadClippingSeed
   productPrototypes:
