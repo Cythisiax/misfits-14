@@ -205,7 +205,6 @@
         - MisfitsRobotNavCard
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
   - type: ItemSlots
     slots:
       cell_slot:
@@ -301,7 +300,6 @@
         - MisfitsRobotNavCardRobCo # RobCo Industries Navigation
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
   - type: ItemSlots
     slots:
       cell_slot:
@@ -397,7 +395,6 @@
         - MisfitsRobotNavCard # General Atomics Navigation
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
   - type: ItemSlots
     slots:
       cell_slot:
@@ -468,7 +465,6 @@
         - MisfitsRobotNavCardRobCo
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
 
 - type: entity
   parent: N14PlayerSyntheticProtectron
@@ -504,27 +500,6 @@
         - MisfitsRobotNavCardRobCo
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
-        
-- type: entity
-  parent: N14PlayerSyntheticProtectronBuilder
-  id: M14TownProtectron
-  name: Town Protectron
-  - type: ContainerFill # #Misfits Add: builder loadout for structure and maintenance gameplay.
-    containers:
-      borg_brain:
-        - PositronicBrain
-      borg_module:
-        - BorgModuleAdvancedTool
-        - BorgModuleConstruction
-        - MisfitsBorgModuleBuilderRCD
-        - MisfitsBorgModuleTribalHarvest
-      id:
-        - MisfitsRobotNavCardRobCo
-      key_slots:
-        - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
-        - EncryptionKeyBazaar
 
 
 - type: entity
@@ -580,7 +555,6 @@
         - MisfitsRobotNavCardRobCo
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
 
 # Tribal Protectron
 - type: entity
@@ -1211,7 +1185,6 @@
         - MisfitsRobotNavCardRobCo
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
   - type: ItemSlots
     slots:
       cell_slot:
@@ -1263,4 +1236,3 @@
         - MisfitsRobotNavCardRobCo
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
