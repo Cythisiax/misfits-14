@@ -198,7 +198,7 @@
   name: radroach
   id: N14MobRadroach
   parent: N14MobBaseHostileInsect
-  description: Nothing can kill the roaches, you can launch as many doomsdays as you like, they'll still crawl out of the rubble.
+  description: Nothing can wipe out roaches, you can launch as many doomsdays as you like, they'll still crawl out of the rubble.
   components:
   - type: Sprite
     drawdepth: Mobs

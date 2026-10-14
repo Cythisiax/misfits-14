@@ -391,10 +391,10 @@
     price: 75
 
 - type: entity
-  name: .50 pipe rifle
+  name: .50 Pipe Rifle
   parent: BaseWeaponSniper
   id: N14WeaponSniper50Pipe
-  description: A bunch of scrap and pipe held together in a desperate attemp of countering power armor. Uses .50 anti-material ammo.
+  description: This is a rough attempt at making a weapon to counter power armor, handmade from scrap metal and sections of pipe, it might fall apart after a single shot. Uses .50 anti-material ammo.
   components:
   - type: Sprite
     sprite: _Nuclear14/Objects/Weapons/Guns/Snipers/50piperifle.rsi
