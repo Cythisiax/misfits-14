@@ -4,7 +4,7 @@
   parent: BaseStructure
   id: N14VehicleVertibirdWreck
   name: Grounded Vertibird
-  description: This grounded pre-war aircraft is now a sad wreckage, but once it dominated the skies. Looking at it, you can almost hear the phantom of its violent motion and noise.
+  description: This grounded pre-war aircraft is still under maintenance, but it will soon dominate the skies once more. Looking at it, you can almost hear the gunship in motion, the sky full of its violent noise.
   suffix: Mapping
   components:
   - type: Sprite
