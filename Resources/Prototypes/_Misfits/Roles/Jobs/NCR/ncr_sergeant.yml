@@ -47,7 +47,7 @@
     shoes: N14ClothingBootsCombatFilled
     belt: ClothingBeltNCR
     outerClothing: MisfitsNCRHeavyCombatArmor # T5 armor (0.70/0.65)
-    pocket1: NCRSGTloadoutkits
+    # #Cythisiax Removed - Main NCR job slots now obtain selectable equipment from the requisitions vendors.
     pocket2: RadioHandheld
     id: N14IDNCRDogtagNCO
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert

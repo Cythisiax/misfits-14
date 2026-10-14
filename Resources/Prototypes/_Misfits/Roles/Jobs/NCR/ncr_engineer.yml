@@ -49,7 +49,7 @@
     hands: N14ClothingHandsGlovesCombat
     eyes: N14ClothingEyesGlassesWelding
     id: N14IDNCRDogtagEngineer
-    pocket1: NCRengineerloadoutkits
+    # #Cythisiax Removed - Main NCR job slots now obtain selectable equipment from the requisitions vendors.
   innerClothingSkirt: N14ClothingUniformNCRDesert # Corvax-Change
   satchel: N14ClothingBackpackSatchelNCRFilled
   storage: # Corvax-Change

@@ -53,7 +53,7 @@
     hands: N14ClothingHandsGlovesCombat
     belt: ClothingBeltNCR
     eyes: N14ClothingEyesGlassesPilot
-    pocket1: NCRLTloadoutkits
+    # #Cythisiax Removed - Main NCR job slots now obtain selectable equipment from the requisitions vendors.
     pocket2: RadioHandheld
     id: N14IDNCRDogtagOfficer
   innerClothingSkirt: N14ClothingOfficerUniformNCRDesert

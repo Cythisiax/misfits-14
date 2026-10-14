@@ -50,7 +50,7 @@
     shoes: N14ClothingBootsLeatherFilled
     belt: ClothingBeltNCR
     id: N14IDNCRDogtagDoctor
-    pocket2: NCRmedicloadoutkits
+    # #Cythisiax Removed - Main NCR job slots now obtain selectable equipment from the requisitions vendors.
   innerClothingSkirt: N14ClothingUniformNCRDesert # Corvax-Change
   satchel: N14ClothingBackpackSatchelNCRFilled
   storage: # Corvax-Change

@@ -12,13 +12,7 @@ namespace Content.Shared._RMC.Vendors;
 [Access(typeof(SharedCMAutomatedVendorSystem))]
 public sealed partial class CMAutomatedVendorComponent : Component
 {
-    /// <summary>
-    /// Controls whether this vendor may be opened or used. Disabled vendors remain valid map entities and
-    /// admin-spawnable prototypes so their catalog can be re-enabled without replacing map instances.
-    /// </summary>
-    [DataField("enabled"), AutoNetworkedField]
-    public bool VendorEnabled = true;
-
+    // #Cythisiax Removed - Retired the temporary vendor-disable field now that NCR requisitions are active again.
     /// <summary>
     /// Optional runtime stock pool shared by every automated vendor with the same identifier.
     /// When omitted, this vendor retains independent stock, resupply, and equipment storage.
