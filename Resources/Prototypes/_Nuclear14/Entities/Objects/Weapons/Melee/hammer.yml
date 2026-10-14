@@ -71,6 +71,16 @@
     price: 100
 
 - type: entity
+  name: Nuka Breaker
+  parent: N14SledgeHammer
+  id: M14NukaBreaker
+  Description: A town heirloom, passed down from Mayor to Mayor after the bombs dropped
+  - type: Sprite
+    sprite: _Nuclear14/Objects/Weapons/Melee/Nuka_Breaker.rsi
+    state: icon
+  
+
+- type: entity
   name: tribal heavy club
   parent: N14SledgeHammer
   id: N14TribalBigClub
