@@ -467,6 +467,11 @@
     - N14StationRadioRigCircuitboard
     - N14StationRadioCircuitboard
     - N14DoorElectronics
+    # Misfits: synthetic repair supplies, tinker batches (8)
+    - MisfitsMakeshiftRepairPatchTinker
+    - MisfitsReinforcedPlatingPatchTinker
+    - MisfitsInsulationPatchTinker
+    - MisfitsAdvancedRepairPatchTinker
   - type: ActivatableUIRequiresPower
 
 - type: entity
@@ -712,6 +717,11 @@
     #Paperwork
     - N14WoodPencil # Forge-Change
     - N14PenReporter # Forge-Change
+    # Misfits: synthetic repair supplies
+    - MisfitsMakeshiftRepairPatchMetal
+    - MisfitsReinforcedPlatingPatchMetal
+    - MisfitsInsulationPatchMetal
+    - MisfitsAdvancedRepairPatchMetal
 
 - type: entity
   parent: N14WorkbenchBase
