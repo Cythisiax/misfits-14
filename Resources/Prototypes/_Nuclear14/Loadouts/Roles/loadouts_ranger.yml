@@ -396,6 +396,7 @@
     - !type:CharacterJobRequirement
       jobs:
         - NCRVeteranRanger
+        - NCRFieldRanger
     - !type:CharacterPlaytimeRequirement
       tracker: NCRVeteranRanger
       min: 72000 # 1200 minutes
@@ -550,6 +551,7 @@
     - !type:CharacterJobRequirement
       jobs:
         - NCRVeteranRanger
+        - NCRFieldRanger
     - !type:CharacterPlaytimeRequirement
       tracker: NCRVeteranRanger
       min: 216000 # 60 hours veterancy unlock "First Tour"
@@ -565,6 +567,7 @@
     - !type:CharacterJobRequirement
       jobs:
         - NCRVeteranRanger
+        - NCRFieldRanger
   items:
     - ClothingMaskGasRiot
 # Corvax-Add End

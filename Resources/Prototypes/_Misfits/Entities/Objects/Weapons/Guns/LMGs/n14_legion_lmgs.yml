@@ -20,10 +20,10 @@
     size: Huge
     sprite: _Nuclear14/Objects/Weapons/Guns/LMGs/canadianhmg.rsi
   - type: Wieldable
-    wieldedSpeedModifier: 0.65
+    wieldedSpeedModifier: 0.80
   - type: GunRequiresWield
   - type: WieldDelay # Misfits-change
-    baseDelay: 2
+    baseDelay: 1.0
     preventFiring: true
   - type: GunWieldBonus
     minAngle: -22
@@ -33,7 +33,7 @@
     maxAngle: 60
     angleIncrease: 4
     angleDecay: 16
-    fireRate: 8
+    fireRate: 5.5
     soundGunshot:
       collection: N14AutoRifleGunshot
     selectedMode: FullAuto

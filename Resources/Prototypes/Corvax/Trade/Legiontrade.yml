@@ -126,12 +126,12 @@
   entries:
   - proto: N14WeaponShotgunNeostead
     price: 160
-    count: 2
+    count: 3
   - proto: N14WeaponShotgunBoomstick
     price: 25
   - proto: N14WeaponShotgunBlowback
     price: 110
-    count: 3
+    count: 4
   - proto: N14WeaponShotgunAuto
     price: 75
   - proto: N14WeaponShotgunSawedOff
@@ -367,9 +367,9 @@
   - proto: N14ClothingNeckCloakLegionWhite
     price: 10
   - proto: N14ClothingUniformJumpsuitLegionnaire
-    price: 1
+    price: 3
   - proto: N14ClothingUniformJumpsuitLegionnaireOther
-    price: 1
+    price: 3
   - proto: M14LegionBackpackCapeBlack
     price: 25
   - proto: M14LegionBackpackCapeRed

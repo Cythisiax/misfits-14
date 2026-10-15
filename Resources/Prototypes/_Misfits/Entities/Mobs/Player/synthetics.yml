@@ -205,7 +205,6 @@
         - MisfitsRobotNavCard
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
   - type: ItemSlots
     slots:
       cell_slot:
@@ -301,7 +300,6 @@
         - MisfitsRobotNavCardRobCo # RobCo Industries Navigation
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
   - type: ItemSlots
     slots:
       cell_slot:
@@ -397,7 +395,6 @@
         - MisfitsRobotNavCard # General Atomics Navigation
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
   - type: ItemSlots
     slots:
       cell_slot:
@@ -468,7 +465,6 @@
         - MisfitsRobotNavCardRobCo
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
 
 - type: entity
   parent: N14PlayerSyntheticProtectron
@@ -504,7 +500,7 @@
         - MisfitsRobotNavCardRobCo
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
+
 
 - type: entity
   parent: N14PlayerSyntheticProtectron
@@ -559,7 +555,6 @@
         - MisfitsRobotNavCardRobCo
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
 
 # Tribal Protectron
 - type: entity
@@ -1190,7 +1185,6 @@
         - MisfitsRobotNavCardRobCo
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
   - type: ItemSlots
     slots:
       cell_slot:
@@ -1242,4 +1236,3 @@
         - MisfitsRobotNavCardRobCo
       key_slots:
         - EncryptionKeyWastelandGlobal
-        - EncryptionKeyVault
