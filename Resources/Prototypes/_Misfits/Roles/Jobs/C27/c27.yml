@@ -44,7 +44,11 @@
   requirements:
   - !type:CharacterSpeciesRequirement
     species:
-    - C27 # Generic / Unassigned model only — NCR and BoS variants live on their own jobs
+    # #Misfits Add - the Integrator / Assault / Recon configs are chassis options on this job, not jobs of their own.
+    - C27
+    - C27Integrator
+    - C27Assault
+    - C27Recon
   special:
   - !type:AddComponentSpecial
     components:

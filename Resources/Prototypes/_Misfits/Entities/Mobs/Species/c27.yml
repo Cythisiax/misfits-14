@@ -420,12 +420,21 @@
   save: true
   name: c-27 humanoid robot (integrator)
   id: N14MobC27Integrator
-  parent: N14BaseMobC27
-  description: Integrator configuration — biomechanical symbiosis for chemical healing. Reduced HP, metabolic processing.
-  categories: [ HideSpawnMenu ]
+  # #Misfits Add - biomech symbiosis. MobBloodstream parent supplies InjectableSolution (syringe) and a configured Bloodstream.
+  parent: [N14BaseMobC27, MobBloodstream]
+  description: Integrator - A pre-war C-27 model robot of unusual make with various pieces of tubing running along it's torso, arms, and legs joints as well as some sort of synthetic fibers mimicking musculature along it's chassis. Seem's unusually twitchy as compared to others of it's model.
   components:
   - type: HumanoidAppearance
     species: C27Integrator
+  # #Misfits Add - Integrator body carries a heart and stomach.
+  - type: Body
+    prototype: C27Integrator
+    requiredLegs: 2
+  # #Misfits Add - biomass-fed: Hunger only. Thirst deliberately omitted, so no water needed.
+  - type: Hunger
+  # #Misfits Add - zero the inherited thirst cost so blood regen is funded by food alone.
+  - type: Bloodstream
+    bloodRegenerationThirst: 0
   - type: ContainerFill
     containers:
       key_slots:
@@ -449,8 +458,7 @@
   name: c-27 humanoid robot (assault)
   id: N14MobC27Assault
   parent: N14BaseMobC27
-  description: Assault configuration — heavily armored for assaulting enemy fortifications.
-  categories: [ HideSpawnMenu ]
+  description: Assault - A pre-war C-27 model robot with a reinforced chassis and towering build. Every step it takes seems to thunder loudly with the whirring of heavy servos and armor plating.
   components:
   - type: HumanoidAppearance
     species: C27Assault
@@ -484,8 +492,7 @@
   name: c-27 humanoid robot (recon)
   id: N14MobC27Recon
   parent: N14BaseMobC27
-  description: Recon configuration — night vision, thermal pulse optics, enhanced speed.
-  categories: [ HideSpawnMenu ]
+  description: Recon - A pre-war C-27 model robot featuring a lankier build and lighter armor plating, additional optical sensors and a more advanced antenna can be noted quickly, and it seem's to move much more silently than other models.
   components:
   - type: HumanoidAppearance
     species: C27Recon
@@ -506,6 +513,9 @@
     baseWalkSpeed: 2.875
     baseSprintSpeed: 2.875
   - type: NightVision
+  # #Misfits Add - pulseTime makes this a timed sweep rather than a permanent overlay, as on ClothingEyesThermalVisionGoggles.
   - type: ThermalVision
+    pulseTime: 5
     toggleAction: PulseThermalVision
+  # #Misfits Add - grants ActionOpenWastelandMap on MapInit; the map resolves from the spawn faction.
   - type: WastelandMapAction

@@ -274,9 +274,9 @@
   - Backpacks
   - Duffel
   - Satchel
-  jobWhitelistUnlock: C27Integrator
+  jobWhitelistUnlock: C27
   restrictedJobs:
-  - C27Integrator
+  - C27
   prototype: N14MobC27Integrator
   sprites: MobC27Sprites
   markingLimits: MobC27MarkingLimitsIntegrator
@@ -327,9 +327,9 @@
   - Backpacks
   - Duffel
   - Satchel
-  jobWhitelistUnlock: C27Assault
+  jobWhitelistUnlock: C27
   restrictedJobs:
-  - C27Assault
+  - C27
   prototype: N14MobC27Assault
   sprites: MobC27Sprites
   markingLimits: MobC27MarkingLimitsAssault
@@ -380,9 +380,9 @@
   - Backpacks
   - Duffel
   - Satchel
-  jobWhitelistUnlock: C27Recon
+  jobWhitelistUnlock: C27
   restrictedJobs:
-  - C27Recon
+  - C27
   prototype: N14MobC27Recon
   sprites: MobC27Sprites
   markingLimits: MobC27MarkingLimitsRecon
