@@ -12469,3 +12469,13 @@ Entries:
   id: 6522
   time: '2026-10-15T01:39:03.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2083
+- author: Davisrocket
+  changes:
+    - type: Add
+      message: >-
+        Recipes for Buffout, Wonderglue, Turpentine, Bloatfly Acid, Scorpion
+        Tail, Fire Ant Nectar. Sprites for growing cave fungus, and irradiated
+        fungus. Mutable Cave Fungus. 
+  id: 6523
+  time: '2026-10-15T02:11:48.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2081
