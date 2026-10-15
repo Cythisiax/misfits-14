@@ -177,21 +177,21 @@
   name: "Long guns"
   entries:
   - proto: N14WeaponLaserRifleCrude
-    price: 200
+    price: 300
   - proto: N14WeaponPlasmaRifleCrude
-    price: 240
+    price: 350
   - proto: N14WeaponLaserRifle
     price: 450
   - proto: N14WeaponSniper50Pipe
     price: 1200
-    count: 4
+    count: 3
   - proto: N14WeaponSMG10mmPipe
     price: 170
   - proto: N14WeaponSMG12mmPipe
     price: 125
   - proto: N14WeaponSMG12mmAdvancedChinese
     price: 350
-    count: 2
+    count: 3
   - proto: N14WeaponLMGchinese
     price: 3600
     count: 2
@@ -225,7 +225,7 @@
   - proto: N14WeaponPistol22lr
     price: 20
   - proto: N14WeaponLaserPistol
-    price: 60
+    price: 250
   - proto: N14WeaponPistol9mmChinese
     price: 18
 
