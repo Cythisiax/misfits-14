@@ -180,13 +180,13 @@
   name: "Lasers"
   entries:
   - proto: N14WeaponLaserRevolver
-    price: 160
+    price: 450
   - proto: N14WeaponLaserRifleMakeshift
-    price: 150
+    price: 550
   - proto: N14WeaponLaserRifleCrude
-    price: 400
+    price: 500
   - proto: N14WeaponLaserPistol
-    price: 120
+    price: 400
 
 - type: storeCategoryStructured
   id: NCRBuy2_Armor
