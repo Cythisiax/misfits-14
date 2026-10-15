@@ -79,6 +79,10 @@
   - !type:CharacterSpeciesRequirement
     species:
     - C27NCR
+    # #Misfits Add - the chassis configurations may serve in the NCR variant too.
+    - C27Integrator
+    - C27Assault
+    - C27Recon
   # #Misfits Tweak - SharedJobSystem requires a unique PlayTimeTracker per job; override here.
   # (Was sharing tracker 'C27' with the other two siblings, which crashed startup.)
   special:
@@ -112,6 +116,10 @@
   - !type:CharacterSpeciesRequirement
     species:
     - C27BoS
+    # #Misfits Add - the chassis configurations may serve in the Brotherhood variant too.
+    - C27Integrator
+    - C27Assault
+    - C27Recon
   special:
   - !type:AddComponentSpecial
     components:

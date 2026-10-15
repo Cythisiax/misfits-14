@@ -426,10 +426,10 @@
   components:
   - type: HumanoidAppearance
     species: C27Integrator
-  # #Misfits Add - Integrator body carries a heart and stomach.
+  # #Misfits Add - Integrator body carries a heart and stomach; requiredLegs 0 keeps the mob-level speed authoritative.
   - type: Body
     prototype: C27Integrator
-    requiredLegs: 2
+    requiredLegs: 0
   # #Misfits Add - biomass-fed: Hunger only. Thirst deliberately omitted, so no water needed.
   - type: Hunger
   # #Misfits Add - zero the inherited thirst cost so blood regen is funded by food alone.
@@ -449,8 +449,9 @@
       300: Dead
     allowRevives: true
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2.5
-    baseSprintSpeed: 2.5
+    # #Misfits Add - authoritative; requiredLegs 0 stops the body system overwriting it. Human baseline is 3.0/5.0.
+    baseWalkSpeed: 3.0
+    baseSprintSpeed: 5.0
 
 # === Assault Configuration ===
 - type: entity
@@ -462,6 +463,10 @@
   components:
   - type: HumanoidAppearance
     species: C27Assault
+  # #Misfits Add - requiredLegs 0 stops SharedBodySystem deriving speed from the legs, so this component is authoritative.
+  - type: Body
+    prototype: C27
+    requiredLegs: 0
   - type: ContainerFill
     containers:
       key_slots:
@@ -476,8 +481,9 @@
       500: Dead
     allowRevives: true
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2.25
-    baseSprintSpeed: 2.25
+    # #Misfits Add - 10% under human baseline (3.0/5.0); authoritative because requiredLegs is 0.
+    baseWalkSpeed: 2.7
+    baseSprintSpeed: 4.5
   - type: Reflect
     reflects:
       - SmallCaliber
@@ -496,6 +502,10 @@
   components:
   - type: HumanoidAppearance
     species: C27Recon
+  # #Misfits Add - requiredLegs 0 stops SharedBodySystem deriving speed from the legs, so this component is authoritative.
+  - type: Body
+    prototype: C27
+    requiredLegs: 0
   - type: ContainerFill
     containers:
       key_slots:
@@ -506,16 +516,28 @@
   - type: MobThresholds
     thresholds:
       0: Alive
-      200: Critical
-      400: Dead
+      150: Critical
+      300: Dead
     allowRevives: true
   - type: MovementSpeedModifier
-    baseWalkSpeed: 2.875
-    baseSprintSpeed: 2.875
+    # #Misfits Add - 10% over human baseline (3.0/5.0); authoritative because requiredLegs is 0.
+    baseWalkSpeed: 3.3
+    baseSprintSpeed: 5.5
   - type: NightVision
   # #Misfits Add - pulseTime makes this a timed sweep rather than a permanent overlay, as on ClothingEyesThermalVisionGoggles.
   - type: ThermalVision
     pulseTime: 5
     toggleAction: PulseThermalVision
-  # #Misfits Add - grants ActionOpenWastelandMap on MapInit; the map resolves from the spawn faction.
-  - type: WastelandMapAction
+  # #Misfits Add - WastelandMap data component and a registered BUI are both required; the action alone opens nothing.
+  - type: WastelandMap
+    mapTexturePath: _Misfits/Maps/wendover_map.png
+    mapTitle: Recon Tactical Map
+    worldBounds: "-517,-308,484,311"
+  # #Misfits Add - grant the map action the way N14MobC27ZAX grants its repair action, since WastelandMapAction only auto-grants for worn items.
+  - type: ActionGrant
+    actions:
+    - ActionOpenWastelandMap
+  - type: UserInterface
+    interfaces:
+      enum.WastelandMapUiKey.Key:
+        type: WastelandMapBoundUserInterface

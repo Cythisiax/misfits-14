@@ -277,6 +277,8 @@
   jobWhitelistUnlock: C27
   restrictedJobs:
   - C27
+  - C27NCR # #Misfits Add - chassis configurations may also serve the NCR variant
+  - C27BoS
   prototype: N14MobC27Integrator
   sprites: MobC27Sprites
   markingLimits: MobC27MarkingLimitsIntegrator
@@ -330,6 +332,8 @@
   jobWhitelistUnlock: C27
   restrictedJobs:
   - C27
+  - C27NCR # #Misfits Add - chassis configurations may also serve the NCR variant
+  - C27BoS
   prototype: N14MobC27Assault
   sprites: MobC27Sprites
   markingLimits: MobC27MarkingLimitsAssault
@@ -383,6 +387,8 @@
   jobWhitelistUnlock: C27
   restrictedJobs:
   - C27
+  - C27NCR # #Misfits Add - chassis configurations may also serve the NCR variant
+  - C27BoS
   prototype: N14MobC27Recon
   sprites: MobC27Sprites
   markingLimits: MobC27MarkingLimitsRecon
