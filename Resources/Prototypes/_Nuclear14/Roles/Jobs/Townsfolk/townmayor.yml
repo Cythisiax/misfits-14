@@ -42,14 +42,12 @@
     id: N14IDBadgeTownMayor
     pocket1: RadioHandheld
     wallet: N14WalletLottaCash
-    pocket1: TownMayorKits
   innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
   satchel: N14ClothingBackpackSatchelMayorFilled
   duffelbag: N14ClothingBackpackDuffelMayorFilled
   storage: # Corvax-Change
     back:
     - N14BoxPlasticFilledWastelander
-    - M14NukaBreaker
 
 - type: playTimeTracker
   id: TownMayor
