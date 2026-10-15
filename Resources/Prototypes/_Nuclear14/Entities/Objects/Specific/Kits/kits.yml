@@ -2097,3 +2097,34 @@
       - id: N14JunkCeramicFlask
       - id: N14FoodTinC1
       - id: N14FoodTinC2
+
+#adding mayor kits
+- type: entity
+- name: Mayor Heavy Kit
+- parent: kitBase
+- id: KitTownMayor_Heavy
+- description: For the Mayor who believes in superior firepower
+ components:
+  - type: Sprite
+    state: rifleman
+  - type: Item
+    size: Huge
+  - type: SpawnItemsOnUse
+  -items: 
+      - id: N14CleanGauze10
+      - id: N14Stimpak
+      - id: N14BoxCardboardMREBoxKFilled
+
+
+- type: entity
+  id: TownMayorKits
+  parent: kitBase
+  components:
+  - type: Sprite
+    sprite: Corvax/Objects/Misc/kits.rsi
+    state: base
+  - type: UndecidedLoadoutBackpack
+    possibleSets:
+    - KitTownMayor_Heavy
+
+      
