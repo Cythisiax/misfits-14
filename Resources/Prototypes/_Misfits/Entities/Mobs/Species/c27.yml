@@ -387,3 +387,125 @@
   components:
   - type: HumanoidAppearance
     species: C27ZAX
+
+- type: entity
+  save: false
+  parent: N14MobC27Dummy
+  id: N14MobC27IntegratorDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: C27Integrator
+
+- type: entity
+  save: false
+  parent: N14MobC27Dummy
+  id: N14MobC27AssaultDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: C27Assault
+
+- type: entity
+  save: false
+  parent: N14MobC27Dummy
+  id: N14MobC27ReconDummy
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: C27Recon
+
+# === Integrator Configuration ===
+- type: entity
+  save: true
+  name: c-27 humanoid robot (integrator)
+  id: N14MobC27Integrator
+  parent: N14BaseMobC27
+  description: Integrator configuration — biomechanical symbiosis for chemical healing. Reduced HP, metabolic processing.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: C27Integrator
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+  - type: Damageable
+    damageContainer: Silicon
+    damageModifierSet: MisfitsC27IntegratorSilicon
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      150: Critical
+      300: Dead
+    allowRevives: true
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.5
+    baseSprintSpeed: 2.5
+
+# === Assault Configuration ===
+- type: entity
+  save: true
+  name: c-27 humanoid robot (assault)
+  id: N14MobC27Assault
+  parent: N14BaseMobC27
+  description: Assault configuration — heavily armored for assaulting enemy fortifications.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: C27Assault
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+  - type: Damageable
+    damageContainer: Silicon
+    damageModifierSet: MisfitsC27AssaultSilicon
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      250: Critical
+      500: Dead
+    allowRevives: true
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.25
+    baseSprintSpeed: 2.25
+  - type: Reflect
+    reflects:
+      - SmallCaliber
+      - MediumCaliber
+    reflectProb: 0.20
+    innate: true
+    spread: 90
+
+# === Recon Configuration ===
+- type: entity
+  save: true
+  name: c-27 humanoid robot (recon)
+  id: N14MobC27Recon
+  parent: N14BaseMobC27
+  description: Recon configuration — night vision, thermal pulse optics, enhanced speed.
+  categories: [ HideSpawnMenu ]
+  components:
+  - type: HumanoidAppearance
+    species: C27Recon
+  - type: ContainerFill
+    containers:
+      key_slots:
+      - EncryptionKeyWastelandGlobal
+  - type: Damageable
+    damageContainer: Silicon
+    damageModifierSet: MisfitsC27ReconSilicon
+  - type: MobThresholds
+    thresholds:
+      0: Alive
+      200: Critical
+      400: Dead
+    allowRevives: true
+  - type: MovementSpeedModifier
+    baseWalkSpeed: 2.875
+    baseSprintSpeed: 2.875
+  - type: NightVision
+  - type: ThermalVision
+    toggleAction: PulseThermalVision
+  - type: WastelandMapAction
