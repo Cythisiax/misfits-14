@@ -12479,3 +12479,10 @@ Entries:
   id: 6523
   time: '2026-10-15T02:11:48.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2081
+- author: grif16886-hash
+  changes:
+    - type: Remove
+      message: Vault key on robot
+  id: 6524
+  time: '2026-10-15T22:46:42.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2078
