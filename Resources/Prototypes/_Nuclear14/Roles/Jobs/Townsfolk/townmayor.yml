@@ -48,6 +48,8 @@
   storage: # Corvax-Change
     back:
     - N14BoxPlasticFilledWastelander
+    - M14NukaBreaker
+    - N14BasePipboy
 
 - type: playTimeTracker
   id: TownMayor
