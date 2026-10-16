@@ -421,8 +421,8 @@
 - type: entity
   parent: ClothingHeadBase
   id: N14ClothingHeadHatTribalOutcastHood
-  name: tribal outcast hood
-  description: Shame! A hood worn by outcasts.
+  name: Tribal Outcast Hood
+  description: Worn by those who have been exiled by their community, these ragged coverings traditionally mark one who has yet to redeem themselves, seeking out some impossible task to do so. Yet many more mark those who have given up on coming home.
   components:
   - type: Sprite
     sprite: _Nuclear14/Clothing/Head/FalloutHats/tribalhoodoutcast.rsi

@@ -398,7 +398,7 @@
   parent: N14DecorFloorBase
   id: N14DecorSignRightMine
   name: sign
-  description: It seems you should head this way.
+  description: It seems you should head that way.
   components:
   - type: Sprite
     state: sign_right
