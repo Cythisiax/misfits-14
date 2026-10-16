@@ -24,7 +24,7 @@
   coefficients:
     Shock: 0.7
     Caustic: 0.7
-    Heat: 1.5
+    Heat: 1.25
     Radiation: 0.0
 
 # Assault — 20% DR, shock vulnerability
