@@ -12486,3 +12486,10 @@ Entries:
   id: 6524
   time: '2026-10-15T22:46:42.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2078
+- author: Vixting
+  changes:
+    - type: Tweak
+      message: reduce war pending to 5m
+  id: 6525
+  time: '2026-10-16T12:07:20.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2094
