@@ -62,7 +62,7 @@
     species:
     - RobotProtectron
     - RobotProtectronPolice # #Misfits Add: model variant shares Protectron whitelist/job.
-    - RobotProtectronBuilder # #Misfits Add: model variant shares Protectron whitelist/job.
+    # #Cythisiax Removed - construction Protectrons are excluded from the open base Protectron role and its four slots.
     - RobotProtectronFire # #Misfits Add: model variant shares Protectron whitelist/job.
   special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
   - !type:AddComponentSpecial
