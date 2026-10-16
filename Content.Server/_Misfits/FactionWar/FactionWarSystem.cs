@@ -72,7 +72,7 @@ public sealed class FactionWarSystem : EntitySystem
     private static readonly TimeSpan WarCooldownAfterRoundStart = TimeSpan.FromMinutes(60);
 
     /// <summary>How long a war stays in Pending while players choose to enlist.</summary>
-    private static readonly TimeSpan WarPrepDuration = TimeSpan.FromMinutes(10);
+    private static readonly TimeSpan WarPrepDuration = TimeSpan.FromMinutes(5);
 
     /// <summary>How long a targeted invite to join a pending war remains valid.</summary>
     private static readonly TimeSpan WarInviteDuration = TimeSpan.FromSeconds(30);
