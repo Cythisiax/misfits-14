@@ -12504,3 +12504,20 @@ Entries:
   id: 6526
   time: '2026-10-16T12:08:03.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2085
+- author: Enkidienne
+  changes:
+    - type: Add
+      message: >-
+        C-27 Variant; The Integrator, a biomechanical horror capable of
+        processing chemicals.
+    - type: Add
+      message: >-
+        C-27 Variant; The Assault, a reinforced frontline unit, slow but nigh
+        unstoppable.
+    - type: Add
+      message: >-
+        C-27 Variant; The recon, quick, with better sensors and lighter
+        plating. 
+  id: 6527
+  time: '2026-10-17T12:42:57.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2086
