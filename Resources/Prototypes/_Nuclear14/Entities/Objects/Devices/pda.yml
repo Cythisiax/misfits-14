@@ -134,6 +134,17 @@
   - type: Pda
     id: N14ClothingNeckDogtags
 
+
+#add a town mayor pip
+
+- type: entity
+  parent: N14BasePipboy
+  id: M14MayorPipboy
+  suffix: Mayor
+  components:
+  - type: Pda
+    id: N14ClothingNeckDogtags
+
 #MARK: Vault
 - type: entity
   parent: N14BasePipboy
