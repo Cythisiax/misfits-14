@@ -3,6 +3,8 @@
 # locked to that species via CharacterSpeciesRequirement. The species restrictedJobs
 # field ensures only the matching species can see each job in the lobby.
 # #Cythisiax Edited - Mr. Handy and Protectron are open non-faction silicon roles; other synthetic jobs remain whitelisted.
+# #Cythisiax Note - the Police/Firefighter/Constructron chassis stay whitelist-only through each variant species'
+# own whitelistRequired + jobWhitelistUnlock (SyntheticProtectron), not through this job's whitelist flag.
 
 # #Misfits Add - Empty gear prototype: triggers EquipIdCard in StationSpawningSystem
 # so the job's access tags are applied to the robot's nav card on spawn.
@@ -62,7 +64,9 @@
     species:
     - RobotProtectron
     - RobotProtectronPolice # #Misfits Add: model variant shares Protectron whitelist/job.
-    # #Cythisiax Removed - construction Protectrons are excluded from the open base Protectron role and its four slots.
+    # #Cythisiax Fix - the Constructron (Builder) chassis must stay listed here or it is unspawnable: the player
+    # selects it via the whitelist-gated species, then needs this job to accept that species.
+    - RobotProtectronBuilder
     - RobotProtectronFire # #Misfits Add: model variant shares Protectron whitelist/job.
   special: # #Misfits Add - register with PlayerRobot faction so Loremaster tab can detect this job
   - !type:AddComponentSpecial

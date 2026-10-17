@@ -112,9 +112,9 @@
   - TraitsSpeechUncategorized
   - TraitsSpeechAccents
   - TraitsSpeechLanguages
-  jobWhitelistUnlock: SyntheticProtectron # #Misfits Add
+  jobWhitelistUnlock: SyntheticProtectron # #Misfits Add - the existing Protectron job whitelist is the Constructron whitelist
   restrictedJobs: # #Misfits Add
-  - SyntheticProtectron
+  - SyntheticProtectron # #Cythisiax Note - keep in sync with the species list on the SyntheticProtectron job
   sprites: RobotSprites
   markingLimits: RobotMarkingLimits
   prototype: N14PlayerSyntheticProtectronBuilder
