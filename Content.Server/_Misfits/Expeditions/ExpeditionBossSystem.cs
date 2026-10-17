@@ -147,7 +147,7 @@ public sealed class ExpeditionBossSystem : EntitySystem
         }
 
         var rewardPosition = Transform(args.Target).Coordinates;
-        var rewards = _entityTables.GetSpawns(rewardTable.Table, new Random(boss.RewardSeed)).ToArray();
+        var rewards = _entityTables.GetSpawns(rewardTable.Table).ToArray();
         foreach (var reward in rewards)
             Spawn(reward, rewardPosition);
 

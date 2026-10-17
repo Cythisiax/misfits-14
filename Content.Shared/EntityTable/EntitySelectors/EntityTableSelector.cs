@@ -24,12 +24,13 @@ public abstract partial class EntityTableSelector
     /// A simple chance that the selector will run.
     /// </summary>
     [DataField]
-    public double Prob = 1;
+    public float Prob = 1;
 
-    public IEnumerable<EntProtoId> GetSpawns(System.Random rand,
+    public IEnumerable<EntProtoId> GetSpawns(IRobustRandom rand,
         IEntityManager entMan,
         IPrototypeManager proto)
     {
+        rand.SetSeed(rand.Next());
         var rolls = Rolls.Get(rand, entMan, proto);
         for (var i = 0; i < rolls; i++)
         {
@@ -38,12 +39,13 @@ public abstract partial class EntityTableSelector
 
             foreach (var spawn in GetSpawnsImplementation(rand, entMan, proto))
             {
+                rand.SetSeed(rand.Next());
                 yield return spawn;
             }
         }
     }
 
-    protected abstract IEnumerable<EntProtoId> GetSpawnsImplementation(System.Random rand,
+    protected abstract IEnumerable<EntProtoId> GetSpawnsImplementation(IRobustRandom rand,
         IEntityManager entMan,
         IPrototypeManager proto);
 }

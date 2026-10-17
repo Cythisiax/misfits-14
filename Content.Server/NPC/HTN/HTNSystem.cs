@@ -34,6 +34,11 @@ namespace Content.Server.NPC.HTN;
 /// </summary>
 public sealed partial class HTNSystem : EntitySystem
 {
+    //Misfits: not used for anything serious for right now
+    public int LastActiveNpcCount = 666;
+
+
+
     [Dependency] private readonly IAdminManager _admin = default!;
     [Dependency] private readonly IConfigurationManager _cfg = default!; // #Misfits Add - CVar gate for ReplanRate
     [Dependency] private readonly IGameTiming _gameTiming = default!;
@@ -277,6 +282,8 @@ public sealed partial class HTNSystem : EntitySystem
             Update(comp, frameTime);
             count++;
         }
+
+        LastActiveNpcCount = count;
     }
     // Corvax-start
     private bool IsNPCActive(EntityUid entity)

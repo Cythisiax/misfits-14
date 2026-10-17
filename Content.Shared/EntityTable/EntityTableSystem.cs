@@ -4,17 +4,21 @@ using Robust.Shared.Random;
 
 namespace Content.Shared.EntityTable;
 
-public sealed class EntityTableSystem : EntitySystem
+public abstract partial class EntityTableSystem : EntitySystem
 {
     [Dependency] private readonly IPrototypeManager _prototypeManager = default!;
     [Dependency] private readonly IRobustRandom _random = default!;
-
-    public IEnumerable<EntProtoId> GetSpawns(EntityTableSelector? table, System.Random? rand = null)
+// why is this even in shared??
+    public IEnumerable<EntProtoId> GetSpawns(EntityTableSelector? table)
     {
         if (table == null)
             return new List<EntProtoId>();
+        SetSeed(_random);
+        return table.GetSpawns(_random, EntityManager, _prototypeManager);
+    }
 
-        rand ??= _random.GetRandom();
-        return table.GetSpawns(rand, EntityManager, _prototypeManager);
+    public virtual void SetSeed(IRobustRandom rand)
+    {
+        rand.SetSeed(_random.Next(int.MinValue, int.MaxValue));
     }
 }
