@@ -41,6 +41,7 @@
     shoes: N14ClothingShoesBrown
     id: N14IDBadgeTownMayor
     pocket1: RadioHandheld
+    pocket2: N14BasePipboy
     wallet: N14WalletLottaCash
   innerClothingSkirt: N14ClothingUniformJumpskirtFalloutBlack
   satchel: N14ClothingBackpackSatchelMayorFilled
