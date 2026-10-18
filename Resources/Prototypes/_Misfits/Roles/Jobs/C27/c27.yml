@@ -207,6 +207,7 @@
     jumpsuit: ClothingC27Chassis
     pocket1: C27NCRLoadoutKit
     id: N14IDNCRDogtagSoldier
+    ears: N14ClothingHeadsetNCR
 
 # Brotherhood: chassis jumpsuit + Light BoS kit + BoS headset + BoS Initiate holotag.
 - type: startingGear
@@ -216,6 +217,7 @@
     jumpsuit: ClothingC27Chassis
     pocket1: C27BoSLoadoutKit
     id: N14IDBrotherhoodOfSteelHolotagInitiate
+    ears: N14ClothingHeadsetBrotherhoodOfSteel
 
 # Z.A.X: rapid-response chassis with light generic plating only.
 - type: startingGear

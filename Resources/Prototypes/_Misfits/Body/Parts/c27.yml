@@ -135,6 +135,10 @@
     price: 12
   - type: Item
     size: Normal
+  - type: MovementBodyPart
+    walkSpeed: 1.25
+    sprintSpeed: 1.25
+    acceleration: 4
 
 - type: entity
   id: MisfitsRightLegC27
@@ -148,3 +152,87 @@
     price: 12
   - type: Item
     size: Normal
+  - type: MovementBodyPart
+    walkSpeed: 1.25
+    sprintSpeed: 1.25
+    acceleration: 4
+
+- type: entity
+  parent: MisfitsLeftLegC27
+  id: MisfitsLeftLegC27ZAX
+  name: "left c-27 leg (z.a.x)"
+  components:
+  - type: MovementBodyPart
+    walkSpeed: 2.5
+    sprintSpeed: 2.5
+    acceleration: 4
+
+- type: entity
+  parent: MisfitsRightLegC27
+  id: MisfitsRightLegC27ZAX
+  name: "right c-27 leg (z.a.x)"
+  components:
+  - type: MovementBodyPart
+    walkSpeed: 2.5
+    sprintSpeed: 2.5
+    acceleration: 4
+
+- type: entity
+  parent: MisfitsLeftLegC27
+  id: MisfitsLeftLegC27Integrator
+  name: "left c-27 leg (integrator)"
+  components:
+  - type: MovementBodyPart
+    walkSpeed: 1.5
+    sprintSpeed: 2.5
+    acceleration: 4
+
+- type: entity
+  parent: MisfitsRightLegC27
+  id: MisfitsRightLegC27Integrator
+  name: "right c-27 leg (integrator)"
+  components:
+  - type: MovementBodyPart
+    walkSpeed: 1.5
+    sprintSpeed: 2.5
+    acceleration: 4
+
+- type: entity
+  parent: MisfitsLeftLegC27
+  id: MisfitsLeftLegC27Assault
+  name: "left c-27 leg (assault)"
+  components:
+  - type: MovementBodyPart
+    walkSpeed: 1.35
+    sprintSpeed: 2.25
+    acceleration: 4
+
+- type: entity
+  parent: MisfitsRightLegC27
+  id: MisfitsRightLegC27Assault
+  name: "right c-27 leg (assault)"
+  components:
+  - type: MovementBodyPart
+    walkSpeed: 1.35
+    sprintSpeed: 2.25
+    acceleration: 4
+
+- type: entity
+  parent: MisfitsLeftLegC27
+  id: MisfitsLeftLegC27Recon
+  name: "left c-27 leg (recon)"
+  components:
+  - type: MovementBodyPart
+    walkSpeed: 1.65
+    sprintSpeed: 2.75
+    acceleration: 4
+
+- type: entity
+  parent: MisfitsRightLegC27
+  id: MisfitsRightLegC27Recon
+  name: "right c-27 leg (recon)"
+  components:
+  - type: MovementBodyPart
+    walkSpeed: 1.65
+    sprintSpeed: 2.75
+    acceleration: 4

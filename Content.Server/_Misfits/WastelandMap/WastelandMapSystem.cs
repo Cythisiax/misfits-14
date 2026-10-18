@@ -824,6 +824,10 @@ public sealed class WastelandMapSystem : EntitySystem
             case WastelandMapTacticalFeedKind.Bwonsamdi:
                 AppendBwonsamdiSoulBlips(buffer, mapId, bounds);
                 break;
+            case WastelandMapTacticalFeedKind.C27:
+                AppendIdCardBlips(buffer, mapId, bounds, "IdCardNCR");
+                AppendIdCardBlips(buffer, mapId, bounds, "IdCardBrotherhood");
+                break;
         }
     }
 
