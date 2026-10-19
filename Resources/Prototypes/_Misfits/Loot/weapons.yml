@@ -28,6 +28,7 @@
   parent: MarkerBase
   components:
   - type: EntityTableSpawner
+    deleteSpawnerAfterSpawn: false
     table: !type:NestedSelector
       tableId: M14WeaponLootCacheRoom
       prob: 1
@@ -54,15 +55,15 @@
       weight: 15
     - !type:NestedSelector
       tableId: M14WeaponLootTier5
-      weight: 5
+      weight: 1
 
 - type: entityTable
   id: M14WeaponLootCacheRoom
   table: !type:GroupSelector
     children:
     - !type:NestedSelector
-      tableId: M14WeaponLootTier4
-      weight: 30
+      tableId: M14WeaponLootTier3
+      weight: 95
     - !type:NestedSelector
-      tableId: M14WeaponLootTier5
+      tableId: M14WeaponLootTier4
       weight: 5
