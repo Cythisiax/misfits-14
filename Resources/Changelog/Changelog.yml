@@ -12526,3 +12526,14 @@ Entries:
   id: 6528
   time: '2026-10-17T13:32:26.0000000+00:00'
   url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2095
+- author: JohnKieser
+  changes:
+    - type: Tweak
+      message: >-
+        Oversight with RNG caused expeditions to probably use the same seed for
+        loot.
+    - type: Tweak
+      message: Corrected cache room spawn weights. Adjusted weights in general
+  id: 6529
+  time: '2026-10-19T05:55:47.0000000+00:00'
+  url: https://github.com/Misfit-Sanctuary/nuclear-14/pull/2098
