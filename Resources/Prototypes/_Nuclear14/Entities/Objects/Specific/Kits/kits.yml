@@ -1086,7 +1086,7 @@
   name: veteran ranger assault kit
   parent: KitBase
   id: KitAssaultRangerVeteran
-  description: A cache containing the belongings of a Veteran Ranger.
+  description: A cache containing the belongings of a Veteran Ranger. # #Misfits Change - Veteran Ranger assault kit now issues the suppressed Operative
   components:
   - type: Sprite
     state: rifleman
@@ -1095,7 +1095,7 @@
   - type: SpawnItemsOnUse
     items:
       - id: ClothingBeltNCR
-      - id: N14WeaponRifle556Carbine
+      - id: N14WeaponRifleOperative
       - id: LongMagazine556Rifle
         amount: 4
       - id: MagazineBox556
@@ -1110,7 +1110,7 @@
   name: veteran ranger marksman kit
   parent: KitBase
   id: KitMarksmanRangerVeteran
-  description: A cache containing the belongings of a Veteran Ranger.
+  description: A cache containing the belongings of a Veteran Ranger. # #Misfits Change - Veteran Ranger marksman kit now issues the 6.8mm M7 Spear
   components:
   - type: Sprite
     state: marksman
@@ -1119,10 +1119,10 @@
   - type: SpawnItemsOnUse
     items:
       - id: ClothingBeltNCR
-      - id: N14WeaponRifle762Marksman
-      - id: Magazine762Rifle
+      - id: N14WeaponRifleM7Spear
+      - id: Magazine68Rifle
         amount: 4
-      - id: MagazineBox762
+      - id: MagazineBox68
       - id: N14Stimpak
       - id: N14Stimpak
       - id: N14BoxCardboardMREBoxKFilled
