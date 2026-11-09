@@ -1,6 +1,5 @@
-# #Misfits Add - Enclave Rank Pin Progressions
-# NCRRankPinSpawnSystem matches on job ID, not faction, so Enclave roles use the same prototype.
-# Only roles that earn rank over time live here; fixed-rank Enclave jobs keep their pin in startingGear.
+# #Cythisiax Edited - Enclave rank ladders (was ncrRankPinProgression). FactionRankSystem equips the earned pin at spawn;
+# the pin is what gives the prefix. Ranks/prefixes live in _Misfits/FactionRank/ranks_enclave.yml.
 #
 # Tracker quick-reference (use with: playtime_addrole <user> <tracker> <time>)
 #   EnclaveEnlisted           — Enclave Enlisted
@@ -13,7 +12,7 @@
 #   SuperMutantEnclave        — Enclave Supermutant
 
 # Enlisted: PVT (E-1) → PFC (E-3) at 20h → SPC (E-4) at 40h
-- type: ncrRankPinProgression
+- type: rankLadder
   id: EnclaveEnlistedPins
   jobs:
     - EnclaveEnlisted
@@ -21,14 +20,14 @@
   departmentTracker: false
   thresholds:
     - min: 0
-      entity: ClothingNeckPinEnclavePrivate
+      rank: RankEnclavePrivate
     - min: 72000   # 20 hours
-      entity: ClothingNeckPinEnclavePFC
+      rank: RankEnclavePFC
     - min: 144000  # 40 hours
-      entity: ClothingNeckPinEnclaveSpecialist
+      rank: RankEnclaveSpecialist
 
 # NCO: SGT (E-5) → SSG (E-6) at 20h → SFC (E-7) at 40h → MSG (E-8) at 60h → SGM (E-9) at 80h
-- type: ncrRankPinProgression
+- type: rankLadder
   id: EnclaveNCOPins
   jobs:
     - EnclaveNCO
@@ -36,18 +35,18 @@
   departmentTracker: false
   thresholds:
     - min: 0
-      entity: ClothingNeckPinEnclaveSergeant
+      rank: RankEnclaveSergeant
     - min: 72000   # 20 hours
-      entity: ClothingNeckPinEnclaveStaffSergeant
+      rank: RankEnclaveStaffSergeant
     - min: 144000  # 40 hours
-      entity: ClothingNeckPinEnclaveSFC
+      rank: RankEnclaveSFC
     - min: 216000  # 60 hours
-      entity: ClothingNeckPinEnclaveMasterSergeant
+      rank: RankEnclaveMasterSergeant
     - min: 288000  # 80 hours
-      entity: ClothingNeckPinEnclaveSergeantMajor
+      rank: RankEnclaveSergeantMajor
 
 # Junior Officer: 2LT (O-1) → 1LT (O-2) at 20h
-- type: ncrRankPinProgression
+- type: rankLadder
   id: EnclaveJuniorOfficerPins
   jobs:
     - EnclaveJuniorOfficer
@@ -55,12 +54,12 @@
   departmentTracker: false
   thresholds:
     - min: 0
-      entity: ClothingNeckPinEnclaveSecondLieutenant
+      rank: RankEnclaveSecondLieutenant
     - min: 72000   # 20 hours
-      entity: ClothingNeckPinEnclaveFirstLieutenant
+      rank: RankEnclaveFirstLieutenant
 
 # Senior Officer: Captain (O-3) → Major (O-4) at 20h
-- type: ncrRankPinProgression
+- type: rankLadder
   id: EnclaveSeniorOfficerPins
   jobs:
     - EnclaveSeniorOfficer
@@ -68,12 +67,12 @@
   departmentTracker: false
   thresholds:
     - min: 0
-      entity: ClothingNeckPinEnclaveCaptain
+      rank: RankEnclaveCaptain
     - min: 72000   # 20 hours
-      entity: ClothingNeckPinEnclaveMajor
+      rank: RankEnclaveMajor
 
 # Commander: LTC (O-5) → Colonel (O-6) at 20h
-- type: ncrRankPinProgression
+- type: rankLadder
   id: EnclaveCommanderPins
   jobs:
     - EnclaveCommander
@@ -81,13 +80,13 @@
   departmentTracker: false
   thresholds:
     - min: 0
-      entity: ClothingNeckPinEnclaveLtColonel
+      rank: RankEnclaveLtColonel
     - min: 72000   # 20 hours
-      entity: ClothingNeckPinEnclaveColonel
+      rank: RankEnclaveColonel
 
 # Reformer: General (O-7), no ladder above it.
 # Listed here because the Reformer shares EnclaveCommanderGear, which no longer carries a pin.
-- type: ncrRankPinProgression
+- type: rankLadder
   id: EnclaveReformerPins
   jobs:
     - EnclaveReformer
@@ -95,12 +94,12 @@
   departmentTracker: false
   thresholds:
     - min: 0
-      entity: ClothingNeckPinEnclaveGeneral
+      rank: RankEnclaveGeneral
 
 # Supermutant: PVT (E-1) → PFC (E-3) at 20h → SPC (E-4) at 40h → SGT (E-5) at 60h
 # → SSG (E-6) at 80h → SFC (E-7) at 100h → MSG (E-8) at 120h → SGM (E-9) at 140h
 # Walks the whole enlisted and NCO ladder in one billet, so it runs longer than either.
-- type: ncrRankPinProgression
+- type: rankLadder
   id: SuperMutantEnclavePins
   jobs:
     - SuperMutantEnclave
@@ -108,25 +107,25 @@
   departmentTracker: false
   thresholds:
     - min: 0
-      entity: ClothingNeckPinEnclavePrivate
+      rank: RankEnclavePrivate
     - min: 72000   # 20 hours
-      entity: ClothingNeckPinEnclavePFC
+      rank: RankEnclavePFC
     - min: 144000  # 40 hours
-      entity: ClothingNeckPinEnclaveSpecialist
+      rank: RankEnclaveSpecialist
     - min: 216000  # 60 hours
-      entity: ClothingNeckPinEnclaveSergeant
+      rank: RankEnclaveSergeant
     - min: 288000  # 80 hours
-      entity: ClothingNeckPinEnclaveStaffSergeant
+      rank: RankEnclaveStaffSergeant
     - min: 360000  # 100 hours
-      entity: ClothingNeckPinEnclaveSFC
+      rank: RankEnclaveSFC
     - min: 432000  # 120 hours
-      entity: ClothingNeckPinEnclaveMasterSergeant
+      rank: RankEnclaveMasterSergeant
     - min: 504000  # 140 hours
-      entity: ClothingNeckPinEnclaveSergeantMajor
+      rank: RankEnclaveSergeantMajor
 
 # Vertibird Pilot: SGT (E-5) → SSG (E-6) at 20h → SFC (E-7) at 40h → MSG (E-8) at 60h → SGM (E-9) at 80h
 # Misfits Change - Enclave Vertibird Pilot is no longer commissioned but instead has a rank structure that runs parallel to the NCO.
-- type: ncrRankPinProgression
+- type: rankLadder
   id: EnclaveVertibirdPilotPins
   jobs:
     - EnclaveVertibirdPilot
@@ -134,12 +133,31 @@
   departmentTracker: false
   thresholds:
   - min: 0
-    entity: ClothingNeckPinEnclaveSergeant
+    rank: RankEnclaveSergeant
   - min: 72000   # 20 hours
-    entity: ClothingNeckPinEnclaveStaffSergeant
+    rank: RankEnclaveStaffSergeant
   - min: 144000  # 40 hours
-    entity: ClothingNeckPinEnclaveSFC
+    rank: RankEnclaveSFC
   - min: 216000  # 60 hours
-    entity: ClothingNeckPinEnclaveMasterSergeant
+    rank: RankEnclaveMasterSergeant
   - min: 288000  # 80 hours
-    entity: ClothingNeckPinEnclaveSergeantMajor
+    rank: RankEnclaveSergeantMajor
+
+# #Cythisiax Added - scientists hold a fixed rank; their pin is already in startingGear so no second one spawns.
+- type: rankLadder
+  id: EnclaveJuniorScientistRank
+  jobs: [ EnclaveJuniorScientist ]
+  thresholds:
+  - rank: RankEnclaveJuniorScientist
+
+- type: rankLadder
+  id: EnclaveScientistRank
+  jobs: [ EnclaveScientist ]
+  thresholds:
+  - rank: RankEnclaveScientist
+
+- type: rankLadder
+  id: EnclaveHeadScientistRank
+  jobs: [ EnclaveHeadScientist ]
+  thresholds:
+  - rank: RankEnclaveHeadScientist

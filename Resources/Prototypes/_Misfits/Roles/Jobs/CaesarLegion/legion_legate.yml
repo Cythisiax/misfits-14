@@ -30,6 +30,9 @@
   special:
   - !type:AddComponentSpecial
     components:
+      - type: FactionRoster # #Cythisiax Added - roster GUI: top Legion command
+        roster: Legion
+        action: ActionOpenFactionRosterLegion
       - type: NpcFactionMember
         factions:
           - CaesarLegion

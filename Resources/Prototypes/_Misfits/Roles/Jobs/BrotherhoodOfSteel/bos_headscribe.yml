@@ -28,6 +28,9 @@
   special:
   - !type:AddComponentSpecial
     components:
+      - type: FactionRoster # #Cythisiax Added - roster GUI: Initiate -> Squire, Scribe caste
+        roster: BrotherhoodOfSteel
+        action: ActionOpenFactionRosterBoS
       - type: NpcFactionMember
         factions:
           - BrotherhoodOfSteel

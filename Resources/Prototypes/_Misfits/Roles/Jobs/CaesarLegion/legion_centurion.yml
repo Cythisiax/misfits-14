@@ -32,6 +32,9 @@
   special:
   - !type:AddComponentSpecial
     components:
+      - type: FactionRoster # #Cythisiax Added - roster GUI: promote Legion job slots up to Optio
+        roster: Legion
+        action: ActionOpenFactionRosterLegion
       - type: NpcFactionMember
         factions:
           - CaesarLegion

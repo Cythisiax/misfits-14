@@ -44,6 +44,9 @@
   special:
   - !type:AddComponentSpecial
     components:
+      - type: FactionRoster # #Cythisiax Added - roster GUI: promote NCR job slots and rank pins
+        roster: NCR
+        action: ActionOpenFactionRosterNCR
       - type: NpcFactionMember
         factions:
           - Wastelander

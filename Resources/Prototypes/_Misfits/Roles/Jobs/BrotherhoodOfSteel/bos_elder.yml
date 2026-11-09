@@ -27,6 +27,9 @@
   special:
   - !type:AddComponentSpecial
     components:
+      - type: FactionRoster # #Cythisiax Added - roster GUI: Elder manages the whole Brotherhood
+        roster: BrotherhoodOfSteel
+        action: ActionOpenFactionRosterBoS
       - type: NpcFactionMember
         factions:
           - BrotherhoodOfSteel
