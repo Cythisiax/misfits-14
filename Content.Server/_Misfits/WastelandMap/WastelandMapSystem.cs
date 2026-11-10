@@ -7,6 +7,7 @@ using Content.Server._Misfits.Group; // #Misfits Add - group blip injection
 using Content.Server._Misfits.Overwatch;
 using Content.Server._Misfits.TribalHunt;
 using Content.Server._Misfits.TreeOfLife;
+using Content.Server._Misfits.WaterPlant; // #Cythisiax Added - water plant POI map marker
 using Content.Server.Radio.Components;
 using Content.Shared.Access.Components;
 using Content.Shared.Humanoid; // #Misfits Add - Followers casualty filter for humanoid player bodies only
@@ -798,6 +799,7 @@ public sealed class WastelandMapSystem : EntitySystem
             AppendMaterialExtractorBlips(_blipScratch, mapId, bounds);
             AppendExpeditionEntranceBlips(_blipScratch, mapId, bounds);
             AppendRadioTowerBlips(_blipScratch, mapId, bounds);
+            AppendWaterPlantBlips(_blipScratch, mapId, bounds); // #Cythisiax Added - water plant POI
             AppendGlobalMapPins(_blipScratch, mapId, bounds);
             if (AllowsSharedOverlays(feed)) // #Misfits Change - Tribe maps are tagged-ID-only.
                 AppendTribalHuntTargetBlips(_blipScratch, mapId, bounds);
@@ -1002,6 +1004,54 @@ public sealed class WastelandMapSystem : EntitySystem
                 tower.Activated
                     ? WastelandMapTrackedBlipKind.RadioTowerOnline
                     : WastelandMapTrackedBlipKind.RadioTowerOffline));
+        }
+    }
+
+    // #Cythisiax Added - one marker per water plant site instead of one per machine. Machines
+    // within WaterPlantSiteRadius of each other count as the same site.
+    private const float WaterPlantSiteRadius = 25f;
+    private readonly List<(System.Numerics.Vector2 Position, int Running, int Total)> _waterPlantSites = new();
+
+    private void AppendWaterPlantBlips(List<WastelandMapTrackedBlip> buffer, MapId mapId, Box2 bounds)
+    {
+        _waterPlantSites.Clear();
+
+        var query = EntityQueryEnumerator<WaterPlantLandmarkComponent, TransformComponent>();
+        while (query.MoveNext(out var uid, out _, out var xform))
+        {
+            var coordinates = _transform.GetMapCoordinates(uid, xform);
+            if (coordinates.MapId != mapId || !bounds.Contains(coordinates.Position))
+                continue;
+
+            var running = TryComp<WaterPurifierComponent>(uid, out var purifier) && purifier.Running ? 1 : 0;
+            var merged = false;
+            for (var i = 0; i < _waterPlantSites.Count; i++)
+            {
+                var site = _waterPlantSites[i];
+                if ((site.Position - coordinates.Position).Length() > WaterPlantSiteRadius)
+                    continue;
+
+                _waterPlantSites[i] = (site.Position, site.Running + running, site.Total + 1);
+                merged = true;
+                break;
+            }
+
+            if (!merged)
+                _waterPlantSites.Add((coordinates.Position, running, 1));
+        }
+
+        foreach (var site in _waterPlantSites)
+        {
+            var online = site.Running > 0;
+            buffer.Add(new WastelandMapTrackedBlip(
+                site.Position.X,
+                site.Position.Y,
+                online
+                    ? Loc.GetString("n14-water-plant-map-label-online", ("running", site.Running), ("total", site.Total))
+                    : Loc.GetString("n14-water-plant-map-label-offline"),
+                online
+                    ? WastelandMapTrackedBlipKind.WaterPlantOnline
+                    : WastelandMapTrackedBlipKind.WaterPlantOffline));
         }
     }
 

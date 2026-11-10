@@ -199,9 +199,12 @@
   - type: DrainableSolution
     solution: well
   - type: ReagentTank
-  - type: SolutionRegeneration
+  # #Cythisiax Edited - treatment machines only make water while powered (was free SolutionRegeneration)
+  - type: ApcPowerReceiver
+    powerLoad: 1500
+  - type: ExtensionCableReceiver
+  - type: WaterPurifier
     solution: well
-    generated:
-      reagents:
-      - ReagentId: Water
-        Quantity: 1
+    reagent: Water
+    amount: 1
+    interval: 1

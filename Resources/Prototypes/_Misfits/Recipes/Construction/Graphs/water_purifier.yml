@@ -1,0 +1,23 @@
+# #Cythisiax Added - Water plant: repair steps that turn a broken treatment machine into a working one.
+- type: constructionGraph
+  id: N14WaterPurifier
+  start: broken
+  graph:
+  - node: broken
+    entity: N14WaterPurifierBroken
+    edges:
+    - to: working
+      steps:
+      - tool: Welding
+        doAfter: 10
+      - material: Steel
+        amount: 10
+        doAfter: 3
+      - material: Cable
+        amount: 5
+        doAfter: 2
+      - tool: Screwing
+        doAfter: 5
+
+  - node: working
+    entity: N14WaterPurifier
