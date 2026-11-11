@@ -319,27 +319,26 @@
   name: burning barrel
   description: This barrel is smoldering. Toasty
   components:
+  - type: HeatHaze # #Cythisiax Added - air shimmers above the barrel
+    innerRadius: 0.3
+    outerRadius: 2.0
+    strength: 0.85
   - type: Sprite
     sprite: _Nuclear14/Structures/Storage/burningbarrel.rsi
     state: burnbarrel_lit
     netsync: false
   - type: PointLight
     radius: 5
-    energy: 3
+    energy: 8 # #Cythisiax Edited - was 3 with a 6-9 RandomizeBehaviour on top; FireFlicker scales down from this
     color: "#FFC90C"
   - type: AmbientSound
     volume: -7
     range: 4
     sound:
       path: /Audio/Ambience/Objects/fireplace.ogg
-  - type: LightBehaviour
-    behaviours:
-      - !type:RandomizeBehaviour # immediately make it bright and flickery
-        id: N14burnbarrel_lit
-        interpolate: Nearest
-        minDuration: 0.02
-        maxDuration: 0.06
-        startValue: 6.0
-        endValue: 9.0
-        property: Energy
-        isLooped: true
+  # #Cythisiax Removed - LightBehaviour RandomizeBehaviour (6-9 energy, 20-60ms Nearest strobe), replaced by FireFlicker
+  - type: FireFlicker # #Cythisiax Added - fire in a can: fast, choppy, frequent dips
+    amount: 0.25
+    speed: 6
+    dipChance: 0.15
+    dipDepth: 0.5

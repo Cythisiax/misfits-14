@@ -34,6 +34,13 @@
     fireStacks: 0.35
     standingDamage: 0.15
     touchCooldown: 1
+    # #Cythisiax Added - level ladder + spread; damage above is "at level 3"
+    startLevel: 3
+    maxLevel: 7
+    growChance: 0.35
+    spreadAtLevel: 3
+    spreadChance: 0.12
+    spreadFuelFraction: 0.8
 
 - type: entity
   parent: MisfitsTileFire
@@ -49,6 +56,14 @@
     fireStacks: 0.35
     standingDamage: 0.15
     touchCooldown: 1
+    # #Cythisiax Added - oil: burns low and long, creeps rather than leaps
+    startLevel: 3
+    maxLevel: 6
+    growChance: 0.25
+    spreadAtLevel: 3
+    spreadChance: 0.1
+    spreadFuelFraction: 0.85
+    spreadPrototype: MisfitsTileFire # catches as ordinary fire on new ground
 
 - type: entity
   parent: MisfitsTileFire
@@ -64,3 +79,13 @@
     fireStacks: 0.5
     standingDamage: 0.3
     touchCooldown: 1
+    # #Cythisiax Added - napalm: starts hot, spreads hard, shrugs off rain and blood
+    startLevel: 4
+    maxLevel: 7
+    growChance: 0.5
+    spreadAtLevel: 3
+    spreadChance: 0.18
+    spreadFuelFraction: 0.8
+    rainSpreadMultiplier: 0.75
+    spreadPrototype: MisfitsTileFire # catches as ordinary fire on new ground
+    bloodClearLevel: 6
