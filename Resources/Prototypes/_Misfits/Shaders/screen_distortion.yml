@@ -1,0 +1,5 @@
+# #Cythisiax Added - Full-screen shockwave / heat haze / flash pass, driven by ScreenDistortionOverlay.
+- type: shader
+  id: MisfitsScreenDistortion
+  kind: source
+  path: "/Textures/_Misfits/Shaders/screen_distortion.swsl"

@@ -1,0 +1,154 @@
+// #Cythisiax Added - Screen distortion: explosion shockwave rings, heat haze over fires and the
+// explosion flash, all in one full-screen pass so we only pay for one screen copy a frame.
+// Math is ported from Gruntz's TonemapComposite (ShockwaveData / HeatHazeData / flash), reworked
+// to run in viewport pixels. Positions and sizes come in already converted by ScreenDistortionOverlay.
+light_mode unshaded;
+
+uniform sampler2D SCREEN_TEXTURE;
+uniform highp float pxPerTile;
+
+// Shockwaves: ring centre (frag px), current ring radius px, half band px, strength 0-1,
+// push px at full strength, rim glow strength, rim colour.
+uniform lowp int shockCount;
+uniform highp vec2[8] shockPos;
+uniform highp float[8] shockRadius;
+uniform highp float[8] shockBand;
+uniform highp float[8] shockStrength;
+uniform highp float[8] shockPush;
+uniform highp float[8] shockRim;
+uniform highp vec4[8] shockRimColor;
+uniform highp float shockFalloffK;
+uniform highp float shockAberration;
+
+// Heat haze: source centre (frag px), inner radius px left untouched (the fire sprite itself),
+// outer radius px where the shimmer dies off, strength 0-1.
+uniform lowp int hazeCount;
+uniform highp vec2[16] hazePos;
+uniform highp float[16] hazeInner;
+uniform highp float[16] hazeOuter;
+uniform highp float[16] hazeStrength;
+uniform highp float hazeStrengthPx;
+uniform highp float hazeRiseSpeed;
+uniform highp float hazeNoiseScale;
+
+uniform highp float flashWhite;
+uniform highp float flashDesaturate;
+
+highp float distHash(highp vec2 p)
+{
+    p = fract(p * vec2(123.34, 456.21));
+    p += dot(p, p + 45.32);
+    return fract(p.x * p.y);
+}
+
+highp float distNoise(highp vec2 p)
+{
+    highp vec2 i = floor(p);
+    highp vec2 f = fract(p);
+    highp vec2 u = f * f * (3.0 - 2.0 * f);
+    highp float a = distHash(i);
+    highp float b = distHash(i + vec2(1.0, 0.0));
+    highp float c = distHash(i + vec2(0.0, 1.0));
+    highp float d = distHash(i + vec2(1.0, 1.0));
+    return mix(mix(a, b, u.x), mix(c, d, u.x), u.y);
+}
+
+highp float distFbm(highp vec2 p)
+{
+    return distNoise(p) * 0.6 + distNoise(p * 2.03 + vec2(7.1, 3.7)) * 0.4;
+}
+
+void fragment() {
+    highp vec2 frag = FRAGCOORD.xy;
+    highp vec2 px = frag;
+
+    // Heat haze. The strongest source at this pixel wins, and the noise is anchored to that source
+    // so the shimmer does not swim when the camera moves. It leans upward so heat reads as rising.
+    if (hazeCount > 0 && hazeStrengthPx > 0.0)
+    {
+        highp float intensity = 0.0;
+        highp vec2 anchor = frag;
+        for (int i = 0; i < 16; i++)
+        {
+            if (i >= hazeCount)
+                break;
+            highp vec2 rel = frag - hazePos[i];
+            highp float d = length(rel);
+            highp float inner = hazeInner[i];
+            highp float outer = max(hazeOuter[i], inner + 1.0);
+            if (d >= outer)
+                continue;
+            highp float cover = 1.0 - smoothstep(max(inner - 4.0, 0.0), max(inner, 0.0001), d);
+            highp float fade = 1.0 - smoothstep(inner, outer, d);
+            highp float lean = mix(0.4, 1.0, smoothstep(-(outer - inner) * 0.3, (outer - inner) * 0.5, rel.y));
+            highp float contribution = fade * (1.0 - cover) * lean * hazeStrength[i];
+            if (contribution > intensity)
+            {
+                intensity = contribution;
+                anchor = hazePos[i];
+            }
+        }
+        if (intensity > 0.0)
+        {
+            highp vec2 hp = (frag - anchor) / max(pxPerTile, 1.0) * hazeNoiseScale;
+            highp float ht = TIME * hazeRiseSpeed;
+            highp vec2 flow = vec2(
+                distFbm(hp - vec2(0.0, ht)),
+                distFbm(hp + vec2(11.3, 4.1 - ht * 1.07))) - 0.5;
+            px += flow * hazeStrengthPx * intensity;
+        }
+    }
+
+    // Shockwave rings. Only the strongest ring at a pixel displaces it, like Gruntz, so two
+    // overlapping blasts never stack into a tear.
+    highp float ringMask = 0.0;
+    highp vec2 ringDir = vec2(0.0, 1.0);
+    highp float ringOff = 0.0;
+    highp float ringRim = 0.0;
+    highp vec3 ringRimColor = vec3(1.0);
+    for (int i = 0; i < 8; i++)
+    {
+        if (i >= shockCount)
+            break;
+        highp float band = shockBand[i];
+        if (band <= 0.0 || shockStrength[i] <= 0.0)
+            continue;
+        highp vec2 d = px - shockPos[i];
+        highp float dist = length(d);
+        highp float diff = dist - shockRadius[i];
+        if (abs(diff) > band)
+            continue;
+        highp float envelope = 1.0 - pow(abs(diff) / band, shockFalloffK);
+        highp float mask = envelope * shockStrength[i];
+        if (mask <= ringMask)
+            continue;
+        ringMask = mask;
+        ringDir = dist > 0.0001 ? d / dist : vec2(0.0, 1.0);
+        ringOff = (diff / band) * mask * shockPush[i];
+        ringRim = shockRim[i];
+        ringRimColor = shockRimColor[i].rgb;
+    }
+    if (ringMask > 0.0)
+        px += ringDir * ringOff;
+
+    highp vec4 sampled = zTextureSpec(SCREEN_TEXTURE, px * SCREEN_PIXEL_SIZE);
+    highp vec3 color = sampled.rgb;
+
+    if (ringMask > 0.0)
+    {
+        if (shockAberration > 0.0)
+        {
+            highp vec2 ab = ringDir * ringOff * shockAberration;
+            color.r = zTextureSpec(SCREEN_TEXTURE, (px + ab) * SCREEN_PIXEL_SIZE).r;
+            color.b = zTextureSpec(SCREEN_TEXTURE, (px - ab) * SCREEN_PIXEL_SIZE).b;
+        }
+        color += ringRimColor * ringMask * ringMask * ringRim;
+    }
+
+    if (flashDesaturate > 0.0)
+        color = mix(color, vec3(dot(color, vec3(0.2126, 0.7152, 0.0722))), flashDesaturate);
+    if (flashWhite > 0.0)
+        color = mix(color, vec3(1.0), flashWhite);
+
+    COLOR = vec4(color, sampled.a);
+}

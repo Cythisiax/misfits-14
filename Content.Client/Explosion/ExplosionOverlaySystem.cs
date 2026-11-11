@@ -1,3 +1,4 @@
+using Content.Client._Misfits.Graphics; // #Cythisiax Added - explosion shockwave/flash
 using Content.Shared.Explosion;
 using Content.Shared.Explosion.Components;
 using Robust.Client.Graphics;
@@ -20,6 +21,7 @@ public sealed class ExplosionOverlaySystem : EntitySystem
     [Dependency] private readonly IOverlayManager _overlayMan = default!;
     [Dependency] private readonly SharedPointLightSystem _lights = default!;
     [Dependency] private readonly SharedMapSystem _mapMan = default!;
+    [Dependency] private readonly ScreenDistortionSystem _distortion = default!; // #Cythisiax Added - explosion shockwave/flash
 
     public override void Initialize()
     {
@@ -78,6 +80,12 @@ public sealed class ExplosionOverlaySystem : EntitySystem
             _lights.SetEnergy(lightEntity, component.Intensity.Count, light);
             _lights.SetColor(lightEntity, type.LightColor, light);
             textures.LightEntity = lightEntity;
+
+            // #Cythisiax Added - shockwave ring, heat haze and flash from Gruntz's composite shader
+            var totalIntensity = 0f;
+            foreach (var intensity in component.Intensity)
+                totalIntensity += intensity;
+            _distortion.AddExplosion(component.Epicenter, component.Intensity.Count, totalIntensity, type.LightColor);
         }
 
 

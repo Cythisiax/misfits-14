@@ -5,6 +5,9 @@
   name: bonfire
   description: A wooden bonfire for heating and cooking.
   components:
+  - type: HeatHaze # #Cythisiax Added - air shimmers above the fire while it is lit
+    innerRadius: 0.4
+    outerRadius: 2.6
   # Misfits Change /Fix/ Make the constructible bonfire behave as a real player-managed fire source.
   - type: InteractionOutline
   - type: Sprite
